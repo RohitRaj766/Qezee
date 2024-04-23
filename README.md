@@ -1,4 +1,4 @@
-# Qeasy
+# Qezee
 Quiz platform
 
 # Figma Design
