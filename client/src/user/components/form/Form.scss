@@ -1,0 +1,184 @@
+@import "../../assets/Common";
+
+// variables
+$form-box-height:500px;
+$form-box-width:480px;
+$form-container-width:420px;
+$form-container-height:50px;
+$radius:4px;
+$font-size:16px;
+$font-size-button:14px;
+$padding-left:15px;
+
+.form__box{
+    height: $form-box-height;
+    width:  $form-box-width;
+    background-color: $pure-white;
+    form{
+        .form__container1{
+            width:$form-container-width;
+            height:$form-container-height;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            .form__input1{
+                height: inherit;
+                width: 190px;
+                border-radius: $radius;
+                input{
+                    height: inherit;
+                    width: inherit;
+                    border: none;
+                    outline: none;
+                    border-radius: inherit;
+                    padding-left: $padding-left;
+                    letter-spacing: 2px;
+                    font-size: $font-size;
+                    color:$text-color-form;
+                    font-family: $primary-font;
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    background-color: #F7F6F6;
+                    &::placeholder{
+                        padding-left: 4px;
+                    }
+                 
+                }
+            }
+            .form__input2{
+                height: inherit;
+                width: 190px;
+                border-radius: $radius;
+                background-color: #F7F6F6;
+                input{
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    height: inherit;
+                    width: inherit;
+                    border: none;
+                    outline: none;
+                    border-radius: inherit;
+                    padding-left: $padding-left;
+                    letter-spacing: 2px;
+                    font-size: $font-size;
+                    color:$text-color-form;
+                    font-family: $primary-font;
+                    background-color: #F7F6F6;
+                    &::placeholder{
+                        padding-left: 4px;
+                    }
+                }
+            }
+        }
+        .form__container2{
+            width:$form-container-width;
+            height:$form-container-height;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            .form__input3{
+                height: inherit;
+                width: inherit;
+                background-color: #F7F6F6;
+                border-radius: $radius;
+                input{
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    height: inherit;
+                    width: inherit;
+                    border: none;
+                    outline: none;
+                    border-radius: inherit;
+                    padding-left: $padding-left;
+                    letter-spacing: 2px;
+                    font-size: $font-size;
+                    color:$text-color-form;
+                    font-family: $primary-font;
+                    background-color: #F7F6F6;
+                    &::placeholder{
+                        padding-left: 4px;
+                    }
+                }
+            }
+        }
+        .form__container3{
+            width:$form-container-width;
+            height:$form-container-height;
+            margin: auto;
+            margin-top: 20px;
+            .form__input4{
+                height: inherit;
+                width: inherit;
+                background-color: #F7F6F6;
+                border-radius: $radius;
+                input{
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    height: inherit;
+                    width: inherit;
+                    border: none;
+                    outline: none;
+                    border-radius: inherit;
+                    padding-left: $padding-left;
+                    letter-spacing: 2px;
+                    font-size: $font-size;
+                    color:$text-color-form;
+                    font-family: $primary-font;
+                    background-color: #F7F6F6;
+                    &::placeholder{
+                        padding-left: 4px;
+                    }
+                }
+            }
+        }
+        .form__container4{
+            width:$form-container-width;
+            height:$form-container-height;
+            margin: auto;
+            margin-top: 20px;
+            .form__input5{
+                height: inherit;
+                width: inherit;
+                border-radius: $radius;
+                background-color: #F7F6F6;
+                input{
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    height: inherit;
+                    width: inherit;
+                    border: none;
+                    outline: none;
+                    border-radius: inherit;
+                    padding-left: $padding-left;
+                    letter-spacing: 2px;
+                    font-size: $font-size;
+                    color:$text-color-form;
+                    font-family: $primary-font;
+                    background-color: #F7F6F6;
+                    &::placeholder{
+                        padding-left: 4px;
+                    }
+                }
+            }
+        }
+        .form__button__container{
+            width: inherit;
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            .button1{
+                width: 140px;
+                height: 35px;
+                button{
+                    box-shadow: 0px 4px 6px 0px $shadow-color;
+                    border: none;
+                    outline: none;
+                    border-radius: $radius;
+                    height: inherit;
+                    width: inherit;
+                    font-family: $primary-font;
+                    font-size: $font-size-button;
+                    color: $text-color-btn;
+                    background-color: $btn-color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
