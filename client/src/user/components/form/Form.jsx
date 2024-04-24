@@ -14,6 +14,7 @@ const Form = () => {
 
         {ifRegistor ? (
             <>
+            
             <div className="form__container1">
               <div className="form__input1">
                 <input type="text" placeholder="First Name" />
