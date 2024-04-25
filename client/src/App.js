@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
 // import './App.css';
-import Form from './user/components/form/Form'
+import Signup from './user/userScreens/signup/Signup'
 
 function App() {
   return (
     <>
-     <Form/>
+     <Signup/>
     </>
   );
 }

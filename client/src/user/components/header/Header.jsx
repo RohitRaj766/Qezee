@@ -1,9 +1,28 @@
-import React from 'react'
-
-const Header = () => {
+import React from "react";
+import "./Navbar.scss";
+import logoImage from "../../assets/images/logo.svg";
+const Navbar = () => {
   return (
-    <div>Header</div>
-  )
-}
+    <>
+      <nav>
+        <div className="main">
+          <div className="leftside">
+            <div className="logo">
+              <img src={logoImage} alt="logo" />
+            </div>
+            <p className="text">
+              <span className="Q">Q</span>uizee
+            </p>
+          </div>
 
-export default Header
+          <div className="rightside">
+            <button className="login">Login</button>
+            <button className="signup">Signup</button>
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
+
+export default Navbar;

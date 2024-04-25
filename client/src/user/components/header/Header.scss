@@ -1,0 +1,118 @@
+$main-theme: #f5b400;
+$text-color: #f4f4f4;
+$btn-color: #f5b400;
+$heading-color: #1e1702;
+$navback-color: #f7f6f6;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  width: 100%;
+  background-color: $navback-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+
+    background-color: $navback-color;
+
+    height: 2rem;
+    max-height: 768px;
+    max-width: 1366px;
+    padding: 12px;
+    margin: 0px auto;
+
+    .leftside {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 50%;
+
+      .logo {
+        height: 70px;
+        width: 80px;
+        margin-right: 1em;
+      }
+
+      .logo img {
+        max-width: 100%;
+        margin-top: 5px;
+        object-fit: cover;
+      }
+
+      .text {
+        font-family: itim;
+        font-size: 3rem;
+        color: #f5b400;
+
+        .Q {
+          color: #3c5edf;
+        }
+      }
+    }
+
+    .rightside {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1.6rem;
+      // border:2px solid red;
+      width: 50%;
+
+      button {
+        // padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: $btn-color;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        font-family: itim;
+      }
+
+      .login {
+        padding: 0.2rem 1.6rem;
+        height: 2.5rem;
+        background-color: $btn-color;
+      }
+
+      .signup {
+        padding: 0.2rem 1.6rem;
+        height: 2.5rem;
+        background-color: $btn-color;
+      }
+
+      .login,
+      .signup {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Add the drop shadow */
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 1024px) {
+//   nav {
+//     display: none;
+//   }
+//   body::before {
+//     content: "This website is best viewed on desktop.";
+//     display: block;
+//     text-align: center;
+//     font-size: 24px;
+//     padding: 20px;
+//     background-color: #f8d7da;
+//     color: #721c24;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     z-index: 9999;
+//   }
+// }

@@ -7,7 +7,7 @@ $form-box-width:480px;
 $form-container-width:420px;
 $form-container-height:50px;
 $radius:4px;
-$font-size:10px;
+$font-size:16px;
 $font-size-button:14px;
 $padding-left:15px;
 
@@ -30,6 +30,7 @@ $padding-left:15px;
                 input{
                     @include input;
                     color:$text-color-form;
+                    font-size: $font-size;
                     font-family: $primary-font;
                     padding-left: $padding-left;
                     &::placeholder{
