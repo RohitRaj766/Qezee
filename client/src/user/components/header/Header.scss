@@ -1,13 +1,4 @@
-$main-theme: #f5b400;
-$text-color: #f4f4f4;
-$btn-color: #f5b400;
-$heading-color: #1e1702;
-$navback-color: #f7f6f6;
-
-* {
-  margin: 0;
-  padding: 0;
-}
+@import "../../assets/Common";
 
 nav {
   width: 100%;
@@ -18,11 +9,8 @@ nav {
     display: flex;
     justify-content: space-between;
     gap: 5px;
-
     background-color: $navback-color;
-
     height: 2rem;
-    max-height: 768px;
     max-width: 1366px;
     padding: 12px;
     margin: 0px auto;
@@ -37,6 +25,7 @@ nav {
         height: 70px;
         width: 80px;
         margin-right: 1em;
+
       }
 
       .logo img {
@@ -46,9 +35,9 @@ nav {
       }
 
       .text {
-        font-family: itim;
+        font-family: $primary-font;
         font-size: 3rem;
-        color: #f5b400;
+        color: $btn-color;
 
         .Q {
           color: #3c5edf;
@@ -61,32 +50,33 @@ nav {
       justify-content: flex-end;
       align-items: center;
       gap: 1.6rem;
-      // border:2px solid red;
       width: 50%;
 
       button {
-        // padding: 10px 20px;
+     
         margin: 5px;
         border: none;
         border-radius: 5px;
         background-color: $btn-color;
-        color: white;
+        color:$pure-white;
         font-size: 16px;
         cursor: pointer;
         position: relative;
-        font-family: itim;
+        font-family: $primary-font;
       }
 
       .login {
         padding: 0.2rem 1.6rem;
         height: 2.5rem;
         background-color: $btn-color;
+        letter-spacing:2px;
       }
 
       .signup {
         padding: 0.2rem 1.6rem;
         height: 2.5rem;
         background-color: $btn-color;
+       letter-spacing:2px;
       }
 
       .login,
@@ -97,22 +87,4 @@ nav {
   }
 }
 
-// @media screen and (max-width: 1024px) {
-//   nav {
-//     display: none;
-//   }
-//   body::before {
-//     content: "This website is best viewed on desktop.";
-//     display: block;
-//     text-align: center;
-//     font-size: 24px;
-//     padding: 20px;
-//     background-color: #f8d7da;
-//     color: #721c24;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     right: 0;
-//     z-index: 9999;
-//   }
-// }
+

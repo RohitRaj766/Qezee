@@ -1,11 +1,9 @@
-// import logo from './logo.svg';
-// import './App.css';
-import Signup from './user/userScreens/signup/Signup'
+import Registration from './user/userScreens/signup/Register'
 
-function App() {
+const App = () => {
   return (
     <>
-     <Signup/>
+     <Registration/>
     </>
   );
 }

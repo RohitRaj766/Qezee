@@ -1,7 +1,7 @@
 import React from "react";
-import "./Navbar.scss";
+import "./Header.scss";
 import logoImage from "../../assets/images/logo.svg";
-const Navbar = () => {
+const Header = () => {
   return (
     <>
       <nav>
@@ -25,4 +25,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
