@@ -1,6 +1,7 @@
 import Registration from './user/userScreens/signup/Register'
 
 const App = () => {
+
   return (
     <>
      <Registration/>
