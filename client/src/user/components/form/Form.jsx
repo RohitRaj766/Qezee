@@ -14,7 +14,6 @@ const Form = () => {
 
         {ifRegistor ? (
             <>
-            
             <div className="form__container1">
               <div className="form__input1">
                 <input type="text" placeholder="First Name" />
@@ -38,7 +37,7 @@ const Form = () => {
                 <input type="password" placeholder="Confirm Password" />
               </div>
             </div>
-          </>
+            </>
         ) : (
             <>
             <div className="form__container2">
