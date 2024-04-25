@@ -7,7 +7,24 @@ $navback-color: #e3e3e3;
 $pure-white:#FFFFFF;
 $shadow-color:#e0e0e0;
 $primary-font:("Itim",cursive);
-// *{
-//     padding: 0;
-//     margin: 0;
-// }
+
+@mixin input{
+    height: inherit;
+    width: inherit;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    letter-spacing: 2px;
+    background-color: #F7F6F6;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+}
+
+@mixin button{
+    border: none;
+    outline: none;
+    height: inherit;
+    width: inherit;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+}
+

@@ -1,12 +1,13 @@
 @import "../../assets/Common";
 
+
 // variables
 $form-box-height:500px;
 $form-box-width:480px;
 $form-container-width:420px;
 $form-container-height:50px;
 $radius:4px;
-$font-size:16px;
+$font-size:10px;
 $font-size-button:14px;
 $padding-left:15px;
 
@@ -27,22 +28,13 @@ $padding-left:15px;
                 width: 190px;
                 border-radius: $radius;
                 input{
-                    height: inherit;
-                    width: inherit;
-                    border: none;
-                    outline: none;
-                    border-radius: inherit;
-                    padding-left: $padding-left;
-                    letter-spacing: 2px;
-                    font-size: $font-size;
+                    @include input;
                     color:$text-color-form;
                     font-family: $primary-font;
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    background-color: #F7F6F6;
+                    padding-left: $padding-left;
                     &::placeholder{
                         padding-left: 4px;
                     }
-                 
                 }
             }
             .form__input2{
@@ -51,18 +43,11 @@ $padding-left:15px;
                 border-radius: $radius;
                 background-color: #F7F6F6;
                 input{
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    height: inherit;
-                    width: inherit;
-                    border: none;
-                    outline: none;
-                    border-radius: inherit;
+                    @include input;
                     padding-left: $padding-left;
-                    letter-spacing: 2px;
                     font-size: $font-size;
                     color:$text-color-form;
                     font-family: $primary-font;
-                    background-color: #F7F6F6;
                     &::placeholder{
                         padding-left: 4px;
                     }
@@ -81,18 +66,11 @@ $padding-left:15px;
                 background-color: #F7F6F6;
                 border-radius: $radius;
                 input{
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    height: inherit;
-                    width: inherit;
-                    border: none;
-                    outline: none;
-                    border-radius: inherit;
+                    @include input;
                     padding-left: $padding-left;
-                    letter-spacing: 2px;
                     font-size: $font-size;
                     color:$text-color-form;
                     font-family: $primary-font;
-                    background-color: #F7F6F6;
                     &::placeholder{
                         padding-left: 4px;
                     }
@@ -110,18 +88,11 @@ $padding-left:15px;
                 background-color: #F7F6F6;
                 border-radius: $radius;
                 input{
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    height: inherit;
-                    width: inherit;
-                    border: none;
-                    outline: none;
-                    border-radius: inherit;
+                    @include input;
                     padding-left: $padding-left;
-                    letter-spacing: 2px;
                     font-size: $font-size;
                     color:$text-color-form;
                     font-family: $primary-font;
-                    background-color: #F7F6F6;
                     &::placeholder{
                         padding-left: 4px;
                     }
@@ -139,18 +110,11 @@ $padding-left:15px;
                 border-radius: $radius;
                 background-color: #F7F6F6;
                 input{
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    height: inherit;
-                    width: inherit;
-                    border: none;
-                    outline: none;
-                    border-radius: inherit;
+                    @include input;
                     padding-left: $padding-left;
-                    letter-spacing: 2px;
                     font-size: $font-size;
                     color:$text-color-form;
                     font-family: $primary-font;
-                    background-color: #F7F6F6;
                     &::placeholder{
                         padding-left: 4px;
                     }
@@ -166,17 +130,12 @@ $padding-left:15px;
                 width: 140px;
                 height: 35px;
                 button{
-                    box-shadow: 0px 4px 6px 0px $shadow-color;
-                    border: none;
-                    outline: none;
+                    @include button;
                     border-radius: $radius;
-                    height: inherit;
-                    width: inherit;
                     font-family: $primary-font;
                     font-size: $font-size-button;
                     color: $text-color-btn;
                     background-color: $btn-color;
-                    cursor: pointer;
                 }
             }
         }

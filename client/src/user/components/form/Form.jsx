@@ -2,7 +2,7 @@ import { useState } from "react";
 import './Form.scss'
 
 const Form = () => {
-  const [ifRegistor, setIfRegistor] = useState(true);
+  const [ifRegister, setifRegister] = useState(true);
   const handleSignUp = (e) => {
 
   }
@@ -12,7 +12,7 @@ const Form = () => {
       <div className="form__box">
         <form action="">
 
-        {ifRegistor ? (
+        {ifRegister ? (
             <>
             <div className="form__container1">
               <div className="form__input1">
@@ -53,7 +53,7 @@ const Form = () => {
           </>
         )}
         <div className="form__button__container">
-           {ifRegistor ? (<div className="button1">
+           {ifRegister ? (<div className="button1">
                  <button onClick={()=>handleSignUp()}>SIGN UP</button>
             </div>):
             (
