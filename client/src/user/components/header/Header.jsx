@@ -16,8 +16,8 @@ const Header = () => {
           </div>
 
           <div className="rightside">
-            <button className="login">Login</button>
-            <button className="signup">Sign Up</button>
+            <button className="login">LOGIN</button>
+            <button className="signup">SIGN UP</button>
           </div>
         </div>
       </nav>

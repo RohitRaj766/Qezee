@@ -2,7 +2,7 @@
 
 
 // variables
-$form-box-height:500px;
+$form-box-height:max-content;
 $form-box-width:480px;
 $form-container-width:420px;
 $form-container-height:50px;
@@ -15,6 +15,7 @@ $padding-left:15px;
     height: $form-box-height;
     width:  $form-box-width;
     background-color: $pure-white;
+    margin: auto;
     form{
         .form__container1{
             width:$form-container-width;
