@@ -1,0 +1,120 @@
+// @import "../../assets/Common.";
+
+$main-theme: #f5b400;
+$text-color-btn: #f4f4f4;
+$text-color_form:#8B8A8A;
+$btn-color: #f5b400;
+$heading-color: #1e1702;
+$navback-color: #f7f6f6;
+$pure-white:#FFFFFF;
+$shadow-color:#e0e0e0;
+$primary-font:("Itim",cursive);
+
+$main-theme: #f5b400;
+$text-color-btn: #f4f4f4;
+$text-color_form:#8B8A8A;
+$btn-color: #f5b400;
+$heading-color: #1e1702;
+$navback-color: #f7f6f6;
+$pure-white:#FFFFFF;
+$shadow-color:#e0e0e0;
+$primary-font:("Itim",cursive);
+
+@mixin button{
+    border: none;
+    outline: none;
+    height: inherit;
+    width: inherit;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+}
+
+
+$main-height: 806px;
+$main-width: 283px;
+$selector-height: 50px;
+$selector-width: 229px;
+$selector-font-size: 12px;
+
+.main {
+    height: $main-height;
+    width: $main-width;
+    background-color: $navback-color;
+    display: flex;
+    flex-direction: column;
+    
+
+    .header {
+        display: flex;
+        margin-bottom: 60px;
+        .text {
+            font-family: $primary-font;
+            font-size: 40px;
+            margin-top: 10px;
+            color: $btn-color;
+            .Q {
+              color: #3c5edf;
+            }
+        }
+    }
+
+    .selectors {
+        display: flex;
+        align-items: center;
+        color: $main-theme; 
+        margin: 0 auto;
+        cursor: pointer;
+        height: 50px;
+        width: 230px;
+        padding: 0 6px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+        
+        
+        .image {
+            width: 38px;
+            height: 38px;
+        }
+
+        .text {
+            font-family: $primary-font;
+            font-size: 22px;
+            padding-left: 10px;
+        }
+        
+
+        &:hover{
+            background-color: $main-theme;
+            border-radius: 6px;
+            height: 50px;
+            outline: none;
+            position: relative;
+            width: 230px;
+            margin-bottom: 30px;
+            color: $text-color-btn;
+
+        }
+
+        &.selected .text {
+            color: $text-color-btn;
+        }
+
+        &.selected {
+            background-color: $main-theme;
+            border-radius: 6px;
+            height: 50px;
+            outline: none;
+            position: relative;
+            width: 230px;
+          
+            
+            
+        }
+    }
+}
+
+
+
+
+
