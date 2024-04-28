@@ -28,7 +28,7 @@ const Sidebar = () => {
             <div className="main">
                 <div className="header">
                     <div className="image"><img src={logoimage} alt="" /></div>
-                    <p className="text"><span className="Q">Q</span>uizee</p>
+                    <p className="text"><span className="Q">Q</span>ezee</p>
                 </div>
 
                 {selectorsData.map((item, index) => (
