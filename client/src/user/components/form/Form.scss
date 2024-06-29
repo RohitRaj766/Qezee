@@ -140,6 +140,18 @@ $padding-left:15px;
                     background-color: $btn-color;
                 }
             }
+            .button2{
+                width: 140px;
+                height: 35px;
+                button{
+                    @include button;
+                    border-radius: $radius;
+                    font-family: $primary-font;
+                    font-size: $font-size-button;
+                    color: $text-color-btn;
+                    background-color: $btn-color;
+                }
+            }
         }
     }
 }
