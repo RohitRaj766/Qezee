@@ -1,10 +1,12 @@
 import Registration from './user/userScreens/signup/Register'
+import Leaderboard from './user/userScreens/leaderboard/LeaderBoard';
+
 
 const App = () => {
 
   return (
     <>
-     <Registration/>
+     <Leaderboard/>
     </>
   );
 }
