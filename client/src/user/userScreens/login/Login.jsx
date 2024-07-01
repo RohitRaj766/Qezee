@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginRequest } from '../../../actions/index';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
-  const token = useSelector((state) => state.auth.authToken);
-console.log("token :: ",token)
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setCredentials({
       ...credentials,
@@ -19,6 +21,12 @@ console.log("token :: ",token)
     e.preventDefault();
     dispatch(loginRequest(credentials));
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div>

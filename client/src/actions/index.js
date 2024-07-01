@@ -7,6 +7,10 @@ export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+
 export const FETCH_LEADERBOARD_REQUEST = 'FETCH_LEADERBOARD_REQUEST';
 export const FETCH_LEADERBOARD_SUCCESS = 'FETCH_LEADERBOARD_SUCCESS';
 export const FETCH_LEADERBOARD_FAILURE = 'FETCH_LEADERBOARD_FAILURE';
@@ -26,7 +30,7 @@ export const loginRequest = (credentials) => ({
     type: LOGIN_FAILURE,
     payload: error,
   });
-  
+
   export const signupRequest = (userData) => ({
     type: SIGNUP_REQUEST,
     payload: userData,
@@ -40,6 +44,17 @@ export const loginRequest = (credentials) => ({
   export const signupFailure = (error) => ({
     type: SIGNUP_FAILURE,
     payload: error,
+  });
+
+  export const logoutRequest = () => ({
+    type: LOGOUT_REQUEST,
+  });
+  
+  export const logoutSuccess = () => ({
+    type: LOGOUT_SUCCESS,
+  });
+  export const logoutFailure = () => ({
+    type: LOGOUT_FAILURE,
   });
 
 export const fetchLeaderboardRequest = () => ({

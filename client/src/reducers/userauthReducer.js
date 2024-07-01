@@ -5,24 +5,30 @@ import {
     SIGNUP_FAILURE,
   } from '../actions/index';
   
+  const token = localStorage.getItem('token');
+
   const initialState = {
-    token: null,
+    user: null,
     error: null,
-    signupMessage: null,
+    isAuthenticated: false,
+    signupMessage: null
   };
+
+
   
   const userauthReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_SUCCESS:
         return {
           ...state,
-          token: action.payload,
+          user: action.payload,
+          isAuthenticated:true,
           error: null,
         };
       case LOGIN_FAILURE:
         return {
           ...state,
-          token: null,
+          user: null,
           error: action.payload,
         };
       case SIGNUP_SUCCESS:
