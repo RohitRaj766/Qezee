@@ -16,9 +16,9 @@
         max-width: 600px;
 
         p {
-            font-size: 2.5rem;
+            font-size: 40px;
             color: rgba(60, 94, 223, 1);
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             font-family: $primary-font;
             letter-spacing:3.5px;
         }
@@ -34,10 +34,13 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                margin-left: 3px;
 
                 .inputField, .smallInputField {
 
                     color: rgb(130, 131, 137);
+                    letter-spacing: 4px;
+                    box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
 
                     &::placeholder {
                         font-family: $primary-font; 
@@ -70,12 +73,11 @@
                     padding: 0 0 0 0.5rem; 
                     font-size: 1.5rem; 
                     font-family: $primary-font;
-                    letter-spacing:4px;
                     background-color: #F7F6F6;
                     border-radius: 0.25rem; 
                     border: none;
                     margin: 0.9375rem 0; 
-                    box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
+                    // box-shadow: -0.05rem 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
                     letter-spacing: 3px;
                 }
        
@@ -93,13 +95,12 @@
                         height: 4.375rem; 
                         padding: 0 0 0 0.5rem; 
                         font-size: 1.5rem;
-                        letter-spacing: 3px;
                         font-family: $primary-font;
                         background-color: #F7F6F6;
                         border-radius: 0.25rem; 
                         border: none;
                         margin: 0.9375rem 0.9375rem 0.9375rem 0; 
-                        box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
+                        // box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
                     }
                 }
             }
@@ -118,7 +119,14 @@
             margin: 1.25rem; 
             font-family: $primary-font;
             letter-spacing:3px;
+
+            &:hover {
+                background-color: darken(#F5B400, 1%);
+                color: lighten(#F4F4F4, 10%);
+                box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
+            }
         }
+        
     }
 
     img {

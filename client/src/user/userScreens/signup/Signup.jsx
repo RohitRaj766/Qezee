@@ -3,19 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signupRequest } from '../../../actions/index';
 import './Signup.scss'
 import pagePhoto from '../../assets/images/pagephoto.svg';
-import header from '../../assets/images/header.svg';
+
 
 const Signup = () => {
   const [userData, setUserData] = useState({
     firstname: '',
     lastname: '',
     email: '',
-    password: '',
     course: '',
     branch: '',
     university: '',
     college: '',
     enrollment: '',
+    password: '',
+    confirmpassword: '',
   });
 
   const dispatch = useDispatch();
@@ -39,7 +40,6 @@ const Signup = () => {
 
       <div className='boxContainer'>
         <p>Challenge Your Knowledge!</p>
-        {/* <img src={header} alt="" className='headerImage' /> */}
         <div className='formContainer'>
           <form onSubmit={handleSubmit}>
             <div className='smallForm'>
@@ -55,7 +55,7 @@ const Signup = () => {
             <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} placeholder="College" required />
             <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} placeholder="Enrollment" required />
             <input className="inputField" type="password" name="password" value={userData.password} onChange={handleChange} placeholder="Password" required />
-            <input className="inputField" type="password" name="password" value={userData.password} onChange={handleChange} placeholder="Confirm Password" required />
+            <input className="inputField" type="password" name="confirmpassword" value={userData.confirmpassword} onChange={handleChange} placeholder="Confirm Password" required />
           </form>
         </div>
         <button type="submit" onClick={handleSubmit}>Sign up</button>
