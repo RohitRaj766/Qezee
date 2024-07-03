@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     gap: 5%;
+    
 
     .boxContainer {
         display: flex;
@@ -16,8 +17,10 @@
         max-width: 600px;
 
         p {
-            font-size: 2.5rem; // 40px
+            font-size: 2.5rem;
             color: rgba(60, 94, 223, 1);
+            margin-bottom: 6px;
+            font-family: $primary-font;
         }
 
         .formContainer {
@@ -32,35 +35,58 @@
                 flex-direction: column;
                 align-items: flex-start;
 
+                .inputField, .smallInputField {
+                    &::placeholder {
+                        font-family: $primary-font; 
+                        
+                        font-size: 1.5rem; 
+                    }
+                    &::-webkit-input-placeholder {
+                        font-family: $primary-font; 
+                       
+                        font-size: 1.5rem; 
+                    }
+                    &:-ms-input-placeholder {
+                        font-family: $primary-font;
+                        
+                        font-size: 1.5rem; 
+                    }
+                }
+
                 .inputField {
                     width: 95%;
-                    height: 4.375rem; // 70px
-                    padding: 0 0 0 0.5rem; // 8px
-                    font-size: 1.875rem; // 30px
+                    height: 4.375rem; 
+                    padding: 0 0 0 0.5rem; 
+                    font-size: 1.5rem; 
+                    font-family: $primary-font;
                     background-color: #F7F6F6;
-                    border-radius: 0.25rem; // 4px
+                    border-radius: 0.25rem; 
                     border: none;
-                    margin: 0.9375rem 0; // 15px
-                    box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); // 2px
+                    margin: 0.9375rem 0; 
+                    box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
+                    
                 }
+       
+                
 
                 .smallForm {
                     display: flex;
                     justify-content: space-between;
-                    gap: 1.25rem; // 20px
+                    gap: 1.25rem; 
 
                     .smallInputField {
                         flex: 1;
                         justify-content: space-evenly;
-                        width: 15.625rem; // 250px
-                        height: 4.375rem; // 70px
-                        padding: 0 0 0 0.5rem; // 8px
-                        font-size: 1.875rem; // 30px
+                        width: 15.625rem; 
+                        height: 4.375rem; 
+                        padding: 0 0 0 0.5rem; 
+                        font-size: 1.5rem;
+                        font-family: $primary-font;
                         background-color: #F7F6F6;
-                        border-radius: 0.25rem; // 4px
+                        border-radius: 0.25rem; 
                         border: none;
-                        margin: 0.9375rem 0.9375rem 0.9375rem 0; // 15px
-                        box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); // 2px
+                        margin: 0.9375rem 0.9375rem 0.9375rem 0; 
+                        box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
                     }
                 }
             }
@@ -69,42 +95,42 @@
         button {
             @include button;
             background-color: #F5B400;
-            height: 3.06rem; // 49px
+            height: 3.06rem; 
             width: 100%;
-            max-width: 10.5rem; // 168px
-            border-radius: 0.25rem; // 4px
+            max-width: 10.5rem; 
+            border-radius: 0.25rem; 
             color: #F4F4F4;
-            font-size: 1.5rem; // 24px
-            box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25); // 4px, 6px
-            margin: 1.25rem; // 20px
+            font-size: 1.5rem; 
+            box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25); 
+            margin: 1.25rem; 
             font-family: $primary-font;
         }
     }
 
     img {
-        // Add responsive styling if needed
+        //
     }
 }
 
 @media (max-width: 1300px) {
     .main {
-        transform: scale(0.9); // Scale down to 90%
+        transform: scale(0.9); 
     }
 }
 
 @media (max-width: 1200px) {
     .main {
-        transform: scale(0.8); // Scale down to 80%
+        transform: scale(0.8); 
     }
 }
 
 @media (max-width: 1100px) {
     .main {
-        transform: scale(0.7); // Scale down to 80%
+        transform: scale(0.7); 
     }
 }
 @media (max-width: 1000px) {
     .main {
-        transform: scale(0.75); // Scale down to 80%
+        transform: scale(0.75); 
     }
 }
