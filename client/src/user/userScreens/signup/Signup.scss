@@ -30,6 +30,22 @@
             display: flex;
             flex-direction: column;
 
+             // Custom scrollbar styling
+             &::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #7B8788;
+                border-radius: 10px;
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #F7F6F6;
+                border-radius: 10px;
+            }
+
             form {
                 display: flex;
                 flex-direction: column;
@@ -61,6 +77,17 @@
                     }
                     &:focus {
                         outline: none; /* Remove the outline when focused */
+                    }
+
+                     /* Autofill styles */
+                     &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; /* Background color */
+                        -webkit-text-fill-color: rgb(130, 131, 137); /* Text color */
+                    }
+
+                    &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; /* Background color */
+                        -webkit-text-fill-color: rgb(130, 131, 137); /* Text color */
                     }
                     
 

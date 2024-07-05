@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupRequest } from '../../../actions/index';
-import './Signup.scss'
+import validator from 'validator';
+import './Signup.scss';
 import pagePhoto from '../../assets/images/pagephoto.svg';
-
 
 const Signup = () => {
   const [userData, setUserData] = useState({
@@ -23,6 +23,12 @@ const Signup = () => {
   const signupMessage = useSelector((state) => state.auth.signupMessage);
   const error = useSelector((state) => state.auth.error);
 
+  useEffect(() => {
+    if (signupMessage) {
+      alert(signupMessage);
+    }
+  }, [signupMessage]);
+
   const handleChange = (e) => {
     setUserData({
       ...userData,
@@ -32,12 +38,50 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signupRequest(userData));
+
+    // Sanitize email and password
+    const sanitizedEmail = validator.trim(userData.email);
+    const sanitizedPassword = validator.trim(userData.password);
+    const sanitizedConfirmPassword = validator.trim(userData.confirmpassword);
+
+    // Validate email format
+    if (!validator.isEmail(sanitizedEmail)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    // Password validation
+    if (sanitizedPassword.length < 6) {
+      alert("Password must be at least 6 characters long");
+      return;
+    }
+
+    const hasAlphabet = /[A-Za-z]/.test(sanitizedPassword);
+    const hasNumber = /\d/.test(sanitizedPassword);
+
+    if (!hasAlphabet || !hasNumber) {
+      alert("Password must contain at least one alphabet and one numeric value");
+      return;
+    }
+
+    if (sanitizedPassword !== sanitizedConfirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    // Update userData with sanitized values
+    const sanitizedUserData = {
+      ...userData,
+      email: sanitizedEmail,
+      password: sanitizedPassword,
+      confirmpassword: sanitizedConfirmPassword,
+    };
+
+    dispatch(signupRequest(sanitizedUserData));
   };
 
   return (
     <div className='main'>
-
       <div className='boxContainer'>
         <p>Challenge Your Knowledge!</p>
         <div className='formContainer'>
@@ -66,10 +110,7 @@ const Signup = () => {
       <div>
         <img src={pagePhoto} alt="pagePhoto" />
       </div>
-      
     </div>
-
-
   );
 };
 
