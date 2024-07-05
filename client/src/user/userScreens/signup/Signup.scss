@@ -161,6 +161,13 @@
     }
 }
 
+@media (max-width: 1350px) {
+    .main {
+        transform: scale(0.95); 
+    }
+}
+
+
 @media (max-width: 1300px) {
     .main {
         transform: scale(0.9); 
