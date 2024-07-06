@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Signup from './user/userScreens/signup/s';
+import Signup from './user/userScreens/signup/Signup';
 import Login from './user/userScreens/login/Login';
 import Leaderboard from './user/userScreens/dashboard/LeaderBoard';
 import Edit from './user/userScreens/dashboard/Edit';
@@ -12,6 +12,8 @@ import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
 import NotFound from './NotFound';
+
+import OtpVerification from './user/components/modal/OtpVerification';
 
 const App = () => {
   return (
