@@ -5,9 +5,8 @@
     justify-content: center;
     align-items:center;
     gap: 5%;
-    margin-top: 120px;
+    margin-top: 155px;
     
-
     .loginBoxContainer {
         display: flex;
         flex-direction: column;
@@ -16,7 +15,7 @@
         max-width: 600px;
 
         h1 {
-            font-size: 36px;
+            font-size: 40px; // Increased font size
             color: rgba(60, 94, 223, 1);
             font-family: $primary-font;
             letter-spacing: 3.5px;
@@ -27,14 +26,12 @@
         }
 
         .loginFormContainer {
-            // height: 400px;
             overflow-y: auto;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             margin-top: 10px;
-            overflow: visible; // Allow the child elements to overflow
-
+            overflow: visible;
 
             form {
                 display: flex;
@@ -44,57 +41,51 @@
 
                 .loginInputField {
                     width: 100%;
-                    height: 4.375rem; 
-                    padding: 0 0 0 0.5rem; 
-                    font-size: 1.5rem; 
+                    height: 4.75rem; // Increased height
+                    padding: 0 0 0 0.5rem;
+                    font-size: 1.7rem; // Increased font size
                     font-family: $primary-font;
                     background-color: #F7F6F6;
-                    border-radius: 0.25rem; 
+                    border-radius: 0.25rem;
                     border: none;
-                    margin: 0.9375rem 0; 
+                    margin: 1.25rem 0; // Increased margin
                     width: 130%; // Increase width beyond parent container
                     margin-left: -15%; // Shift the input field to the left
-                    // box-shadow: -0.05rem 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
-                    letter-spacing: 3px;
-                    color: rgb(130, 131, 137);
                     letter-spacing: 4px;
+                    color: rgb(130, 131, 137);
                     box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
 
-
                     &::placeholder {
-                        font-family: $primary-font; 
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
+                        font-family: $primary-font;
+                        letter-spacing: 4px;
+                        font-size: 1.7rem; // Increased font size
                         color: rgb(130, 131, 137);
-
                     }
                     &::-webkit-input-placeholder {
-                        font-family: $primary-font; 
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
+                        font-family: $primary-font;
+                        letter-spacing: 4px;
+                        font-size: 1.7rem; // Increased font size
                     }
                     &:-ms-input-placeholder {
                         font-family: $primary-font;
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
+                        letter-spacing: 4px;
+                        font-size: 1.7rem; // Increased font size
                     }
                     &:focus {
-                        outline: none; /* Remove the outline when focused */
+                        outline: none;
                     }
 
-                     /* Autofill styles */
-                     &:-webkit-autofill {
-                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; /* Background color */
-                        -webkit-text-fill-color: rgb(130, 131, 137); /* Text color */
+                    &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset;
+                        -webkit-text-fill-color: rgb(130, 131, 137);
                     }
 
                     &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
-                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; /* Background color */
-                        -webkit-text-fill-color: rgb(130, 131, 137); /* Text color */
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset;
+                        -webkit-text-fill-color: rgb(130, 131, 137);
                     }
                 }
             }
-            
         }
 
         button {
@@ -110,7 +101,7 @@
             margin: 1.25rem; 
             font-family: $primary-font;
             letter-spacing:3px;
-            margin-top: 4rem;
+            margin-top: 24px;
             
             
 
@@ -121,11 +112,11 @@
             }
         }
 
-        p{
+        p {
             margin-top: -0.3rem;
             color: #7B8788;
 
-            a{
+            a {
                 text-decoration: none;
                 color: #7B8788;
             }

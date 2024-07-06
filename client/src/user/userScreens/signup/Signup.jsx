@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signupRequest } from '../../../actions/index';
+import OtpVerification from '../../components/modal/OtpVerification';
 import validator from 'validator';
 import './Signup.scss';
 import pagePhoto from '../../assets/images/pagephoto.svg';
@@ -19,15 +20,19 @@ const Signup = () => {
     confirmpassword: '',
   });
 
+  const [otpSent,SetotpSent] = useState(false)
+
   const dispatch = useDispatch();
   const signupMessage = useSelector((state) => state.auth.signupMessage);
   const error = useSelector((state) => state.auth.error);
 
   useEffect(() => {
+     if (signupMessage === "OTP sent to email") return SetotpSent(true)
     if (signupMessage) {
       alert(signupMessage);
     }
   }, [signupMessage]);
+
 
   const handleChange = (e) => {
     setUserData({
@@ -87,19 +92,19 @@ const Signup = () => {
         <div className='formContainer'>
           <form onSubmit={handleSubmit}>
             <div className='smallForm'>
-              <input className="smallInputField" type="text" name="firstname" value={userData.firstname} onChange={handleChange} placeholder="First Name" required />
-              <input className="smallInputField" type="text" name="lastname" value={userData.lastname} onChange={handleChange} placeholder="Last Name" required />
+              <input className="smallInputField" type="text" name="firstname" value={userData.firstname} onChange={handleChange} placeholder="First Name*" required />
+              <input className="smallInputField" type="text" name="lastname" value={userData.lastname} onChange={handleChange} placeholder="Last Name*" required />
             </div>
-            <input className="inputField" type="email" name="email" value={userData.email} onChange={handleChange} placeholder="Email" required />
+            <input className="inputField" type="email" name="email" value={userData.email} onChange={handleChange} placeholder="Email*" required />
             <div className="smallForm">
-              <input className="smallInputField" type="text" name="course" value={userData.course} onChange={handleChange} placeholder="Course" required />
-              <input className="smallInputField" type="text" name="branch" value={userData.branch} onChange={handleChange} placeholder="Branch" required />
+              <input className="smallInputField" type="text" name="course" value={userData.course} onChange={handleChange} placeholder="Course*" required />
+              <input className="smallInputField" type="text" name="branch" value={userData.branch} onChange={handleChange} placeholder="Branch*" required />
             </div>
-            <input className="inputField" type="text" name="university" value={userData.university} onChange={handleChange} placeholder="University" required />
-            <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} placeholder="College" required />
-            <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} placeholder="Enrollment" required />
-            <input className="inputField" type="password" name="password" value={userData.password} onChange={handleChange} placeholder="Password" required />
-            <input className="inputField" type="password" name="confirmpassword" value={userData.confirmpassword} onChange={handleChange} placeholder="Confirm Password" required />
+            <input className="inputField" type="text" name="university" value={userData.university} onChange={handleChange} placeholder="University*" required />
+            <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} placeholder="College*" required />
+            <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} placeholder="Enrollment*" required />
+            <input className="inputField" type="password" name="password" value={userData.password} onChange={handleChange} placeholder="Password*" required />
+            <input className="inputField" type="password" name="confirmpassword" value={userData.confirmpassword} onChange={handleChange} placeholder="Confirm Password*" required />
           </form>
         </div>
         <button type="submit" onClick={handleSubmit}>Sign up</button>
@@ -110,6 +115,9 @@ const Signup = () => {
       <div>
         <img src={pagePhoto} alt="pagePhoto" />
       </div>
+      {otpSent && <OtpVerification
+      userEmail = {userData.email}
+      />}
     </div>
   );
 };

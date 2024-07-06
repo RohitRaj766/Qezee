@@ -36,8 +36,8 @@ const Login = () => {
         <h1>Back in the Game! Let's Quiz!</h1>
         <div className='loginFormContainer'>
           <form>
-            <input className="loginInputField" type="email" name="email" value={credentials.email} onChange={handleChange} placeholder="Email" required />
-            <input className="loginInputField" type="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Password" required />
+            <input className="loginInputField" type="email" name="email" value={credentials.email} onChange={handleChange} placeholder="Email*" required />
+            <input className="loginInputField" type="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Password*" required />
           </form>
         </div>
         <button onClick={handleSubmit} type="submit">Login</button>

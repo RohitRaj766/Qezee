@@ -13,6 +13,8 @@ import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
 import NotFound from './NotFound';
 
+import OtpVerification from './user/components/modal/OtpVerification';
+
 const App = () => {
   return (
     <Router>
