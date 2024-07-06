@@ -5,8 +5,8 @@ const OtpVerification = (props) => {
   const { userEmail, onClose } = props;
 
   const handleClose = () => {
-    onClose(); // Call onClose function passed from props to close the modal and handle navigation
-    // You can add additional logic here to navigate back to the signup page if needed
+    onClose(); 
+   
   };
 
   return (

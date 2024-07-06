@@ -15,7 +15,7 @@
         max-width: 600px;
 
         h1 {
-            font-size: 40px; // Increased font size
+            font-size: 40px; 
             color: rgba(60, 94, 223, 1);
             font-family: $primary-font;
             letter-spacing: 3.5px;
@@ -41,45 +41,42 @@
 
                 .loginInputField {
                     width: 100%;
-                    height: 4.75rem; // Increased height
+                    height: 4.75rem; 
                     padding: 0 0 0 0.5rem;
-                    font-size: 1.7rem; // Increased font size
+                    font-size: 1.7rem;
                     font-family: $primary-font;
                     background-color: #F7F6F6;
                     border-radius: 0.25rem;
                     border: none;
-                    margin: 1.25rem 0; // Increased margin
-                    width: 130%; // Increase width beyond parent container
-                    margin-left: -15%; // Shift the input field to the left
+                    margin: 1.25rem 0; 
+                    width: 130%;
+                    margin-left: -15%; 
                     letter-spacing: 4px;
                     color: rgb(130, 131, 137);
                     box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
-
                     &::placeholder {
                         font-family: $primary-font;
                         letter-spacing: 4px;
-                        font-size: 1.7rem; // Increased font size
+                        font-size: 1.7rem; 
                         color: rgb(130, 131, 137);
                     }
                     &::-webkit-input-placeholder {
                         font-family: $primary-font;
                         letter-spacing: 4px;
-                        font-size: 1.7rem; // Increased font size
+                        font-size: 1.7rem; 
                     }
                     &:-ms-input-placeholder {
                         font-family: $primary-font;
                         letter-spacing: 4px;
-                        font-size: 1.7rem; // Increased font size
+                        font-size: 1.7rem; 
                     }
                     &:focus {
                         outline: none;
                     }
-
                     &:-webkit-autofill {
                         -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset;
                         -webkit-text-fill-color: rgb(130, 131, 137);
                     }
-
                     &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
                         -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset;
                         -webkit-text-fill-color: rgb(130, 131, 137);

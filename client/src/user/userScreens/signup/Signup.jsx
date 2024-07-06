@@ -20,19 +20,19 @@ const Signup = () => {
     confirmpassword: '',
   });
 
-  const [otpSent,SetotpSent] = useState(false)
+  const [otpSent, setOtpSent] = useState(false);
 
   const dispatch = useDispatch();
   const signupMessage = useSelector((state) => state.auth.signupMessage);
   const error = useSelector((state) => state.auth.error);
 
   useEffect(() => {
-     if (signupMessage === "OTP sent to email") return SetotpSent(true)
-    if (signupMessage) {
-      alert(signupMessage);
+    if (signupMessage === "OTP sent to email") {
+      setOtpSent(true); // Set otpSent to true when OTP is sent
+    } else if (signupMessage) {
+      alert(signupMessage); // Show signup message in an alert or toast
     }
   }, [signupMessage]);
-
 
   const handleChange = (e) => {
     setUserData({
@@ -83,6 +83,13 @@ const Signup = () => {
     };
 
     dispatch(signupRequest(sanitizedUserData));
+    // After dispatching, set otpSent to true to show the OTP verification modal
+    setOtpSent(true);
+  };
+
+  const handleCloseModal = () => {
+    setOtpSent(false); // Close the OTP verification modal
+    // Additional logic to handle navigation back to the signup form if needed
   };
 
   return (
@@ -115,9 +122,7 @@ const Signup = () => {
       <div>
         <img src={pagePhoto} alt="pagePhoto" />
       </div>
-      {otpSent && <OtpVerification
-      userEmail = {userData.email}
-      />}
+      {otpSent && <OtpVerification userEmail={userData.email} onClose={handleCloseModal} />}
     </div>
   );
 };

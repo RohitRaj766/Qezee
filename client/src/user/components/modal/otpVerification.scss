@@ -42,14 +42,14 @@
 
         .otpInputField {
           width: 120%;
-          height: 2.5rem; // Increased height
+          height: 2.5rem; 
           padding: 0 0 0 0.5rem;
-          font-size: 1rem; // Increased font size
+          font-size: 1rem; 
           font-family: $primary-font;
           background-color: #F7F6F6;
           border-radius: 0.25rem;
           border: none;
-          margin: 1.25rem 0; // Increased margin
+          margin: 1.25rem 0; 
          
           letter-spacing: 4px;
           color: rgb(130, 131, 137);
@@ -58,18 +58,18 @@
           &::placeholder {
               font-family: $primary-font;
               letter-spacing: 4px;
-              font-size: 1rem;// Increased font size
+              font-size: 1rem;
               color: rgb(130, 131, 137);
           }
           &::-webkit-input-placeholder {
               font-family: $primary-font;
               letter-spacing: 4px;
-              font-size: 1rem; // Increased font size
+              font-size: 1rem; 
           }
           &:-ms-input-placeholder {
               font-family: $primary-font;
               letter-spacing: 4px;
-              font-size: 1rem; // Increased font size
+              font-size: 1rem; 
           }
           &:focus {
               outline: none;
@@ -87,7 +87,6 @@
     }
 
   }
-
     button{
       width:120px;
       height: 45px;
@@ -106,9 +105,8 @@
         color: lighten(#F4F4F4, 10%);
         box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
     }
-    }
+  }
     
-  
     .closeButton {
       position: absolute;
       top: -4.3px;
