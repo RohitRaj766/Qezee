@@ -1,67 +1,65 @@
 @import "../../assets/Common";
 
-
-.main {
+.loginMain{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     gap: 5%;
     margin-top: 120px;
-
- 
     
 
-    .boxContainer {
+    .loginBoxContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
         max-width: 600px;
 
-        p {
-            font-size: 41.9px;
+        h1 {
+            font-size: 36px;
             color: rgba(60, 94, 223, 1);
-            // margin-bottom: 40px;
-            margin-top: -10px;
             font-family: $primary-font;
-            letter-spacing:3.5px;
+            letter-spacing: 3.5px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .formContainer {
-            height: 400px;
+        .loginFormContainer {
+            // height: 400px;
             overflow-y: auto;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             margin-top: 10px;
+            overflow: visible; // Allow the child elements to overflow
 
-             // Custom scrollbar styling
-             &::-webkit-scrollbar {
-                width: 8px;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background-color: #7B8788;
-                border-radius: 10px;
-                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            }
-
-            &::-webkit-scrollbar-track {
-                background-color: #F7F6F6;
-                border-radius: 10px;
-            }
 
             form {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                justify-content: center;
                 margin-left: 3px;
 
-                .inputField, .smallInputField {
-
+                .loginInputField {
+                    width: 100%;
+                    height: 4.375rem; 
+                    padding: 0 0 0 0.5rem; 
+                    font-size: 1.5rem; 
+                    font-family: $primary-font;
+                    background-color: #F7F6F6;
+                    border-radius: 0.25rem; 
+                    border: none;
+                    margin: 0.9375rem 0; 
+                    width: 130%; // Increase width beyond parent container
+                    margin-left: -15%; // Shift the input field to the left
+                    // box-shadow: -0.05rem 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
+                    letter-spacing: 3px;
                     color: rgb(130, 131, 137);
                     letter-spacing: 4px;
                     box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
+
 
                     &::placeholder {
                         font-family: $primary-font; 
@@ -94,49 +92,10 @@
                         -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; /* Background color */
                         -webkit-text-fill-color: rgb(130, 131, 137); /* Text color */
                     }
-                    
-
-                    
-                }
-
-                .inputField {
-                    width: 95%;
-                    height: 4.375rem; 
-                    padding: 0 0 0 0.5rem; 
-                    font-size: 1.5rem; 
-                    font-family: $primary-font;
-                    background-color: #F7F6F6;
-                    border-radius: 0.25rem; 
-                    border: none;
-                    margin: 0.9375rem 0; 
-                    letter-spacing: 3px;
-                }
-       
-                
-
-                .smallForm {
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 1.25rem; 
-
-                    .smallInputField {
-                        flex: 1;
-                        justify-content: space-evenly;
-                        width: 15.625rem; 
-                        height: 4.375rem; 
-                        padding: 0 0 0 0.5rem; 
-                        font-size: 1.5rem;
-                        font-family: $primary-font;
-                        background-color: #F7F6F6;
-                        border-radius: 0.25rem; 
-                        border: none;
-                        margin: 0.9375rem 0.9375rem 0.9375rem 0; 
-                        // box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
-                    }
                 }
             }
+            
         }
-        
 
         button {
             @include button;
@@ -151,6 +110,7 @@
             margin: 1.25rem; 
             font-family: $primary-font;
             letter-spacing:3px;
+            margin-top: 4rem;
             
             
 
@@ -160,46 +120,52 @@
                 box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
             }
         }
-        
-    }
 
-    img {
-        //
+        p{
+            margin-top: -0.3rem;
+            color: #7B8788;
+
+            a{
+                text-decoration: none;
+                color: #7B8788;
+            }
+        }
     }
 }
 
 @media (max-width: 1350px) {
-    .main {
+    .loginMain {
         transform: scale(0.95); 
     }
 }
 
 
 @media (max-width: 1300px) {
-    .main {
+    .loginMain {
         transform: scale(0.9); 
     }
 }
 
 @media (max-width: 1250px) {
-    .main {
+    .loginMain {
         transform: scale(0.85); 
     }
 }
 
 @media (max-width: 1200px) {
-    .main {
+    .loginMain {
         transform: scale(0.8); 
     }
 }
 
 @media (max-width: 1100px) {
-    .main {
+    .loginMain {
         transform: scale(0.75); 
     }
 }
+
 @media (max-width: 1000px) {
-    .main {
+    .loginMain {
         transform: scale(0.7); 
     }
 }

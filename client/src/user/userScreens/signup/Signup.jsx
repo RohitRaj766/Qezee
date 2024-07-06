@@ -103,8 +103,8 @@ const Signup = () => {
           </form>
         </div>
         <button type="submit" onClick={handleSubmit}>Sign up</button>
-        {signupMessage && <p>{signupMessage}</p>}
-        {error && <p>{error}</p>}
+        {/* {signupMessage && <p>{signupMessage}</p>}
+        {error && <p>{error}</p>} */}
       </div>
 
       <div>
