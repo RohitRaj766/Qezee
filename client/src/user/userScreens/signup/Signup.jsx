@@ -26,13 +26,14 @@ const Signup = () => {
   const signupMessage = useSelector((state) => state.auth.signupMessage);
   const error = useSelector((state) => state.auth.error);
 
+
   useEffect(() => {
-    if (signupMessage === "OTP sent to email") {
-      setOtpSent(true); // Set otpSent to true when OTP is sent
+    if (signupMessage === "OTP sent to email" && otpSent) {
+      alert("OTP sent to email");
     } else if (signupMessage) {
-      alert(signupMessage); // Show signup message in an alert or toast
+      
     }
-  }, [signupMessage]);
+  }, [signupMessage, otpSent]);
 
   const handleChange = (e) => {
     setUserData({
