@@ -83,13 +83,11 @@ const Signup = () => {
     };
 
     dispatch(signupRequest(sanitizedUserData));
-    // After dispatching, set otpSent to true to show the OTP verification modal
     setOtpSent(true);
   };
 
   const handleCloseModal = () => {
-    setOtpSent(false); // Close the OTP verification modal
-    // Additional logic to handle navigation back to the signup form if needed
+    setOtpSent(false); 
   };
 
   return (
