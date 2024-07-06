@@ -6,7 +6,8 @@
     justify-content: center;
     align-items: center;
     gap: 5%;
-    
+    margin-top: 120px;
+
 
     .boxContainer {
         display: flex;
@@ -16,11 +17,14 @@
         max-width: 600px;
 
         p {
-            font-size: 40px;
+            font-size: 41.9px;
             color: rgba(60, 94, 223, 1);
-            margin-bottom: 10px;
+            margin-top: -10px;
             font-family: $primary-font;
             letter-spacing:3.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .formContainer {
@@ -29,6 +33,20 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
+            margin-top: 10px;
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: #7B8788;
+                border-radius: 10px;
+                box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            }
+
+            &::-webkit-scrollbar-track {
+                background-color: #F7F6F6;
+                border-radius: 10px;
+            }
 
             form {
                 display: flex;
@@ -37,17 +55,14 @@
                 margin-left: 3px;
 
                 .inputField, .smallInputField {
-
                     color: rgb(130, 131, 137);
                     letter-spacing: 4px;
                     box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
-
                     &::placeholder {
                         font-family: $primary-font; 
                         letter-spacing:4px;
                         font-size: 1.5rem; 
                         color: rgb(130, 131, 137);
-
                     }
                     &::-webkit-input-placeholder {
                         font-family: $primary-font; 
@@ -60,11 +75,16 @@
                         font-size: 1.5rem; 
                     }
                     &:focus {
-                        outline: none; /* Remove the outline when focused */
+                        outline: none; 
                     }
-                    
-
-                    
+                     &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; 
+                        -webkit-text-fill-color: rgb(130, 131, 137); 
+                     }
+                    &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; 
+                        -webkit-text-fill-color: rgb(130, 131, 137); 
+                    } 
                 }
 
                 .inputField {
@@ -77,11 +97,8 @@
                     border-radius: 0.25rem; 
                     border: none;
                     margin: 0.9375rem 0; 
-                    // box-shadow: -0.05rem 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
                     letter-spacing: 3px;
                 }
-       
-                
 
                 .smallForm {
                     display: flex;
@@ -100,12 +117,12 @@
                         border-radius: 0.25rem; 
                         border: none;
                         margin: 0.9375rem 0.9375rem 0.9375rem 0; 
-                        // box-shadow: 0 0.125rem 0.125rem 0 rgba(12, 12, 12, 0.25); 
+                        
                     }
                 }
             }
         }
-
+        
         button {
             @include button;
             background-color: #F5B400;
@@ -129,14 +146,24 @@
         
     }
 
-    img {
-        //
+}
+
+@media (max-width: 1350px) {
+    .main {
+        transform: scale(0.95); 
     }
 }
+
 
 @media (max-width: 1300px) {
     .main {
         transform: scale(0.9); 
+    }
+}
+
+@media (max-width: 1250px) {
+    .main {
+        transform: scale(0.85); 
     }
 }
 
@@ -148,11 +175,11 @@
 
 @media (max-width: 1100px) {
     .main {
-        transform: scale(0.7); 
+        transform: scale(0.75); 
     }
 }
 @media (max-width: 1000px) {
     .main {
-        transform: scale(0.75); 
+        transform: scale(0.7); 
     }
 }
