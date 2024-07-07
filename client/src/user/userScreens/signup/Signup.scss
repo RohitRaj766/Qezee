@@ -1,13 +1,11 @@
 @import "../../assets/Common";
 
-
-.main {
+.mainSignup {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5%;
-    margin-top: 120px;
-
+    width: 90%;
+    margin: 20px auto;
 
     .boxContainer {
         display: flex;
@@ -16,12 +14,13 @@
         width: 100%;
         max-width: 600px;
 
-        p {
-            font-size: 41.9px;
+        .signupheading {
+            font-size: 28px;
             color: rgba(60, 94, 223, 1);
-            margin-top: -10px;
+            // margin-top: -10px;
+            font-weight: 700;
             font-family: $primary-font;
-            letter-spacing:3.5px;
+            letter-spacing: 3px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -33,10 +32,11 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            margin-top: 10px;
+
             &::-webkit-scrollbar {
                 width: 8px;
             }
+
             &::-webkit-scrollbar-thumb {
                 background-color: #7B8788;
                 border-radius: 10px;
@@ -58,84 +58,65 @@
                     color: rgb(130, 131, 137);
                     letter-spacing: 4px;
                     box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
+                    background-color: #F7F6F6;
+                    border-radius: 0.25rem;
+                    border: none;
+                    font-family: $primary-font;
+                    font-size: 1.1rem;
+
                     &::placeholder {
-                        font-family: $primary-font; 
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
+                        letter-spacing: 4px;
                         color: rgb(130, 131, 137);
                     }
-                    &::-webkit-input-placeholder {
-                        font-family: $primary-font; 
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
+
+                    &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset;
+                        -webkit-text-fill-color: rgb(130, 131, 137);
                     }
-                    &:-ms-input-placeholder {
-                        font-family: $primary-font;
-                        letter-spacing:4px;
-                        font-size: 1.5rem; 
-                    }
+
                     &:focus {
-                        outline: none; 
+                        outline: none;
                     }
-                     &:-webkit-autofill {
-                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; 
-                        -webkit-text-fill-color: rgb(130, 131, 137); 
-                     }
-                    &:-webkit-autofill:hover, &:-webkit-autofill:focus, &:-webkit-autofill:active {
-                        -webkit-box-shadow: 0 0 0 1000px #F7F6F6 inset; 
-                        -webkit-text-fill-color: rgb(130, 131, 137); 
-                    } 
                 }
 
                 .inputField {
                     width: 95%;
-                    height: 4.375rem; 
-                    padding: 0 0 0 0.5rem; 
-                    font-size: 1.5rem; 
-                    font-family: $primary-font;
-                    background-color: #F7F6F6;
-                    border-radius: 0.25rem; 
-                    border: none;
-                    margin: 0.9375rem 0; 
-                    letter-spacing: 3px;
+                    height: 4rem;
+                    padding: 0 0.5rem;
+                    margin-top: 12px;
+                    margin-bottom: 15px;
                 }
 
                 .smallForm {
                     display: flex;
                     justify-content: space-between;
-                    gap: 1.25rem; 
-
+                    width: 100%;
                     .smallInputField {
-                        flex: 1;
-                        justify-content: space-evenly;
-                        width: 15.625rem; 
-                        height: 4.375rem; 
-                        padding: 0 0 0 0.5rem; 
-                        font-size: 1.5rem;
-                        font-family: $primary-font;
-                        background-color: #F7F6F6;
-                        border-radius: 0.25rem; 
-                        border: none;
-                        margin: 0.9375rem 0.9375rem 0.9375rem 0; 
-                        
+                        width: 46%;
+                        height: 4rem;
+                        padding-left: 0.5rem;
+                        margin-top: 12px;
+                        margin-bottom: 15px;
+                        margin-right: 10px
                     }
                 }
             }
         }
-        
+
         button {
             @include button;
             background-color: #F5B400;
-            height: 3.06rem; 
+            height: 2.5rem;
             width: 100%;
-            max-width: 10.5rem; 
-            border-radius: 0.25rem; 
+            max-width: 9rem;
+            border-radius: 0.25rem;
             color: #F4F4F4;
-            font-size: 1.5rem; 
-            box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25); 
-            margin: 1.25rem; 
+            font-size: 1rem;
+            box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25);
+            margin: 1rem;
             font-family: $primary-font;
-            letter-spacing:3px;
+            letter-spacing: 3px;
+            font-weight: 500;
 
             &:hover {
                 background-color: darken(#F5B400, 1%);
@@ -143,43 +124,41 @@
                 box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
             }
         }
-        
     }
-
 }
 
 @media (max-width: 1350px) {
-    .main {
-        transform: scale(0.95); 
+    .mainSignup {
+        transform: scale(0.95);
     }
 }
 
-
 @media (max-width: 1300px) {
-    .main {
-        transform: scale(0.9); 
+    .mainSignup {
+        transform: scale(0.9);
     }
 }
 
 @media (max-width: 1250px) {
-    .main {
-        transform: scale(0.85); 
+    .mainSignup {
+        transform: scale(0.85);
     }
 }
 
 @media (max-width: 1200px) {
-    .main {
-        transform: scale(0.8); 
+    .mainSignup {
+        transform: scale(0.8);
     }
 }
 
 @media (max-width: 1100px) {
-    .main {
-        transform: scale(0.75); 
+    .mainSignup {
+        transform: scale(0.75);
     }
 }
+
 @media (max-width: 1000px) {
-    .main {
-        transform: scale(0.7); 
+    .mainSignup {
+        transform: scale(0.7);
     }
 }

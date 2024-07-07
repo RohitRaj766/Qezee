@@ -28,12 +28,8 @@ const Signup = () => {
 
 
   useEffect(() => {
-    if (signupMessage === "OTP sent to email" && otpSent) {
-      alert("OTP sent to email");
-    } else if (signupMessage) {
-      
-    }
-  }, [signupMessage, otpSent]);
+    if (signupMessage === "OTP sent to email") setOtpSent(true);
+  }, [signupMessage]);
 
   const handleChange = (e) => {
     setUserData({
@@ -80,11 +76,9 @@ const Signup = () => {
       ...userData,
       email: sanitizedEmail,
       password: sanitizedPassword,
-      confirmpassword: sanitizedConfirmPassword,
     };
 
     dispatch(signupRequest(sanitizedUserData));
-    setOtpSent(true);
   };
 
   const handleCloseModal = () => {
@@ -92,9 +86,9 @@ const Signup = () => {
   };
 
   return (
-    <div className='main'>
+    <div className='mainSignup'>
       <div className='boxContainer'>
-        <p>Challenge Your Knowledge!</p>
+        <p className='signupheading'>Challenge Your Knowledge!</p>
         <div className='formContainer'>
           <form onSubmit={handleSubmit}>
             <div className='smallForm'>
@@ -113,9 +107,10 @@ const Signup = () => {
             <input className="inputField" type="password" name="confirmpassword" value={userData.confirmpassword} onChange={handleChange} placeholder="Confirm Password*" required />
           </form>
         </div>
-        <button type="submit" onClick={handleSubmit}>Sign up</button>
-        {/* {signupMessage && <p>{signupMessage}</p>}
-        {error && <p>{error}</p>} */}
+        
+        {signupMessage && <p>{signupMessage}</p>}
+        {error && <p>{error}</p>}
+        <button type="submit" onClick={handleSubmit}>SIGN UP</button>
       </div>
 
       <div>
