@@ -40,9 +40,9 @@ const Login = () => {
             <input className="loginInputField" type="password" name="password" value={credentials.password} onChange={handleChange} placeholder="Password*" required />
           </form>
         </div>
-        <button onClick={handleSubmit} type="submit">Login</button>
-        <p>forgot ? <a href="#">click here</a></p>
-        {error && <p>{error}</p>}
+        {error && <p className='errorMessage'>{error}</p>}
+        <button onClick={handleSubmit} type="submit">LOGIN</button>
+        <p>forgot ? click here</p>
       </div>
       <div className='backgroundImage'>
         <img src={pagePhoto} alt="" />

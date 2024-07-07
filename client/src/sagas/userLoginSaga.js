@@ -15,7 +15,7 @@ function* loginSaga(action) {
     localStorage.setItem('token', token);
     yield put({ type: LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
-    yield put({ type: LOGIN_FAILURE, payload: error.response.data.message });
+    yield put({ type: LOGIN_FAILURE, payload: error.response.data.error });
   }
 }
 
