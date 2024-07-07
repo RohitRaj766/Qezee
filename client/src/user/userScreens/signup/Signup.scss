@@ -51,7 +51,15 @@
                 flex-direction: column;
                 align-items: flex-start;
                 margin-left: 3px;
-
+                
+                .passwordField{
+                    width: 100%;
+                    display: flex;
+                    .passwordToggleIcon{
+                        margin-top: 35px;
+                        margin-left: -40px;
+                    }
+                }
                 .inputField, .smallInputField {
                     color: rgb(130, 131, 137);
                     letter-spacing: 4px;

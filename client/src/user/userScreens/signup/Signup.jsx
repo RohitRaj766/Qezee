@@ -4,6 +4,8 @@ import { signupRequest } from '../../../actions/index';
 import OtpVerification from '../../components/modal/OtpVerification';
 import './Signup.scss';
 import pagePhoto from '../../assets/images/pagephoto.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Signup = () => {
   const [userData, setUserData] = useState({
@@ -21,16 +23,16 @@ const Signup = () => {
 
   const [otpSent, setOtpSent] = useState(false);
   const [errorValidator, setErrorValidator] = useState();
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const dispatch = useDispatch();
   let signupMessage = useSelector((state) => state.auth.signupMessage);
   const sError = useSelector((state) => state.auth.error);
-  console.log("signup error msg : ",sError)
 
   useEffect(() => {
-    if(signupMessage === "OTP sent to email"){
-      setOtpSent(true)
+    if (signupMessage === "OTP sent to email") {
+      setOtpSent(true);
     }
   }, [signupMessage]);
 
@@ -80,12 +82,12 @@ const Signup = () => {
       setErrorValidator("Passwords do not match");
       return;
     }
-  
-    dispatch(signupRequest(sanitizedUserData))
+
+    dispatch(signupRequest(sanitizedUserData));
   };
 
   const handleCloseModal = () => {
-    setOtpSent(false); 
+    setOtpSent(false);
     setUserData({
       firstname: '',
       lastname: '',
@@ -98,6 +100,14 @@ const Signup = () => {
       password: '',
       confirmpassword: '',
     });
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   return (
@@ -118,17 +128,45 @@ const Signup = () => {
             <input className="inputField" type="text" name="university" value={userData.university} onChange={handleChange} placeholder="University*" required />
             <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} placeholder="College*" required />
             <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} placeholder="Enrollment*" required />
-            <input className="inputField" type="password" name="password" value={userData.password} onChange={handleChange} placeholder="Password*" required />
-            <input className="inputField" type="password" name="confirmpassword" value={userData.confirmpassword} onChange={handleChange} placeholder="Confirm Password*" required />
+            <div className="passwordField">
+              <input
+                className="inputField"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={userData.password}
+                onChange={handleChange}
+                placeholder="Password*"
+                required
+              />
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={toggleShowPassword}
+                className="passwordToggleIcon"
+              />
+            </div>
+            <div className="passwordField">
+              <input
+                className="inputField"
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmpassword"
+                value={userData.confirmpassword}
+                onChange={handleChange}
+                placeholder="Confirm Password*"
+                required
+              />
+              <FontAwesomeIcon
+                icon={showConfirmPassword ? faEyeSlash : faEye}
+                onClick={toggleShowConfirmPassword}
+                className="passwordToggleIcon"
+              />
+            </div>
           </form>
         </div>
-       
-        {signupMessage && <p className='successMessage'>{signupMessage} </p>}
-        {errorValidator && <p className='errorMessage'>{errorValidator} </p>}
+        {signupMessage && <p className='successMessage'>{signupMessage}</p>}
+        {errorValidator && <p className='errorMessage'>{errorValidator}</p>}
         {sError && <p className='errorMessage'>{sError}</p>}
-        <button onClick={handleSubmit}>{ "SIGN UP"}</button>
+        <button onClick={handleSubmit}>SIGN UP</button>
       </div>
-
       <div>
         <img src={pagePhoto} alt="pagePhoto" />
       </div>
