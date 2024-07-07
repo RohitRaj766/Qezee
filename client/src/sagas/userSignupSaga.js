@@ -3,17 +3,18 @@ import axiosInstance from '../axiosConfig';
 
 import {
   SIGNUP_REQUEST,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
+  signupSuccess,
+  signupFailure,
 } from '../actions/index';
 
 
 function* signupSaga(action) {
     try {
       const response = yield call(axiosInstance.post, '/user/registration', action.payload);
-      yield put({ type: SIGNUP_SUCCESS, payload: response.data.message });
+      yield put(signupSuccess( response.data.message));
     } catch (error) {
-      yield put({ type: SIGNUP_FAILURE, payload: error.response.data.message });
+      console.log("signup error saga :: ", error.response.data.error)
+      yield put(signupFailure(error.response.data.error));
     }
   }
 

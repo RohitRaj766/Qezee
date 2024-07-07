@@ -15,6 +15,11 @@ export const FETCH_LEADERBOARD_REQUEST = 'FETCH_LEADERBOARD_REQUEST';
 export const FETCH_LEADERBOARD_SUCCESS = 'FETCH_LEADERBOARD_SUCCESS';
 export const FETCH_LEADERBOARD_FAILURE = 'FETCH_LEADERBOARD_FAILURE';
 
+export const VERIFY_OTP_REQUEST = 'VERIFY_OTP_REQUEST';
+export const VERIFY_OTP_SUCCESS = 'VERIFY_OTP_SUCCESS';
+export const VERIFY_OTP_FAILURE = 'VERIFY_OTP_FAILURE';
+
+
 
 export const loginRequest = (credentials) => ({
     type: LOGIN_REQUEST,
@@ -68,5 +73,20 @@ export const fetchLeaderboardSuccess = (data) => ({
 
 export const fetchLeaderboardFailure = (error) => ({
   type: FETCH_LEADERBOARD_FAILURE,
+  payload: error,
+});
+
+export const verifyOtpRequest = (otpData) => ({
+  type: VERIFY_OTP_REQUEST,
+  payload: otpData,
+});
+
+export const verifyOtpSuccess = (message) => ({
+  type: VERIFY_OTP_SUCCESS,
+  payload: message,
+});
+
+export const verifyOtpFailure = (error) => ({
+  type: VERIFY_OTP_FAILURE,
   payload: error,
 });
