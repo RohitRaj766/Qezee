@@ -1,29 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutRequest } from '../../../actions/index';
+import '../dashboard/Sidebar.scss'
+import logoimage from '../../assets/images/logo.svg';
+import overviewimage from "../../assets/images/overview.svg";
+import mocktestimage from "../../assets/images/mocktest.svg";
+import quizzesimage from "../../assets/images/quizzes.svg";
+import leaderboardimage from "../../assets/images/leaderboard.svg";
+import editprofileimage from "../../assets/images/editprofile.svg";
 
 const Sidebar = () => {
+  const [selectedItem, setSelectedItem] = useState(0); 
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logoutRequest());
+  const handleClick = (index) => {
+    setSelectedItem(index);
   };
 
+  // const handleLogout = () => {
+  //   dispatch(logoutRequest());
+  // };
+
+  const selectorsData = [
+    { image: overviewimage, text: 'OVERVIEW', path: '/dashboard/overview' },
+    { image: mocktestimage, text: 'MOCK TEST', path: '/dashboard/mocktest' },
+    { image: quizzesimage, text: 'QUIZZES', path: '/dashboard/quizzes' },
+    { image: leaderboardimage, text: 'LEADER BOARD', path: '/dashboard/leaderboard' },
+    { image: editprofileimage, text: 'EDIT PROFILE', path: '/dashboard/edit' },
+    // { image: '', text: 'LOGOUT',path: '/login'}
+  ];
+
   return (
-    <div style={{ width: '200px', background: '#f0f0f0', padding: '10px' }}>
-      <nav>
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
-          <li><Link to="/dashboard/leaderboard"><button>Leaderboard</button></Link></li>
-          <li><Link to="/dashboard/edit"><button>Edit</button></Link></li>
-          <li><Link to="/dashboard/mocktest"><button>Mocktest</button></Link></li>
-          <li><Link to="/dashboard/overview"><button>Overview</button></Link></li>
-          <li><Link to="/dashboard/quizzes"><button>Quizzes</button></Link></li>
-          <li><button onClick={handleLogout}>Logout</button></li>
-        </ul>
-      </nav>
+    <div className="sidebarmain">
+      <div className="header">
+        <div className="image"><img src={logoimage} alt="logo" /></div>
+        <p className="text"><span className="Q">Q</span>ezee</p>
+      </div>
+      {selectorsData.map((item, index) => (
+        <Link to={item.path} key={index} style={{ textDecoration: 'none' }}>
+          <div 
+            className={`selectors ${selectedItem === index ? 'selected' : ''}`} 
+            onClick={() => handleClick(index)}
+          >
+            <img src={item.image} className="image" alt={item.text} />
+            <p className="text">{item.text}</p>
+          </div>
+        </Link>
+      ))}
+      <div className="selectors" >
+  
+      </div>
     </div>
   );
 };
 
 export default Sidebar;
+
