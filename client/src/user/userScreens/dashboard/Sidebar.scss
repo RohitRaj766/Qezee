@@ -1,0 +1,80 @@
+@import "../../assets/Common.scss";
+
+$main-height: 1000px;
+$main-width: 283px;
+$selector-height: 50px;
+$selector-width: 229px;
+$selector-font-size: 12px;
+
+.sidebarmain {
+    height: $main-height;
+    width: $main-width;
+    background-color: $navback-color;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        display: flex;
+        margin-bottom: 40px;
+
+        .text {
+            font-family: $primary-font;
+            font-size: 40px;
+            margin-top: 10px;
+            color: $btn-color;
+            letter-spacing: 2px; 
+            .Q {
+                color: #3c5edf;
+            }
+        }
+    }
+
+    .selectors {
+        display: flex;
+        align-items: center;
+        color: $main-theme;
+        margin: 0 auto;
+        cursor: pointer;
+        height: 50px;
+        width: 230px;
+        padding: 0 6px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+
+        .image {
+            width: 38px;
+            height: 38px;
+        }
+
+        .text {
+            font-family: $primary-font;
+            font-size: 18.99px;
+            padding-left: 10px;
+            letter-spacing: 2px; 
+        }
+
+        &:hover {
+            background-color: $main-theme;
+            border-radius: 6px;
+            height: 50px;
+            outline: none;
+            position: relative;
+            width: 230px;
+            margin-bottom: 30px;
+            color: $text-color-btn;
+        }
+
+        &.selected .text {
+            color: $text-color-btn;
+        }
+
+        &.selected {
+            background-color: $main-theme;
+            border-radius: 6px;
+            height: 50px;
+            outline: none;
+            position: relative;
+            width: 230px;
+        }
+    }
+}
