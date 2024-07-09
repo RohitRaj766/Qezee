@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logoutRequest } from '../../../actions/index';
-import '../dashboard/Sidebar.scss'
+// import { useDispatch } from 'react-redux';
+// import { logoutRequest } from '../../../actions/index';
+import '../dashboard/main.scss'
 import logoimage from '../../assets/images/logo.svg';
 import overviewimage from "../../assets/images/overview.svg";
 import mocktestimage from "../../assets/images/mocktest.svg";
@@ -12,7 +12,7 @@ import editprofileimage from "../../assets/images/editprofile.svg";
 
 const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState(0); 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleClick = (index) => {
     setSelectedItem(index);

@@ -12,11 +12,13 @@ import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
 import NotFound from './NotFound';
+import { useSelector } from 'react-redux';
 
 const App = () => {
+  const isAuth = useSelector((state)=>state.auth.isAuthenticated)
   return (
     <Router>
-      <Header />
+     {!isAuth && <Header />} 
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
