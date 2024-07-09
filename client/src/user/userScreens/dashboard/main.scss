@@ -85,7 +85,7 @@ $selector-font-size: 12px;
 
 // Dashboard Header
 .headerContainer {
-    width: 100%; 
+    width: calc(100% - 283px); 
     height: 80px;
     // background-color: darkorange;
     display: flex;
