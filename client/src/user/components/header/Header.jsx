@@ -15,7 +15,7 @@ const Header = () => {
               <img src={logoImage} alt="logo" />
             </div>
             <p className="text">
-              <span className="Q">Q</span>uizee
+              <span className="Q">Q</span>ezee
             </p>
           </div>
 
