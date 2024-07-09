@@ -6,6 +6,7 @@ import logout from "../../assets/images/logout.svg";
 const DashboardHeader = () => {
   return (
     <div className='headerContainer'>
+      <div className="headerWrapper">
         <div className='contents'>
             <div className="userInfo">
                 <div className="name">Name</div>
@@ -13,8 +14,8 @@ const DashboardHeader = () => {
             </div>
             <img className='profile' src={profilepic} alt="" />
             <img className='logout' src={logout} alt="" />
-
         </div>
+      </div>
     </div>
   )
 }
