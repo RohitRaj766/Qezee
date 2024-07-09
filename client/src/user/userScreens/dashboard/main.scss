@@ -20,9 +20,9 @@ $selector-font-size: 12px;
         .text {
             font-family: $primary-font;
             font-size: 40px;
+            font-weight: 500;
             margin-top: 10px;
-            color: $btn-color;
-            letter-spacing: 2px; 
+            color: $btn-color; 
             .Q {
                 color: #3c5edf;
             }
@@ -48,9 +48,10 @@ $selector-font-size: 12px;
 
         .text {
             font-family: $primary-font;
-            font-size: 18.99px;
+            font-size: 18px;
             padding-left: 10px;
-            letter-spacing: 2px; 
+            letter-spacing: 2px;
+            font-weight: 600; 
         }
 
         &:hover {
