@@ -1,7 +1,6 @@
 @import "../../assets/Common.scss";
 
 //Sidebar
-
 $main-height: 1000px;
 $main-width: 283px;
 $selector-height: 50px;
@@ -89,58 +88,74 @@ $selector-font-size: 12px;
     height: 80px;
     box-shadow: 0 0 15px rgba(227, 227, 227, 1);
     background-color: rgba(247, 246, 246, 1);
+    display: flex;
+    justify-content: center;
   
     .headerWrapper {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding-right: 25px;
-      max-width: 1366px;
-  
-      .contents {
         display: flex;
+        justify-content: flex-end;
         align-items: center;
-        gap: 30px;
         padding-right: 25px;
-        margin-top: 15px;
+        width: 100%;
+        max-width: 1366px;
+        margin: 0 auto;
+
+        @media (min-width: 1366px) {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+        }
   
-        .userInfo {
-          display: flex;
-          width: 160px;
-          height: 29px;
-          border-radius: 4px;
-          background-color: $btn-color; // Assuming $btn-color is defined elsewhere
-          color: $text-color-btn; // Assuming $text-color-btn is defined elsewhere
-          font-family: $primary-font; // Assuming $primary-font is defined elsewhere
-          justify-content: space-around;
-          align-items: center;
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-  
-          .name {
-            border-right: 2px solid $text-color-btn; // Assuming $text-color-btn is defined elsewhere
-            letter-spacing: 1.5px;
+        .contents {
+            display: flex;
+            align-items: center;
+            gap: 30px;
             padding-right: 25px;
-          }
+            margin-top: 15px;
   
-          .branch {
-            padding-left: 8px;
-            letter-spacing: 1.5px;
-          }
-        }
+            .userInfo {
+                display: flex;
+                align-items: center;
+                gap: 8px; 
+                height: 29px; 
+                border-radius: 4px;
+                background-color: $btn-color; 
+                color: $text-color-btn; 
+                font-family: $primary-font;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                padding: 0 12px; 
+
+                .name {
+                    flex-shrink: 1; 
+                    white-space: nowrap; 
+                    overflow: hidden; 
+                    text-overflow: ellipsis; 
+                    border-right: 2px solid $text-color-btn;
+                    letter-spacing: 1.5px;
+                    padding-right: 12px; 
+                }
   
-        .profile {
-          height: 50px;
-          width: 50px;
-          margin-left: 7px;
-        }
+                .branch {
+                    flex-shrink: 0; 
+                    padding-left: 8px; 
+                    letter-spacing: 1.5px;
+                }
+            }
   
-        .logout {
-          height: 25px;
-          width: 25px;
-          cursor: pointer; // Ensure the cursor changes to pointer on hover
+            .profile {
+                height: 50px;
+                width: 50px;
+                margin-left: 7px;
+            }
+  
+            .logout {
+                height: 25px;
+                width: 25px;
+                cursor: pointer; 
+            }
         }
-      }
     }
-  }
+}
+
   
   

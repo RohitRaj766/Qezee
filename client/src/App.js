@@ -13,17 +13,14 @@ import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
 import NotFound from './NotFound';
 import { useSelector } from 'react-redux';
-import DashboardHeader from './user/userScreens/dashboard/DashboardHeader';
-import Page from './Page';
 
 const App = () => {
   const isAuth = useSelector((state)=>state.auth.isAuthenticated)
   return (
     <Router>
-     {/* {!isAuth && <Header />}  */}
-     {/* {<DashboardHeader />}  */}
+     {!isAuth && <Header />} 
       <Routes>
-        <Route path="/" element={<Page/>} />
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
