@@ -5,10 +5,10 @@ import DashboardHeader from './common/DashboardHeader';
 
 const Dashboard = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div>
       <Sidebar />
       <DashboardHeader />
-      <div style={{ marginLeft: '200px', padding: '20px', flexGrow: 1 }}>
+      <div>
         <Outlet />
       </div>
     </div>
