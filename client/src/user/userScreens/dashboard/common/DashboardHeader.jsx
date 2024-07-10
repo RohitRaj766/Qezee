@@ -1,7 +1,7 @@
 import React from 'react'
-import '../dashboard/main.scss'
-import profilepic from "../../assets/images/profilepic.svg";
-import logout from "../../assets/images/logout.svg";
+import './main.scss'
+import profilepic from "../../../assets/images/profilepic.svg";
+import logout from "../../../assets/images/logout.svg";
 
 const DashboardHeader = () => {
   return (

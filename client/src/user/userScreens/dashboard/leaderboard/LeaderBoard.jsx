@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLeaderboardRequest } from '../../../actions';
-import { getLeaderboardLoading, getLeaderboardData, getLeaderboardError } from '../../../selectors';
+import { fetchLeaderboardRequest } from '../../../../actions';
+import { getLeaderboardLoading, getLeaderboardData, getLeaderboardError } from '../../../../selectors';
 
 const Leaderboard = () => {
   const dispatch = useDispatch();
