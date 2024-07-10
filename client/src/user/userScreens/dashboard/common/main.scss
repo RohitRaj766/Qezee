@@ -13,6 +13,7 @@ $selector-font-size: 12px;
     background-color: $navback-color;
     display: flex;
     flex-direction: column;
+    position: absolute;
 
     .header {
         display: flex;
@@ -84,35 +85,24 @@ $selector-font-size: 12px;
 
 // Dashboard Header
 .headerContainer {
-    width: calc(100% - 283px);
+    width: 100%;
     height: 80px;
-    box-shadow: 0 0 15px rgba(227, 227, 227, 1);
-    background-color: rgba(247, 246, 246, 1);
     display: flex;
     justify-content: center;
-  
+    background-color: $navback-color;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+    z-index: -1;
     .headerWrapper {
         display: flex;
         justify-content: flex-end;
-        align-items: center;
-        padding-right: 25px;
-        width: 100%;
-        max-width: 1366px;
-        margin: 0 auto;
-
-        @media (min-width: 1366px) {
-            position: fixed;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        width: 100vw;
+        background-color: $navback-color;
   
         .contents {
             display: flex;
             align-items: center;
-            gap: 30px;
-            padding-right: 25px;
-            margin-top: 15px;
-  
+            gap: 25px;
+            padding-right: 30px;  
             .userInfo {
                 display: flex;
                 align-items: center;
