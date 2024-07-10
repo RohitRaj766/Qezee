@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { logoutRequest } from '../../../actions/index';
-import '../dashboard/main.scss'
-import logoimage from '../../assets/images/logo.svg';
-import overviewimage from "../../assets/images/overview.svg";
-import mocktestimage from "../../assets/images/mocktest.svg";
-import quizzesimage from "../../assets/images/quizzes.svg";
-import leaderboardimage from "../../assets/images/leaderboard.svg";
-import editprofileimage from "../../assets/images/editprofile.svg";
+import './main.scss'
+import logoimage from '../../../assets/images/logo.svg';
+import overviewimage from "../../../assets/images/overview.svg";
+import mocktestimage from "../../../assets/images/mocktest.svg";
+import quizzesimage from "../../../assets/images/quizzes.svg";
+import leaderboardimage from "../../../assets/images/leaderboard.svg";
+import editprofileimage from "../../../assets/images/editprofile.svg";
 
 const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState(0); 

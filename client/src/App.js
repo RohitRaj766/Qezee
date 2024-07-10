@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './user/userScreens/signup/Signup';
 import Login from './user/userScreens/login/Login';
-import Leaderboard from './user/userScreens/dashboard/LeaderBoard';
-import Edit from './user/userScreens/dashboard/Edit';
-import Mocktest from './user/userScreens/dashboard/Mocktest';
-import Overview from './user/userScreens/dashboard/Overview';
-import QuizList from './user/userScreens/dashboard/Quizzes';
+import Leaderboard from './user/userScreens/dashboard/leaderboard/LeaderBoard';
+import Edit from './user/userScreens/dashboard/edit/Edit';
+import Mocktest from './user/userScreens/dashboard/mocktest/Mocktest';
+import Overview from './user/userScreens/dashboard/overview/Overview';
+import QuizList from './user/userScreens/dashboard/quiz/Quizzes';
 
 import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
