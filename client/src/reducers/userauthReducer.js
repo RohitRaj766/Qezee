@@ -5,6 +5,8 @@ import {
   SIGNUP_FAILURE,
   VERIFY_OTP_SUCCESS,
   VERIFY_OTP_FAILURE,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
 } from '../actions/index';
 
 const initialState = {
@@ -56,6 +58,15 @@ const userauthReducer = (state = initialState, action) => {
         otpMessage: null,
         otpError: action.payload,
       };
+      case LOGOUT_SUCCESS:
+        return {
+          ...state,
+          isAuthenticated:false
+        };
+      case LOGOUT_FAILURE:
+        return {
+          ...state,
+        };
     default:
       return state;
   }
