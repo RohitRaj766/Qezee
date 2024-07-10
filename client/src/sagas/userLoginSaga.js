@@ -13,7 +13,7 @@ function* loginSaga(action) {
     const response = yield call(axiosInstance.post, '/user/login', action.payload);
     const token = response.data.authtoken;
     console.log("loginsaga :: ",response.data)
-    setToken('token', token);
+    setToken(token);
     yield put({ type: LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: LOGIN_FAILURE, payload: error.response.data.error });
