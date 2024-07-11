@@ -19,7 +19,6 @@ const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
 
-  // Determine if the current route is the NotFound route
   const isNotFoundRoute = location.pathname === '/not-found';
 
   return (
