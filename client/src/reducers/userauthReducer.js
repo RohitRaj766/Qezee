@@ -27,7 +27,7 @@ const userauthReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        isLoading:true,
+        isLoading:true
       };
     case LOGIN_SUCCESS:
       return {
@@ -35,14 +35,15 @@ const userauthReducer = (state = initialState, action) => {
         user: action.payload,
         isAuthenticated: true,
         isLoading:false,
-        error: null,
+        error: null
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         user: null,
         isAuthenticated: false,
-        error: action.payload,
+        isLoading:false,
+        error: action.payload
       };
       case SIGNUP_REQUEST:
         return {
@@ -54,31 +55,33 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         signupMessage: action.payload,
         isLoading:false,
-        error: null,
+        error: null
       };
     case SIGNUP_FAILURE:
       return {
         ...state,
         signupMessage: null,
-        error: action.payload,
+        isLoading:false,
+        error: action.payload
       };
       case VERIFY_OTP_REQUEST:
         return {
           ...state,
-          isLoading:true,
+          isLoading:true
         };
     case VERIFY_OTP_SUCCESS:
       return {
         ...state,
         otpMessage: action.payload,
         isLoading:false,
-        otpError: null,
+        otpError: null
       };
     case VERIFY_OTP_FAILURE:
       return {
         ...state,
         otpMessage: null,
-        otpError: action.payload,
+        isLoading:false,
+        otpError: action.payload
       };
       case LOGOUT_SUCCESS:
         return {
