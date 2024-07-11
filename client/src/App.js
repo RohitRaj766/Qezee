@@ -7,7 +7,7 @@ import Edit from './user/userScreens/dashboard/edit/Edit';
 import Mocktest from './user/userScreens/dashboard/mocktest/Mocktest';
 import Overview from './user/userScreens/dashboard/overview/Overview';
 import QuizList from './user/userScreens/dashboard/quiz/Quizzes';
-
+import Loader from './user/components/loader/Loader'
 import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
@@ -16,8 +16,10 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const isAuth = useSelector((state)=>state.auth.isAuthenticated)
+  const isLoad = useSelector((state)=>state.auth.isLoading)
   return (
     <Router>
+     {isLoad && <Loader/>}
      {!isAuth && <Header />} 
       <Routes>
         <Route path="/" element={<Login />} />
