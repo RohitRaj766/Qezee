@@ -6,7 +6,10 @@ import {
   VERIFY_OTP_SUCCESS,
   VERIFY_OTP_FAILURE,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+  LOGIN_REQUEST,
+  SIGNUP_REQUEST,
+  VERIFY_OTP_REQUEST
 } from '../actions/index';
 
 const initialState = {
@@ -16,15 +19,22 @@ const initialState = {
   signupMessage: null,
   otpMessage: null,
   otpError: null,
+  isLoading: false
 };
 
 const userauthReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_REQUEST:
+      return {
+        ...state,
+        isLoading:true,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,
         user: action.payload,
         isAuthenticated: true,
+        isLoading:false,
         error: null,
       };
     case LOGIN_FAILURE:
@@ -34,10 +44,16 @@ const userauthReducer = (state = initialState, action) => {
         isAuthenticated: false,
         error: action.payload,
       };
+      case SIGNUP_REQUEST:
+        return {
+          ...state,
+          isLoading:true
+        };
     case SIGNUP_SUCCESS:
       return {
         ...state,
         signupMessage: action.payload,
+        isLoading:false,
         error: null,
       };
     case SIGNUP_FAILURE:
@@ -46,10 +62,16 @@ const userauthReducer = (state = initialState, action) => {
         signupMessage: null,
         error: action.payload,
       };
+      case VERIFY_OTP_REQUEST:
+        return {
+          ...state,
+          isLoading:true,
+        };
     case VERIFY_OTP_SUCCESS:
       return {
         ...state,
         otpMessage: action.payload,
+        isLoading:false,
         otpError: null,
       };
     case VERIFY_OTP_FAILURE:
