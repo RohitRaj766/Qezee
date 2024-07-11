@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
 import './main.scss';
 import profilepic from '../../../assets/images/profilepic.svg';
 import logout from '../../../assets/images/logout.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutRequest, loginSuccess } from '../../../../actions/index';
+import { logoutRequest } from '../../../../actions/index';
 import { useNavigate } from 'react-router-dom';
 
 const DashboardHeader = () => {
