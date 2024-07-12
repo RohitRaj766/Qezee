@@ -1,27 +1,33 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Routes, Route, useLocation,Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Signup from './user/userScreens/signup/Signup';
-import Login from './user/userScreens/login/Login';
-import Leaderboard from './user/userScreens/dashboard/leaderboard/LeaderBoard';
-import Edit from './user/userScreens/dashboard/edit/Edit';
-import Mocktest from './user/userScreens/dashboard/mocktest/Mocktest';
-import Overview from './user/userScreens/dashboard/overview/Overview';
-import QuizList from './user/userScreens/dashboard/quiz/Quizzes';
-import Loader from './user/components/loader/Loader';
-import Header from './user/components/header/Header';
-import PrivateRoute from './user/components/PrivateRoute';
-import Dashboard from './user/userScreens/dashboard/Dashboard';
-import Not404Page from './user/components/Not404Page';
-import { verifyTokenHandelRefreshRequest } from './actions/index'; 
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
+import Signup from "./user/userScreens/signup/Signup";
+import Login from "./user/userScreens/login/Login";
+import Leaderboard from "./user/userScreens/dashboard/leaderboard/LeaderBoard";
+import Edit from "./user/userScreens/dashboard/edit/Edit";
+import Mocktest from "./user/userScreens/dashboard/mocktest/Mocktest";
+import Overview from "./user/userScreens/dashboard/overview/Overview";
+import QuizList from "./user/userScreens/dashboard/quiz/Quizzes";
+import Loader from "./user/components/loader/Loader";
+import Header from "./user/components/header/Header";
+import PrivateRoute from "./user/components/PrivateRoute";
+import Dashboard from "./user/userScreens/dashboard/Dashboard";
+import Not404Page from "./user/components/Not404Page";
+import { verifyTokenHandelRefreshRequest } from "./actions/index";
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
-  const isNotFoundRoute = location.pathname === '/not-found';
-  
+  const isNotFoundRoute = location.pathname === "/not-found";
+
   return (
     <>
       {isLoad && <Loader />}
@@ -31,7 +37,7 @@ const AppContent = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route element={<PrivateRoute />}>
-          <Route path="dashboard" element={<Dashboard />}>
+          <Route path="/dashboard" element={<Dashboard />}>
             <Route path="leaderboard" element={<Leaderboard />} />
             <Route path="edit" element={<Edit />} />
             <Route path="mocktest" element={<Mocktest />} />
@@ -39,8 +45,8 @@ const AppContent = () => {
             <Route path="quizzes" element={<QuizList />} />
           </Route>
         </Route>
-         <Route path="/not-found" element={<Not404Page />} />
-        <Route path="*" element={<Navigate to="/not-found" />} /> 
+        <Route path="/not-found" element={<Not404Page />} />
+        <Route path="*" element={<Navigate to="/not-found" />} />
       </Routes>
     </>
   );
