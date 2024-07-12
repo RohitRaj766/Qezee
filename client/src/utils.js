@@ -1,9 +1,13 @@
+import Cookies from 'js-cookie';
+
 export const setToken = (token) => {
-    console.log("Token in Utils :: ", token)
-    const expirationTime = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toUTCString();
-    document.cookie = `token=${token}; expires=${expirationTime};`;
+  Cookies.set('token', token, { expires: 2 / 24 });
 };
 
-export  const removeTokenFromCookies = () => {
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+export const removeTokenFromCookies = () => {
+  Cookies.remove('token');
+};
+
+export const getToken = () => {
+  return Cookies.get('token');
 };

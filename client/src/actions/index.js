@@ -19,6 +19,10 @@ export const VERIFY_OTP_REQUEST = 'VERIFY_OTP_REQUEST';
 export const VERIFY_OTP_SUCCESS = 'VERIFY_OTP_SUCCESS';
 export const VERIFY_OTP_FAILURE = 'VERIFY_OTP_FAILURE';
 
+export const VERIFY_TOKEN_HANDLE_REFRESH_REQUEST = "VERIFY_TOKEN_HANDLE_REFRESH_REQUEST"
+export const VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS = "VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS"
+export const VERIFY_TOKEN_HANDLE_REFRESH_FAILURE = "VERIFY_TOKEN_HANDLE_REFRESH_FAILURE"
+
 
 
 export const loginRequest = (credentials) => ({
@@ -90,3 +94,21 @@ export const verifyOtpFailure = (error) => ({
   type: VERIFY_OTP_FAILURE,
   payload: error,
 });
+
+export const verifyTokenHandelRefreshRequest= () => ({
+    type: VERIFY_TOKEN_HANDLE_REFRESH_REQUEST,
+});
+
+export const verifyTokenHandelRefreshSuccess = (isAuthenticated, user) => {
+  return {
+    type: VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS,
+    payload: { isAuthenticated, user }
+  };
+};
+
+export const verifyTokenHandelRefreshFailure = (isAuthenticated, user) => {
+  return {
+    type: VERIFY_TOKEN_HANDLE_REFRESH_FAILURE,
+    payload: { isAuthenticated, user }
+  };
+};

@@ -4,6 +4,7 @@ import userSignupSaga from './userSignupSaga';
 import userLoginSaga from './userLoginSaga';
 import userLogoutSaga from './userLogoutSaga';
 import userVerifyOtpSaga  from './userVerifyOtpSaga';
+import verifyTokenSaga from './refreshHandlerSaga'
 
 export default function* rootSaga() {
   yield all([
@@ -11,6 +12,7 @@ export default function* rootSaga() {
     userSignupSaga(),
     userLoginSaga(),
     userLogoutSaga(),
-    userVerifyOtpSaga()
+    userVerifyOtpSaga(),
+    verifyTokenSaga()
   ]);
 }
