@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Signup from './user/userScreens/signup/Signup';
@@ -13,14 +14,14 @@ import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
 import NotFound from './NotFound';
+import { verifyTokenHandelRefreshRequest } from './actions/index'; 
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
-
   const isNotFoundRoute = location.pathname === '/not-found';
-
+  
   return (
     <>
       {isLoad && <Loader />}
@@ -46,6 +47,10 @@ const AppContent = () => {
 };
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(verifyTokenHandelRefreshRequest());
+  }, [dispatch]);
   return (
     <Router>
       <AppContent />

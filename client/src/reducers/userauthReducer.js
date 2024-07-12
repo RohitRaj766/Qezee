@@ -9,7 +9,10 @@ import {
   LOGOUT_FAILURE,
   LOGIN_REQUEST,
   SIGNUP_REQUEST,
-  VERIFY_OTP_REQUEST
+  VERIFY_OTP_REQUEST,
+  VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS,
+  VERIFY_TOKEN_HANDLE_REFRESH_FAILURE,
+  VERIFY_TOKEN_HANDLE_REFRESH_REQUEST
 } from '../actions/index';
 
 const initialState = {
@@ -92,6 +95,25 @@ const userauthReducer = (state = initialState, action) => {
         return {
           ...state,
         };
+        case VERIFY_TOKEN_HANDLE_REFRESH_REQUEST:
+          return {
+            ...state,
+            isLoading:true
+          };
+        case VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS:
+          return {
+            ...state,
+            isAuthenticated: true,
+            isLoading:false,
+            user: action.payload.user
+          };
+        case VERIFY_TOKEN_HANDLE_REFRESH_FAILURE:
+          return {
+            ...state,
+            isAuthenticated: false,
+            isLoading:false,
+            user: action.payload.user
+          };
     default:
       return state;
   }
