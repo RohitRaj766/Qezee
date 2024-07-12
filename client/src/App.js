@@ -13,7 +13,7 @@ import Loader from './user/components/loader/Loader';
 import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
-import NotFound from './NotFound';
+import Not404Page from './user/components/Not404Page';
 import { verifyTokenHandelRefreshRequest } from './actions/index'; 
 
 const AppContent = () => {
@@ -39,7 +39,7 @@ const AppContent = () => {
             <Route path="quizzes" element={<QuizList />} />
           </Route>
         </Route>
-        <Route path="/not-found" element={<NotFound />} />
+        <Route path="/not-found" element={<Not404Page />} />
         <Route path="*" element={<Navigate to="/not-found" />} />
       </Routes>
     </>

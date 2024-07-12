@@ -1,5 +1,5 @@
 import React from 'react'
-import './NotFound.scss'
+import './Not404Page.scss'
 const NotFound = () => {
   return (
     <div className='notfoundContainer'>
