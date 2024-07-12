@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Signup from './user/userScreens/signup/Signup';
 import Login from './user/userScreens/login/Login';
@@ -13,7 +13,7 @@ import Loader from './user/components/loader/Loader';
 import Header from './user/components/header/Header';
 import PrivateRoute from './user/components/PrivateRoute';
 import Dashboard from './user/userScreens/dashboard/Dashboard';
-import Not404Page from './user/components/Not404Page';
+// import Not404Page from './user/components/Not404Page';
 import { verifyTokenHandelRefreshRequest } from './actions/index'; 
 
 const AppContent = () => {
@@ -39,8 +39,8 @@ const AppContent = () => {
             <Route path="quizzes" element={<QuizList />} />
           </Route>
         </Route>
-        <Route path="/not-found" element={<Not404Page />} />
-        <Route path="*" element={<Navigate to="/not-found" />} />
+        {/* <Route path="/not-found" element={<Not404Page />} /> */}
+        {/* <Route path="*" element={<Navigate to="/not-found" />} /> */}
       </Routes>
     </>
   );
