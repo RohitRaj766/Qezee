@@ -15,14 +15,12 @@ const Sidebar = () => {
     setSelectedItem(index);
   };
 
-
   const selectorsData = [
     { image: overviewimage, text: 'OVERVIEW', path: '/dashboard/overview' },
     { image: mocktestimage, text: 'MOCK TEST', path: '/dashboard/mocktest' },
     { image: quizzesimage, text: 'QUIZZES', path: '/dashboard/quizzes' },
     { image: leaderboardimage, text: 'LEADER BOARD', path: '/dashboard/leaderboard' },
     { image: editprofileimage, text: 'EDIT PROFILE', path: '/dashboard/edit' },
-    // { image: '', text: 'LOGOUT',path: '/login'}
   ];
 
   return (
