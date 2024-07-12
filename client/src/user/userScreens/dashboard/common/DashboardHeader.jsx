@@ -20,7 +20,7 @@ const DashboardHeader = () => {
       <div className='headerWrapper'>
         <div className='contents'>
           <div className='userInfo'>
-            <div className='name'>{ user ? user.LoggedInUser.firstname : "Name" }</div>
+            <div className='name'>{ user ? (user.LoggedInUser.firstname + " " + user.LoggedInUser.lastname ) : "Name" }</div>
             <div className='branch'>{ user ? user.LoggedInUser.branch : "Branch" }</div>
           </div>
           <img className='profile' src={profilepic} alt='' />
