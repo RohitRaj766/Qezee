@@ -5,110 +5,114 @@
     justify-content: center;
     padding-left: 200px;
   
+    .standings {
+      h1 {
+        font-size: 20px;
+        height: 34px;
+        width: 222px;
+        letter-spacing: 2px;
+      }
   
-  .standings {
-    h1 {
-      font-size: 20px;
-      height: 34px;
-      width: 222px;
-      letter-spacing: 2px;
-    }
+      .cardContainer {
+        display: flex;
+        padding-top: 10px;
+        gap: 40px;
   
-    .cardContainer {
-      display: flex;
-      padding-top: 20px;
-      gap: 40px;
-  
-      .master, .grandmaster, .sergeant {
-        height: 140px;
-        width: 280px;
-        background-color: rgba(247, 246, 246, 1);
-        border-radius: 6px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-        margin-left: 30px;
-  
-        .upper {
-          display: flex;
-          gap: 5px;
-          margin-left: 10px;
-  
-          img {
-            margin-top: -80px;
-          }
-  
-          .title {
-            font-size: 22px;
-            color: rgba(245, 180, 0, 1);
-            margin-top: 10px;
-          }
-        }
-  
-        .lower {
-          letter-spacing: 2px;
-          display: flex;
-          align-items: center;
-          gap: 30px;
+        .master,
+        .grandmaster,
+        .sergeant {
+          height: 140px;
+          width: 280px;
+          background-color: rgba(247, 246, 246, 1);
+          border-radius: 6px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
           margin-left: 30px;
-          margin-top: -25px;
   
-          .enrollment {
+          .upper {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+  
+            img {
+              margin-top: -80px;
+              width: 60px; /* Adjust size as needed */
+            }
+  
+            .title {
+              font-size: 22px;
+              color: rgba(245, 180, 0, 1);
+              margin-top: 10px;
+              margin-left: 10px; /* Adjust this margin to move the title to the right */
+            }
+          }
+  
+          .lower {
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-left: 30px;
             margin-top: -25px;
+  
+            .enrollment {
+              margin-top: -25px;
+            }
           }
         }
-      }
-
-      .master{
-        margin-top: 50px;
-      }
-
-      .sergeant{
-        margin-top: 80px;
+  
+        .master {
+          margin-top: 50px;
+        }
+  
+        .sergeant {
+          margin-top: 80px;
+        }
       }
     }
-  }
-
-
-
-
-
-
-
-
-
-
-  .scores{
-    height: 281px;
-    width: 1000px;
-    background-color: rgba(249, 249, 249, 1);
-    border-radius: 8px;
-    margin-top: 30px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-    overflow-y: auto;
-    padding-left: 10px;
-
-    h1{
+  
+    .scores {
+      height: 281px;
+      width: 1000px;
+      background-color: rgba(249, 249, 249, 1);
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+      overflow-y: auto;
+      padding-left: 10px;
+  
+      h1 {
         width: 235px;
         height: 34px;
         font-size: 23px;
         color: rgba(245, 180, 0, 1);
         letter-spacing: 2px;
-    }
-
-    .scoreContainer{
+      }
+  
+      .scoreContainer {
         .player {
-            display: flex;
-            justify-content: space-between;
-            padding-left: 15px; /* Adjust the value as needed */
-            padding-right: 15px; /* Adjust the value as needed */
-            height: 52px;
-            width: calc(100% - 40px); /* Adjust width to account for padding in the container */
-            background-color: rgba(245, 180, 0, 0.3);
-            border-radius: 6px;
-            margin-bottom: 15px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          display: flex;
+          justify-content: space-between;
+          padding-left: 15px;
+          padding-right: 15px;
+          height: 52px;
+          width: calc(100% - 40px);
+          border-radius: 6px;
+          margin-bottom: 15px;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  
+          p {
+            margin: auto 0;
           }
+  
+          &:nth-child(even) {
+            background-color: rgba(60, 94, 223, 0.3);
+          }
+  
+          &:nth-child(odd) {
+            background-color: rgba(245, 180, 0, 0.3);
+          }
+        }
+      }
     }
-
   }
-}
   

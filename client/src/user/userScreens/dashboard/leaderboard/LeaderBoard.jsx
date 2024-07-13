@@ -29,6 +29,13 @@ const getTitle = (rank) => {
   return 'Warrior';
 };
 
+const getImage = (rank) => {
+  if (rank === 1) return first;
+  if (rank === 2) return second;
+  if (rank === 3) return third;
+  return null;
+};
+
 const Leaderboard = () => {
   // const dispatch = useDispatch();
   // const loading = useSelector(getLeaderboardLoading);
@@ -43,73 +50,76 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboardContainer">
-      <div className="standings">
-        <h1>LEADER BOARD</h1>
-        <div className="cardContainer">
-          <div className="master">
-            <div className="upper">
-              <img src={second} alt="" />
-              <p className="title">Master</p>
-            </div>
-            <div className="lower">
-              <div className="lowerleft">
-                <p className="name">Mohit</p>
-                <p className="points">468 pts</p>
-              </div>
-              <p className="enrollment">Aju/220501</p>
-            </div>
+    <div className="standings">
+      <h1>LEADER BOARD</h1>
+      <div className="cardContainer">
+        {/* Render Master */}
+        <div className="master">
+          <div className="upper">
+            <img src={getImage(2)} alt="" />
+            <p className="title">Master</p>
           </div>
-
-          <div className="grandmaster">
-            <div className="upper">
-              <img src={first} alt="" />
-              <p className="title">Grand Master</p>
+          <div className="lower">
+            <div className="lowerleft">
+              <p className="name">{sortedPlayers[1].name}</p>
+              <p className="points">{sortedPlayers[1].points} pts</p>
             </div>
-            <div className="lower">
-              <div className="lowerleft">
-                <p className="name">Mohit</p>
-                <p className="points">468 pts</p>
-              </div>
-              <p className="enrollment">Aju/220501</p>
-            </div>
-          </div>
-
-          <div className="sergeant">
-            <div className="upper">
-              <img src={third} alt="" />
-              <p className="title">Sergeant</p>
-            </div>
-            <div className="lower">
-              <div className="lowerleft">
-                <p className="name">Mohit</p>
-                <p className="points">468 pts</p>
-              </div>
-              <p className="enrollment">Aju/220501</p>
-            </div>
+            <p className="enrollment">Aju/220501</p>
           </div>
         </div>
-      </div>
 
-      <div className="scores">
-        <h1>Top Performance</h1>
-        <div className="scoreContainer">
-          {sortedPlayers.map((player, index) => (
-            <div
-              key={index}
-              className="player"
-              style={{
-                backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
-              }}
-            >
-              <p>{index + 1}.</p>
-              <p>{player.name}</p>
-              <p>{player.points} pts</p>
-              <p>{getTitle(index + 1)}</p>
+        {/* Render Grand Master */}
+        <div className="grandmaster">
+          <div className="upper">
+            <img src={getImage(1)} alt="" />
+            <p className="title">Grand Master</p>
+          </div>
+          <div className="lower">
+            <div className="lowerleft">
+              <p className="name">{sortedPlayers[0].name}</p>
+              <p className="points">{sortedPlayers[0].points} pts</p>
             </div>
-          ))}
+            <p className="enrollment">Aju/220501</p>
+          </div>
+        </div>
+
+        {/* Render Sergeant */}
+        <div className="sergeant">
+          <div className="upper">
+            <img src={getImage(3)} alt="" />
+            <p className="title">Sergeant</p>
+          </div>
+          <div className="lower">
+            <div className="lowerleft">
+              <p className="name">{sortedPlayers[2].name}</p>
+              <p className="points">{sortedPlayers[2].points} pts</p>
+            </div>
+            <p className="enrollment">Aju/220501</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <div className="scores">
+      <h1>Top Performance</h1>
+      <div className="scoreContainer">
+        {sortedPlayers.map((player, index) => (
+          <div
+            key={index}
+            className="player"
+            style={{
+              backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
+            }}
+          >
+            <p>{index + 1}.</p>
+            <p>{player.name}</p>
+            <p>{player.points} pts</p>
+            <p>{getTitle(index + 1)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
 
   );
 };
