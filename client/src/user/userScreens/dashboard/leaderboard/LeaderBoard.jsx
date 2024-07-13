@@ -19,6 +19,7 @@ const Leaderboard = () => {
 
   return (
     <div className="leaderboardContainer">
+
       <div className="standings">
         <h1>LEADER BOARD</h1>
         <div className="cardContainer">
@@ -64,6 +65,66 @@ const Leaderboard = () => {
               </div>
               <p className="enrollment">Aju/220501</p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="scores">
+        <h1>Top Performance</h1>
+        <div className='scoreContainer'>
+          <div className='player'>
+            <p>1.</p>
+            <p>Rohit</p>
+            <p>120 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>2.</p>
+            <p>Deepak</p>
+            <p>420 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
+          </div>
+          <div className='player'>
+            <p>3.</p>
+            <p>Mohit</p>
+            <p>240 pts</p>
+            <p>Warrior</p>
           </div>
         </div>
       </div>

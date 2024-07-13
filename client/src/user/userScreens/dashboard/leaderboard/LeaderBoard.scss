@@ -1,9 +1,10 @@
 .leaderboardContainer {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-left: 200px;
-  }
+  
   
   .standings {
     h1 {
@@ -15,7 +16,7 @@
   
     .cardContainer {
       display: flex;
-      padding-top: 40px;
+      padding-top: 20px;
       gap: 40px;
   
       .master, .grandmaster, .sergeant {
@@ -65,4 +66,49 @@
       }
     }
   }
+
+
+
+
+
+
+
+
+
+
+  .scores{
+    height: 281px;
+    width: 1000px;
+    background-color: rgba(249, 249, 249, 1);
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    padding-left: 10px;
+
+    h1{
+        width: 235px;
+        height: 34px;
+        font-size: 23px;
+        color: rgba(245, 180, 0, 1);
+        letter-spacing: 2px;
+    }
+
+    .scoreContainer{
+        .player {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 15px; /* Adjust the value as needed */
+            padding-right: 15px; /* Adjust the value as needed */
+            height: 52px;
+            width: calc(100% - 40px); /* Adjust width to account for padding in the container */
+            background-color: rgba(245, 180, 0, 0.3);
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          }
+    }
+
+  }
+}
   
