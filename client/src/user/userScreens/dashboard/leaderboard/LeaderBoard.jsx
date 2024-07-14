@@ -8,16 +8,16 @@ import second from '../../../assets/images/second.svg';
 import third from '../../../assets/images/third.svg';
 
 const players = [
-  { rank: 5, name: 'Rohit', points: 120, title: 'Warrior' },
-  { rank: 2, name: 'Deepak', points: 420, title: 'Warrior' },
-  { rank: 3, name: 'Mohit', points: 240, title: 'Warrior' },
-  { rank: 4, name: 'Ankit', points: 340, title: 'Master' },
-  { rank: 1, name: 'Suman', points: 150, title: 'Master' },
-  { rank: 6, name: 'Neha', points: 270, title: 'Grand Master' },
-  { rank: 7, name: 'Arjun', points: 300, title: 'Sergeant' },
-  { rank: 8, name: 'Nikita', points: 190, title: 'Sergeant' },
-  { rank: 9, name: 'Amit', points: 220, title: 'Grand Master' },
-  { rank: 10, name: 'Vikram', points: 260, title: 'Warrior' },
+  { name: 'Rohit', points: 120, enrollment: 'Aju/220501' },
+  { name: 'Deepak', points: 420, enrollment: 'Aju/220502' },
+  { name: 'Mohit', points: 240, enrollment: 'Aju/220503' },
+  { name: 'Ankit', points: 340, enrollment: 'Aju/220504' },
+  { name: 'Suman', points: 150, enrollment: 'Aju/220505' },
+  { name: 'Neha', points: 270, enrollment: 'Aju/220506' },
+  { name: 'Arjun', points: 300, enrollment: 'Aju/220507' },
+  { name: 'Nikita', points: 590, enrollment: 'Aju/220508' },
+  { name: 'Amit', points: 220, enrollment: 'Aju/220509' },
+  { name: 'Vikram', points: 260, enrollment: 'Aju/220510' },
 ];
 
 const sortedPlayers = players.sort((a, b) => b.points - a.points);
@@ -46,85 +46,82 @@ const Leaderboard = () => {
   //   dispatch(fetchLeaderboardRequest());
   // }, [dispatch]);
 
-  
-
   return (
     <div className="leaderboardContainer">
-    <div className="standings">
-      <h1>LEADER BOARD</h1>
-      <div className="cardContainer">
-        {/* Render Master */}
-        <div className="master">
-          <div className="upper">
-            <img src={getImage(2)} alt="" />
-            <p className="title">Master</p>
-          </div>
-          <div className="lower">
-            <div className="lowerleft">
-              <p className="name">{sortedPlayers[1].name}</p>
-              <p className="points">{sortedPlayers[1].points} pts</p>
-            </div>
-            <p className="enrollment">Aju/220501</p>
-          </div>
-        </div>
+      <div className="standings">
+        <h1>LEADER BOARD</h1>
+        <div className="cardContainer">
 
-        {/* Render Grand Master */}
-        <div className="grandmaster">
-          <div className="upper">
-            <img src={getImage(1)} alt="" />
-            <p className="title">Grand Master</p>
-          </div>
-          <div className="lower">
-            <div className="lowerleft">
-              <p className="name">{sortedPlayers[0].name}</p>
-              <p className="points">{sortedPlayers[0].points} pts</p>
+          <div className="master">
+            <div className="upper">
+              <img src={getImage(2)} alt="" />
+              <p className="title">Master</p>
             </div>
-            <p className="enrollment">Aju/220501</p>
+            <div className="lower">
+              <div className="lowerleft">
+                <p className="name">{sortedPlayers[1].name}</p>
+                <p className="points">{sortedPlayers[1].points} pts</p>
+              </div>
+              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
+            </div>
           </div>
-        </div>
 
-        {/* Render Sergeant */}
-        <div className="sergeant">
-          <div className="upper">
-            <img src={getImage(3)} alt="" />
-            <p className="title">Sergeant</p>
-          </div>
-          <div className="lower">
-            <div className="lowerleft">
-              <p className="name">{sortedPlayers[2].name}</p>
-              <p className="points">{sortedPlayers[2].points} pts</p>
+          <div className="grandmaster">
+            <div className="upper">
+              <img src={getImage(1)} alt="" />
+              <p className="title">Grand Master</p>
             </div>
-            <p className="enrollment">Aju/220501</p>
+            <div className="lower">
+              <div className="lowerleft">
+                <p className="name">{sortedPlayers[0].name}</p>
+                <p className="points">{sortedPlayers[0].points} pts</p>
+              </div>
+              <p className="enrollment">{sortedPlayers[0].enrollment}</p>
+            </div>
+          </div>
+
+          <div className="sergeant">
+            <div className="upper">
+              <img src={getImage(3)} alt="" />
+              <p className="title">Sergeant</p>
+            </div>
+            <div className="lower">
+              <div className="lowerleft">
+                <p className="name">{sortedPlayers[2].name}</p>
+                <p className="points">{sortedPlayers[2].points} pts</p>
+              </div>
+              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div className="scores">
-      <h1>Top Performance</h1>
-      <div className="scoreContainer">
-        {sortedPlayers.map((player, index) => (
-          <div
-            key={index}
-            className="player"
-            style={{
-              backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
-            }}
-          >
-            <p>{index + 1}.</p>
-            <p>{player.name}</p>
-            <p>{player.points} pts</p>
-            <p>{getTitle(index + 1)}</p>
-          </div>
-        ))}
+      <div className="scores">
+        <h1>Top Performance</h1>
+        <div className="scoreContainer">
+          {sortedPlayers.map((player, index) => (
+            <div
+              key={index}
+              className="player"
+              style={{
+                backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
+              }}
+            >
+              <p>{index + 1}.</p>
+              <p>{player.name}</p>
+              <p>{player.points} pts</p>
+              <p>{getTitle(index + 1)}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-
   );
 };
 
 export default Leaderboard;
+
+
 
     // <div>
     //   {loading && <p>Loading...</p>}
