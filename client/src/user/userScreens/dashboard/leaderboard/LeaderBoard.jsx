@@ -115,9 +115,6 @@ const Leaderboard = () => {
             <div
               key={index}
               className="player"
-              style={{
-                backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
-              }}
             >
               <p>{index+4}</p>
               <p>{player.name}</p>
