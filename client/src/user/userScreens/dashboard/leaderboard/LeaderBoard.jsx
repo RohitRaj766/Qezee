@@ -99,7 +99,7 @@ const Leaderboard = () => {
       <div className="scores">
         <h1>Top Performance</h1>
         <div className="scoreContainer">
-          {sortedPlayers.map((player, index) => (
+          {sortedPlayers.slice(3).map((player, index) => (
             <div
               key={index}
               className="player"
@@ -107,10 +107,10 @@ const Leaderboard = () => {
                 backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
               }}
             >
-              <p>{index + 1}.</p>
+              <p>{index + 4}.</p> {/* Rank starts from 4 */}
               <p>{player.name}</p>
               <p>{player.points} pts</p>
-              <p>{getTitle(index + 1)}</p>
+              <p>{getTitle(index + 4)}</p> {/* Rank starts from 4 */}
             </div>
           ))}
         </div>
