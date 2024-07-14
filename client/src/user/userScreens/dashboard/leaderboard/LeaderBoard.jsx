@@ -58,10 +58,14 @@ const Leaderboard = () => {
               <p className="title">Master</p>
             </div>
             <div className="lower">
-              <div className="lowerleft">
-                <p className="name">{sortedPlayers[1].name}</p>
-                <p className="points">{sortedPlayers[1].points} pts</p>
-              </div>
+              <p className="name">{sortedPlayers[1].name}</p>
+              <p className="points">{sortedPlayers[1].points} pts</p>
+              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
+              <p className="name">{sortedPlayers[1].name}</p>
+              <p className="points">{sortedPlayers[1].points} pts</p>
+              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
+              <p className="name">{sortedPlayers[1].name}</p>
+              <p className="points">{sortedPlayers[1].points} pts</p>
               <p className="enrollment">{sortedPlayers[1].enrollment}</p>
             </div>
           </div>
@@ -72,11 +76,15 @@ const Leaderboard = () => {
               <p className="title">Grand Master</p>
             </div>
             <div className="lower">
-              <div className="lowerleft">
-                <p className="name">{sortedPlayers[0].name}</p>
-                <p className="points">{sortedPlayers[0].points} pts</p>
-              </div>
-              <p className="enrollment">{sortedPlayers[0].enrollment}</p>
+                  <p className="name">{sortedPlayers[0].name}</p>
+                  <p className="points">{sortedPlayers[0].points} pts</p>
+                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
+                  <p className="name">{sortedPlayers[0].name}</p>
+                  <p className="points">{sortedPlayers[0].points} pts</p>
+                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
+                  <p className="name">{sortedPlayers[0].name}</p>
+                  <p className="points">{sortedPlayers[0].points} pts</p>
+                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
             </div>
           </div>
 
@@ -86,10 +94,14 @@ const Leaderboard = () => {
               <p className="title">Sergeant</p>
             </div>
             <div className="lower">
-              <div className="lowerleft">
-                <p className="name">{sortedPlayers[2].name}</p>
-                <p className="points">{sortedPlayers[2].points} pts</p>
-              </div>
+              <p className="name">{sortedPlayers[2].name}</p>
+              <p className="points">{sortedPlayers[2].points} pts</p>
+              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
+              <p className="name">{sortedPlayers[2].name}</p>
+              <p className="points">{sortedPlayers[2].points} pts</p>
+              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
+              <p className="name">{sortedPlayers[2].name}</p>
+              <p className="points">{sortedPlayers[2].points} pts</p>
               <p className="enrollment">{sortedPlayers[2].enrollment}</p>
             </div>
           </div>

@@ -3,25 +3,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:80%;
-    // padding-left: 200px;
+    width: 80%;
     margin-left: 283px;
-   
-  
+
     .standings {
-       
         h1 {
             font-size: 20px;
             height: 34px;
             width: 222px;
             letter-spacing: 2px;
         }
-  
+
         .cardContainer {
             display: flex;
             padding-top: 10px;
             gap: 40px;
-  
+            max-width: 100%; /* Ensure it doesn't exceed its container */
+
             .master,
             .grandmaster,
             .sergeant {
@@ -30,52 +28,69 @@
                 background-color: rgba(247, 246, 246, 1);
                 border-radius: 6px;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-                margin-left: 30px;
-  
+                margin-left: 20px; /* Adjusted margin for uniform spacing */
+                // overflow-y: auto; /* Add scrollbar for overflow vertically */
+
                 .upper {
                     display: flex;
                     gap: 5px;
                     margin-left: 10px;
-  
+
                     img {
                         margin-top: -44px;
                         height: 80px;
-                        width: 80px; 
+                        width: 80px;
                     }
-  
+
                     .title {
                         font-size: 22px;
                         color: rgba(245, 180, 0, 1);
                         margin-top: 10px;
-                        margin-left: 10px; 
+                        margin-left: 10px;
                     }
                 }
-  
+
                 .lower {
                     letter-spacing: 2px;
-                    display: flex;
+                    display: grid;
+                    grid-template-columns: auto auto;
                     align-items: center;
-                    gap: 30px;
-                    margin-left: 30px;
-                    margin-top: -25px;
-  
-                    .enrollment {
-                        margin-top: -25px;
+                    gap: 20px; /* Adjusted gap for better spacing */
+                    margin-left: 10px; /* Adjusted margin for uniform spacing */
+                    margin-top: -10px; /* Adjusted margin for uniform spacing */
+                    overflow-y: auto; /* Add scrollbar for overflow vertically */
+                    max-height: 80px; /* Limit the height of lower section */
+
+                    &::-webkit-scrollbar {
+                        width: 8px;
+                    }
+            
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #c8c8c888;
+                        border-radius: 10px;
+                    }
+            
+                    &::-webkit-scrollbar-track {
+                        background-color: #f7f6f6;
+                        border-radius: 10px;
+                    }
+
+                    p {
+                        margin: 0; /* Reset margin for all paragraphs */
                     }
                 }
             }
-            
-  
+
             .master {
                 margin-top: 50px;
             }
-  
+
             .sergeant {
-                margin-top: 80px;
+                margin-top: 50px; /* Adjusted margin for uniform spacing */
             }
         }
     }
-  
+
     .scores {
         height: 400px;
         width: 1000px;
@@ -85,7 +100,6 @@
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
         overflow-y: auto;
         padding-left: 10px;
-    
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -97,10 +111,10 @@
         }
 
         &::-webkit-scrollbar-track {
-            background-color: #F7F6F6;
+            background-color: #f7f6f6;
             border-radius: 10px;
         }
-  
+
         h1 {
             width: 235px;
             height: 34px;
@@ -108,7 +122,7 @@
             color: rgba(245, 180, 0, 1);
             letter-spacing: 2px;
         }
-  
+
         .scoreContainer {
             .player {
                 display: flex;
@@ -120,20 +134,20 @@
                 border-radius: 6px;
                 margin-bottom: 15px;
                 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  
+
                 p {
                     // margin: auto 0;
                 }
-  
+
                 &:nth-child(even) {
                     background-color: rgba(60, 94, 223, 0.3);
                 }
-  
+
                 &:nth-child(odd) {
                     background-color: rgba(245, 180, 0, 0.3);
                 }
             }
-  
+
             .master,
             .grandmaster {
                 .player {
@@ -146,83 +160,4 @@
             }
         }
     }
-//     @media (max-width: 1450px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.95);
-//             transform-origin: left center;
-//         }
-//     }
-  
-//     @media (max-width: 1400px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.9);
-//             transform-origin: left center;
-//         }
-//     }
-  
-//     @media (max-width: 1350px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.85);
-//             transform-origin: left center;
-//         }
-//     }
-  
-//     @media (max-width: 1300px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.8);
-//             transform-origin: left center;
-//         }
-//     }
-  
-//     @media (max-width: 1250px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.75);
-//             transform-origin: left center;
-//         }
-//     }
-  
-//     @media (max-width: 1200px) {
-//         .leaderboardContainer {
-//             transform: scaleX(0.7);
-//             transform-origin: left center;
-//         }
-//     }
-// }
-
-
-// @media (max-width: 1450px) {
-//     .leaderboardContainer {
-//         transform: scale(0.95);
-//     }
-// }
-
-// @media (max-width: 1400px) {
-//     .leaderboardContainer {
-//         transform: scale(0.9);
-//     }
-// }
-
-// @media (max-width: 1350px) {
-//     .leaderboardContainer {
-//         transform: scale(0.85);
-//     }
-// }
-
-// @media (max-width: 1300px) {
-//     .leaderboardContainer {
-//         transform: scale(0.8);
-//     }
-// }
-
-// @media (max-width: 1250px) {
-//     .leaderboardContainer {
-//         transform: scale(0.75);
-//     }
-// }
-
-// @media (max-width: 1200px) {
-//     .leaderboardContainer {
-//         transform: scale(0.7);
-//     }
 }
-  
