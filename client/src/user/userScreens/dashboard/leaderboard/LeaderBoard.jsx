@@ -119,13 +119,15 @@ const Leaderboard = () => {
                 backgroundColor: index % 2 === 0 ? 'rgba(245, 180, 0, 0.3)' : 'rgba(60, 94, 223, 0.3)',
               }}
             >
-              <p>{index + 4}.</p> {/* Rank starts from 4 */}
+              <p>{index+4}</p>
               <p>{player.name}</p>
               <p>{player.points} pts</p>
-              <p>{getTitle(index + 4)}</p> {/* Rank starts from 4 */}
+              <p>{getTitle(index + 4)}</p> 
             </div>
           ))}
         </div>
+
+
       </div>
     </div>
   );
