@@ -1,15 +1,32 @@
-import React from 'react'
-import './Edit.scss'
+import React, { useState } from 'react';
+import './Edit.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Edit = () => {
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const toggleShowOldPassword = () => {
+    setShowOldPassword(!showOldPassword);
+  };
+
+  const toggleShowNewPassword = () => {
+    setShowNewPassword(!showNewPassword);
+  };
+
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="editMain">
       <h1>EDIT PROFILE</h1>
       <div className='editMainContainer'>
-
         <div className="updateContainer">
           <div className="updateform">
-          <form>
+            <form>
               <div className="smallForm">
                 <input className="smallInputField" type="text" name="firstname" placeholder="First Name*" required />
                 <input className="smallInputField" type="text" name="lastname" placeholder="Last Name*" required />
@@ -33,38 +50,52 @@ const Edit = () => {
               <div className="passwordField">
                 <input
                   className="inputField"
-                  type="password"
-                  name="password"
+                  type={showOldPassword ? "text" : "password"}
+                  name="oldpassword"
                   placeholder="Old Password*"
                   required
                 />
-                </div>
-                <div className="passwordField">
+                <FontAwesomeIcon
+                  icon={showOldPassword ? faEyeSlash : faEye}
+                  onClick={toggleShowOldPassword}
+                  className="passwordToggleIcon"
+                />
+              </div>
+              <div className="passwordField">
                 <input
                   className="inputField"
-                  type="password"
-                  name="password"
+                  type={showNewPassword ? "text" : "password"}
+                  name="newpassword"
                   placeholder="New Password*"
                   required
                 />
-                </div>
-                <div className="passwordField">
+                <FontAwesomeIcon
+                  icon={showNewPassword ? faEyeSlash : faEye}
+                  onClick={toggleShowNewPassword}
+                  className="passwordToggleIcon"
+                />
+              </div>
+              <div className="passwordField">
                 <input
                   className="inputField"
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   name="confirmpassword"
                   placeholder="Confirm Password*"
                   required
+                />
+                <FontAwesomeIcon
+                  icon={showConfirmPassword ? faEyeSlash : faEye}
+                  onClick={toggleShowConfirmPassword}
+                  className="passwordToggleIcon"
                 />
               </div>
             </form>
           </div>
           <button>CHANGE</button>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Edit
+export default Edit;

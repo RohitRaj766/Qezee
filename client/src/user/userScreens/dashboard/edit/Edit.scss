@@ -7,7 +7,7 @@
     align-items: center;
     margin-left: 250px;
 
-    h1{
+    h1 {
         height: 34px;
         width: 197px;
         font-size: 25px;
@@ -20,11 +20,11 @@
         gap: 80px;
         margin-top: 30px;
 
-        .updateContainer, .changeContainer { 
-            width:500px;
+        .updateContainer, .changeContainer {
+            width: 500px;
             display: flex;
             flex-direction: column;
-            // align-items: center;
+            
             .updateform, .changeform {
                 height: 400px;
                 overflow-y: auto;
@@ -51,7 +51,6 @@
         form {
             display: flex;
             flex-direction: column;
-            // align-items: flex-start;
             margin-left: 3px;
 
             .inputField,
@@ -100,6 +99,25 @@
                     margin-top: 12px;
                     margin-bottom: 15px;
                     margin-right: 10px;
+                }
+            }
+
+            .passwordField {
+                position: relative;
+                margin-bottom: 15px;
+
+                .inputField {
+                    width: 96.4%
+                    // padding-right: 2.5rem;
+                }
+
+                .passwordToggleIcon {
+                    position: absolute;
+                    top: 50%;
+                    right: 0.75rem;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    color: #8c8c8c;
                 }
             }
         }
