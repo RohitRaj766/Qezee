@@ -58,8 +58,8 @@ const Edit = () => {
                 />
               </div>
             </form>
-            <button>CHANGE</button>
           </div>
+          <button>CHANGE</button>
         </div>
 
       </div>

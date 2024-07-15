@@ -10,17 +10,21 @@
     h1{
         height: 34px;
         width: 197px;
-        font-size: 22px;
+        font-size: 25px;
+        align-self: flex-start;
+        margin-left: 75px;
     }
 
     .editMainContainer {
         display: flex;
         gap: 80px;
+        margin-top: 30px;
 
-        .updateContainer, .changeContainer {
-            width: 100%; // Ensure both containers have the same width
-            width:500px; // Set a max width if needed for both containers
-
+        .updateContainer, .changeContainer { 
+            width:500px;
+            display: flex;
+            flex-direction: column;
+            // align-items: center;
             .updateform, .changeform {
                 height: 400px;
                 overflow-y: auto;
@@ -114,6 +118,7 @@
             font-family: $primary-font;
             letter-spacing: 3px;
             font-weight: 500;
+            margin: 1rem auto;
 
             &:hover {
                 background-color: darken(#F5B400, 1%);
