@@ -16,6 +16,7 @@ const Edit = () => {
     lastname: '',
     course: '',
     branch: '',
+    semester: '',
     university: '',
     college: '',
     enrollment: '',
@@ -71,16 +72,17 @@ const Edit = () => {
       return;
     }
 
-    // Submit the form or handle further actions
+
     console.log('Form submitted successfully', sanitizedUserData);
     setErrorValidator('');
   };
 
   return (
     <div className="editMain">
-      <h1>EDIT PROFILE</h1>
+      
       <div className="editMainContainer">
         <div className="updateContainer">
+        <h1>EDIT PROFILE</h1>
           <div className="updateform">
             <form onSubmit={handleSubmit}>
               <div className="smallForm">
@@ -127,6 +129,15 @@ const Edit = () => {
               <input
                 className="inputField"
                 type="text"
+                name="semester"
+                placeholder="Semester*"
+                value={formData.semester}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                className="inputField"
+                type="text"
                 name="university"
                 placeholder="University*"
                 value={formData.university}
@@ -151,7 +162,7 @@ const Edit = () => {
                 onChange={handleInputChange}
                 required
               />
-                            <div className="genderField">
+                <div className="genderField">
                 <label>
                   <input
                     type="radio"
