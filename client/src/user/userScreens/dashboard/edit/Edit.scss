@@ -8,26 +8,27 @@
   margin-left: 250px;
 
   h1 {
-    height: 34px;
-    width: 197px;
-    font-size: 25px;
+    height: 28px; // smaller height
+    width: 200px; // smaller width
+    font-size: 22px; // smaller font size
     align-self: flex-start;
-    margin-left: 75px;
+    margin-left: 40px;
+    letter-spacing: 3px;
   }
 
   .editMainContainer {
     display: flex;
-    gap: 80px;
-    margin-top: 30px;
+    gap: 60px; // reduced gap
+    margin-top: 20px; // smaller margin
   }
 
   .updateContainer, .changeContainer {
-    width: 500px;
+    width: 450px; // reduced width
     display: flex;
     flex-direction: column;
 
     .form {
-      height: 400px; // important
+      height: 350px; // smaller height
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
@@ -52,21 +53,21 @@
   form {
     display: flex;
     flex-direction: column;
-    margin-left: 3px;
+    // margin-left: 3px;
 
     .inputField,
     .smallInputField {
       color: rgb(130, 131, 137);
-      letter-spacing: 4px;
+      letter-spacing: 3px; // reduced letter spacing
       box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
       background-color: #F7F6F6;
       border-radius: 0.25rem;
       border: none;
       font-family: $primary-font;
-      font-size: 1.1rem;
+      font-size: 1rem; // smaller font size
 
       &::placeholder {
-        letter-spacing: 4px;
+        letter-spacing: 3px; // reduced letter spacing
         color: rgb(130, 131, 137);
       }
 
@@ -81,34 +82,34 @@
     }
 
     .inputField {
-      width: 95%;
-      height: 4rem;
+      // width: 90%; // smaller width
+      height: 3.5rem; // smaller height
       padding: 0 0.5rem;
-      margin-top: 12px;
-      margin-bottom: 15px;
+      margin-top: 10px; // reduced margin
+      margin-bottom: 12px; // reduced margin
     }
 
     .smallForm {
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      width: 102%;
 
       .smallInputField {
-        width: 46%;
-        height: 4rem;
+        width: 43%; // smaller width
+        height: 3.5rem; // smaller height
         padding-left: 0.5rem;
-        margin-top: 12px;
-        margin-bottom: 15px;
-        margin-right: 20px;
+        margin-top: 10px; // reduced margin
+        margin-bottom: 12px; // reduced margin
+        margin-right: 10px;
       }
     }
 
     .genderField {
-      width: 93%;
+      width: 90%; // smaller width
       display: flex;
       justify-content: space-between;
-      margin-top: 12px;
-      margin-bottom: 15px;
+      margin-top: 10px; // reduced margin
+      margin-bottom: 12px; // reduced margin
       color: #8c8c8c;
 
       label {
@@ -120,35 +121,31 @@
         }
 
         img {
-          width: 40px; 
-          height: 40px; 
-          margin-right: 5px;
-          
-          
+          width: 30px; // smaller width
+          height: 30px; // smaller height
+          margin-right: 5px;        
         }
 
-        
-            .maleIcon{
-                width: 25px;
-                height: 25px;
-            }
-        
+        .maleIcon {
+          width: 20px; // smaller width
+          height: 20px; // smaller height
+        }
       }
     }
 
     .passwordField {
       position: relative;
-      margin-bottom: 15px;
+      margin-bottom: 12px; // reduced margin
 
       .inputField {
-        width: 96.4%;
+        width: 90%; // smaller width
       }
 
       .passwordToggleIcon {
         position: absolute;
         top: 50%;
-        right: 0.75rem;
-        transform: translateY(-50%);
+        right: 0.5rem; // smaller right position
+        transform: translate(-180%, -60%);
         cursor: pointer;
         color: #8c8c8c;
       }
@@ -158,16 +155,16 @@
   button {
     @include button;
     background-color: #F5B400;
-    height: 2.5rem;
-    width: 100%;
-    max-width: 9rem;
+    height: 2rem; // smaller height
+    width: 90%; // smaller width
+    max-width: 8rem; // smaller max-width
     border-radius: 0.25rem;
     color: #F4F4F4;
-    font-size: 1rem;
+    font-size: 0.9rem; // smaller font size
     box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25);
     margin-top: 1rem;
     font-family: $primary-font;
-    letter-spacing: 3px;
+    letter-spacing: 2px; // reduced letter spacing
     font-weight: 500;
     margin: 1rem auto;
 
