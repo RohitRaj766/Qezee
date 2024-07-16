@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import './Edit.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import male from '../../../assets/images/male.svg';
+import female from '../../../assets/images/female.svg';
+import other from '../../../assets/images/other.svg';
+
 
 const Edit = () => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [gender, setGender] = useState('');
 
   const toggleShowOldPassword = () => {
     setShowOldPassword(!showOldPassword);
@@ -20,6 +25,10 @@ const Edit = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+
   return (
     <div className="editMain">
       <h1>EDIT PROFILE</h1>
@@ -31,7 +40,36 @@ const Edit = () => {
                 <input className="smallInputField" type="text" name="firstname" placeholder="First Name*" required />
                 <input className="smallInputField" type="text" name="lastname" placeholder="Last Name*" required />
               </div>
-              <input className="inputField" type="email" name="email" placeholder="Email*" required />
+              
+              <div className="genderField">
+                <label>
+                  <input
+                    type="radio"
+                    value="male"
+                    checked={gender === 'male'}
+                    onChange={handleGenderChange}
+                  />
+                  Male
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="female"
+                    checked={gender === 'female'}
+                    onChange={handleGenderChange}
+                  />
+                  Female
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="other"
+                    checked={gender === 'other'}
+                    onChange={handleGenderChange}
+                  />
+                  Other
+                </label>
+              </div>
               <div className="smallForm">
                 <input className="smallInputField" type="text" name="course" placeholder="Course*" required />
                 <input className="smallInputField" type="text" name="branch" placeholder="Branch*" required />
