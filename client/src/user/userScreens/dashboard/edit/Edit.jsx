@@ -104,38 +104,6 @@ const Edit = () => {
                 />
               </div>
 
-              <div className="genderField">
-                <label>
-                  <input
-                    type="radio"
-                    value="male"
-                    checked={gender === 'male'}
-                    onChange={handleGenderChange}
-                  />
-                  <img src={male} alt="Male" className='maleIcon' />
-                  Male
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="female"
-                    checked={gender === 'female'}
-                    onChange={handleGenderChange}
-                  />
-                  <img src={female} alt="Female" />
-                  Female
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="other"
-                    checked={gender === 'other'}
-                    onChange={handleGenderChange}
-                  />
-                  <img src={other} alt="Other" />
-                  Other
-                </label>
-              </div>
               <div className="smallForm">
                 <input
                   className="smallInputField"
@@ -183,6 +151,38 @@ const Edit = () => {
                 onChange={handleInputChange}
                 required
               />
+                            <div className="genderField">
+                <label>
+                  <input
+                    type="radio"
+                    value="male"
+                    checked={gender === 'male'}
+                    onChange={handleGenderChange}
+                  />
+                  <img src={male} alt="Male" className='maleIcon' />
+                  Male
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="female"
+                    checked={gender === 'female'}
+                    onChange={handleGenderChange}
+                  />
+                  <img src={female} alt="Female" />
+                  Female
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    value="other"
+                    checked={gender === 'other'}
+                    onChange={handleGenderChange}
+                  />
+                  <img src={other} alt="Other" />
+                  Other
+                </label>
+              </div>
             </form>
           </div>
           <button type="submit" onClick={handleSubmit}>UPDATE</button>
