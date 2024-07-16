@@ -188,6 +188,8 @@ const Edit = () => {
           <button type="submit" onClick={handleSubmit}>UPDATE</button>
         </div>
 
+        <div className="divider"></div> 
+
         <div className="changeContainer">
           <div className="changeform">
             <form>

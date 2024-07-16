@@ -5,30 +5,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 250px;
+  margin-left: 280px;
 
   h1 {
-    height: 28px; // smaller height
-    width: 200px; // smaller width
-    font-size: 22px; // smaller font size
+    height: 28px; 
+    width: 200px; 
+    font-size: 22px; 
     align-self: flex-start;
-    margin-left: 40px;
+    margin-left: 107px;
+    margin-top: 25px;
     letter-spacing: 3px;
   }
 
   .editMainContainer {
     display: flex;
-    gap: 60px; // reduced gap
-    margin-top: 20px; // smaller margin
+    gap: 60px; 
+    margin-top: 10px; 
   }
 
   .updateContainer, .changeContainer {
-    width: 450px; // reduced width
+    width: 450px; 
     display: flex;
     flex-direction: column;
 
     .form {
-      height: 350px; // smaller height
+      height: 350px; 
       overflow-y: auto;
       overflow-x: hidden;
       display: flex;
@@ -53,21 +54,21 @@
   form {
     display: flex;
     flex-direction: column;
-    // margin-left: 3px;
+   
 
     .inputField,
     .smallInputField {
       color: rgb(130, 131, 137);
-      letter-spacing: 3px; // reduced letter spacing
+      letter-spacing: 3px; 
       box-shadow: -0.005rem 0.125rem 0.325rem 0.005rem rgba(12, 12, 12, 0.25);
       background-color: #F7F6F6;
       border-radius: 0.25rem;
       border: none;
       font-family: $primary-font;
-      font-size: 1rem; // smaller font size
+      font-size: 1rem; 
 
       &::placeholder {
-        letter-spacing: 3px; // reduced letter spacing
+        letter-spacing: 3px; 
         color: rgb(130, 131, 137);
       }
 
@@ -82,11 +83,10 @@
     }
 
     .inputField {
-      // width: 90%; // smaller width
-      height: 3.5rem; // smaller height
+      height: 3.5rem; 
       padding: 0 0.5rem;
-      margin-top: 10px; // reduced margin
-      margin-bottom: 12px; // reduced margin
+      margin-top: 10px; 
+      margin-bottom: 12px; 
     }
 
     .smallForm {
@@ -95,21 +95,21 @@
       width: 102%;
 
       .smallInputField {
-        width: 43%; // smaller width
-        height: 3.5rem; // smaller height
+        width: 43%; 
+        height: 3.5rem; 
         padding-left: 0.5rem;
-        margin-top: 10px; // reduced margin
-        margin-bottom: 12px; // reduced margin
+        margin-top: 10px; 
+        margin-bottom: 12px; 
         margin-right: 10px;
       }
     }
 
     .genderField {
-      width: 90%; // smaller width
+      width: 90%; 
       display: flex;
       justify-content: space-between;
-      margin-top: 10px; // reduced margin
-      margin-bottom: 12px; // reduced margin
+      margin-top: 10px; 
+      margin-bottom: 12px; 
       color: #8c8c8c;
 
       label {
@@ -121,50 +121,51 @@
         }
 
         img {
-          width: 30px; // smaller width
-          height: 30px; // smaller height
+          width: 30px; 
+          height: 30px; 
           margin-right: 5px;        
         }
 
         .maleIcon {
-          width: 20px; // smaller width
-          height: 20px; // smaller height
+          width: 20px; 
+          height: 20px; 
         }
       }
     }
 
     .passwordField {
       position: relative;
-      margin-bottom: 12px; // reduced margin
+      margin-bottom: 12px; 
 
       .inputField {
-        width: 90%; // smaller width
+        width: 90%; 
       }
 
       .passwordToggleIcon {
         position: absolute;
         top: 50%;
-        right: 0.5rem; // smaller right position
+        right: 0.5rem; 
         transform: translate(-180%, -60%);
         cursor: pointer;
         color: #8c8c8c;
       }
     }
   }
+  
 
   button {
     @include button;
     background-color: #F5B400;
-    height: 2rem; // smaller height
-    width: 90%; // smaller width
-    max-width: 8rem; // smaller max-width
+    height: 2rem; 
+    width: 90%; 
+    max-width: 8rem; 
     border-radius: 0.25rem;
     color: #F4F4F4;
-    font-size: 0.9rem; // smaller font size
+    font-size: 0.9rem; 
     box-shadow: 0 0.25rem 0.375rem 0 rgba(12, 12, 12, 0.25);
     margin-top: 1rem;
     font-family: $primary-font;
-    letter-spacing: 2px; // reduced letter spacing
+    letter-spacing: 2px;
     font-weight: 500;
     margin: 1rem auto;
 
@@ -173,5 +174,9 @@
       color: lighten(#F4F4F4, 10%);
       box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
     }
+  }
+  .divider {
+    width: 4px; 
+    background-color: rgb(130, 131, 137); 
   }
 }
