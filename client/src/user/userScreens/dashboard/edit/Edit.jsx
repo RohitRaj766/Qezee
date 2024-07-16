@@ -6,7 +6,6 @@ import male from '../../../assets/images/male.svg';
 import female from '../../../assets/images/female.svg';
 import other from '../../../assets/images/other.svg';
 
-
 const Edit = () => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -32,7 +31,7 @@ const Edit = () => {
   return (
     <div className="editMain">
       <h1>EDIT PROFILE</h1>
-      <div className='editMainContainer'>
+      <div className="editMainContainer">
         <div className="updateContainer">
           <div className="updateform">
             <form>
@@ -40,7 +39,7 @@ const Edit = () => {
                 <input className="smallInputField" type="text" name="firstname" placeholder="First Name*" required />
                 <input className="smallInputField" type="text" name="lastname" placeholder="Last Name*" required />
               </div>
-              
+
               <div className="genderField">
                 <label>
                   <input
@@ -49,6 +48,7 @@ const Edit = () => {
                     checked={gender === 'male'}
                     onChange={handleGenderChange}
                   />
+                  <img src={male} alt="Male" className='maleIcon' />
                   Male
                 </label>
                 <label>
@@ -58,6 +58,7 @@ const Edit = () => {
                     checked={gender === 'female'}
                     onChange={handleGenderChange}
                   />
+                  <img src={female} alt="Female" />
                   Female
                 </label>
                 <label>
@@ -67,6 +68,7 @@ const Edit = () => {
                     checked={gender === 'other'}
                     onChange={handleGenderChange}
                   />
+                  <img src={other} alt="Other" />
                   Other
                 </label>
               </div>
