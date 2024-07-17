@@ -7,7 +7,7 @@
         letter-spacing: 3px;
     }
     .quizWrapper{
-        height: 541px;
+        height: 650px;
         width: 1000px;
         background-color: rgba(249, 249, 249, 1);
         border-radius: 8px;
@@ -37,14 +37,20 @@
                 .quiz{
                     display: grid;
                     grid-template-columns: repeat(4, 1fr); 
-                    justify-content: center;
                     align-items: center;
-                    margin: 15px 15px;
-                    padding: 5px; 
+                    margin: 15px 10px;
+                    padding: 10px; 
                     border-radius: 6px;
                     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                    background-color: rgba(245, 180, 0, 0.3); 
 
-                    
+                    p {
+                        margin: 0;
+                        padding: 5px 10px; 
+                        white-space: nowrap; 
+                        overflow: hidden;
+                        text-overflow: ellipsis; 
+                    }
                     
 
                     &:nth-child(even) {
@@ -85,12 +91,20 @@
                 .quiz{
                     display: grid;
                     grid-template-columns: repeat(4, 1fr); 
-                    justify-content: center;
                     align-items: center;
-                    margin: 15px 15px;
-                    padding: 5px; 
+                    margin: 15px 10px;
+                    padding: 10px; 
                     border-radius: 6px;
                     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                    background-color: rgba(245, 180, 0, 0.3); 
+
+                    p {
+                        margin: 0;
+                        padding: 5px 10px; 
+                        white-space: nowrap; 
+                        overflow: hidden;
+                        text-overflow: ellipsis; 
+                    }
                     
 
                     &:nth-child(odd) {
