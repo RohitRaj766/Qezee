@@ -12,7 +12,10 @@ import {
   VERIFY_OTP_REQUEST,
   VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS,
   VERIFY_TOKEN_HANDLE_REFRESH_FAILURE,
-  VERIFY_TOKEN_HANDLE_REFRESH_REQUEST
+  VERIFY_TOKEN_HANDLE_REFRESH_REQUEST,
+  FETCH_LEADERBOARD_REQUEST,
+  FETCH_LEADERBOARD_SUCCESS,
+  FETCH_LEADERBOARD_FAILURE
 } from '../actions/index';
 
 const initialState = {
@@ -22,7 +25,8 @@ const initialState = {
   signupMessage: null,
   otpMessage: null,
   otpError: null,
-  isLoading: false
+  isLoading: false,
+  leaderboardData: []
 };
 
 const userauthReducer = (state = initialState, action) => {
@@ -48,11 +52,11 @@ const userauthReducer = (state = initialState, action) => {
         isLoading:false,
         error: action.payload
       };
-      case SIGNUP_REQUEST:
-        return {
-          ...state,
-          isLoading:true
-        };
+    case SIGNUP_REQUEST:
+      return {
+        ...state,
+        isLoading:true
+      };
     case SIGNUP_SUCCESS:
       return {
         ...state,
@@ -67,11 +71,11 @@ const userauthReducer = (state = initialState, action) => {
         isLoading:false,
         error: action.payload
       };
-      case VERIFY_OTP_REQUEST:
-        return {
-          ...state,
-          isLoading:true
-        };
+    case VERIFY_OTP_REQUEST:
+      return {
+        ...state,
+        isLoading:true
+      };
     case VERIFY_OTP_SUCCESS:
       return {
         ...state,
@@ -86,34 +90,52 @@ const userauthReducer = (state = initialState, action) => {
         isLoading:false,
         otpError: action.payload
       };
-      case LOGOUT_SUCCESS:
-        return {
-          ...state,
-          isAuthenticated:false
-        };
-      case LOGOUT_FAILURE:
-        return {
-          ...state,
-        };
-        case VERIFY_TOKEN_HANDLE_REFRESH_REQUEST:
-          return {
-            ...state,
-            isLoading:true
-          };
-        case VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS:
-          return {
-            ...state,
-            isAuthenticated: true,
-            isLoading:false,
-            user: action.payload.user
-          };
-        case VERIFY_TOKEN_HANDLE_REFRESH_FAILURE:
-          return {
-            ...state,
-            isAuthenticated: false,
-            isLoading:false,
-            user: action.payload.user
-          };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated:false
+      };
+    case LOGOUT_FAILURE:
+      return {
+        ...state,
+      };
+    case VERIFY_TOKEN_HANDLE_REFRESH_REQUEST:
+      return {
+        ...state,
+        isLoading:true
+      };
+    case VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        isLoading:false,
+        user: action.payload.user
+      };
+    case VERIFY_TOKEN_HANDLE_REFRESH_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        isLoading:false,
+        user: action.payload.user
+      };
+    case FETCH_LEADERBOARD_REQUEST:
+      return {
+        ...state,
+          isLoading: true
+      };
+    case FETCH_LEADERBOARD_SUCCESS:
+      return {
+        ...state,
+          isLoading: false,
+          leaderboardData: action.payload,
+          error: null
+      };
+    case FETCH_LEADERBOARD_FAILURE:
+      return {
+        ...state,
+          isLoading: false,
+          error: action.payload
+      };
     default:
       return state;
   }

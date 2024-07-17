@@ -1,147 +1,72 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeaderboardRequest } from '../../../../actions';
-import { getLeaderboardLoading, getLeaderboardData, getLeaderboardError } from '../../../../selectors';
-import './LeaderBoard.scss'
+import './LeaderBoard.scss';
 import first from '../../../assets/images/first.svg';
 import second from '../../../assets/images/second.svg';
 import third from '../../../assets/images/third.svg';
 
-const players = [
-  { name: 'Rohit', points: 120, enrollment: 'Aju/220501' },
-  { name: 'Deepak', points: 420, enrollment: 'Aju/220502' },
-  { name: 'Mohit', points: 240, enrollment: 'Aju/220503' },
-  { name: 'Ankit', points: 340, enrollment: 'Aju/220504' },
-  { name: 'Suman', points: 150, enrollment: 'Aju/220505' },
-  { name: 'Neha', points: 270, enrollment: 'Aju/220506' },
-  { name: 'Arjun', points: 300, enrollment: 'Aju/220507' },
-  { name: 'Nikita', points: 590, enrollment: 'Aju/220508' },
-  { name: 'Amit', points: 220, enrollment: 'Aju/220509' },
-  { name: 'Vikram', points: 260, enrollment: 'Aju/220510' },
-];
+const images = [first, second, third];
+const getImage = (rank) => images[rank] || null;
 
-const sortedPlayers = players.sort((a, b) => b.points - a.points);
-
-const getTitle = (rank) => {
-  if (rank === 1) return 'Grand Master';
-  if (rank === 2) return 'Master';
-  if (rank === 3) return 'Sergeant';
-  return 'Warrior';
-};
-
-const getImage = (rank) => {
-  if (rank === 1) return first;
-  if (rank === 2) return second;
-  if (rank === 3) return third;
-  return null;
-};
+const PlayerCard = ({ rank, player }) => (
+  <div className={`playerCard}`}>
+    <div className="upper">
+      <img src={getImage(rank)} alt="" />
+      <p className="title">{player.reputation}</p>
+    </div>
+    <div className="lower">
+      <p className="name">{player.firstname +" "+ player.lastname }</p>
+      <p className="points">{player.totalCorrect} pts</p>
+      <p className="enrollment">{player.enrollment}</p>
+    </div>
+  </div>
+);
 
 const Leaderboard = () => {
-  // const dispatch = useDispatch();
-  // const loading = useSelector(getLeaderboardLoading);
-  // const data = useSelector(getLeaderboardData);
-  // const error = useSelector(getLeaderboardError);
-
-  // useEffect(() => {
-  //   dispatch(fetchLeaderboardRequest());
-  // }, [dispatch]);
+  const dispatch = useDispatch();
+  const data = useSelector((state)=>state.auth.leaderboardData);
+  useEffect(() => {
+    dispatch(fetchLeaderboardRequest());
+  }, [dispatch]);
 
   return (
     <div className="leaderboardContainer">
       <div className="standings">
         <h1>LEADER BOARD</h1>
         <div className="cardContainer">
-
-          <div className="master">
-            <div className="upper">
-              <img src={getImage(2)} alt="" />
-              <p className="title">Master</p>
-            </div>
-            <div className="lower">
-              <p className="name">{sortedPlayers[1].name}</p>
-              <p className="points">{sortedPlayers[1].points} pts</p>
-              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
-              <p className="name">{sortedPlayers[1].name}</p>
-              <p className="points">{sortedPlayers[1].points} pts</p>
-              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
-              <p className="name">{sortedPlayers[1].name}</p>
-              <p className="points">{sortedPlayers[1].points} pts</p>
-              <p className="enrollment">{sortedPlayers[1].enrollment}</p>
-            </div>
-          </div>
-
-          <div className="grandmaster">
-            <div className="upper">
-              <img src={getImage(1)} alt="" />
-              <p className="title">Grand Master</p>
-            </div>
-            <div className="lower">
-                  <p className="name">{sortedPlayers[0].name}</p>
-                  <p className="points">{sortedPlayers[0].points} pts</p>
-                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
-                  <p className="name">{sortedPlayers[0].name}</p>
-                  <p className="points">{sortedPlayers[0].points} pts</p>
-                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
-                  <p className="name">{sortedPlayers[0].name}</p>
-                  <p className="points">{sortedPlayers[0].points} pts</p>
-                  <p className="enrollment">{sortedPlayers[0].enrollment}</p>
-            </div>
-          </div>
-
-          <div className="sergeant">
-            <div className="upper">
-              <img src={getImage(3)} alt="" />
-              <p className="title">Sergeant</p>
-            </div>
-            <div className="lower">
-              <p className="name">{sortedPlayers[2].name}</p>
-              <p className="points">{sortedPlayers[2].points} pts</p>
-              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
-              <p className="name">{sortedPlayers[2].name}</p>
-              <p className="points">{sortedPlayers[2].points} pts</p>
-              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
-              <p className="name">{sortedPlayers[2].name}</p>
-              <p className="points">{sortedPlayers[2].points} pts</p>
-              <p className="enrollment">{sortedPlayers[2].enrollment}</p>
-            </div>
-          </div>
+          {data.slice(0, 3).map((player, index) => (
+            <PlayerCard key={player.enrollment} rank={index} player={player} />
+          ))}
         </div>
       </div>
-
       <div className="scores">
         <h1>Top Performance</h1>
         <div className="scoreContainer">
-          {sortedPlayers.slice(3).map((player, index) => (
-            <div
-              key={index}
-              className="player"
-            >
-              <p>{index+4}</p>
-              <p>{player.name}</p>
-              <p>{player.points} pts</p>
-              <p>{getTitle(index + 4)}</p> 
-            </div>
-          ))}
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Points</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.slice(3).map((player, index) => (
+                <tr key={player.enrollment}>
+                  <td>{index + 4}</td>
+                  <td>{player.firstname +" "+player.lastname}</td>
+                  <td>{player.totalCorrect} pts</td>
+                  <td>{player.reputation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-
       </div>
     </div>
   );
 };
 
 export default Leaderboard;
-
-
-
-    // <div>
-    //   {loading && <p>Loading...</p>}
-    //   {error && <p>Error: {error}</p>}
-    //   {data && (
-    //     <ul>
-    //       {data.map((user, index) => (
-    //         <li key={index}>{user.firstname}: {user.totalCorrect} {user.reputation}</li>
-    //       ))}
-    //     </ul>
-    //   )}
-    // </div>
