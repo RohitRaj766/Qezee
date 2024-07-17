@@ -10,13 +10,13 @@ const images = [first, second, third];
 const getImage = (rank) => images[rank] || null;
 
 const PlayerCard = ({ rank, player }) => (
-  <div className={`playerCard}`}>
+  <div className={`playerCard ${rank === 1 ? 'grandmaster' : rank === 2 ? 'master' : 'sergeant'}`}>
     <div className="upper">
       <img src={getImage(rank)} alt="" />
       <p className="title">{player.reputation}</p>
     </div>
     <div className="lower">
-      <p className="name">{player.firstname +" "+ player.lastname }</p>
+      <p className="name">{player.firstname + " " + player.lastname}</p>
       <p className="points">{player.totalCorrect} pts</p>
       <p className="enrollment">{player.enrollment}</p>
     </div>
@@ -25,7 +25,7 @@ const PlayerCard = ({ rank, player }) => (
 
 const Leaderboard = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state)=>state.auth.leaderboardData);
+  const data = useSelector((state) => state.auth.leaderboardData);
   useEffect(() => {
     dispatch(fetchLeaderboardRequest());
   }, [dispatch]);
@@ -43,27 +43,29 @@ const Leaderboard = () => {
       <div className="scores">
         <h1>Top Performance</h1>
         <div className="scoreContainer">
-          <table>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Points</th>
-                <th>Title</th>
+        <table>
+          <thead>
+            <tr className="header">
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Points</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.slice(3).map((player, index) => (
+              <tr key={player.enrollment} className="player">
+                <td>{index + 4}</td>
+                <td>{player.firstname + " " + player.lastname}</td>
+                <td>{player.totalCorrect} pts</td>
+                <td>{player.reputation}</td>
               </tr>
-            </thead>
-            <tbody>
-              {data.slice(3).map((player, index) => (
-                <tr key={player.enrollment}>
-                  <td>{index + 4}</td>
-                  <td>{player.firstname +" "+player.lastname}</td>
-                  <td>{player.totalCorrect} pts</td>
-                  <td>{player.reputation}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+
       </div>
     </div>
   );
