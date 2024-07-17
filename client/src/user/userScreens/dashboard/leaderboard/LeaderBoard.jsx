@@ -44,28 +44,39 @@ const Leaderboard = () => {
         <h1>Top Performance</h1>
         <div className="scoreContainer">
         <table>
-          <thead>
+          <thead className='tablehead'>
+            <tr className='head'>
+            <th>Rank</th>
+            </tr>
             <tr className="header">
-              <th>Rank</th>
               <th>Name</th>
               <th>Points</th>
               <th>Title</th>
             </tr>
           </thead>
           <tbody>
-            {data.slice(3).map((player, index) => (
-              <tr key={player.enrollment} className="player">
-                <td>{index + 4}</td>
-                <td>{player.firstname + " " + player.lastname}</td>
-                <td>{player.totalCorrect} pts</td>
-                <td>{player.reputation}</td>
-              </tr>
-            ))}
+            <tr className='tablerow'>
+              <td>
+                {data.slice(3).map((player, index) => (
+                  <tr key={player.enrollment} className="play">
+                    <td>{index + 4}</td>
+                  </tr>
+                ))}
+              </td>
+
+              <td>
+                {data.slice(3).map((player, index) => (
+                  <tr key={player.enrollment} className="player">
+                    <td>{player.firstname + " " + player.lastname}</td>
+                    <td>{player.totalCorrect} pts</td>
+                    <td>{player.reputation}</td>
+                  </tr>
+                  ))}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
-
-
       </div>
     </div>
   );
