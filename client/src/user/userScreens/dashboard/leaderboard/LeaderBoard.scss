@@ -27,30 +27,33 @@
             .master,
             .grandmaster,
             .sergeant {
-                height: 140px;
-                width: 280px;
+                height: 180px;
+                width: 320px;
                 background-color: rgba(247, 246, 246, 1);
                 border-radius: 6px;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-                margin-left: 20px; 
+                margin-left: 20px;
+                padding-left: 20px; 
+                font-size: 17px;
             
 
                 .upper {
                     display: flex;
                     gap: 5px;
-                    margin-left: 10px;
+                    margin-left: 15px;
 
                     img {
-                        margin-top: -44px;
-                        height: 80px;
-                        width: 80px;
+                        margin-top: -60px;
+                        height: 100px;
+                        width: 100px;
+                        margin-left: -15px;
                     }
 
                     .title {
                         font-size: 22px;
                         color: rgba(245, 180, 0, 1);
                         margin-top: 10px;
-                        margin-left: 0px;
+                        margin-left: -20px;
                     }
                 }
 
@@ -60,8 +63,8 @@
                     grid-template-columns: auto auto;
                     align-items: center;
                     gap: 20px; 
-                    margin-left: 10px; 
-                    margin-top: -10px; 
+                    margin-left: 15px; 
+                    margin-top: 10px; 
                     overflow-y: auto; 
                     max-height: 80px; 
 
