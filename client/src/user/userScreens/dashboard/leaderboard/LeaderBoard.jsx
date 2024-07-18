@@ -33,7 +33,6 @@ const Leaderboard = () => {
   return (
     <div className="leaderboardContainer">
       <div className="standings">
-        <h1>LEADER BOARD</h1>
         <div className="cardContainer">
           {data.slice(0, 3).map((player, index) => (
             <PlayerCard key={player.enrollment} rank={index} player={player} />
