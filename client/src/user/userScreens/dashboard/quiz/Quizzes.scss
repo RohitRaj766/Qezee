@@ -1,0 +1,224 @@
+.quizContainer {
+    margin-left: 350px;
+
+    h1 {
+        height: 34px;
+        width: 123px;
+        font-size: 21px;
+        letter-spacing: 3px;
+    }
+
+    .quizWrapper {
+        height: 650px;
+        width: 1000px;
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 8px;
+        padding: 20px;  // Added padding to give space around content
+
+        .liveQuizContainer, .prevQuizContainer {
+            margin-bottom: 20px;
+            height: 300px;
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background-color: #c8c8c888;
+                border-radius: 10px;
+            }
+        
+            &::-webkit-scrollbar-track {
+                background-color: #f7f6f6;
+                border-radius: 10px;
+            }
+
+            h2 {
+                font-size: 20px;
+                letter-spacing: 3px;
+                color: rgba(245, 180, 0, 1);
+            }
+        }
+
+        .divider {
+            border: 1px black solid;
+            margin: 20px 0; // Adjust margin to space out sections
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            tr:nth-child(odd) {
+                background-color: rgba(245, 180, 0, 0.3);
+            }
+
+            tr:nth-child(even) {
+                background-color: rgba(60, 94, 223, 0.3);
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            th {
+                background-color: #f4f4f4;
+            }
+
+            th:first-child, td:first-child { // Title column
+                text-align: left; // Left align text in the first column
+            }
+
+            th:not(:first-child), td:not(:first-child) { // All columns except the first one
+                text-align: center; // Center align text in other columns
+            }
+
+            td {
+                button {
+                    background-color: rgba(245, 180, 0, 1);
+                    height: 29px;
+                    width: 119px;
+                    color: white;
+                    border: none;
+                    text-decoration: none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .quizContainer{
+//     margin-left: 350px;
+//     h1{
+//         height: 34px;
+//         width: 123px;
+//         font-size: 21px;
+//         letter-spacing: 3px;
+//     }
+//     .quizWrapper{
+//         height: 650px;
+//         width: 1000px;
+//         background-color: rgba(249, 249, 249, 1);
+//         border-radius: 8px;
+//         .liveQuizContainer{
+//             h2{
+//                 font-size: 20px;
+//                 letter-spacing: 3px;
+//                 color: rgba(245, 180, 0, 1);
+//             }
+//             .liveQuizList{
+//                 height: 250px;
+//                 overflow-y: auto;
+//                 &::-webkit-scrollbar {
+//                     width: 8px;
+//                 }
+        
+//                 &::-webkit-scrollbar-thumb {
+//                     background-color: #c8c8c888;
+//                     border-radius: 10px;
+//                 }
+        
+//                 &::-webkit-scrollbar-track {
+//                     background-color: #f7f6f6;
+//                     border-radius: 10px;
+//                 }
+//                 .quiz{
+//                     display: grid;
+//                     grid-template-columns: repeat(4, 1fr); 
+//                     align-items: center;
+//                     margin: 15px 10px;
+//                     padding: 10px; 
+//                     border-radius: 6px;
+//                     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+//                     background-color: rgba(245, 180, 0, 0.3); 
+
+//                     p {
+//                         margin: 0;
+//                         padding: 5px 10px; 
+//                         white-space: nowrap; 
+//                         overflow: hidden;
+//                         text-overflow: ellipsis; 
+//                     }
+                    
+
+                    // &:nth-child(even) {
+                    //     background-color: rgba(245, 180, 0, 0.3);
+                    // }
+                    // &:nth-child(odd) {
+                    //     background-color: rgba(60, 94, 223, 0.3);
+                    // }
+//                 }
+//             }
+//         }
+//         .divider{
+//             border: 1px black solid;
+//         }
+//         .prevQuizContainer{
+//             h2{
+//                 font-size: 20px;
+//                 letter-spacing: 3px;
+//                 color: rgba(245, 180, 0, 1);
+//             }
+//             .prevQuizList{
+//                 height: 250px;
+//                 overflow-y: auto;
+
+//                 &::-webkit-scrollbar {
+//                     width: 8px;
+//                 }
+        
+//                 &::-webkit-scrollbar-thumb {
+//                     background-color: #c8c8c888;
+//                     border-radius: 10px;
+//                 }
+        
+//                 &::-webkit-scrollbar-track {
+//                     background-color: #f7f6f6;
+//                     border-radius: 10px;
+//                 }
+                
+//                 .quiz{
+//                     display: grid;
+//                     grid-template-columns: repeat(4, 1fr); 
+//                     align-items: center;
+//                     margin: 15px 10px;
+//                     padding: 10px; 
+//                     border-radius: 6px;
+//                     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+//                     background-color: rgba(245, 180, 0, 0.3); 
+
+//                     p {
+//                         margin: 0;
+//                         padding: 5px 10px; 
+//                         white-space: nowrap; 
+//                         overflow: hidden;
+//                         text-overflow: ellipsis; 
+//                     }
+                    
+
+//                     &:nth-child(odd) {
+//                         background-color: rgba(245, 180, 0, 0.3);
+//                     }
+//                     &:nth-child(even) {
+//                         background-color: rgba(60, 94, 223, 0.3);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
