@@ -1,18 +1,18 @@
-import React from 'react';
-import './Quizzes.scss';
-const quizzes = [
-  { title: 'C-Programming', date: '12/2/24', startTime: '5:00pm', expiryTime: '6:00pm' },
-  { title: 'Java Basics', date: '13/2/24', startTime: '6:00pm', expiryTime: '7:00pm' },
-  { title: 'Python Fundamentals', date: '14/2/24', startTime: '7:00pm', expiryTime: '8:00pm' },
-  { title: 'Web Development', date: '15/2/24', startTime: '8:00pm', expiryTime: '9:00pm' },
-  { title: 'Data Structures', date: '16/2/24', startTime: '9:00pm', expiryTime: '10:00pm' },
-  { title: 'Algorithms', date: '17/2/24', startTime: '10:00am', expiryTime: '11:00am' },
-  { title: 'Databases', date: '18/2/24', startTime: '11:00am', expiryTime: '12:00pm' },
-  { title: 'Networking', date: '19/2/24', startTime: '12:00pm', expiryTime: '1:00pm' },
-  { title: 'Machine Learning', date: '20/2/24', startTime: '1:00pm', expiryTime: '2:00pm' },
-  { title: 'Artificial Intelligence', date: '21/2/24', startTime: '2:00pm', expiryTime: '3:00pm' }
-];
+import React from 'react'
+import './Quizzes.scss'
 
+const quizzes = [
+  { title: 'C-Programming', date: '12/2/24', time: '5:00pm' },
+  { title: 'Java Basics', date: '13/2/24', time: '6:00pm' },
+  { title: 'Python Fundamentals', date: '14/2/24', time: '7:00pm' },
+  { title: 'Web Development', date: '15/2/24', time: '8:00pm' },
+  { title: 'Data Structures', date: '16/2/24', time: '9:00pm' },
+  { title: 'Algorithms', date: '17/2/24', time: '10:00am' },
+  { title: 'Databases', date: '18/2/24', time: '11:00am' },
+  { title: 'Networking', date: '19/2/24', time: '12:00pm' },
+  { title: 'Machine Learning', date: '20/2/24', time: '1:00pm' },
+  { title: 'Artificial Intelligence', date: '21/2/24', time: '2:00pm' }
+];
 
 const QuizList = () => {
   return (
@@ -22,61 +22,33 @@ const QuizList = () => {
         <div className="liveQuizContainer">
           <h2>Live Quizzes</h2>
           <div className="liveQuizList">
-            <table>
-              <thead >
-                <tr>
-                  <th>Title</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>Expiry Time</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody >
-                {quizzes.map((quiz, index) => (
-                  <tr className='quiz' key={index}>
-                    <td>{quiz.title}</td>
-                    <td>{quiz.date}</td>
-                    <td>{quiz.startTime}</td>
-                    <td>{quiz.expiryTime}</td>
-                    <td><button>START</button></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {quizzes.map((quiz, index) => (
+              <div className="quiz" key={index}>
+                <p>{quiz.title}</p>
+                <p>Date: {quiz.date}</p>
+                <p>Time: {quiz.time}</p>
+                <button>START</button>
+              </div>
+            ))}
           </div>
         </div>
         <div className="divider"></div>
         <div className="prevQuizContainer">
           <h2>Previous Quizzes</h2>
           <div className="prevQuizList">
-            <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>Expiry Time</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {quizzes.map((quiz, index) => (
-                  <tr className='quiz' key={index}>
-                    <td>{quiz.title}</td>
-                    <td>{quiz.date}</td>
-                    <td>{quiz.startTime}</td>
-                    <td>{quiz.expiryTime}</td>
-                    <td><button>START</button></td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {quizzes.map((quiz, index) => (
+              <div className="quiz" key={index}>
+                <p>{quiz.title}</p>
+                <p>Date: {quiz.date}</p>
+                <p>Time: {quiz.time}</p>
+                <span>Expired</span> {/* Replace button with text */}
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default QuizList;
+export default QuizList
