@@ -1,120 +1,134 @@
-.quizContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 200px; /* Further decreased margin-left */
-  
-    h1 {
-      height: 26px; /* Further decreased height */
-      width: 80px; /* Further decreased width */
-      font-size: 28px; /* Further decreased font size */
-      letter-spacing: 1px; /* Further decreased letter spacing */
+.quizContainerMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 200px; 
+
+  h1 {
+    height: 26px; 
+    width: 80px; 
+    font-size: 28px; 
+    letter-spacing: 1px; 
+    margin-bottom: 40px;
+  }
+
+  .quizWrapper {
+    height: 740px; 
+    width: 1000px; 
+ 
+    border-radius: 4px; 
+
+
+    .divider {
+      border: 1px black solid;
+      margin: 5px 5px; 
+
     }
-  
-    .quizWrapper {
-      height: 720px; /* Further decreased height */
-      width: 1000px; /* Further decreased width */
+
+    .QuizContainer{
+      padding-left: 6px; 
       background-color: rgba(249, 249, 249, 1);
-      border-radius: 4px; /* Further decreased border radius */
+      border-radius: 8px;
+      padding: 1px 2px 10px 10px;
+      // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 
-
-      .divider {
-        border: 1px black solid;
-        margin: 5px 5px; /* Further decreased margin */
+      h2 {
+        font-size: 21px; 
+        letter-spacing: 1px; 
+        color: rgba(245, 180, 0, 1);
       }
-  
-      .QuizContainer{
-        padding-left: 6px; /* Further decreased padding */
-  
-        h2 {
-          font-size: 21px; /* Further decreased font size */
-          letter-spacing: 1px; /* Further decreased letter spacing */
-          color: rgba(245, 180, 0, 1);
+
+      .QuizList {
+        height: 300px; 
+        background-color: rgba(249, 249, 249, 1);
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 7px; 
         }
-  
-        .QuizList {
-          height: 300px; /* Further decreased height */
-          background-color: rgba(249, 249, 249, 1);
-          overflow-y: auto;
-  
-          &::-webkit-scrollbar {
-            width: 7px; /* Further decreased scrollbar width */
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #c8c8c888;
+          border-radius: 6px; 
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: #f7f6f6;
+          border-radius: 6px; 
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+          .tableRow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
           }
-  
-          &::-webkit-scrollbar-thumb {
-            background-color: #c8c8c888;
-            border-radius: 6px; /* Further decreased border radius */
-          }
-  
-          &::-webkit-scrollbar-track {
-            background-color: #f7f6f6;
-            border-radius: 6px; /* Further decreased border radius */
-          }
-  
-          table {
-            width: 100%;
-            border-collapse: collapse;
-  
-            .tableRow {
-              display: grid;
-              grid-template-columns: repeat(5, 1fr);
-            }
-  
-            th, td {
-              padding: 6px; /* Further decreased padding */
-              text-align: left;
-              letter-spacing: 2px;
-            }
+
+          th, td {
+            padding: 6px; 
+            text-align: left;
+            letter-spacing: 2px;
             
-  
-            .quiz {
-              display: grid;
-              grid-template-columns: repeat(5, 1fr);
-              align-items: center;
-              padding: 6px; /* Further decreased padding */
-              margin: 6px 0px; /* Further decreased margin */
-              border-radius: 6px; /* Further decreased border radius */
-              box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15); /* Further decreased shadow */
-              letter-spacing: 2px; /* Further decreased letter spacing */
-  
-              &:nth-child(odd) {
-                background: rgba(245, 180, 0, 0.3);
+          }
 
-  
-                button {
-                  background-color: rgba(60, 94, 223, 1);
-                }
-              }
-  
-              &:nth-child(even) {
-                background-color: rgba(60, 94, 223, 0.3);
+          th{
+            font-size: 16px;
+          }
 
-  
-                button {
-                  background-color: #F4C724;
-                }
-              }
-  
+          td{
+            font-size: 14px;
+          }
+          
+
+          .quiz {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: center;
+            padding: 6px; 
+            margin: 10px 0px; 
+            border-radius: 6px; 
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
+            letter-spacing: 2px; 
+
+            &:nth-child(odd) {
+              background: rgba(245, 180, 0, 0.3);
+
+
               button {
-                font-size: 15px; /* Further decreased font size */
-                height: 25px; /* Further decreased height */
-                width: 90px; /* Further decreased width */
-                border-radius: 2px; /* Further decreased border radius */
-                border-style: none;
-                color: white;
-                letter-spacing: 1px;
-                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+                background-color: rgba(60, 94, 223, 1);
+              }
+            }
 
+            &:nth-child(even) {
+              background-color: rgba(60, 94, 223, 0.3);
+
+
+              button {
+                background-color: #F4C724;
               }
-  
-              span {
-                color: red;
-              }
+            }
+
+            button {
+              font-size: 15px; 
+              height: 25px; 
+              width: 90px; 
+              border-radius: 2px; 
+              border-style: none;
+              color: white;
+              letter-spacing: 1px;
+              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+            }
+
+            span {
+              color: red;
             }
           }
         }
       }
     }
   }
-  
+}

@@ -11,14 +11,15 @@ const quizzes = [
   { title: 'Databases', date: '18/2/24', startTime: '11:00am', expiryTime: '12:00pm' },
   { title: 'Networking', date: '19/2/24', startTime: '12:00pm', expiryTime: '1:00pm' },
   { title: 'Machine Learning', date: '20/2/24', startTime: '1:00pm', expiryTime: '2:00pm' },
-  { title: 'Artificial Intelligence', date: '21/2/24', startTime: '2:00pm', expiryTime: '3:00pm' }
+  { title: 'Backend ', date: '21/2/24', startTime: '2:00pm', expiryTime: '3:00pm' }
 ];
 
 const QuizList = () => {
   return (
-    <div className="quizContainer">
-      <h1>QUIZZES</h1>
+    <div className="quizContainerMain">
+      
       <div className="quizWrapper">
+      <h1>QUIZZES</h1>
         <div className="QuizContainer">
           <h2>Live Quizzes</h2>
           <div className="QuizList">
