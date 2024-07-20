@@ -1,122 +1,81 @@
-.quizContainer{
-    margin-left: 350px;
-    h1{
-        height: 34px;
-        width: 123px;
-        font-size: 21px;
+.quizContainer {
+  margin-left: 350px;
+
+  h1 {
+    height: 34px;
+    width: 123px;
+    font-size: 21px;
+    letter-spacing: 3px;
+  }
+
+  .quizWrapper {
+    height: 541px;
+    width: 1000px;
+    background-color: rgba(249, 249, 249, 1);
+    border-radius: 8px;
+
+    .liveQuizContainer {
+      padding-left: 10px;
+
+      h2 {
+        font-size: 20px;
         letter-spacing: 3px;
-    }
-    .quizWrapper{
-        height: 541px;
-        width: 1000px;
+        color: rgba(245, 180, 0, 1);
+      }
+
+      .liveQuizList {
+        height: 400px;
         background-color: rgba(249, 249, 249, 1);
-        border-radius: 8px;
-        .liveQuizContainer{
-            h2{
-                font-size: 20px;
-                letter-spacing: 3px;
-                color: rgba(245, 180, 0, 1);
-            }
-            .liveQuizList{
-                height: 250px;
-                overflow-y: auto;
+        overflow-y: auto;
 
-                &::-webkit-scrollbar {
-                    width: 8px;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background-color: #c8c8c888;
-                    border-radius: 10px;
-                }
-
-                &::-webkit-scrollbar-track {
-                    background-color: #f7f6f6;
-                    border-radius: 10px;
-                }
-                .quiz{
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr); 
-                    justify-content: center;
-                    align-items: center;
-                    margin: 15px 15px;
-                    padding: 5px; 
-                    border-radius: 6px;
-                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-                    &:nth-child(even) {
-                        background-color: rgba(245, 180, 0, 0.3);
-
-                        button {
-                            background-color: #0A79DF
-                        }
-                    }
-                    &:nth-child(odd) {
-                        background-color: rgba(60, 94, 223, 0.3);
-
-                        button {
-                            background-color: #F4C724
-                        }
-                    }
-                    
-                    button{
-                        height: 29px;
-                        width: 119px;
-                        border-radius: 4px;
-        
-                    }
-                }
-            }
+        &::-webkit-scrollbar {
+          width: 8px;
         }
-        .divider{
-            border: 1px black solid;
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #c8c8c888;
+          border-radius: 10px;
         }
-        .prevQuizContainer{
-            h2{
-                font-size: 20px;
-                letter-spacing: 3px;
-                color: rgba(245, 180, 0, 1);
-            }
-            .prevQuizList{
-                height: 250px;
-                overflow-y: auto;
 
-                &::-webkit-scrollbar {
-                    width: 8px;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background-color: #c8c8c888;
-                    border-radius: 10px;
-                }
-
-                &::-webkit-scrollbar-track {
-                    background-color: #f7f6f6;
-                    border-radius: 10px;
-                }
-                .quiz{
-                    display: grid;
-                    grid-template-columns: repeat(4, 1fr); 
-                    justify-content: center;
-                    align-items: center;
-                    margin: 15px 15px;
-                    padding: 5px; 
-                    border-radius: 6px;
-                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-                    span{
-                        color: red;
-                    }
-
-
-                    &:nth-child(odd) {
-                        background-color: rgba(245, 180, 0, 0.3);
-                    }
-                    &:nth-child(even) {
-                        background-color: rgba(60, 94, 223, 0.3);
-                    }
-                }
-            }
+        &::-webkit-scrollbar-track {
+          background-color: #f7f6f6;
+          border-radius: 10px;
         }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+
+        .tableRow{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+          th, td {
+            padding: 10px;
+            text-align: left;
+          }
+
+          .quiz {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            align-items: center;
+            padding: 10px;
+            margin: 12px 0px;
+            border-radius: 6px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            letter-spacing: 1.5px;
+
+            &:nth-child(odd) {
+              background-color: rgba(245, 180, 0, 0.3);
+            }
+
+            &:nth-child(even) {
+              background-color: rgba(60, 94, 223, 0.3);
+            }
+          }
+        }
+      }
     }
+  }
 }
