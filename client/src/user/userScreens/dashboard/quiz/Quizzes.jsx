@@ -19,9 +19,9 @@ const QuizList = () => {
     <div className="quizContainer">
       <h1>QUIZZES</h1>
       <div className="quizWrapper">
-        <div className="liveQuizContainer">
+        <div className="QuizContainer">
           <h2>Live Quizzes</h2>
-          <div className="liveQuizList">
+          <div className="QuizList">
           <table>
             <thead className='tableHeader'>
               <tr className='tableRow'>
@@ -49,9 +49,9 @@ const QuizList = () => {
 
         <div className="divider"></div>
 
-        <div className="prevQuizContainer">
+        <div className="QuizContainer">
           <h2>Previous Quizzes</h2>
-          <div className="prevQuizList">
+          <div className="QuizList">
           <table>
             <thead className='tableHeader'>
               <tr className='tableRow'>

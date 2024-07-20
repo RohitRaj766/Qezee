@@ -1,51 +1,55 @@
 .quizContainer {
-    margin-left: 450px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px; /* Further decreased margin-left */
   
     h1 {
-      height: 34px;
-      width: 123px;
-      font-size: 21px;
-      letter-spacing: 3px;
+      height: 26px; /* Further decreased height */
+      width: 80px; /* Further decreased width */
+      font-size: 28px; /* Further decreased font size */
+      letter-spacing: 1px; /* Further decreased letter spacing */
     }
   
     .quizWrapper {
-        height: 950px;
-        width: 1200px;
-        background-color: rgba(249, 249, 249, 1);
-        border-radius: 8px;
+      height: 720px; /* Further decreased height */
+      width: 1000px; /* Further decreased width */
+      background-color: rgba(249, 249, 249, 1);
+      border-radius: 4px; /* Further decreased border radius */
 
-      .divider{
+
+      .divider {
         border: 1px black solid;
-        margin: 10px 10px;
-    }
+        margin: 5px 5px; /* Further decreased margin */
+      }
   
-      .liveQuizContainer,.prevQuizContainer {
-        padding-left: 10px;
+      .QuizContainer{
+        padding-left: 6px; /* Further decreased padding */
   
         h2 {
-          font-size: 20px;
-          letter-spacing: 3px;
+          font-size: 21px; /* Further decreased font size */
+          letter-spacing: 1px; /* Further decreased letter spacing */
           color: rgba(245, 180, 0, 1);
         }
   
-        .liveQuizList, .prevQuizList {
-          height: 400px;
+        .QuizList {
+          height: 300px; /* Further decreased height */
           background-color: rgba(249, 249, 249, 1);
           overflow-y: auto;
   
           &::-webkit-scrollbar {
-            width: 8px;
+            width: 7px; /* Further decreased scrollbar width */
           }
   
           &::-webkit-scrollbar-thumb {
             background-color: #c8c8c888;
-            border-radius: 10px;
+            border-radius: 6px; /* Further decreased border radius */
           }
   
           &::-webkit-scrollbar-track {
             background-color: #f7f6f6;
-            border-radius: 10px;
+            border-radius: 6px; /* Further decreased border radius */
           }
   
           table {
@@ -58,30 +62,34 @@
             }
   
             th, td {
-              padding: 10px;
+              padding: 6px; /* Further decreased padding */
               text-align: left;
+              letter-spacing: 2px;
             }
+            
   
             .quiz {
               display: grid;
-              grid-template-columns: repeat(5, 1fr); 
+              grid-template-columns: repeat(5, 1fr);
               align-items: center;
-              padding: 10px;
-              margin: 12px 0px;
-              border-radius: 6px;
-              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-              letter-spacing: 1.5px;
+              padding: 6px; /* Further decreased padding */
+              margin: 6px 0px; /* Further decreased margin */
+              border-radius: 6px; /* Further decreased border radius */
+              box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15); /* Further decreased shadow */
+              letter-spacing: 2px; /* Further decreased letter spacing */
   
               &:nth-child(odd) {
-                background-color: rgba(245, 180, 0, 0.3);
+                background: rgba(245, 180, 0, 0.3);
+
   
                 button {
-                  background-color: #0A79DF;
+                  background-color: rgba(60, 94, 223, 1);
                 }
               }
   
               &:nth-child(even) {
                 background-color: rgba(60, 94, 223, 0.3);
+
   
                 button {
                   background-color: #F4C724;
@@ -89,14 +97,18 @@
               }
   
               button {
-                font-size: 15;
-                height: 29px;
-                width: 119px;
-                border-radius: 4px;
+                font-size: 15px; /* Further decreased font size */
+                height: 25px; /* Further decreased height */
+                width: 90px; /* Further decreased width */
+                border-radius: 2px; /* Further decreased border radius */
                 border-style: none;
-              }
+                color: white;
+                letter-spacing: 1px;
+                box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-              span{
+              }
+  
+              span {
                 color: red;
               }
             }
