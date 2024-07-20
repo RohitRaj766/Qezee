@@ -17,7 +17,6 @@ const quizzes = [
 const QuizList = () => {
   return (
     <div className="quizContainerMain">
-      
       <div className="quizWrapper">
       <h1>QUIZZES</h1>
         <div className="QuizContainer">
@@ -77,8 +76,6 @@ const QuizList = () => {
           </table>
           </div>
         </div>
-
-
       </div>
     </div>
   )
