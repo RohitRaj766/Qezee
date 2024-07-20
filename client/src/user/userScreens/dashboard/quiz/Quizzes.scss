@@ -1,81 +1,108 @@
 .quizContainer {
-  margin-left: 350px;
+    margin-left: 450px;
 
-  h1 {
-    height: 34px;
-    width: 123px;
-    font-size: 21px;
-    letter-spacing: 3px;
-  }
-
-  .quizWrapper {
-    height: 541px;
-    width: 1000px;
-    background-color: rgba(249, 249, 249, 1);
-    border-radius: 8px;
-
-    .liveQuizContainer {
-      padding-left: 10px;
-
-      h2 {
-        font-size: 20px;
-        letter-spacing: 3px;
-        color: rgba(245, 180, 0, 1);
-      }
-
-      .liveQuizList {
-        height: 400px;
+  
+    h1 {
+      height: 34px;
+      width: 123px;
+      font-size: 21px;
+      letter-spacing: 3px;
+    }
+  
+    .quizWrapper {
+        height: 950px;
+        width: 1200px;
         background-color: rgba(249, 249, 249, 1);
-        overflow-y: auto;
+        border-radius: 8px;
 
-        &::-webkit-scrollbar {
-          width: 8px;
+      .divider{
+        border: 1px black solid;
+        margin: 10px 10px;
+    }
+  
+      .liveQuizContainer,.prevQuizContainer {
+        padding-left: 10px;
+  
+        h2 {
+          font-size: 20px;
+          letter-spacing: 3px;
+          color: rgba(245, 180, 0, 1);
         }
-
-        &::-webkit-scrollbar-thumb {
-          background-color: #c8c8c888;
-          border-radius: 10px;
-        }
-
-        &::-webkit-scrollbar-track {
-          background-color: #f7f6f6;
-          border-radius: 10px;
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-
-        .tableRow{
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-          th, td {
-            padding: 10px;
-            text-align: left;
+  
+        .liveQuizList, .prevQuizList {
+          height: 400px;
+          background-color: rgba(249, 249, 249, 1);
+          overflow-y: auto;
+  
+          &::-webkit-scrollbar {
+            width: 8px;
           }
-
-          .quiz {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); 
-            align-items: center;
-            padding: 10px;
-            margin: 12px 0px;
-            border-radius: 6px;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            letter-spacing: 1.5px;
-
-            &:nth-child(odd) {
-              background-color: rgba(245, 180, 0, 0.3);
+  
+          &::-webkit-scrollbar-thumb {
+            background-color: #c8c8c888;
+            border-radius: 10px;
+          }
+  
+          &::-webkit-scrollbar-track {
+            background-color: #f7f6f6;
+            border-radius: 10px;
+          }
+  
+          table {
+            width: 100%;
+            border-collapse: collapse;
+  
+            .tableRow {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
             }
+  
+            th, td {
+              padding: 10px;
+              text-align: left;
+            }
+  
+            .quiz {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr); 
+              align-items: center;
+              padding: 10px;
+              margin: 12px 0px;
+              border-radius: 6px;
+              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+              letter-spacing: 1.5px;
+  
+              &:nth-child(odd) {
+                background-color: rgba(245, 180, 0, 0.3);
+  
+                button {
+                  background-color: #0A79DF;
+                }
+              }
+  
+              &:nth-child(even) {
+                background-color: rgba(60, 94, 223, 0.3);
+  
+                button {
+                  background-color: #F4C724;
+                }
+              }
+  
+              button {
+                font-size: 15;
+                height: 29px;
+                width: 119px;
+                border-radius: 4px;
+                border-style: none;
+              }
 
-            &:nth-child(even) {
-              background-color: rgba(60, 94, 223, 0.3);
+              span{
+                color: red;
+              }
             }
           }
         }
       }
     }
   }
-}
+  

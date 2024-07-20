@@ -39,7 +39,37 @@ const QuizList = () => {
                   <td>{quiz.date}</td>
                   <td>{quiz.startTime}</td>
                   <td>{quiz.expiryTime}</td>
-                  <td>{/* Add logic to determine the status */}</td>
+                  <td><button>Start</button></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div className="divider"></div>
+
+        <div className="prevQuizContainer">
+          <h2>Previous Quizzes</h2>
+          <div className="prevQuizList">
+          <table>
+            <thead className='tableHeader'>
+              <tr className='tableRow'>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>Expiry Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {quizzes.slice(3).map((quiz, index) => (
+                <tr key={index} className='quiz'>
+                  <td>{quiz.title}</td>
+                  <td>{quiz.date}</td>
+                  <td>{quiz.startTime}</td>
+                  <td>{quiz.expiryTime}</td>
+                  <td><span>Expired</span></td>
                 </tr>
               ))}
             </tbody>
