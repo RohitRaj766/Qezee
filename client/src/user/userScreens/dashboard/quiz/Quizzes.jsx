@@ -51,7 +51,7 @@ const QuizList = () => {
         <div className="divider"></div>
 
         <div className="QuizContainer">
-          <h2>Previous Quizzes</h2>
+          <h2>Live Quizzes</h2>
           <div className="QuizList">
           <table>
             <thead className='tableHeader'>
@@ -77,6 +77,8 @@ const QuizList = () => {
           </table>
           </div>
         </div>
+
+
       </div>
     </div>
   )
