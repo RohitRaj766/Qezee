@@ -1,24 +1,20 @@
-.quizContainerMain {
+.quizContainerMain{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 200px; 
+  margin-left: 250px; 
 
-  h1 {
-    height: 26px; 
-    width: 80px; 
-    font-size: 28px; 
-    letter-spacing: 1px; 
-    margin-bottom: 40px;
-  }
+  .quizWrapper{
 
-  .quizWrapper {
-    height: 740px; 
-    width: 1000px; 
- 
-    border-radius: 4px; 
-
+    h1{
+      height: 26px; 
+      width: 80px; 
+      font-size: 28px; 
+      letter-spacing: 1px; 
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+    }
 
     .divider {
       border: 1px black solid;
@@ -27,16 +23,12 @@
     }
 
     .QuizContainer{
-      padding-left: 6px; 
-      background-color: rgba(249, 249, 249, 1);
-      border-radius: 8px;
-      padding: 1px 2px 10px 10px;
-      // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-
-      h2 {
+      
+      h2{
         font-size: 21px; 
         letter-spacing: 1px; 
         color: rgba(245, 180, 0, 1);
+        letter-spacing: 2px;
       }
 
       .QuizList {
@@ -129,6 +121,48 @@
           }
         }
       }
+
     }
   }
 }
+
+@media (max-width: 1350px) {
+  .quizContainerMain {
+      transform: scale(0.95);
+  }
+}
+
+@media (max-width: 1300px) {
+  .quizContainerMain {
+      transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1250px) {
+  .quizContainerMain {
+      transform: scale(0.85);
+  }
+}
+
+@media (max-width: 1200px) {
+  .quizContainerMain {
+      transform: scale(0.8);
+  }
+}
+
+@media (max-width: 1100px) {
+  .quizContainerMain {
+      transform: scale(0.75);
+  }
+}
+
+@media (max-width: 1000px) {
+  .quizContainerMain {
+      transform: scale(0.7);
+  }
+}
+
+
+
+
+
