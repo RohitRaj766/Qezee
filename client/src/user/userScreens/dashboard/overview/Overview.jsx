@@ -1,8 +1,13 @@
 import React from 'react'
+import PieChart from './PieChart'
+import BarChart from './BarChart'
 
 const Overview = () => {
   return (
-    <div>Overview</div>
+    <div>
+      <PieChart/>
+      <BarChart/>
+    </div>
   )
 }
 
