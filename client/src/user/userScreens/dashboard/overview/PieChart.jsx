@@ -5,7 +5,7 @@ import './PieChart.scss';
 const PieChart = () => {
   const [chartData, setChartData] = useState({
     options: {
-      colors: ['#28a745', '#dc3545', '#007bff'],
+      colors: ['#45CE30', '#FF3E4D', '#007bff'],
       legend: {
         position: 'bottom'
       },
