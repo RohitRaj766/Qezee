@@ -5,7 +5,7 @@ import BarChart from './BarChart'
 const Overview = () => {
   return (
     <div>
-      <PieChart/>
+      {/* <PieChart/> */}
       <BarChart/>
     </div>
   )
