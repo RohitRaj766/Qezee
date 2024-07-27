@@ -18,8 +18,15 @@ const upcomingQuizzes = [
     { topic: "Artificial Intelligence", date: "21/12/24" }
 ];
 
+const badges = [
+    { badge: 5 },
+    { badge: 4 },
+    { badge: 1 },
+];
+
 const OverviewCards = () => {
     const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+    const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0);
 
     const handleNextQuiz = () => {
         setCurrentQuizIndex((prevIndex) => (prevIndex + 1) % upcomingQuizzes.length);
@@ -29,7 +36,16 @@ const OverviewCards = () => {
         setCurrentQuizIndex((prevIndex) => (prevIndex - 1 + upcomingQuizzes.length) % upcomingQuizzes.length);
     };
 
+    const handleNextBadge = () => {
+        setCurrentBadgeIndex((prevIndex) => (prevIndex + 1) % badges.length);
+    };
+
+    const handlePreviousBadge = () => {
+        setCurrentBadgeIndex((prevIndex) => (prevIndex - 1 + badges.length) % badges.length);
+    };
+
     const currentQuiz = upcomingQuizzes[currentQuizIndex];
+    const currentBadgeCount = badges[currentBadgeIndex].badge;
 
     return (
         <div className="cardmain">
@@ -44,18 +60,16 @@ const OverviewCards = () => {
                 <button onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button>
             </div>
             <div className="badge">
-                <button><img src={leftArrow} className='arrows' alt="Previous" /></button>
+                <button onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button>
                 <div className="info2">
                     <h2>Badge Collection</h2>
                     <div className="badgeContainer">
-                        <img src={badge} alt="Badge" />
-                        <img src={badge} alt="Badge" />
-                        <img src={badge} alt="Badge" />
-                        <img src={badge} alt="Badge" />
-                        <img src={badge} alt="Badge" />
+                        {Array.from({ length: currentBadgeCount }).map((_, index) => (
+                            <img key={index} src={badge} alt="Badge" />
+                        ))}
                     </div>
                 </div>
-                <button><img src={rightArrow} className='arrows' alt="Next" /></button>
+                <button onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button>
             </div>
         </div>
     );
