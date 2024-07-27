@@ -9,35 +9,35 @@ const BarChart = () => {
         id: 'basic-bar'
       },
       grid: {
-        show: false // Removes background grid lines
+        show: false 
       },
       xaxis: {
         categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
         axisBorder: {
-          show: false // Removes the x-axis line
+          show: false 
         },
         axisTicks: {
-          show: false // Removes the x-axis ticks
+          show: false 
         },
         labels: {
-          show: false // Hides x-axis labels
+          show: false 
         },
         lines: {
-          show: false // Ensures no lines are drawn for x-axis
+          show: false 
         }
       },
       yaxis: {
         axisBorder: {
-          show: false // Removes the y-axis line
+          show: false 
         },
         axisTicks: {
-          show: false // Removes the y-axis ticks
+          show: false 
         },
         labels: {
-          show: false // Hides y-axis labels
+          show: false 
         },
         lines: {
-          show: false // Ensures no lines are drawn for y-axis
+          show: false 
         }
       },
       plotOptions: {

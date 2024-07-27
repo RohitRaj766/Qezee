@@ -27,6 +27,3 @@ export default Overview
 
 
 
-      {/* <PieChart/> */}
-      {/* <OverviewCards/> */}
-      {/* <BarChart/> */}
