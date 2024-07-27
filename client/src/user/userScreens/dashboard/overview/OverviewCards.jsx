@@ -49,28 +49,45 @@ const OverviewCards = () => {
 
     return (
         <div className="cardmain">
-            <div className="upcoming">
-                <button onClick={handlePreviousQuiz}><img src={leftArrow} className='arrows' alt="Previous" /></button>
-                <img src={trophy} alt="Trophy" />
-                <div className="info1">
-                    <h2>Upcoming Quiz</h2>
-                    <p>Topic - {currentQuiz.topic}</p>
-                    <p>Date - {currentQuiz.date}</p>
-                </div>
-                <button onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button>
-            </div>
-            <div className="badge">
-                <button onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button>
-                <div className="info2">
-                    <h2>Badge Collection</h2>
-                    <div className="badgeContainer">
-                        {Array.from({ length: currentBadgeCount }).map((_, index) => (
-                            <img key={index} src={badge} alt="Badge" />
-                        ))}
+
+            <div className="upcomingWrapper">
+                <div className="upcoming">
+                    <button onClick={handlePreviousQuiz}><img src={leftArrow} className='arrows' alt="Previous" /></button>
+                    <img src={trophy} alt="Trophy" />
+                    <div className="info1">
+                        <h2>Upcoming Quiz</h2>
+                        <p>Topic - {currentQuiz.topic}</p>
+                        <p>Date - {currentQuiz.date}</p>
                     </div>
+                    <button onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button>
                 </div>
-                <button onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button>
+                <div className="dotnav">
+                    {upcomingQuizzes.map((_, index) => (
+                        <span key={index} className={`dot ${index === currentQuizIndex ? 'active' : ''}`}></span>
+                    ))}
+                </div>
             </div>
+
+            <div className="badgeWrapper">
+                <div className="badge">
+                    <button onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button>
+                    <div className="info2">
+                        <h2>Badge Collection</h2>
+                        <div className="badgeContainer">
+                            {Array.from({ length: currentBadgeCount }).map((_, index) => (
+                                <img key={index} src={badge} alt="Badge" />
+                            ))}
+                        </div>
+                    </div>
+                    <button onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button>
+                </div>
+                <div className="dotnav">
+                    {badges.map((_, index) => (
+                        <span key={index} className={`dot ${index === currentBadgeIndex ? 'active' : ''}`}></span>
+                    ))}
+                </div>
+            </div>
+
         </div>
     );
 }
