@@ -29,7 +29,7 @@ const PieChart = () => {
           options={chartData.options}
           series={chartData.series}
           type="donut"
-          width="350"
+          width="420"
         />
       </div>
     </div>

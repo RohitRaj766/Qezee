@@ -8,8 +8,10 @@
 
     .upperContainer{
         height: 342px;
+        width: 950px;
         display: flex;
         flex-direction: column;
+        // background-color: red;
 
         h1{
             font-size: 27px ;
@@ -17,6 +19,7 @@
 
         .upperWrapper{
             display: flex;
+            gap: 60px;
         }
     }
 
