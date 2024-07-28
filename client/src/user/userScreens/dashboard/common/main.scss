@@ -5,19 +5,21 @@
 
 //Sidebar
 $main-height: 100vh;
-$main-width: 283px;
+$main-width: 230px;
 $selector-height: 50px;
 $selector-width: 229px;
 $selector-font-size: 12px;
 
 .sidebarmain {
     height: $main-height;
-    height: 1500px;
+    height: 1070px;
     width: $main-width;
     background-color: $navback-color;
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
+    padding: 0px 40px 0px 17px;
 
     .header {
         display: flex;
