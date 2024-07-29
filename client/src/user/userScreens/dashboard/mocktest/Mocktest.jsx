@@ -57,7 +57,8 @@ const Mocktest = () => {
       </button>
       {flag && 
       <ModalConfirm onClose={handleCloseModal}
-             heading = {"Are you sure, You want to take MockTest ?"}
+             heading = "Confirmation"
+             content="Are you sure, You want to take MockTest ?"
              handleConfirmTest = {handleConfirmTest}
       />}
       {isTestStart && <Testpage testStarted = {setIsTestStart}/>}
