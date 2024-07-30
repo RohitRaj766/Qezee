@@ -1,67 +1,71 @@
+@import "../../../../assets/Common";
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .testpage {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #d6d6d6;
+/* ezee */
+.testpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  // padding: 20px;
+  opacity: 1;
+  // overflow-y:auto;
+
+  box-sizing: border-box;
+  z-index: 999999999;
+  font-family: $primary-font;
+
+  /* DASHBOARD MOCKTEST VIEW */
+
+  .header {
     display: flex;
-    // flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-    opacity: 1;
+    width: 100%;
+    margin: 0px auto;
+    gap: 2px;
+    height: 80px;
     box-sizing: border-box;
-    z-index: 999999999;
-  
 
-    .testcontainer{
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-      border-radius: 8px;
-      width: 900px;
+    .logo {
+
+      height: 100%;
+      width: 113px;
     }
-
-    .question-container {
-
-      margin: 20px auto;
-      width: 100%;
-      max-width: 500px;
-      text-align: justify;
-      padding-left: 50px;
-      
+    .logo img {
+      max-width: 100%;
+      object-fit: cover;
     }
-  
-  
-    .buttons-container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 840px;
-      margin: 20px auto;
-  // border: 2px solid red;
-      button {
-  // border: 2px solid green;
-
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-  
-        &:disabled {
-          background-color: #ccc;
-          cursor: not-allowed;
-        }
+    .text {
+      font-family: $primary-font;
+      font-size: 40px;
+      color: $btn-color;
+      .Q {
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 60px;
+        color: #3c5edf;
       }
     }
-  
-    label {
-      margin-bottom: 10px;
-      display: block;
-    }
   }
-  
+
+  .heading {
+    font-family: "Itim";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 25px;
+    letter-spacing: 0.08em;
+    color: $heading-color;
+  }
+ 
+}
