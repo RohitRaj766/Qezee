@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './main.scss'
+import './main.scss';
 import logoimage from '../../../assets/images/logo.svg';
 import overviewimage from "../../../assets/images/overview.svg";
 import mocktestimage from "../../../assets/images/mocktest.svg";
@@ -40,12 +40,8 @@ const Sidebar = () => {
           </div>
         </Link>
       ))}
-      <div className="selectors" >
-  
-      </div>
     </div>
   );
 };
 
 export default Sidebar;
-
