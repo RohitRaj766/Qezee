@@ -1,11 +1,12 @@
 import React from 'react';
 import './main.scss';
 
-const ModalConfirm = ({ onClose, handleConfirmTest, heading, totalscore, exit }) => {
+const ModalConfirm = ({ onClose, content,handleConfirmTest, heading, totalscore, exit }) => {
   return (
     <div className='modal-backdrop'>
       <div className='modal-content'>
         <h2 className='modal-heading'>{heading}</h2>
+        <p className='modal-heading' >{content}</p>
         {!totalscore && (
           <>
             <button className='yes-button' onClick={handleConfirmTest}>Yes</button>
