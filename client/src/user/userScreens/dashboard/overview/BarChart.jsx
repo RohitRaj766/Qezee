@@ -3,6 +3,7 @@ import Chart from 'react-apexcharts';
 import './BarChart.scss'
 
 const BarChart = () => {
+  const categories = ['John', 'Doe', 'Mary', 'Smith', 'Robert', 'Johnson', 'Michael', 'Brown', 'William', 'David'];
   const [chartData, setChartData] = useState({
     options: {
       chart: {
@@ -12,7 +13,7 @@ const BarChart = () => {
         show: false 
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: categories,
         axisBorder: {
           show: false 
         },
@@ -42,20 +43,31 @@ const BarChart = () => {
       },
       plotOptions: {
         bar: {
-          horizontal: false
+          horizontal: false,
+          dataLabels: {
+            position: 'center' // Set the position of the data labels
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function (val, opts) {
+          return categories[opts.dataPointIndex]; // Return the corresponding name from the categories array
+        },
+        style: {
+          colors: ['#fff'] // Set the color of the data labels
         }
       }
     },
     series: [
       {
         name: 'series-1',
-        data: [15, 13, 11, 19, 16, 12, 8, 17 , 20, 11]
+        data: [15, 13, 11, 19, 16, 12, 8, 17, 20, 11]
       }
     ]
   });
 
   return (
-    // Bar chart
     <div className="bar">
       <div className="row">
         <div className="mixed-chart">
