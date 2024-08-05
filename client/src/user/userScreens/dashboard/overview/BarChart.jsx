@@ -17,38 +17,38 @@ const BarChart = () => {
       xaxis: {
         categories: [],
         axisBorder: {
-          show: true  // Enable X-axis border
+          show: true  
         },
         axisTicks: {
-          show: true  // Enable X-axis ticks
+          show: true  
         },
         labels: {
-          rotate: -90, // Rotate labels 90 degrees
+          rotate: -90, 
           rotateAlways: true,
           style: {
-            colors: '#fff', // Set all labels to white
+            colors: '#fff', 
             fontSize: '22px',
             fontWeight: 'bold',
           },
-          offsetX: 0, // Adjust as needed
-          offsetY: -175, // Adjust as needed to overlap with bars
+          offsetX: 0, 
+          offsetY: -175, 
         }
       },
       yaxis: {
         axisBorder: {
-          show: true  // Enable Y-axis border
+          show: true  
         },
         axisTicks: {
-          show: true  // Enable Y-axis ticks
+          show: true  
         },
         labels: {
-          show: true  // Show Y-axis labels
+          show: true  
         }
       },
       plotOptions: {
         bar: {
           horizontal: false,
-          borderRadius: 0, // Set border radius to 0 for custom CSS handling
+          borderRadius: 0, 
           dataLabels: {
             position: 'top' 
           }
@@ -70,8 +70,19 @@ const BarChart = () => {
           fontSize: '22px',
           fontWeight: 'bold'
         },
-        offsetY: -28, // Adjust this value to position the label above the bar
-        textAnchor: 'middle' // Align text to the middle of the bar
+        offsetY: -35, 
+        textAnchor: 'middle' 
+      },
+      tooltip: {
+        y: {
+          formatter: function (value, { series, seriesIndex, dataPointIndex }) {
+            const quiz = user.LoggedInUser.totalquizzes[dataPointIndex];
+            const correct = quiz.correct || 0;
+            const wrong = quiz.wrong || 0;
+            const notAttempted = quiz.notattempted || 0;
+            return `Correct: ${correct}<br>Wrong: ${wrong}<br>Not Attempted: ${notAttempted}`;
+          }
+        }
       }
     },
     series: [] 
@@ -98,7 +109,7 @@ const BarChart = () => {
           },
           series: [
             {
-              name: 'Correct',
+              name: 'Score',
               data: correctValues
             }
           ]
