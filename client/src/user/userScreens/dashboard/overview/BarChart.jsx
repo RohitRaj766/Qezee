@@ -17,32 +17,32 @@ const BarChart = () => {
       xaxis: {
         categories: [],
         axisBorder: {
-          show: false
+          show: true  // Enable X-axis border
         },
         axisTicks: {
-          show: false 
+          show: true  // Enable X-axis ticks
         },
         labels: {
           rotate: -90, // Rotate labels 90 degrees
           rotateAlways: true,
           style: {
             colors: '#fff', // Set all labels to white
-            fontSize: '20px',
+            fontSize: '22px',
             fontWeight: 'bold',
           },
           offsetX: 0, // Adjust as needed
-          offsetY: -150, // Adjust as needed to overlap with bars
+          offsetY: -175, // Adjust as needed to overlap with bars
         }
       },
       yaxis: {
         axisBorder: {
-          show: false 
+          show: true  // Enable Y-axis border
         },
         axisTicks: {
-          show: false
+          show: true  // Enable Y-axis ticks
         },
         labels: {
-          show: false 
+          show: true  // Show Y-axis labels
         }
       },
       plotOptions: {
@@ -67,10 +67,11 @@ const BarChart = () => {
         },
         style: {
           colors: ['#F5B400'],
-          fontSize: '16px',
+          fontSize: '22px',
           fontWeight: 'bold'
         },
-        offsetY: -50 // Adjust this value as needed to position the label
+        offsetY: -28, // Adjust this value to position the label above the bar
+        textAnchor: 'middle' // Align text to the middle of the bar
       }
     },
     series: [] 
