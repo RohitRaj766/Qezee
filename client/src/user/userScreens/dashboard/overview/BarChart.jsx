@@ -1,71 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
-import './BarChart.scss'
+import './BarChart.scss';
 
 const BarChart = () => {
-  const categories = ['John', 'Doe', 'Mary', 'Smith', 'Robert', 'Johnson', 'Michael', 'Brown', 'William', 'David'];
+  const user = useSelector((state) => state.auth.user);
+  const [categories, setCategories] = useState([]);
   const [chartData, setChartData] = useState({
     options: {
       chart: {
         id: 'basic-bar'
       },
       grid: {
-        show: false 
+        show: false // Hide grid lines
       },
       xaxis: {
-        categories: categories,
+        categories: [],
         axisBorder: {
-          show: false 
+          show: false // Hide axis border
         },
         axisTicks: {
-          show: false 
+          show: false // Hide axis ticks
         },
         labels: {
-          show: false 
-        },
-        lines: {
-          show: false 
+          show: false // Hide x-axis labels
         }
       },
       yaxis: {
         axisBorder: {
-          show: false 
+          show: false // Hide axis border
         },
         axisTicks: {
-          show: false 
+          show: false // Hide axis ticks
         },
         labels: {
-          show: false 
-        },
-        lines: {
-          show: false 
+          show: false // Hide y-axis labels
         }
       },
       plotOptions: {
         bar: {
           horizontal: false,
           dataLabels: {
-            position: 'center' // Set the position of the data labels
+            position: 'inside' // Position data labels inside the bars
           }
         }
       },
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          return categories[opts.dataPointIndex]; // Return the corresponding name from the categories array
+          // Display quiz name inside each bar
+          return categories[opts.dataPointIndex];
         },
         style: {
-          colors: ['#fff'] // Set the color of the data labels
+          colors: ['#fff'], // White color for better contrast
+          fontSize: '12px'
         }
       }
     },
-    series: [
-      {
-        name: 'series-1',
-        data: [15, 13, 11, 19, 16, 12, 8, 17, 20, 11]
-      }
-    ]
+    series: [] // Initialize with empty series
   });
+
+  useEffect(() => {
+    if (user && user.LoggedInUser) {
+      const quizzes = user.LoggedInUser.totalquizzes;
+
+      if (Array.isArray(quizzes)) {
+        const quizNames = quizzes.map((quiz) => quiz.name);
+        const correctValues = quizzes.map((quiz) => quiz.correct);
+
+        setCategories(quizNames);
+
+        setChartData((prevState) => ({
+          ...prevState,
+          options: {
+            ...prevState.options,
+            xaxis: {
+              ...prevState.options.xaxis,
+              categories: quizNames
+            }
+          },
+          series: [
+            {
+              name: 'Correct',
+              data: correctValues
+            }
+          ]
+        }));
+      } else {
+        console.error("totalquizzes is not an array", quizzes);
+      }
+    }
+  }, [user]);
 
   return (
     <div className="bar">
