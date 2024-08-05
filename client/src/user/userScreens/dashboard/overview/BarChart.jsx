@@ -26,9 +26,10 @@ const BarChart = () => {
           rotate: -90, // Rotate labels 90 degrees
           rotateAlways: true,
           style: {
-            colors: ['#fff','#fff'],
-            fontSize: '16px',
+            colors: '#fff', // Set all labels to white
+            fontSize: '20px',
             fontWeight: 'bold',
+            
           },
           offsetX: 0, // Adjust as needed
           offsetY: -150, // Adjust as needed to overlap with bars
