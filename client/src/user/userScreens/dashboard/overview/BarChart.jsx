@@ -57,14 +57,21 @@ const BarChart = () => {
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          return val;
+          const index = opts.dataPointIndex;
+          const quiz = user.LoggedInUser.totalquizzes[index];
+          const correct = quiz.correct || 0;
+          const wrong = quiz.wrong || 0;
+          const notAttempted = quiz.notattempted || 0;
+          const total = correct + wrong + notAttempted;
+          return `${correct}/${total}`;
         },
         style: {
-          colors: ['#000'],
-          fontSize: '12px',
+          colors: ['#F5B400'],
+          fontSize: '16px',
           fontWeight: 'bold'
+          
         },
-        offsetY: -10 // Adjust this value as needed to position the label
+        offsetY: -50 // Adjust this value as needed to position the label
       }
     },
     series: [] 
