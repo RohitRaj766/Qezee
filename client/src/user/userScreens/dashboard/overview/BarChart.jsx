@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import Chart from 'react-apexcharts';
+import React, { useState, useEffect } from "react";
+import Chart from "react-apexcharts";
+import { useSelector } from "react-redux";
 import './BarChart.scss';
 
 const BarChart = () => {
@@ -9,7 +9,7 @@ const BarChart = () => {
   const [chartData, setChartData] = useState({
     options: {
       chart: {
-        id: 'basic-bar'
+        id: "basic-bar"
       },
       grid: {
         show: false // Hide grid lines
@@ -41,20 +41,23 @@ const BarChart = () => {
         bar: {
           horizontal: false,
           dataLabels: {
-            position: 'inside' // Position data labels inside the bars
+            position: 'top' // Position data labels on top of the bars
           }
         }
       },
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          // Display quiz name inside each bar
-          return categories[opts.dataPointIndex];
+          // Display the name of the quiz in the center
+          return opts.w.config.xaxis.categories[opts.dataPointIndex];
         },
         style: {
-          colors: ['#fff'], // White color for better contrast
+          colors: ['#fff'], // Set text color for contrast
           fontSize: '12px'
-        }
+        },
+        offsetY: +100,
+        offsetX: +0
+         // Adjust position of the label (tweak as needed)
       }
     },
     series: [] // Initialize with empty series
