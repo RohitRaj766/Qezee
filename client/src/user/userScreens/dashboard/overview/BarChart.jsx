@@ -29,7 +29,6 @@ const BarChart = () => {
             colors: '#fff', // Set all labels to white
             fontSize: '20px',
             fontWeight: 'bold',
-            
           },
           offsetX: 0, // Adjust as needed
           offsetY: -150, // Adjust as needed to overlap with bars
@@ -49,6 +48,7 @@ const BarChart = () => {
       plotOptions: {
         bar: {
           horizontal: false,
+          borderRadius: 0, // Set border radius to 0 for custom CSS handling
           dataLabels: {
             position: 'top' 
           }
@@ -69,7 +69,6 @@ const BarChart = () => {
           colors: ['#F5B400'],
           fontSize: '16px',
           fontWeight: 'bold'
-          
         },
         offsetY: -50 // Adjust this value as needed to position the label
       }
@@ -118,7 +117,8 @@ const BarChart = () => {
             series={chartData.series}
             type="bar"
             width="950"
-            height="405"
+            height="420"
+            className="bar-chart"
           />
         </div>
       </div>
