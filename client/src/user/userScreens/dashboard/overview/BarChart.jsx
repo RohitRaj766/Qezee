@@ -12,55 +12,61 @@ const BarChart = () => {
         id: "basic-bar"
       },
       grid: {
-        show: false // Hide grid lines
+        show: false 
       },
       xaxis: {
         categories: [],
         axisBorder: {
-          show: false // Hide axis border
+          show: false
         },
         axisTicks: {
-          show: false // Hide axis ticks
+          show: false 
         },
         labels: {
-          show: false // Hide x-axis labels
+          rotate: -90, // Rotate labels 90 degrees
+          rotateAlways: true,
+          style: {
+            colors: ['#fff','#fff'],
+            fontSize: '16px',
+            fontWeight: 'bold',
+          },
+          offsetX: 0, // Adjust as needed
+          offsetY: -150, // Adjust as needed to overlap with bars
         }
       },
       yaxis: {
         axisBorder: {
-          show: false // Hide axis border
+          show: false 
         },
         axisTicks: {
-          show: false // Hide axis ticks
+          show: false
         },
         labels: {
-          show: false // Hide y-axis labels
+          show: false 
         }
       },
       plotOptions: {
         bar: {
           horizontal: false,
           dataLabels: {
-            position: 'top' // Position data labels on top of the bars
+            position: 'top' 
           }
         }
       },
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          // Display the name of the quiz in the center
-          return opts.w.config.xaxis.categories[opts.dataPointIndex];
+          return val;
         },
         style: {
-          colors: ['#fff'], // Set text color for contrast
-          fontSize: '12px'
+          colors: ['#000'],
+          fontSize: '12px',
+          fontWeight: 'bold'
         },
-        offsetY: +100,
-        offsetX: +0
-         // Adjust position of the label (tweak as needed)
+        offsetY: -10 // Adjust this value as needed to position the label
       }
     },
-    series: [] // Initialize with empty series
+    series: [] 
   });
 
   useEffect(() => {
@@ -104,7 +110,7 @@ const BarChart = () => {
             series={chartData.series}
             type="bar"
             width="950"
-            height="300"
+            height="405"
           />
         </div>
       </div>
