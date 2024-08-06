@@ -49,6 +49,7 @@ const BarChart = () => {
         bar: {
           horizontal: false,
           borderRadius: 0, 
+          columnWidth: '70%',
           dataLabels: {
             position: 'top' 
           }
