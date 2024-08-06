@@ -124,6 +124,13 @@ const BarChart = () => {
     <div className="bar">
       <div className="row">
         <div className="mixed-chart">
+          <div className="scores">
+            {user && user.LoggedInUser && user.LoggedInUser.totalquizzes.map((quiz, index) => (
+              <div key={index} className="score-item">
+                {quiz.correct}/{quiz.correct+quiz.wrong+quiz.notattempted}
+              </div>
+            ))}
+          </div>
           <Chart
             options={chartData.options}
             series={chartData.series}
