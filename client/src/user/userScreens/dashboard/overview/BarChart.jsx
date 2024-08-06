@@ -63,14 +63,14 @@ const BarChart = () => {
           const wrong = quiz.wrong || 0;
           const notAttempted = quiz.notattempted || 0;
           const total = correct + wrong + notAttempted;
-          return `${correct}/${total}`;
+          return `${correct} / ${total}`;
         },
         style: {
-          colors: ['#F5B400'],
-          fontSize: '22px',
+          colors: ['#fff'],
+          fontSize: '16px',
           fontWeight: 'bold'
         },
-        offsetY: -35, 
+        offsetY: 15, 
         textAnchor: 'middle' 
       },
       tooltip: {
@@ -124,19 +124,13 @@ const BarChart = () => {
     <div className="bar">
       <div className="row">
         <div className="mixed-chart">
-          <div className="scores">
-            {user && user.LoggedInUser && user.LoggedInUser.totalquizzes.map((quiz, index) => (
-              <div key={index} className="score-item">
-                {quiz.correct}/{quiz.correct+quiz.wrong+quiz.notattempted}
-              </div>
-            ))}
-          </div>
+
           <Chart
             options={chartData.options}
             series={chartData.series}
             type="bar"
-            width="950"
-            height="420"
+            width="980"
+            height="440"
             className="bar-chart"
           />
         </div>
