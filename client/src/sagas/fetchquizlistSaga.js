@@ -4,7 +4,7 @@ import { getToken } from '../utils';
 import { FETCH_QUIZ_LIST_REQUEST, fetchQuizListSuccess, fetchQuizListFailure } from '../actions/index';
 
 // Worker Saga: Performs the async task
-function* fetchQuizList() {
+function* quizList() {
   const token = getToken();
   if(token)
   {
@@ -26,6 +26,6 @@ function* fetchQuizList() {
 }
 
 // Watcher Saga: Watches for actions and starts the worker saga
-export default function* watchfetchQuizList() {
-  yield takeEvery(FETCH_QUIZ_LIST_REQUEST, fetchQuizList);
+export default function* fetchQuizList() {
+  yield takeEvery(FETCH_QUIZ_LIST_REQUEST, quizList);
 }

@@ -9,7 +9,7 @@ import {
 } from "../actions/index";
 
 // const quizError=useSelector(state=>state.auth.LoginSuccess);
-function* submitResultSaga(action) {
+function* submitResult(action) {
   try {
     const { quizTopic, correct, wrong, notattempted } = action.payload;
     const user = yield select((state) => state.auth.user);
@@ -37,6 +37,6 @@ function* submitResultSaga(action) {
   }
 }
 
-export default function* watchSubmitResultSaga() {
-  yield takeEvery(SUBMIT_RESULT_REQUEST, submitResultSaga);
+export default function* submitResultSaga() {
+  yield takeEvery(SUBMIT_RESULT_REQUEST, submitResult);
 }

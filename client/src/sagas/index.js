@@ -5,9 +5,9 @@ import userLoginSaga from './userLoginSaga';
 import userLogoutSaga from './userLogoutSaga';
 import userVerifyOtpSaga  from './userVerifyOtpSaga';
 import verifyTokenSaga from './refreshHandlerSaga'
-import watchfetchQuizList from './fetchquizlistSaga';
-import watchFetchQuizQuestion from './fetchquizquestionSaga';
-import watchSubmitResultSaga from './submitresultSaga';
+import fetchQuizList from './fetchquizlistSaga';
+import fetchQuizQuestion from './fetchquizquestionSaga';
+import submitResultSaga from './submitresultSaga';
 export default function* rootSaga() {
   yield all([
     leaderboardSaga(),
@@ -16,8 +16,8 @@ export default function* rootSaga() {
     userLogoutSaga(),
     userVerifyOtpSaga(),
     verifyTokenSaga(),
-    watchfetchQuizList(),
-    watchFetchQuizQuestion(),
-    watchSubmitResultSaga(),
+    fetchQuizList(),
+    fetchQuizQuestion(),
+    submitResultSaga(),
   ]);
 }

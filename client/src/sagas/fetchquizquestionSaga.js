@@ -10,7 +10,7 @@ import {
   fetchQuizFailure,
 } from "../actions/index";
 
-function* fetchQuizQuestion(action) {
+function* quizQuestion(action) {
   const token = getToken();
   // console.log("Fetching quiz data for:", action.payload.title);
   const title = action.payload;
@@ -25,7 +25,7 @@ function* fetchQuizQuestion(action) {
         }
       );
       yield put(fetchQuizSuccess(response.data));
-      console.log("Quizquestion data:", response.data);
+
     } catch (error) {
       yield put(fetchQuizFailure(error.message));
     }
@@ -34,6 +34,6 @@ function* fetchQuizQuestion(action) {
   }
 }
 
-export default function* watchFetchQuizQuestion() {
-  yield takeEvery(FETCH_QUIZ_REQUEST, fetchQuizQuestion);
+export default function* fetchQuizQuestion() {
+  yield takeEvery(FETCH_QUIZ_REQUEST, quizQuestion);
 }
