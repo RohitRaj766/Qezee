@@ -27,6 +27,13 @@ const Login = () => {
     dispatch(loginRequest(credentials));
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/dashboard/overview');
@@ -49,6 +56,7 @@ const Login = () => {
               name="email"
               value={credentials.email}
               onChange={handleChange}
+              onKeyDown={handleKeyDown}
               placeholder="Email*"
               required
             />
@@ -59,6 +67,7 @@ const Login = () => {
                 name="password"
                 value={credentials.password}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Password*"
                 required
               />
@@ -71,7 +80,7 @@ const Login = () => {
           </form>
         </div>
         {error && <p className='errorMessage'>{error}</p>}
-        <button onClick={handleSubmit} type="submit">LOGIN</button>
+        <button onClick={handleSubmit} type="button">LOGIN</button>
         <p>Forgot? Click here</p>
       </div>
       <div className='backgroundImage'>
