@@ -1,70 +1,138 @@
-import React, { useState } from 'react';
-import Chart from 'react-apexcharts';
-import './BarChart.scss'
+import React, { useState, useEffect } from "react";
+import Chart from "react-apexcharts";
+import { useSelector } from "react-redux";
+import './BarChart.scss';
 
 const BarChart = () => {
+  const user = useSelector((state) => state.auth.user);
+  const [categories, setCategories] = useState([]);
   const [chartData, setChartData] = useState({
     options: {
       chart: {
-        id: 'basic-bar'
+        id: "basic-bar"
       },
       grid: {
         show: false 
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: [],
         axisBorder: {
-          show: false 
+          show: true  
         },
         axisTicks: {
-          show: false 
+          show: true  
         },
         labels: {
-          show: false 
-        },
-        lines: {
-          show: false 
+          rotate: -90, 
+          rotateAlways: true,
+          style: {
+            colors: '#fff', 
+            fontSize: '22px',
+            fontWeight: 'bold',
+          },
+          offsetX: 0, 
+          offsetY: -175, 
         }
       },
       yaxis: {
         axisBorder: {
-          show: false 
+          show: true  
         },
         axisTicks: {
-          show: false 
+          show: true  
         },
         labels: {
-          show: false 
-        },
-        lines: {
-          show: false 
+          show: true  
         }
       },
       plotOptions: {
         bar: {
-          horizontal: false
+          horizontal: false,
+          borderRadius: 0, 
+          columnWidth: '70%',
+          dataLabels: {
+            position: 'top' 
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function (val, opts) {
+          const index = opts.dataPointIndex;
+          const quiz = user.LoggedInUser.totalquizzes[index];
+          const correct = quiz.correct || 0;
+          const wrong = quiz.wrong || 0;
+          const notAttempted = quiz.notattempted || 0;
+          const total = correct + wrong + notAttempted;
+          return `${correct} / ${total}`;
+        },
+        style: {
+          colors: ['#fff'],
+          fontSize: '16px',
+          fontWeight: 'bold'
+        },
+        offsetY: 15, 
+        textAnchor: 'middle' 
+      },
+      tooltip: {
+        y: {
+          formatter: function (value, { series, seriesIndex, dataPointIndex }) {
+            const quiz = user.LoggedInUser.totalquizzes[dataPointIndex];
+            const correct = quiz.correct || 0;
+            const wrong = quiz.wrong || 0;
+            const notAttempted = quiz.notattempted || 0;
+            return `Correct: ${correct}<br>Wrong: ${wrong}<br>Not Attempted: ${notAttempted}`;
+          }
         }
       }
     },
-    series: [
-      {
-        name: 'series-1',
-        data: [15, 13, 11, 19, 16, 12, 8, 17 , 20, 11]
-      }
-    ]
+    series: [] 
   });
 
+  useEffect(() => {
+    if (user && user.LoggedInUser) {
+      const quizzes = user.LoggedInUser.totalquizzes;
+
+      if (Array.isArray(quizzes)) {
+        const quizNames = quizzes.map((quiz) => quiz.name);
+        const correctValues = quizzes.map((quiz) => quiz.correct);
+
+        setCategories(quizNames);
+
+        setChartData((prevState) => ({
+          ...prevState,
+          options: {
+            ...prevState.options,
+            xaxis: {
+              ...prevState.options.xaxis,
+              categories: quizNames
+            }
+          },
+          series: [
+            {
+              name: 'Score',
+              data: correctValues
+            }
+          ]
+        }));
+      } else {
+        console.error("totalquizzes is not an array", quizzes);
+      }
+    }
+  }, [user]);
+
   return (
-    // Bar chart
     <div className="bar">
       <div className="row">
         <div className="mixed-chart">
+
           <Chart
             options={chartData.options}
             series={chartData.series}
             type="bar"
-            width="950"
-            height="300"
+            width="980"
+            height="440"
+            className="bar-chart"
           />
         </div>
       </div>
