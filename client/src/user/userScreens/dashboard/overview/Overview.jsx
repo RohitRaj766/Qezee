@@ -8,7 +8,6 @@ const Overview = () => {
   return (
     <div className="overviewMain">
       <div className="upperContainer">
-         <h1>OVERVIEW</h1>
          <div className="upperWrapper">
           <PieChart/>
           <OverviewCards/>
