@@ -110,6 +110,13 @@ const Signup = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className='mainSignup'>
       <div className='boxContainer'>
@@ -117,17 +124,17 @@ const Signup = () => {
         <div className='formContainer'>
           <form>
             <div className='smallForm'>
-              <input className="smallInputField" type="text" name="firstname" value={userData.firstname} onChange={handleChange} placeholder="First Name*" required />
-              <input className="smallInputField" type="text" name="lastname" value={userData.lastname} onChange={handleChange} placeholder="Last Name*" required />
+              <input className="smallInputField" type="text" name="firstname" value={userData.firstname} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="First Name*" required />
+              <input className="smallInputField" type="text" name="lastname" value={userData.lastname} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Last Name*" required />
             </div>
-            <input className="inputField" type="email" name="email" value={userData.email} onChange={handleChange} placeholder="Email*" required />
+            <input className="inputField" type="email" name="email" value={userData.email} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Email*" required />
             <div className="smallForm">
-              <input className="smallInputField" type="text" name="course" value={userData.course} onChange={handleChange} placeholder="Course*" required />
-              <input className="smallInputField" type="text" name="branch" value={userData.branch} onChange={handleChange} placeholder="Branch*" required />
+              <input className="smallInputField" type="text" name="course" value={userData.course} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Course*" required />
+              <input className="smallInputField" type="text" name="branch" value={userData.branch} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Branch*" required />
             </div>
-            <input className="inputField" type="text" name="university" value={userData.university} onChange={handleChange} placeholder="University*" required />
-            <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} placeholder="College*" required />
-            <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} placeholder="Enrollment*" required />
+            <input className="inputField" type="text" name="university" value={userData.university} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="University*" required />
+            <input className="inputField" type="text" name="college" value={userData.college} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="College*" required />
+            <input className="inputField" type="text" name="enrollment" value={userData.enrollment} onChange={handleChange} onKeyDown={handleKeyDown} placeholder="Enrollment*" required />
             <div className="passwordField">
               <input
                 className="inputField"
@@ -135,6 +142,7 @@ const Signup = () => {
                 name="password"
                 value={userData.password}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Password*"
                 required
               />
@@ -151,6 +159,7 @@ const Signup = () => {
                 name="confirmpassword"
                 value={userData.confirmpassword}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Confirm Password*"
                 required
               />
