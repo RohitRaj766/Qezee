@@ -26,7 +26,7 @@ const BarChart = () => {
           rotate: -90, 
           rotateAlways: true,
           style: {
-            colors: '#fff', 
+            colors: '#000', 
             fontSize: '22px',
             fontWeight: 'bold',
           },
@@ -48,15 +48,16 @@ const BarChart = () => {
       plotOptions: {
         bar: {
           horizontal: false,
-          borderRadius: 0, 
+          borderRadius: 5, 
           columnWidth: '70%',
           dataLabels: {
             position: 'top' 
           }
         }
       },
+      colors: ['#F5B400'], // Set the bar color here
       dataLabels: {
-        enabled: true,
+        enabled: false,
         formatter: function (val, opts) {
           const index = opts.dataPointIndex;
           const quiz = user.LoggedInUser.totalquizzes[index];
@@ -81,7 +82,8 @@ const BarChart = () => {
             const correct = quiz.correct || 0;
             const wrong = quiz.wrong || 0;
             const notAttempted = quiz.notattempted || 0;
-            return `Correct: ${correct}<br>Wrong: ${wrong}<br>Not Attempted: ${notAttempted}`;
+            const total = correct + wrong + notAttempted;
+            return `Correct: ${correct}<br>Wrong: ${wrong}<br>Not Attempted: ${notAttempted}<br>Total: ${total}`;
           }
         }
       }
