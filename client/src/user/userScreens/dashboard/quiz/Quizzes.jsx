@@ -1,142 +1,189 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Quizzes.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchQuizListRequest, fetchQuizRequest } from "../../../../actions/index";
+import {
+  fetchQuizListRequest,
+  fetchQuizRequest,
+  submitResultRequest
+} from "../../../../actions/index";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "../common/ModalConfirm";
-import Loader from "../../../components/loader/Loader";
 
 const QuizList = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const quizzes = useSelector((state) => state.auth.fetchedData);
   const isLoading = useSelector((state) => state.auth.isLoading);
   const error = useSelector((state) => state.auth.fetchDataError);
   const [flag, setFlag] = useState(false);
+  const [selectQuizTitle, setSelectQuizTitle] = useState("");
+  const [isDataVisible, setIsDataVisible] = useState(false);
+ 
 
-
-  // console.log("QUIZ kha hai ", quizzes);
-  // console.log("QUIZ", typeof quizzes);
-  // console.log("QUIZss", quizzes?.title);
-
-  // console.log(
-  //   "Quiz Titles:",
-  //   quizzes?.data?.map((quiz) => quiz.title)
-  // );
-
-  // quizzes.forEach((quiz) => {
-  //   console.log(quiz._id);
-  // });
-
-  const activeQuizzes = quizzes.filter((quiz) => quiz.quizStatus === "inactive");
-  const inactiveQuizzes = quizzes.filter(
-    (quiz) => quiz.quizStatus === "expired"
+  const activeQuizzes = quizzes.filter(
+    (quiz) => quiz.quizStatus === "inactive"
   );
-
-  // console.log("ddd", activeQuizzes);
-  // console.log("ddd2", inactiveQuizzes);
+  const inactiveQuizzes = quizzes.filter(
+    (quiz) => quiz.quizStatus === "expired" || quiz.quizStatus === "completed"
+  );
 
   useEffect(() => {
     dispatch(fetchQuizListRequest());
   }, [dispatch]);
 
-  // const handleButtonClick = (quizId) => {
-  //   navigate(`/quiz/${quizId}`); // Navigate to the quiz page with the quizId
-  // };
+  useEffect(() => {
+    if (!isLoading) {
+      setIsDataVisible(true);
+    }
+  }, [isLoading]);
 
-  const handleCloseModal=()=>{
+  const handleCloseModal = () => {
     setFlag(false);
-  }
+  };
 
   const handleButtonClick = (title) => {
-    
-    setFlag(true); 
-    dispatch(fetchQuizRequest(title))
-
+    setFlag(true);
+    setSelectQuizTitle(title);
   };
 
   const handleConfirmTest = () => {
-       navigate('/dashboard/quizzes/quizpage');
-    
+    navigate("/dashboard/quizzes/quizpage");
+    dispatch(fetchQuizRequest(selectQuizTitle));
     setFlag(false);
   };
 
+  const adjustTime = (dateString, offsetHours = -5, offsetMinutes = -30) => {
+    const date = new Date(dateString);
+    date.setHours(date.getHours() + offsetHours);
+    date.setMinutes(date.getMinutes() + offsetMinutes);
+    return date;
+  };
 
   return (
     <div className="quizContainerMain">
-      <div className="quizWrapper">
-        <h1>QUIZZES</h1>
-        <div className="QuizContainer">
-          <h2>Live Quizzes</h2>
-          <div className="QuizList">
-            {isLoading && <Loader/>}
-            {error && <p>Error: {error}</p>}
-            <table>
-              <thead className="tableHeader">
-                <tr className="tableRow">
-                  <th>Name</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>Expiry Time</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {activeQuizzes.map((quiz, index) => (
-                  <tr key={index} className='quiz'>
-                    <td>{quiz.title}</td>
-                    <td>{new Date(quiz.date).toLocaleDateString()}</td>
-                    <td>{new Date(quiz.startTime).toLocaleTimeString()}</td>
-                    <td>{new Date(quiz.expireTime).toLocaleTimeString()}</td>
-                    {/* <td>{quiz.quizStatus}</td> */}
-                    <td><button onClick={() => handleButtonClick(quiz.title)}>Start</button></td>
+      {!isLoading && isDataVisible && (
+        <div className="quizWrapper">
+          <div className="QuizContainer">
+            <h2>Live Quizzes</h2>
+            <div className="QuizList">
+              {error && <p>Error: {error}</p>}
+              <table>
+                <thead className="tableHeader">
+                  <tr className="tableRow">
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>Expiry Time</th>
+                    <th>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>   
-          {flag && 
-      <ModalConfirm onClose={handleCloseModal}
-             heading = "Confirmation"
-             content="Are you sure, You want to start Quiz ?"
-             handleConfirmTest = {handleConfirmTest}
-      />}
+                </thead>
+                <tbody>
+                  {activeQuizzes.map((quiz, index) => {
+                    const quizDateAdjusted = adjustTime(quiz.date);
+                    const startTimeAdjusted = adjustTime(quiz.startTime);
+                    const expireTimeAdjusted = adjustTime(quiz.expireTime);
+                    return (
+                      <tr key={index} className="quiz">
+                        <td>{quiz.title}</td>
+                        <td>{quizDateAdjusted.toLocaleDateString()}</td>
+                        <td>
+                          {startTimeAdjusted.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true
+                          })}
+                        </td>
+                        <td>
+                          {expireTimeAdjusted.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true
+                          })}
+                        </td>
+                        <td>
+                          <button onClick={() => handleButtonClick(quiz.title)}>
+                            Start
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            {flag && (
+              <ModalConfirm
+                onClose={handleCloseModal}
+                heading="Confirmation"
+                content="Are you sure, You want to start Quiz ?"
+                handleConfirmTest={handleConfirmTest}
+              />
+            )}
+          </div>
 
-        </div>
+          <div className="divider"></div>
 
-        <div className="divider"></div>
-
-        <div className="QuizContainer">
-          <h2>Expired Quizzes</h2>
-          <div className="QuizList">
-            <table>
-              <thead className="tableHeader">
-                <tr className="tableRow">
-                  <th>Name</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>Expiry Time</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {inactiveQuizzes.map((quiz, index) => (
-                  <tr key={index} className="quiz">
-                    <td>{quiz.title}</td>
-                    <td>{new Date(quiz.date).toLocaleDateString()}</td>
-                    <td>{new Date(quiz.startTime).toLocaleTimeString()}</td>
-                    <td>{new Date(quiz.expireTime).toLocaleTimeString()}</td>
-                    <td>
-                      <span>{quiz.quizStatus}</span>
-                    </td>
+          <div className="QuizContainer">
+            <h2>Previous Quizzes</h2>
+            <div className="QuizList">
+              <table>
+                <thead className="tableHeader">
+                  <tr className="tableRow">
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>Expiry Time</th>
+                    <th>Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {inactiveQuizzes.map((quiz, index) => {
+                    const quizDateAdjusted = adjustTime(quiz.date);
+                    const startTimeAdjusted = adjustTime(quiz.startTime);
+                    const expireTimeAdjusted = adjustTime(quiz.expireTime);
+
+                    return (
+                      <tr key={index} className="quiz">
+                        <td>{quiz.title}</td>
+                        <td>{quizDateAdjusted.toLocaleDateString()}</td>
+                        <td>
+                          {startTimeAdjusted.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true
+                          })}
+                        </td>
+                        <td>
+                          {expireTimeAdjusted.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                            hour12: true
+                          })}
+                        </td>
+                        <td>
+                          <span
+                            className={
+                              quiz.quizStatus === "completed"
+                                ? "status-completed"
+                                : ""
+                            }
+                          >
+                            {quiz.quizStatus}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )};
     </div>
   );
 };

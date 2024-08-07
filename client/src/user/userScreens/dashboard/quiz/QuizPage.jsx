@@ -7,8 +7,8 @@ import "./QuizPage.scss";
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
-// import { fetchQuizRequest, SUBMIT_RESULT_REQUEST } from '../../../../actions';
 import { submitResultRequest } from '../../../../actions';
+import Loader from '../../../components/loader/Loader';
 
 
 
@@ -21,9 +21,7 @@ const QuizPage = (props) => {
     const [isModalvisible, setIsModalVisible] = useState(false);
     const [timeLeft, setTimeLeft] = useState(600);
     const quizQuestion=useSelector(state=>state.auth.quizData);
-    // const isLoading=useSelector(state=>state.auth.isLoading);
     const quizError=useSelector(state=>state.auth.quizError);
-    // const userEmail = useSelector(state => state.auth.user.email);
 
     console.log("quiz hai pagal",quizQuestion);
 
@@ -71,7 +69,7 @@ const QuizPage = (props) => {
       const score=calculateScore();
 
       const scoreData={
-       
+        quizStatus:"completed",
         quizTopic: quizQuestion.title,
         correct: score,
         wrong: shuffledQuestions.length - score,
@@ -89,8 +87,6 @@ const QuizPage = (props) => {
         return score;
       }, 0);
     };
-
-
   
     const handleCloseModal = () => {
       setIsModalVisible(false);
@@ -104,7 +100,7 @@ const QuizPage = (props) => {
     };
   
     if (shuffledQuestions.length === 0) {
-      return <div>Loading...</div>;
+      return <div><Loader/></div>;
     }
 
     if (quizError) {

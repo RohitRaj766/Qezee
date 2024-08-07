@@ -5,13 +5,13 @@ import { getToken } from "../utils";
 import {
   SUBMIT_RESULT_REQUEST,
   submitResultSuccess,
-  submitResultFailure,
+  submitResultFailure
 } from "../actions/index";
 
 // const quizError=useSelector(state=>state.auth.LoginSuccess);
 function* submitResult(action) {
   try {
-    const { quizTopic, correct, wrong, notattempted } = action.payload;
+    const { quizTopic, correct, wrong, notattempted,quizStatus } = action.payload;
     const user = yield select((state) => state.auth.user);
     const email = user && user.LoggedInUser ? user.LoggedInUser.email : null;
 
@@ -20,12 +20,12 @@ function* submitResult(action) {
     const response = yield call(
       axiosInstance.patch,
       `/user/submit-result/?email=${email}`,
-      { quizTopic, correct, wrong, notattempted },
+      { quizTopic, correct, wrong, notattempted,quizStatus },
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       }
     );
 
