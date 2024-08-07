@@ -30,7 +30,7 @@ const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
   const isNotFoundRoute = location.pathname === "/not-found";
-
+ // text
   return (
     <>
       {isLoad && <Loader />}
