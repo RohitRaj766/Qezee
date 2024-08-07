@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import "./Quizzes.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDataRequest, fetchQuizRequest } from "../../../../actions/index";
+import { fetchQuizListRequest, fetchQuizRequest } from "../../../../actions/index";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "../common/ModalConfirm";
 import Loader from "../../../components/loader/Loader";
@@ -37,7 +37,7 @@ const QuizList = () => {
   // console.log("ddd2", inactiveQuizzes);
 
   useEffect(() => {
-    dispatch(fetchDataRequest());
+    dispatch(fetchQuizListRequest());
   }, [dispatch]);
 
   // const handleButtonClick = (quizId) => {

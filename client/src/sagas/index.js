@@ -5,7 +5,7 @@ import userLoginSaga from './userLoginSaga';
 import userLogoutSaga from './userLogoutSaga';
 import userVerifyOtpSaga  from './userVerifyOtpSaga';
 import verifyTokenSaga from './refreshHandlerSaga'
-import fetchquizdataSaga from './fetchquizdataSaga';
+import watchfetchQuizList from './fetchquizlistSaga';
 import watchFetchQuizQuestion from './fetchquizquestionSaga';
 import watchSubmitResultSaga from './submitresultSaga';
 export default function* rootSaga() {
@@ -16,7 +16,7 @@ export default function* rootSaga() {
     userLogoutSaga(),
     userVerifyOtpSaga(),
     verifyTokenSaga(),
-    fetchquizdataSaga(),
+    watchfetchQuizList(),
     watchFetchQuizQuestion(),
     watchSubmitResultSaga(),
   ]);

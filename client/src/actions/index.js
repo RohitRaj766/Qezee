@@ -25,17 +25,17 @@ export const VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS =
 export const VERIFY_TOKEN_HANDLE_REFRESH_FAILURE =
   "VERIFY_TOKEN_HANDLE_REFRESH_FAILURE";
 
-export const FETCH_DATA_REQUEST = "FETCH_DATA_REQUEST";
-export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
-export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+export const FETCH_QUIZ_LIST_REQUEST = "FETCH_QUIZ_LIST_REQUEST";
+export const FETCH_QUIZ_LIST_SUCCESS = "FETCH_QUIZ_LIST_SUCCESS";
+export const FETCH_QUIZ_LIST_FAILURE = "FETCH_QUIZ_LIST_FAILURE";
 
 export const FETCH_QUIZ_REQUEST = "FETCH_QUIZ_REQUEST";
 export const FETCH_QUIZ_SUCCESS = "FETCH_QUIZ_SUCCESS";
 export const FETCH_QUIZ_FAILURE = "FETCH_QUIZ_FAILURE";
 
-export const SUBMIT_RESULT_REQUEST = 'SUBMIT_RESULT_REQUEST';
-export const SUBMIT_RESULT_SUCCESS = 'SUBMIT_RESULT_SUCCESS';
-export const SUBMIT_RESULT_FAILURE = 'SUBMIT_RESULT_FAILURE';
+export const SUBMIT_RESULT_REQUEST = "SUBMIT_RESULT_REQUEST";
+export const SUBMIT_RESULT_SUCCESS = "SUBMIT_RESULT_SUCCESS";
+export const SUBMIT_RESULT_FAILURE = "SUBMIT_RESULT_FAILURE";
 
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
@@ -108,34 +108,34 @@ export const verifyOtpFailure = (error) => ({
 });
 
 export const verifyTokenHandelRefreshRequest = () => ({
-  type: VERIFY_TOKEN_HANDLE_REFRESH_REQUEST,
+  type: VERIFY_TOKEN_HANDLE_REFRESH_REQUEST
 });
 
 export const verifyTokenHandelRefreshSuccess = (isAuthenticated, user) => {
   return {
     type: VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS,
-    payload: { isAuthenticated, user },
+    payload: { isAuthenticated, user }
   };
 };
 
 export const verifyTokenHandelRefreshFailure = (isAuthenticated, user) => {
   return {
     type: VERIFY_TOKEN_HANDLE_REFRESH_FAILURE,
-    payload: { isAuthenticated, user },
+    payload: { isAuthenticated, user }
   };
 };
 
-export const fetchDataRequest = () => ({
-  type: FETCH_DATA_REQUEST,
+export const fetchQuizListRequest = () => ({
+  type: FETCH_QUIZ_LIST_REQUEST,
 });
 
-export const fetchDataSuccess = (data) => ({
-  type: FETCH_DATA_SUCCESS,
+export const fetchQuizListSuccess = (data) => ({
+  type: FETCH_QUIZ_LIST_SUCCESS,
   payload: data,
 });
 
-export const fetchDataFailure = (error) => ({
-  type: FETCH_DATA_FAILURE,
+export const fetchQuizListFailure = (error) => ({
+  type: FETCH_QUIZ_LIST_FAILURE,
   payload: error,
 });
 

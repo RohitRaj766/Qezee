@@ -16,9 +16,9 @@ import {
   FETCH_LEADERBOARD_REQUEST,
   FETCH_LEADERBOARD_SUCCESS,
   FETCH_LEADERBOARD_FAILURE,
-  FETCH_DATA_REQUEST,
-  FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAILURE,
+  FETCH_QUIZ_LIST_REQUEST,
+  FETCH_QUIZ_LIST_SUCCESS,
+  FETCH_QUIZ_LIST_FAILURE,
   FETCH_QUIZ_REQUEST,
   FETCH_QUIZ_FAILURE,
   FETCH_QUIZ_SUCCESS,
@@ -49,7 +49,7 @@ const userauthReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
 
     case LOGIN_SUCCESS:
@@ -58,7 +58,7 @@ const userauthReducer = (state = initialState, action) => {
         user: action.payload,
         isAuthenticated: true,
         isLoading: false,
-        error: null,
+        error: null
       };
 
     case LOGIN_FAILURE:
@@ -67,13 +67,13 @@ const userauthReducer = (state = initialState, action) => {
         user: null,
         isAuthenticated: false,
         isLoading: false,
-        error: action.payload,
+        error: action.payload
       };
 
     case SIGNUP_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
 
     case SIGNUP_SUCCESS:
@@ -81,7 +81,7 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         signupMessage: action.payload,
         isLoading: false,
-        error: null,
+        error: null
       };
 
     case SIGNUP_FAILURE:
@@ -89,13 +89,13 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         signupMessage: null,
         isLoading: false,
-        error: action.payload,
+        error: action.payload
       };
 
     case VERIFY_OTP_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
 
     case VERIFY_OTP_SUCCESS:
@@ -103,7 +103,7 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         otpMessage: action.payload,
         isLoading: false,
-        otpError: null,
+        otpError: null
       };
 
     case VERIFY_OTP_FAILURE:
@@ -111,25 +111,25 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         otpMessage: null,
         isLoading: false,
-        otpError: action.payload,
+        otpError: action.payload
       };
 
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        isAuthenticated: false,
+        isAuthenticated: false
       };
 
     case LOGOUT_FAILURE:
       return {
-        ...state,
+        ...state
       };
 
 
     case VERIFY_TOKEN_HANDLE_REFRESH_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
 
     case VERIFY_TOKEN_HANDLE_REFRESH_SUCCESS:
@@ -137,7 +137,7 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload.user,
+        user: action.payload.user
       };
       
     case VERIFY_TOKEN_HANDLE_REFRESH_FAILURE:
@@ -145,35 +145,32 @@ const userauthReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: false,
         isLoading: false,
-        user: action.payload.user,
+        user: action.payload.user
       };
     case FETCH_LEADERBOARD_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
     case FETCH_LEADERBOARD_SUCCESS:
       return {
         ...state,
         isLoading: false,
         leaderboardData: action.payload,
-        error: null,
+        error: null
       };
     case FETCH_LEADERBOARD_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
+        error: action.payload
       };
-
-    // case FETCH_DATA_REQUEST:
-
-    case FETCH_DATA_REQUEST:
+    case FETCH_QUIZ_LIST_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case FETCH_DATA_SUCCESS:
+    case FETCH_QUIZ_LIST_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -181,7 +178,7 @@ const userauthReducer = (state = initialState, action) => {
         fetchDataError: null,
       };
 
-    case FETCH_DATA_FAILURE:
+    case FETCH_QUIZ_LIST_FAILURE:
       return {
         ...state,
         isLoading: false,
