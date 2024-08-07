@@ -1,0 +1,69 @@
+@import "../../../assets/Common";
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ezee */
+.quizpage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  // padding: 20px;
+  opacity: 1;
+  // overflow-y:auto;
+
+  box-sizing: border-box;
+  z-index: 999999999;
+  font-family: $primary-font;
+
+  .header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    gap: 2px;
+    height: 80px;
+    box-sizing: border-box;
+
+    .logo {
+
+      height: 100%;
+      width: 113px;
+    }
+    .logo img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+    .text {
+      font-family: $primary-font;
+      font-size: 40px;
+      color: $btn-color;
+      .Q {
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 60px;
+        color: #3c5edf;
+      }
+    }
+  }
+
+  .heading {
+    font-family: "Itim";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 25px;
+    letter-spacing: 0.08em;
+    color: $heading-color;
+    text-transform: capitalize;
+  }
+}

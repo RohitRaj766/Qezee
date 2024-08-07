@@ -82,17 +82,17 @@ const QuizSection = ({
           <h2>{`Q${currentQuestion + 1}) ${
             shuffledQuestions[currentQuestion].question
           }`}</h2>
-          {shuffledQuestions[currentQuestion].options.map((option, index) => (
-            <div key={option}>
+        {Object.entries(shuffledQuestions[currentQuestion].options).map(([key, value], index) => (
+            <div key={key}>
               <label className="custom-radio">
                 <input
                   type="radio"
                   name={`question-${currentQuestion}`}
-                  value={option}
-                  checked={answers[currentQuestion] === option}
-                  onChange={() => handleOptionChange(option)}
+                  value={key}
+                  checked={answers[currentQuestion] === key}
+                  onChange={() => handleOptionChange(key)}
                 />
-                <span className="custom-radio__label">{`${optionLabels[index]}) ${option}`}</span>
+                <span className="custom-radio__label">{`${optionLabels[index]}) ${value}`}</span>
               </label>
             </div>
           ))}

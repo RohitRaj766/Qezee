@@ -19,8 +19,11 @@ import Loader from "./user/components/loader/Loader";
 import Header from "./user/components/header/Header";
 import PrivateRoute from "./user/components/PrivateRoute";
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
+
+import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
+
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
@@ -36,6 +39,7 @@ const AppContent = () => {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/quizpage" element={<QuizPage/>} /> */}
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="leaderboard" element={<Leaderboard />} />
@@ -43,7 +47,10 @@ const AppContent = () => {
             <Route path="mocktest" element={<Mocktest />} />
             <Route path="overview" element={<Overview />} />
             <Route path="quizzes" element={<QuizList />} />
+            {/* <Route path="quiz/:id" element={<QuizPage/>} /> */} 
           </Route>
+          <Route path="/dashboard/quizzes/quizpage" element={<QuizPage/>} />
+
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
         <Route path="*" element={<Navigate to="/not-found" />} />
