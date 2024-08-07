@@ -7,17 +7,20 @@ const QuestionTracker = ({ shuffledQuestions, answers, handleQuestionClick }) =>
 
   return (
     <div className="question-tracker">
+      <div className="question-numbers-container">
+
       {[...Array(shuffledQuestions.length)].map((_, i) => (
-        <div
-          key={i}
-          className={`question-number ${
-            answers[i] ? 'attempted' : 'not-attempted'
-          }`}
-          onClick={() => handleQuestionClick(i)}
-        >
-          {i + 1}
-        </div>
-      ))}
+          <div
+            key={i}
+            className={`question-number ${
+              answers[i] ? 'attempted' : 'not-attempted'
+            }`}
+            onClick={() => handleQuestionClick(i)}
+          >
+            {i + 1}
+          </div>
+        ))}
+  </div>
 
       <div className="question-info">
         <div className="info-item left">

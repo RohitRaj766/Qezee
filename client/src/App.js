@@ -19,15 +19,16 @@ import Loader from "./user/components/loader/Loader";
 import Header from "./user/components/header/Header";
 import PrivateRoute from "./user/components/PrivateRoute";
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
+import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
+
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
   const isNotFoundRoute = location.pathname === "/not-found";
-
   return (
     <>
       {isLoad && <Loader />}
@@ -43,6 +44,7 @@ const AppContent = () => {
             <Route path="mocktest" element={<Mocktest />} />
             <Route path="overview" element={<Overview />} />
             <Route path="quizzes" element={<QuizList />} />
+            <Route path="quizzes/quizpage" element={<QuizPage/>} />
           </Route>
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
