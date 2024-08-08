@@ -19,12 +19,12 @@ html {
   align-items: center;
   // padding: 20px;
   opacity: 1;
-  // overflow-y:auto;
-
+  overflow-y:auto;
   box-sizing: border-box;
   z-index: 999999999;
   font-family: $primary-font;
 
+    
   .header {
     display: flex;
     align-items: center;
@@ -59,11 +59,12 @@ html {
   .heading {
     font-family: "Itim";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 28px;
     line-height: 25px;
     letter-spacing: 0.08em;
-    color: $heading-color;
+    color: #3c5edf;
     text-transform: capitalize;
   }
 }
+
