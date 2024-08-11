@@ -120,7 +120,7 @@ const QuizSection = ({
               Next Ques
             </button>
           </div>
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="submit-button" onClick={handleSubmit}>Submit</button>
         </div>
       </div>
 

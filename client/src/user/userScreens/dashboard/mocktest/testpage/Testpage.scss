@@ -59,13 +59,14 @@ html {
   }
 
   .heading {
-    font-family: "Itim";
+    font-family: $primary-font;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 28px;
     line-height: 25px;
     letter-spacing: 0.08em;
     color: $heading-color;
+    color: #3c5edf;
   }
  
 }
