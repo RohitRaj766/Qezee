@@ -17,10 +17,10 @@ const BarChart = () => {
         },
         toolbar: {
           tools: {
-            zoomin: true,  // Enables the zoom-in button in the toolbar
-            zoomout: true, // Enables the zoom-out button in the toolbar
-            reset: true,   // Enables the reset zoom button in the toolbar
-            pan: true      // Enables panning on the chart
+            zoomin: true, 
+            zoomout: true, 
+            reset: true,   
+            pan: true      
           }
         }
       },
