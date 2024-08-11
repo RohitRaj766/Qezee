@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchQuizListRequest,
   fetchQuizRequest,
-  submitResultRequest
-} from "../../../../actions/index";
+  } from "../../../../actions/index";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "../common/ModalConfirm";
 
@@ -13,19 +12,12 @@ const QuizList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const quizzes = useSelector((state) => state.auth.fetchedData);
+  const userData = useSelector((state) => state.auth.user.LoggedInUser);
   const isLoading = useSelector((state) => state.auth.isLoading);
   const error = useSelector((state) => state.auth.fetchDataError);
   const [flag, setFlag] = useState(false);
   const [selectQuizTitle, setSelectQuizTitle] = useState("");
   const [isDataVisible, setIsDataVisible] = useState(false);
- 
-
-  const activeQuizzes = quizzes.filter(
-    (quiz) => quiz.quizStatus === "inactive"
-  );
-  const inactiveQuizzes = quizzes.filter(
-    (quiz) => quiz.quizStatus === "expired" || quiz.quizStatus === "completed"
-  );
 
   useEffect(() => {
     dispatch(fetchQuizListRequest());
@@ -59,6 +51,23 @@ const QuizList = () => {
     return date;
   };
 
+  const attemptedQuizzes = userData?.totalquizzes.map(quiz => quiz.name) || [];
+
+const liveQuizzes = quizzes.filter(
+  (quiz) => quiz.quizStatus === "inactive" && !attemptedQuizzes.includes(quiz.title)
+);
+
+const previousQuizzes = quizzes.filter(
+  (quiz) => quiz.quizStatus === "completed" || quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz.title)
+);
+
+const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
+  if (attemptedQuizzes.includes(quiz.title)) {
+    return { ...quiz, quizStatus: "completed" };
+  }
+  return quiz;
+});
+
   return (
     <div className="quizContainerMain">
       {!isLoading && isDataVisible && (
@@ -78,7 +87,7 @@ const QuizList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {activeQuizzes.map((quiz, index) => {
+                  {liveQuizzes.map((quiz, index) => {
                     const quizDateAdjusted = adjustTime(quiz.date);
                     const startTimeAdjusted = adjustTime(quiz.startTime);
                     const expireTimeAdjusted = adjustTime(quiz.expireTime);
@@ -139,7 +148,7 @@ const QuizList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {inactiveQuizzes.map((quiz, index) => {
+                  {updatedPreviousQuizzes.map((quiz, index) => {
                     const quizDateAdjusted = adjustTime(quiz.date);
                     const startTimeAdjusted = adjustTime(quiz.startTime);
                     const expireTimeAdjusted = adjustTime(quiz.expireTime);

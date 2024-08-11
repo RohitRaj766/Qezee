@@ -23,14 +23,8 @@ const QuizPage = (props) => {
     const quizQuestion=useSelector(state=>state.auth.quizData);
     const quizError=useSelector(state=>state.auth.quizError);
 
-    console.log("quiz hai pagal",quizQuestion);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(fetchQuizRequest('test quiz 75'));
-    //   }, [dispatch]);
 
     const shuffleObjectEntries = (obj) => {
       const entries = Object.entries(obj);
@@ -69,6 +63,7 @@ const QuizPage = (props) => {
       const score=calculateScore();
 
       const scoreData={
+        quizId: quizQuestion._id,
         quizStatus:"completed",
         quizTopic: quizQuestion.title,
         correct: score,

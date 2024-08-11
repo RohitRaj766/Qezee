@@ -1,4 +1,3 @@
-// sagas.js
 import { call, put, takeEvery, select } from "redux-saga/effects";
 import axiosInstance from "../axiosConfig";
 import { getToken } from "../utils";
@@ -8,10 +7,9 @@ import {
   submitResultFailure
 } from "../actions/index";
 
-// const quizError=useSelector(state=>state.auth.LoginSuccess);
 function* submitResult(action) {
   try {
-    const { quizTopic, correct, wrong, notattempted,quizStatus } = action.payload;
+    const {quizId, quizTopic, correct, wrong, notattempted,quizStatus } = action.payload;
     const user = yield select((state) => state.auth.user);
     const email = user && user.LoggedInUser ? user.LoggedInUser.email : null;
 
@@ -20,7 +18,7 @@ function* submitResult(action) {
     const response = yield call(
       axiosInstance.patch,
       `/user/submit-result/?email=${email}`,
-      { quizTopic, correct, wrong, notattempted,quizStatus },
+      {quizId, quizTopic, correct, wrong, notattempted,quizStatus },
       {
         headers: {
           Authorization: `Bearer ${token}`,
