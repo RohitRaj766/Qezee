@@ -9,7 +9,20 @@ const BarChart = () => {
   const [chartData, setChartData] = useState({
     options: {
       chart: {
-        id: "basic-bar"
+        id: "basic-bar",
+        zoom: {
+          enabled: true,
+          type: 'x',
+          autoScaleYaxis: true
+        },
+        toolbar: {
+          tools: {
+            zoomin: true,  // Enables the zoom-in button in the toolbar
+            zoomout: true, // Enables the zoom-out button in the toolbar
+            reset: true,   // Enables the reset zoom button in the toolbar
+            pan: true      // Enables panning on the chart
+          }
+        }
       },
       grid: {
         show: false 
@@ -17,21 +30,13 @@ const BarChart = () => {
       xaxis: {
         categories: [],
         axisBorder: {
-          show: true  
+          show: true
         },
         axisTicks: {
-          show: true  
+          show: true
         },
         labels: {
-          rotate: -90, 
-          rotateAlways: true,
-          style: {
-            colors: '#000', 
-            fontSize: '22px',
-            fontWeight: 'bold',
-          },
-          offsetX: 0, 
-          offsetY: -175, 
+          show: false
         }
       },
       yaxis: {
@@ -55,7 +60,7 @@ const BarChart = () => {
           }
         }
       },
-      colors: ['#F5B400'], // Set the bar color here
+      colors: ['#F5B400'],
       dataLabels: {
         enabled: false,
         formatter: function (val, opts) {
@@ -72,7 +77,7 @@ const BarChart = () => {
           fontSize: '16px',
           fontWeight: 'bold'
         },
-        offsetY: 15, 
+        offsetY: 15,
         textAnchor: 'middle' 
       },
       tooltip: {
@@ -127,7 +132,6 @@ const BarChart = () => {
     <div className="bar">
       <div className="row">
         <div className="mixed-chart">
-
           <Chart
             options={chartData.options}
             series={chartData.series}
