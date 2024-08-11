@@ -33,10 +33,11 @@ const Mocktest = () => {
       <div className="rules-box">
         <h2>Basic Rules</h2>
         <ul>
-          <li>Rule 1: Lorem ipsum dolor sit amet.</li>
-          <li>Rule 2: Consectetur adipiscing elit.</li>
-          <li>Rule 3: Integer nec odio. Praesent libero.</li>
-          <li>Rule 4: Sed cursus ante dapibus diam.</li>
+          <li>Rule 1: Select only one answer per question.</li>
+          <li>Rule 2: Complete the quiz within the allotted time.</li>
+          <li>Rule 3: Answers cannot be changed once submitted.</li>
+          <li>Rule 4: Use of external resources is prohibited.</li>
+          <li>Rule 5: Maintain honesty and integrity throughout the quiz.</li>
         </ul>
       </div>
       <div className="checkbox-container">
