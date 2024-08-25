@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Testpage.scss";
 import ModalResult from "../../common/ModalResult";
 import ModalConfirm from "../../common/ModalConfirm";
-// import logoImage from "../../../../assets/images/logo.svg";
-// import QuestionTracker from "./QuestionTracker";
 import QuizSection from "./QuizSection";
 import Header from "./Header";
 
@@ -11,22 +9,22 @@ const questions = [
   {
     question: "What is the output of printf('%d', 10 + 20); in C?",
     options: ["1020", "30", "Error", "None of the above"],
-    correctAnswer: "30",
+    correctAnswer: 1,
   },
   {
     question: "Which data structure uses LIFO (Last In First Out) principle?",
     options: ["Queue", "Stack", "Array", "Linked List"],
-    correctAnswer: "Stack",
+    correctAnswer: 1,
   },
   {
     question: "What is the time complexity of binary search?",
     options: ["O(n)", "O(n^2)", "O(log n)", "O(1)"],
-    correctAnswer: "O(log n)",
+    correctAnswer: 2,
   },
   {
     question: "Which of the following is not a programming language?",
     options: ["Python", "HTML", "Java", "C++"],
-    correctAnswer: "HTML",
+    correctAnswer: 1,
   },
   {
     question: "Who is known as the father of the C programming language?",
@@ -36,7 +34,7 @@ const questions = [
       "Dennis Ritchie",
       "Guido van Rossum",
     ],
-    correctAnswer: "Dennis Ritchie",
+    correctAnswer: 2,
   },
   {
     question: "What does SQL stand for?",
@@ -46,23 +44,22 @@ const questions = [
       "Structured Question Language",
       "Standard Query Language",
     ],
-    correctAnswer: "Structured Query Language",
+    correctAnswer: 0,
   },
   {
     question: "Which data structure uses FIFO (First In First Out) principle?",
     options: ["Stack", "Queue", "Array", "Tree"],
-    correctAnswer: "Queue",
+    correctAnswer: 1,
   },
   {
     question: "What is the time complexity of bubble sort in the worst case?",
     options: ["O(n)", "O(n^2)", "O(log n)", "O(n log n)"],
-    correctAnswer: "O(n^2)",
+    correctAnswer: 1,
   },
   {
-    question:
-      "Which programming language is primarily used for web development?",
+    question: "Which programming language is primarily used for web development?",
     options: ["Python", "JavaScript", "C", "C++"],
-    correctAnswer: "JavaScript",
+    correctAnswer: 1,
   },
   {
     question: "What is the main purpose of an operating system?",
@@ -72,7 +69,7 @@ const questions = [
       "To connect to the internet",
       "To write code",
     ],
-    correctAnswer: "To manage computer hardware and software resources",
+    correctAnswer: 0,
   },
   {
     question: "What does DSA stand for in computer science?",
@@ -82,17 +79,17 @@ const questions = [
       "Dynamic Software Analysis",
       "Data Science and Analysis",
     ],
-    correctAnswer: "Data Structure Algorithm",
+    correctAnswer: 0,
   },
   {
     question: "Which of the following is a linear data structure?",
     options: ["Tree", "Graph", "Array", "Heap"],
-    correctAnswer: "Array",
+    correctAnswer: 2,
   },
   {
     question: "Which of the following is not an OOP concept?",
     options: ["Inheritance", "Encapsulation", "Polymorphism", "Compilation"],
-    correctAnswer: "Compilation",
+    correctAnswer: 3,
   },
   {
     question: "What is the primary function of a compiler?",
@@ -102,7 +99,7 @@ const questions = [
       "To manage system resources",
       "To debug code",
     ],
-    correctAnswer: "To convert high-level language code to machine code",
+    correctAnswer: 0,
   },
   {
     question: "Which algorithm is used to find the shortest path in a graph?",
@@ -112,12 +109,12 @@ const questions = [
       "Dijkstra's Algorithm",
       "Depth-First Search",
     ],
-    correctAnswer: "Dijkstra's Algorithm",
+    correctAnswer: 2,
   },
   {
     question: "Which of the following is a non-linear data structure?",
     options: ["Array", "Stack", "Queue", "Tree"],
-    correctAnswer: "Tree",
+    correctAnswer: 3,
   },
   {
     question: "What is the use of the 'break' statement in C?",
@@ -127,33 +124,28 @@ const questions = [
       "To define a function",
       "To declare a variable",
     ],
-    correctAnswer: "To exit a loop or switch statement",
+    correctAnswer: 0,
   },
   {
-    question:
-      "Which of the following sorting algorithms has the best average time complexity?",
+    question: "Which of the following sorting algorithms has the best average time complexity?",
     options: ["Bubble Sort", "Merge Sort", "Selection Sort", "Insertion Sort"],
-    correctAnswer: "Merge Sort",
+    correctAnswer: 1,
   },
   {
     question: "What is the main characteristic of a stack data structure?",
     options: ["FIFO", "LIFO", "Random Access", "Sequential Access"],
-    correctAnswer: "LIFO",
+    correctAnswer: 1,
   },
   {
-    question:
-      "Which programming language is known for its simplicity and readability?",
+    question: "Which programming language is known for its simplicity and readability?",
     options: ["C", "C++", "Java", "Python"],
-    correctAnswer: "Python",
+    correctAnswer: 3,
   },
 ];
 
-const shuffleArray = (array) => {
-  return array
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-};
+
+
+
 
 const Testpage = (props) => {
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
@@ -164,16 +156,33 @@ const Testpage = (props) => {
   const [isModalvisible, setIsModalVisible] = useState(false);
   const [timeLeft, setTimeLeft] = useState(600);
 
-  //for shuffling questions and options
   useEffect(() => {
-    const shuffled = shuffleArray(
-      questions.map((q) => ({
-        ...q,
-        options: shuffleArray(q.options),
-      }))
+    const shuffledQuestions = shuffleArray(
+      questions.map((q) => {
+        const shuffledOptions = shuffleArray(q.options);
+    const correctAnswerIndex = shuffledOptions.indexOf(q.options[q.correctAnswer]);
+        return {
+          ...q,
+          options:shuffledOptions,
+          correctAnswer:correctAnswerIndex, 
+        };
+      })
     );
-    setShuffledQuestions(shuffled);
+  
+    setShuffledQuestions(shuffledQuestions);
   }, []);
+  
+
+  useEffect(() => {
+    console.log("Answers updated:", answers);
+  }, [answers]);
+
+  const shuffleArray = (array) => {
+    return array
+      .map((value) => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value);
+  };
 
   const handleSubmit = () => {
     setIsModalVisible(true);
@@ -186,8 +195,12 @@ const Testpage = (props) => {
   };
 
   const calculateScore = () => {
+    console.log("Shuffled Questions:", shuffledQuestions);
+
+    
     return shuffledQuestions.reduce((score, question, index) => {
-      if (answers[index] === question.correctAnswer) {
+      const userAnswer =parseInt(answers[index],10);
+      if (userAnswer === question.correctAnswer) {
         return score + 1;
       }
       return score;
@@ -207,6 +220,10 @@ const Testpage = (props) => {
   if (shuffledQuestions.length === 0) {
     return <div>Loading...</div>;
   }
+
+ 
+
+
 
   return (
     <div className="testpage">
@@ -233,6 +250,7 @@ const Testpage = (props) => {
           onClose={() => setIsModalVisible(false)}
         />
       )}
+
       {showResult && isModalOpen && (
         <ModalResult
           heading="Result"
