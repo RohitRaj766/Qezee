@@ -55,20 +55,21 @@ const QuizPage = (props) => {
       setIsModalVisible(true);
     };
   
+    let notattempted = shuffledQuestions.length - Object.keys(answers).length;
+    let wrong = shuffledQuestions.length - notattempted;
     const handleConfirmSubmit = () => {
       setIsModalVisible(false);
       setShowResult(true);
       setIsModalOpen(true);
 
       const score=calculateScore();
-
       const scoreData={
         quizId: quizQuestion._id,
         quizStatus:"completed",
         quizTopic: quizQuestion.title,
         correct: score,
-        wrong: shuffledQuestions.length - score,
-        notattempted: shuffledQuestions.length - Object.keys(answers).length
+        wrong: wrong,
+        notattempted: notattempted
       };
 
       dispatch(submitResultRequest(scoreData));
@@ -77,6 +78,7 @@ const QuizPage = (props) => {
     const calculateScore = () => {
       return shuffledQuestions.reduce((score, question, index) => {
         if (answers[index] === question.correctAnswer) {
+          wrong = wrong - 1; 
           return score + 1;
         }
         return score;
