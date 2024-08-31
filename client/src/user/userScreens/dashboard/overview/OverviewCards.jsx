@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OverviewCards.scss';
 import trophy from '../../../assets/images/trophy.svg';
 import badge from '../../../assets/images/badge.svg';
@@ -19,58 +19,96 @@ const upcomingQuizzes = [
 ];
 
 const badges = [
-    { badge: 5 },
-    { badge: 4 },
-    { badge: 1 },
+    { badge: 1 }
 ];
 
 const OverviewCards = () => {
     const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
     const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
-    const handleNextQuiz = () => {
-        setCurrentQuizIndex((prevIndex) => (prevIndex + 1) % upcomingQuizzes.length);
+    useEffect(() => {
+        const quizInterval = setInterval(() => {
+            if (!isPaused) {
+                setCurrentQuizIndex(prevIndex => (prevIndex + 1) % upcomingQuizzes.length);
+            }
+        }, 2000); 
+
+        const badgeInterval = setInterval(() => {
+            if (!isPaused) {
+                setCurrentBadgeIndex(prevIndex => (prevIndex + 1) % badges.length);
+            }
+        }, 2000); 
+        return () => {
+            clearInterval(quizInterval);
+            clearInterval(badgeInterval);
+        };
+    }, [isPaused]);
+
+    const handleMouseEnter = () => {
+        setIsPaused(true);
     };
 
-    const handlePreviousQuiz = () => {
-        setCurrentQuizIndex((prevIndex) => (prevIndex - 1 + upcomingQuizzes.length) % upcomingQuizzes.length);
+    const handleMouseLeave = () => {
+        setIsPaused(false);
     };
 
-    const handleNextBadge = () => {
-        setCurrentBadgeIndex((prevIndex) => (prevIndex + 1) % badges.length);
+    // const handleNextQuiz = () => {
+    //     setCurrentQuizIndex((prevIndex) => (prevIndex + 1) % upcomingQuizzes.length);
+    // };
+
+    // const handlePreviousQuiz = () => {
+    //     setCurrentQuizIndex((prevIndex) => (prevIndex - 1 + upcomingQuizzes.length) % upcomingQuizzes.length);
+    // };
+
+    // const handleNextBadge = () => {
+    //     setCurrentBadgeIndex((prevIndex) => (prevIndex + 1) % badges.length);
+    // };
+
+    // const handlePreviousBadge = () => {
+    //     setCurrentBadgeIndex((prevIndex) => (prevIndex - 1 + badges.length) % badges.length);
+    // };
+
+    const handleDotClickQuiz = (index) => {
+        setCurrentQuizIndex(index);
+        setIsPaused(true); // Optional: Pause auto-slide when dot is clicked
     };
 
-    const handlePreviousBadge = () => {
-        setCurrentBadgeIndex((prevIndex) => (prevIndex - 1 + badges.length) % badges.length);
+    const handleDotClickBadge = (index) => {
+        setCurrentBadgeIndex(index);
+        setIsPaused(true); // Optional: Pause auto-slide when dot is clicked
     };
 
     const currentQuiz = upcomingQuizzes[currentQuizIndex];
     const currentBadgeCount = badges[currentBadgeIndex].badge;
 
     return (
-        <div className="cardmain">
+        <div className="cardmain" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 
             <div className="upcomingWrapper">
                 <div className="upcoming">
-                    <button onClick={handlePreviousQuiz}><img src={leftArrow} className='arrows' alt="Previous" /></button>
+                    {/* <button className='but_on' onClick={handlePreviousQuiz}><img src={leftArrow} className='arrows' alt="Previous" /></button> */}
                     <img src={trophy} alt="Trophy" />
                     <div className="info1">
                         <h2>Upcoming Quiz</h2>
                         <p>Topic - {currentQuiz.topic}</p>
-                        <p>Date - {currentQuiz.date}</p>
                     </div>
-                    <button onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button>
+                    {/* <button className='but_on' onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button> */}
                 </div>
                 <div className="dotnav">
                     {upcomingQuizzes.map((_, index) => (
-                        <span key={index} className={`dot ${index === currentQuizIndex ? 'active' : ''}`}></span>
+                        <span 
+                            key={index} 
+                            className={`dot ${index === currentQuizIndex ? 'active' : ''}`} 
+                            onClick={() => handleDotClickQuiz(index)}
+                        ></span>
                     ))}
                 </div>
             </div>
 
             <div className="badgeWrapper">
                 <div className="badge">
-                    <button onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button>
+                    {/* <button className='but_on' onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button> */}
                     <div className="info2">
                         <h2>Badge Collection</h2>
                         <div className="badgeContainer">
@@ -79,11 +117,15 @@ const OverviewCards = () => {
                             ))}
                         </div>
                     </div>
-                    <button onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button>
+                    {/* <button className='but_on' onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button> */}
                 </div>
                 <div className="dotnav">
                     {badges.map((_, index) => (
-                        <span key={index} className={`dot ${index === currentBadgeIndex ? 'active' : ''}`}></span>
+                        <span 
+                            key={index} 
+                            className={`dot ${index === currentBadgeIndex ? 'active' : ''}`} 
+                            onClick={() => handleDotClickBadge(index)}
+                        ></span>
                     ))}
                 </div>
             </div>

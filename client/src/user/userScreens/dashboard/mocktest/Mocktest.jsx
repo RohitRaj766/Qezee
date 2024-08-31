@@ -36,8 +36,9 @@ const Mocktest = () => {
           <li>Rule 1: Select only one answer per question.</li>
           <li>Rule 2: Complete the quiz within the allotted time.</li>
           <li>Rule 3: Answers cannot be changed once submitted.</li>
-          <li>Rule 4: Use of external resources is prohibited.</li>
-          <li>Rule 5: Maintain honesty and integrity throughout the quiz.</li>
+          <li>Rule 4: Use of external resources are prohibited.</li>
+          <li>Rule 5: No limit to attempt this mocktest.</li>
+          <li>Rule 6: Maintain honesty and integrity throughout the quiz.</li>
         </ul>
       </div>
       <div className="checkbox-container">

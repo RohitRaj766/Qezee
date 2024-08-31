@@ -6,12 +6,12 @@ const ModalConfirm = ({ onClose, content,handleConfirmTest, heading, totalscore,
     <div className='modal-backdrop'>
       <div className='modal-content'>
         <h2 className='modal-heading'>{heading}</h2>
-        <p className='modal-heading' >{content}</p>
+        <p className='modal-sub-heading' >{content}</p>
         {!totalscore && (
-          <>
+          <div className='button-container'>
             <button className='yes-button' onClick={handleConfirmTest}>Yes</button>
             <button className='cancel-button' onClick={onClose}>Cancel</button>
-          </>
+          </div>
         )}
         {totalscore && (
           <div>
