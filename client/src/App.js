@@ -21,6 +21,7 @@ import PrivateRoute from "./user/components/PrivateRoute";
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
 import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
+import AdminLoginForm from "./admin/adminScreens/adminLogin/AdminLoginForm";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
 
 
@@ -49,6 +50,8 @@ const AppContent = () => {
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
         <Route path="*" element={<Navigate to="/not-found" />} />
+        <Route path="/admin" element={<AdminLoginForm />} />
+        <Route path="/admin/login" element={<AdminLoginForm />} />
       </Routes>
     </>
   );
