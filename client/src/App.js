@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,7 +7,6 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Signup from "./user/userScreens/signup/Signup";
 import Login from "./user/userScreens/login/Login";
 import Leaderboard from "./user/userScreens/dashboard/leaderboard/LeaderBoard";
@@ -24,16 +23,19 @@ import Not404Page from "./user/components/Not404Page";
 import AdminLoginForm from "./admin/adminScreens/adminLogin/AdminLoginForm";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
 
-
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
   const isNotFoundRoute = location.pathname === "/not-found";
+
+  // Check if the current route is an admin route
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
     <>
       {isLoad && <Loader />}
-      {!isAuth && !isNotFoundRoute && <Header />}
+      {!isAdminRoute && !isNotFoundRoute && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -45,7 +47,7 @@ const AppContent = () => {
             <Route path="mocktest" element={<Mocktest />} />
             <Route path="overview" element={<Overview />} />
             <Route path="quizzes" element={<QuizList />} />
-            <Route path="quizzes/quizpage" element={<QuizPage/>} />
+            <Route path="quizzes/quizpage" element={<QuizPage />} />
           </Route>
         </Route>
         <Route path="/not-found" element={<Not404Page />} />

@@ -5,6 +5,7 @@ import { loginRequest } from '../../../actions/index';
 import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import AdminHeader from '../../components/adminHeader/AdminHeader';
 
 const AdminLoginForm = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -35,7 +36,7 @@ const AdminLoginForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard/overview');
+      navigate('/adminDashboard/createQuiz');
     }
   }, [isAuthenticated, navigate]);
 
@@ -44,6 +45,8 @@ const AdminLoginForm = () => {
   };
 
   return (
+    <>
+    <AdminHeader/>
     <div className="AdminloginMain">
       <div className="AdminloginBoxContainer">
         <h1>Admin Panel</h1>
@@ -83,6 +86,7 @@ const AdminLoginForm = () => {
         <p>Forgot? Click here</p>
       </div>
     </div>
+    </>
   );
 };
 
