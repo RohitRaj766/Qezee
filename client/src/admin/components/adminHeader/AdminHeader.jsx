@@ -1,24 +1,10 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
-import "./AdminHeader.scss";
-import logoImage from "../../../user/assets/images/logo.svg";
+import React from 'react'
 
-const AdminHeader = () => {
-  const navigate = useNavigate();
-
+function AdminHeader() {
   return (
-    <nav>
-      <div className="adminHeaderMain">
-        <div className="adminHeaderContainer">
-          <div className="logo">
-            
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
+    <div>AdminHeader</div>
+  )
+}
 
-export default AdminHeader;
-
+export default AdminHeader
 

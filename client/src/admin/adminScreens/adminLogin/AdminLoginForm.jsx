@@ -46,7 +46,7 @@ const AdminLoginForm = () => {
 
   return (
     <>
-    <AdminHeader/>
+    {/* <AdminHeader/> */}
     <div className="AdminloginMain">
       <div className="AdminloginBoxContainer">
         <h1>Admin Panel</h1>
