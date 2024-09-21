@@ -16,7 +16,7 @@ import Overview from "./user/userScreens/dashboard/overview/Overview";
 import QuizList from "./user/userScreens/dashboard/quiz/Quizzes";
 import Loader from "./user/components/loader/Loader";
 import Header from "./user/components/header/Header";
-import PrivateRoute from "./user/components/PrivateRoute";
+import { PrivateRoute, AdminPrivateRoute } from './user/components/PrivateRoute';
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
 import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
@@ -54,6 +54,11 @@ const AppContent = () => {
         <Route path="*" element={<Navigate to="/not-found" />} />
         <Route path="/admin" element={<AdminLoginForm />} />
         <Route path="/admin/login" element={<AdminLoginForm />} />
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/admin-dashboard" element={<Dashboard />}>
+          
+          </Route>
+        </Route>
       </Routes>
     </>
   );

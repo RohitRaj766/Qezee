@@ -11,7 +11,7 @@ const initialState = {
     isLoading: false,
 };
 
-const userauthReducer = (state = initialState, action) => {
+const adminauthReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADMIN_LOGIN_REQUEST:
         return {

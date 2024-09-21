@@ -8,7 +8,7 @@ import {
   ADMIN_LOGIN_FAILURE,
 } from '../actions/index';
 
-function* adminLoginSaga(action) {
+function* adminLogin(action) {
   try {
     const response = yield call(axiosInstance.post, '/admin/login', action.payload);
     const token = response.data.authtoken;
@@ -16,11 +16,12 @@ function* adminLoginSaga(action) {
     setToken(token);
     yield put({ type: ADMIN_LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
-    yield put({ type: ADMIN_LOGIN_FAILURE, payload: error.response.data.error });
+    yield put({ type: ADMIN_LOGIN_FAILURE, payload: error.response.data.message});
+    console.log("error.response.data.error ",error.response.data.message);
   }
 }
 
 export default function* adminLoginSaga() {
-    yield takeEvery(ADMIN_LOGIN_REQUEST, adminLoginSaga)
+    yield takeEvery(ADMIN_LOGIN_REQUEST, adminLogin)
 }
 

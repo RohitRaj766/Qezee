@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginRequest } from '../../../actions/index';
+import { adminLoginRequest } from '../../../actions/index';
 import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import AdminHeader from '../../components/adminHeader/AdminHeader';
 
 const AdminLoginForm = () => {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.adminauth.error);
+  const isAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
   const navigate = useNavigate();
+
+  console.log("Error ",error)
+  console.log("Error auth",isAuthenticated)
 
   const handleChange = (e) => {
     setCredentials({
@@ -24,7 +27,8 @@ const AdminLoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginRequest(credentials));
+    console.log("button clicked")
+    dispatch(adminLoginRequest(credentials));
   };
 
   const handleKeyDown = (e) => {
@@ -36,7 +40,7 @@ const AdminLoginForm = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/adminDashboard/createQuiz');
+      navigate('/admin-dashboard');
     }
   }, [isAuthenticated, navigate]);
 
@@ -54,9 +58,9 @@ const AdminLoginForm = () => {
           <form>
             <input
               className="AdminloginInputField"
-              type="email"
-              name="email"
-              value={credentials.email}
+              type="text"
+              name="username"
+              value={credentials.username}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
               placeholder="User Id*"
