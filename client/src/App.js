@@ -35,7 +35,7 @@ const AppContent = () => {
   return (
     <>
       {isLoad && <Loader />}
-      {!isAdminRoute && !isNotFoundRoute && <Header />}
+      {isNotFoundRoute && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
