@@ -8,10 +8,8 @@ const PrivateRoute = () => {
   console.log("User isAuthenticated:: ", isAuthenticated);
 
   if (isAuthenticated) {
-    return <Outlet />; // Render the protected route for regular users
+    return <Outlet />; 
   }
-
-  // If user is not authenticated, redirect to user login page
   return <Navigate to="/login" />;
 };
 
@@ -21,10 +19,8 @@ const AdminPrivateRoute = () => {
   console.log("Admin isAuthenticated:: ", isAdminAuthenticated);
 
   if (isAdminAuthenticated) {
-    return <Outlet />; // Render the protected route for admins
+    return <Outlet />; 
   }
-
-  // If admin is not authenticated, redirect to admin login page
   return <Navigate to="/admin/login" />;
 };
 
