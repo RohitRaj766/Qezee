@@ -28,14 +28,12 @@ const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
   const isNotFoundRoute = location.pathname === "/not-found";
-
-  // Check if the current route is an admin route
-  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAdminAuth = useSelector((state) => state.adminauth.isAuthenticated)
 
   return (
     <>
       {isLoad && <Loader />}
-      {!isAuth && !isNotFoundRoute && <Header />}
+      {!isAuth && !isNotFoundRoute && !isAdminAuth && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
