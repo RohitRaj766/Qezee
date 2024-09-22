@@ -35,7 +35,7 @@ const AppContent = () => {
   return (
     <>
       {isLoad && <Loader />}
-      {isNotFoundRoute && <Header />}
+      {!isAuth && !isNotFoundRoute && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -47,7 +47,7 @@ const AppContent = () => {
             <Route path="mocktest" element={<Mocktest />} />
             <Route path="overview" element={<Overview />} />
             <Route path="quizzes" element={<QuizList />} />
-            <Route path="quizzes/quizpage" element={<QuizPage />} />
+            <Route path="quizzes/quizpage" element={<QuizPage/>} />
           </Route>
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
