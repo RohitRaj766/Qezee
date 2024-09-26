@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,7 +7,6 @@ import {
   useLocation,
   Navigate,
 } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Signup from "./user/userScreens/signup/Signup";
 import Login from "./user/userScreens/login/Login";
 import Leaderboard from "./user/userScreens/dashboard/leaderboard/LeaderBoard";
@@ -17,22 +16,24 @@ import Overview from "./user/userScreens/dashboard/overview/Overview";
 import QuizList from "./user/userScreens/dashboard/quiz/Quizzes";
 import Loader from "./user/components/loader/Loader";
 import Header from "./user/components/header/Header";
-import PrivateRoute from "./user/components/PrivateRoute";
+import { PrivateRoute, AdminPrivateRoute } from './user/components/PrivateRoute';
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
 import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
+import AdminLoginForm from "./admin/adminScreens/adminLogin/AdminLoginForm";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
-
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
   const location = useLocation();
   const isNotFoundRoute = location.pathname === "/not-found";
+  const isAdminAuth = useSelector((state) => state.adminauth.isAuthenticated)
+
   return (
     <>
       {isLoad && <Loader />}
-      {!isAuth && !isNotFoundRoute && <Header />}
+      {!isAuth && !isNotFoundRoute && !isAdminAuth && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -49,6 +50,13 @@ const AppContent = () => {
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
         <Route path="*" element={<Navigate to="/not-found" />} />
+        <Route path="/admin" element={<AdminLoginForm />} />
+        <Route path="/admin/login" element={<AdminLoginForm />} />
+        <Route element={<AdminPrivateRoute />}>
+          <Route path="/admin-dashboard" element={<Dashboard />}>
+          
+          </Route>
+        </Route>
       </Routes>
     </>
   );

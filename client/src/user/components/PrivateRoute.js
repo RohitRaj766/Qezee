@@ -4,9 +4,25 @@ import { useSelector } from 'react-redux';
 
 const PrivateRoute = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log("isAuthenticated:: ",isAuthenticated)
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  console.log("User isAuthenticated:: ", isAuthenticated);
+
+  if (isAuthenticated) {
+    return <Outlet />; 
+  }
+  return <Navigate to="/login" />;
 };
 
-export default PrivateRoute;
+const AdminPrivateRoute = () => {
+  const isAdminAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
+
+  console.log("Admin isAuthenticated:: ", isAdminAuthenticated);
+
+  if (isAdminAuthenticated) {
+    return <Outlet />; 
+  }
+  return <Navigate to="/admin/login" />;
+};
+
+export { PrivateRoute, AdminPrivateRoute };
+

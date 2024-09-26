@@ -17,6 +17,7 @@ function* loginSaga(action) {
     yield put({ type: LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: LOGIN_FAILURE, payload: error.response.data.error });
+    console.log("error.response.data.error ",error.response.data.error);
   }
 }
 

@@ -8,6 +8,7 @@ import verifyTokenSaga from './refreshHandlerSaga'
 import fetchQuizList from './fetchquizlistSaga';
 import fetchQuizQuestion from './fetchquizquestionSaga';
 import submitResultSaga from './submitresultSaga';
+import adminLoginSaga from './adminLoginSaga';
 export default function* rootSaga() {
   yield all([
     leaderboardSaga(),
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     fetchQuizList(),
     fetchQuizQuestion(),
     submitResultSaga(),
+    adminLoginSaga()
   ]);
 }

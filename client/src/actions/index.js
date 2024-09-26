@@ -37,6 +37,10 @@ export const SUBMIT_RESULT_REQUEST = "SUBMIT_RESULT_REQUEST";
 export const SUBMIT_RESULT_SUCCESS = "SUBMIT_RESULT_SUCCESS";
 export const SUBMIT_RESULT_FAILURE = "SUBMIT_RESULT_FAILURE";
 
+export const ADMIN_LOGIN_REQUEST = "ADMIN_LOGIN_REQUEST";
+export const ADMIN_LOGIN_SUCCESS = "ADMIN_LOGIN_SUCCESS";
+export const ADMIN_LOGIN_FAILURE = "ADMIN_LOGIN_FAILURE";
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -166,5 +170,20 @@ export const submitResultSuccess = (response) => ({
 
 export const submitResultFailure = (error) => ({
   type: SUBMIT_RESULT_FAILURE,
+  payload: error,
+});
+
+export const adminLoginRequest = (credentials) => ({
+  type: ADMIN_LOGIN_REQUEST,
+  payload: credentials,
+});
+
+export const adminLoginSuccess = (token) => ({
+  type: ADMIN_LOGIN_SUCCESS,
+  payload: token,
+});
+
+export const adminLoginFailure = (error) => ({
+  type: ADMIN_LOGIN_FAILURE,
   payload: error,
 });
