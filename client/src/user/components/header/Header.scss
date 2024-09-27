@@ -13,6 +13,7 @@ nav {
     max-width: 1366px;
     padding: 12px;
     margin: 0px auto;
+
     .leftside {
       display: flex;
       align-items: center;
@@ -43,60 +44,80 @@ nav {
       gap: 1.6rem;
       width: 50%;
 
+      .dropdown {
+        position: relative;
+        .dropdown-toggle {
+          background-color: $pure-white;
+          color: $btn-color;
+          border: 1px solid #F5B400;
+          font-weight: 600;
+          cursor: pointer;
+          border-radius: 6px;
+          &:hover {
+            box-shadow: 0 0.25rem 0.5rem 0 rgba(171, 171, 171, 0.35);
+          }
+        }
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #f0f0f0;
+          border-radius: 6px;
+          box-shadow: 0px 4px 6px 0px $shadow-color;
+          z-index: 1000;
+          width: 200px;
+          margin-top: 30px;
+          padding: 30px;
+          button {
+            width: 95%;
+            border: none;
+            background: none;
+            text-align: center;
+            cursor: pointer;
+            color: #FFFFFF;
+            background-color:#F5B400 ;
+            &:hover {
+              box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
+            }
+          }
+        }
+      }
+
       button {
-        width:130px;
+        width: 130px;
         height: 43px;
         margin: 5px;
         border: none;
         border-radius: 6px;
         background-color: $btn-color;
-        color:$pure-white;
+        color: $pure-white;
         font-size: 15px;
         cursor: pointer;
         position: relative;
         font-family: $primary-font;
+
         &:hover {
           background-color: darken(#F5B400, 1%);
           color: lighten(#F4F4F4, 10%);
           box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
-      }
+        }
       }
       .login {
         padding: 0.2rem 1.6rem;
         height: 2.5rem;
         background-color: $btn-color;
-        letter-spacing:2px;
+        letter-spacing: 2px;
       }
       .signup {
         padding: 0.2rem 1.6rem;
         height: 2.5rem;
         background-color: $btn-color;
-       letter-spacing:2px;
+        letter-spacing: 2px;
       }
       .login,
       .signup {
         box-shadow: 0px 4px 6px 0px $shadow-color;
       }
-      .open--viewboard{
-        width:130px;
-        height: 43px;
-        margin: 5px;
-        border: none;
-        border-radius: 6px;
-        background-color: $btn-color;
-        color:$pure-white;
-        font-size: 15px;
-        cursor: pointer;
-        position: relative;
-        font-family: $primary-font;
-        &:hover {
-          background-color: darken(#F5B400, 1%);
-          color: lighten(#F4F4F4, 10%);
-          box-shadow: 0 0.25rem 0.5rem 0 rgba(12, 12, 12, 0.35);
-      }
-      }
     }
   }
 }
-
-
