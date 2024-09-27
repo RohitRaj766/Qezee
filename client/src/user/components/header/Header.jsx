@@ -20,6 +20,7 @@ const Header = () => {
           </div>
 
           <div className="rightside">
+            <button className="open--viewboard" onClick={() => navigate('/open-viewboard')}>open-viewboard</button>
             <button className="login" onClick={() => navigate('/login')}>LOGIN</button>
             <button className="signup" onClick={() => navigate('/signup')}>SIGN UP</button>
           </div>
