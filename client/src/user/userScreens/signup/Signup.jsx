@@ -6,6 +6,7 @@ import './Signup.scss';
 import pagePhoto from '../../assets/images/pagephoto.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/header/Header';
 
 const Signup = () => {
   const [userData, setUserData] = useState({
@@ -118,6 +119,8 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className='mainSignup'>
       <div className='boxContainer'>
         <p className='signupheading'>Challenge Your Knowledge!</p>
@@ -181,6 +184,8 @@ const Signup = () => {
       </div>
       {otpSent && <OtpVerification userEmail={userData.email} onClose={handleCloseModal} />}
     </div>
+    </>
+
   );
 };
 

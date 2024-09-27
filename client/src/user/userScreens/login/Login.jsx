@@ -6,6 +6,7 @@ import './Login.scss';
 import pagePhoto from '../../assets/images/pagephoto.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/header/Header';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
@@ -45,6 +46,8 @@ const Login = () => {
   };
 
   return (
+    <>
+      <Header/>
     <div className="loginMain">
       <div className="loginBoxContainer">
         <h1>Back in the Game! Let's Quiz!</h1>
@@ -87,6 +90,8 @@ const Login = () => {
         <img src={pagePhoto} alt="Page Background" />
       </div>
     </div>
+    </>
+
   );
 };
 

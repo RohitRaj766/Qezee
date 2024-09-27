@@ -15,7 +15,6 @@ import Mocktest from "./user/userScreens/dashboard/mocktest/Mocktest";
 import Overview from "./user/userScreens/dashboard/overview/Overview";
 import QuizList from "./user/userScreens/dashboard/quiz/Quizzes";
 import Loader from "./user/components/loader/Loader";
-import Header from "./user/components/header/Header";
 import { PrivateRoute, AdminPrivateRoute } from './user/components/PrivateRoute';
 import Dashboard from "./user/userScreens/dashboard/Dashboard";
 import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
@@ -26,16 +25,11 @@ import OpenViewBoard from "./admin/adminScreens/eachquizleaderboard/ViewBoard";
 import OpenLeaderBoard from "./admin/adminScreens/eachquizleaderboard/LeaderBoard";
 
 const AppContent = () => {
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isLoad = useSelector((state) => state.auth.isLoading);
-  const location = useLocation();
-  const isNotFoundRoute = location.pathname === "/not-found";
-  const isAdminAuth = useSelector((state) => state.adminauth.isAuthenticated)
 
   return (
     <>
       {isLoad && <Loader />}
-      {!isAuth && !isNotFoundRoute && !isAdminAuth && <Header />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
