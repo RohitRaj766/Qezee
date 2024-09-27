@@ -22,6 +22,8 @@ import QuizPage from "./user/userScreens/dashboard/quiz/QuizPage";
 import Not404Page from "./user/components/Not404Page";
 import AdminLoginForm from "./admin/adminScreens/adminLogin/AdminLoginForm";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
+import OpenViewBoard from "./admin/adminScreens/eachquizleaderboard/ViewBoard";
+import OpenLeaderBoard from "./admin/adminScreens/eachquizleaderboard/LeaderBoard";
 
 const AppContent = () => {
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
@@ -38,6 +40,8 @@ const AppContent = () => {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/open-viewboard" element={<OpenViewBoard />} />
+        <Route path="/open-leaderboard" element={<OpenLeaderBoard />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="leaderboard" element={<Leaderboard />} />

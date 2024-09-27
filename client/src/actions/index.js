@@ -41,6 +41,14 @@ export const ADMIN_LOGIN_REQUEST = "ADMIN_LOGIN_REQUEST";
 export const ADMIN_LOGIN_SUCCESS = "ADMIN_LOGIN_SUCCESS";
 export const ADMIN_LOGIN_FAILURE = "ADMIN_LOGIN_FAILURE";
 
+export const USER_ATTEMPT_REQUEST = "USER_ATTEMPT_REQUEST";
+export const USER_ATTEMPT_SUCCESS = "USER_ATTEMPT_SUCCESS";
+export const USER_ATTEMPT_FAILURE = "USER_ATTEMPT_FAILURE";
+
+export const ATTEMPTED_QUIZ_LIST_REQUEST = "ATTEMPTED_QUIZ_LIST_REQUEST";
+export const ATTEMPTED_QUIZ_LIST_SUCCESS = "ATTEMPTED_QUIZ_LIST_SUCCESS";
+export const ATTEMPTED_QUIZ_LIST_FAILURE = "ATTEMPTED_QUIZ_LIST_FAILURE";
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -185,5 +193,35 @@ export const adminLoginSuccess = (token) => ({
 
 export const adminLoginFailure = (error) => ({
   type: ADMIN_LOGIN_FAILURE,
+  payload: error,
+});
+
+export const userAttemptRequest = (attemptData) => ({
+  type: USER_ATTEMPT_REQUEST,
+  payload: attemptData,
+});
+
+export const userAttemptSuccess = (response) => ({
+  type: USER_ATTEMPT_SUCCESS,
+  payload: response,
+});
+
+export const userAttemptFailure = (error) => ({
+  type: USER_ATTEMPT_FAILURE,
+  payload: error,
+});
+
+
+export const attemptedQuizListRequest = () => ({
+  type: ATTEMPTED_QUIZ_LIST_REQUEST,
+});
+
+export const attemptedQuizListSuccess = (data) => ({
+  type: ATTEMPTED_QUIZ_LIST_SUCCESS,
+  payload: data,
+});
+
+export const attemptedQuizListFailure = (error) => ({
+  type: ATTEMPTED_QUIZ_LIST_FAILURE,
   payload: error,
 });

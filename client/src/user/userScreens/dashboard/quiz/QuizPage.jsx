@@ -7,7 +7,7 @@ import "./QuizPage.scss";
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
-import { submitResultRequest } from '../../../../actions';
+import { submitResultRequest, userAttemptRequest } from '../../../../actions';
 import Loader from '../../../components/loader/Loader';
 
 
@@ -21,6 +21,8 @@ const QuizPage = (props) => {
     const [isModalvisible, setIsModalVisible] = useState(false);
     const [timeLeft, setTimeLeft] = useState(600);
     const quizQuestion=useSelector(state=>state.auth.quizData);
+    const quizQuestionList=useSelector(state=>state.auth.quizData);
+    const userData=useSelector(state=>state.auth.user.LoggedInUser);
     const quizError=useSelector(state=>state.auth.quizError);
 
     const navigate = useNavigate();
@@ -72,7 +74,18 @@ const QuizPage = (props) => {
         notattempted: notattempted
       };
 
+      const attemptData={
+        quizId: quizQuestionList._id,
+        userId: userData._id,
+        name: userData.firstname +" "+ userData.lastname,
+        enrollment: userData.enrollment,
+        correct: score,
+        wrong: wrong,
+        notattempted: notattempted
+      };
+
       dispatch(submitResultRequest(scoreData));
+      dispatch(userAttemptRequest(attemptData));
     };
   
     const calculateScore = () => {
