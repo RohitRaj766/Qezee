@@ -25,6 +25,12 @@ import {
   SUBMIT_RESULT_FAILURE,
   SUBMIT_RESULT_SUCCESS,
   SUBMIT_RESULT_REQUEST,
+  USER_ATTEMPT_REQUEST,
+  USER_ATTEMPT_SUCCESS,
+  USER_ATTEMPT_FAILURE,
+  ATTEMPTED_QUIZ_LIST_REQUEST,
+  ATTEMPTED_QUIZ_LIST_SUCCESS,
+  ATTEMPTED_QUIZ_LIST_FAILURE,
 } from "../actions/index";
 
 const initialState = {
@@ -42,6 +48,7 @@ const initialState = {
   quizError: null,
   resultSubmissionSuccess: false,
   resultSubmissionError: null,
+  attemptedQuizzes:[]
 };
 
 const userauthReducer = (state = initialState, action) => {
@@ -220,7 +227,47 @@ const userauthReducer = (state = initialState, action) => {
         isLoading: false,
         resultSubmissionError: action.payload,
       };
+      case USER_ATTEMPT_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+        resultSubmissionError: null,
+      };
 
+    case USER_ATTEMPT_SUCCESS:
+      return { 
+        ...state, 
+        isLoading: false, 
+        resultSubmissionSuccess: true 
+      };
+
+    case USER_ATTEMPT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        resultSubmissionError: action.payload,
+      };
+
+      case ATTEMPTED_QUIZ_LIST_REQUEST:
+        return {
+          ...state,
+          isLoading: true,
+        };
+      case ATTEMPTED_QUIZ_LIST_SUCCESS:
+        return {
+          ...state,
+          isLoading: false,
+          attemptedQuizzes: action.payload,
+          error: null,
+        };
+  
+      case ATTEMPTED_QUIZ_LIST_FAILURE:
+        return {
+          ...state,
+          isLoading: false,
+          attemptedQuizzes: [],
+          error: action.payload,
+        };
     default:
       return state;
   }

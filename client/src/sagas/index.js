@@ -9,6 +9,8 @@ import fetchQuizList from './fetchquizlistSaga';
 import fetchQuizQuestion from './fetchquizquestionSaga';
 import submitResultSaga from './submitresultSaga';
 import adminLoginSaga from './adminLoginSaga';
+import userAttemptSaga from './userAttemptSaga';
+import attemptedQuizList from './attemptedListSage';
 export default function* rootSaga() {
   yield all([
     leaderboardSaga(),
@@ -20,6 +22,8 @@ export default function* rootSaga() {
     fetchQuizList(),
     fetchQuizQuestion(),
     submitResultSaga(),
-    adminLoginSaga()
+    adminLoginSaga(),
+    userAttemptSaga(),
+    attemptedQuizList()
   ]);
 }
