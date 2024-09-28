@@ -11,6 +11,7 @@ import submitResultSaga from './submitresultSaga';
 import adminLoginSaga from './adminLoginSaga';
 import userAttemptSaga from './userAttemptSaga';
 import attemptedQuizList from './attemptedListSage';
+import authSaga from './forgotpasswordSaga';
 export default function* rootSaga() {
   yield all([
     leaderboardSaga(),
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     submitResultSaga(),
     adminLoginSaga(),
     userAttemptSaga(),
-    attemptedQuizList()
+    attemptedQuizList(),
+    authSaga()
   ]);
 }

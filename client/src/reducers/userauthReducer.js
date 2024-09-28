@@ -31,6 +31,12 @@ import {
   ATTEMPTED_QUIZ_LIST_REQUEST,
   ATTEMPTED_QUIZ_LIST_SUCCESS,
   ATTEMPTED_QUIZ_LIST_FAILURE,
+  REQUEST_PASSWORD_RESET,
+  REQUEST_PASSWORD_RESET_SUCCESS,
+  REQUEST_PASSWORD_RESET_FAILURE,
+  RESET_PASSWORD,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from "../actions/index";
 
 const initialState = {
@@ -48,7 +54,8 @@ const initialState = {
   quizError: null,
   resultSubmissionSuccess: false,
   resultSubmissionError: null,
-  attemptedQuizzes:[]
+  attemptedQuizzes:[],
+  message:null
 };
 
 const userauthReducer = (state = initialState, action) => {
@@ -268,6 +275,19 @@ const userauthReducer = (state = initialState, action) => {
           attemptedQuizzes: [],
           error: action.payload,
         };
+        
+        case REQUEST_PASSWORD_RESET:
+          return { ...state, loading: true, error: null };
+        case REQUEST_PASSWORD_RESET_SUCCESS:
+          return { ...state, loading: false, message: action.payload.message };
+        case REQUEST_PASSWORD_RESET_FAILURE:
+          return { ...state, loading: false, error: action.payload.error };
+        case RESET_PASSWORD:
+          return { ...state, loading: true, error: null };
+        case RESET_PASSWORD_SUCCESS:
+          return { ...state, loading: false, message: action.payload.message };
+        case RESET_PASSWORD_FAILURE:
+          return { ...state, loading: false, error: action.payload.error };  
     default:
       return state;
   }

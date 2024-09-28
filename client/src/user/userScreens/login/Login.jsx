@@ -84,7 +84,7 @@ const Login = () => {
         </div>
         {error && <p className='errorMessage'>{error}</p>}
         <button onClick={handleSubmit} type="button">LOGIN</button>
-        <p>Forgot? Click here</p>
+        <p onClick={() => navigate('/forgot-password')}>Forgot? Click here</p>
       </div>
       <div className='backgroundImage'>
         <img src={pagePhoto} alt="Page Background" />

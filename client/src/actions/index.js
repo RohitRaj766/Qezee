@@ -49,6 +49,14 @@ export const ATTEMPTED_QUIZ_LIST_REQUEST = "ATTEMPTED_QUIZ_LIST_REQUEST";
 export const ATTEMPTED_QUIZ_LIST_SUCCESS = "ATTEMPTED_QUIZ_LIST_SUCCESS";
 export const ATTEMPTED_QUIZ_LIST_FAILURE = "ATTEMPTED_QUIZ_LIST_FAILURE";
 
+export const REQUEST_PASSWORD_RESET = 'REQUEST_PASSWORD_RESET';
+export const REQUEST_PASSWORD_RESET_SUCCESS = 'REQUEST_PASSWORD_RESET_SUCCESS';
+export const REQUEST_PASSWORD_RESET_FAILURE = 'REQUEST_PASSWORD_RESET_FAILURE';
+
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -224,4 +232,14 @@ export const attemptedQuizListSuccess = (data) => ({
 export const attemptedQuizListFailure = (error) => ({
   type: ATTEMPTED_QUIZ_LIST_FAILURE,
   payload: error,
+});
+
+export const requestPasswordReset = (email) => ({
+  type: REQUEST_PASSWORD_RESET,
+  payload: email,
+});
+
+export const resetPassword = (token, email, newPassword) => ({
+  type: RESET_PASSWORD,
+  payload: { token, email, newPassword },
 });
