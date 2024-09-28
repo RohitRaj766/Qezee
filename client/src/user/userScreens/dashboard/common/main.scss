@@ -142,6 +142,8 @@ $selector-font-size: 12px;
                 height: 50px;
                 width: 50px;
                 margin-left: 7px;
+                border: 1px solid $btn-color;
+                border-radius: 50%;
             }
   
             .logout {
