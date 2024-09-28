@@ -12,14 +12,13 @@ import {
 
 function* quizQuestion(action) {
   const token = getToken();
-  // console.log("Fetching quiz data for:", action.payload.title);
-  const title = action.payload;
+  const id = action.payload;
 
   if (token) {
     try {
       const response = yield call(
         axiosInstance.get,
-        `/user/quiz-title/?title=${encodeURIComponent(title)}`,
+        `/user/quiz-id/?id=${encodeURIComponent(id)}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
