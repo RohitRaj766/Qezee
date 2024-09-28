@@ -66,7 +66,7 @@ const AppContent = () => {
           </Route>
         </Route>
         <Route path="/not-found" element={<Not404Page />} />
-        <Route path="*" element={<Navigate to="/not-found" />} />
+        {/* <Route path="*" element={<Navigate to="/not-found" />} /> */}
         <Route path="/admin" element={<AdminLoginForm />} />
         <Route path="/admin/login" element={<AdminLoginForm />} />
         <Route element={<AdminPrivateRoute />}>

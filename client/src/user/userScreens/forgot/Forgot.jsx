@@ -9,7 +9,7 @@ const Forgot = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { loading: apiLoading, error } = useSelector((state) => state.auth);
+  const { loading: apiLoading, error, message } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,11 +33,12 @@ const Forgot = () => {
   }, [error]);
 
   useEffect(() => {
-    if (!apiLoading && !error) {
+    if (message) {
       notify('Reset link sent to your email!');
       setLoading(false);
+      setEmail(''); 
     }
-  }, [apiLoading, error]);
+  }, [message]);
 
   return (
     <div style={styles.container}>
