@@ -1,20 +1,25 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import './LeaderBoard.scss'
 
 const OpenLeaderboard = () => {
   const location = useLocation();
   const userAttemptedList = location.state?.userAttemptedList || []; // Access the passed state
-  console.log("userAttemptedList  ", userAttemptedList)
+
+  // Sort userAttemptedList in descending order based on correctAnswers
+  const sortedList = [...userAttemptedList].sort((a, b) => b.correctAnswers - a.correctAnswers);
+
+  console.log("sortedList: ", sortedList)
 
   return (
     <div>
       <h1>Open Leaderboard</h1>
-      {userAttemptedList.length === 0 ? (
+      {sortedList.length === 0 ? (
         <p>No attempts available.</p>
       ) : (
         <table>
-          <thead>
-            <tr>
+          <thead className='AdminTableHeader'>
+            <tr className='AdminTableRow'>
               <th>Name</th>
               <th>Enrollment</th>
               <th>Correct Answers</th>
@@ -24,9 +29,8 @@ const OpenLeaderboard = () => {
             </tr>
           </thead>
           <tbody>
-            {userAttemptedList.map((attempt) => (
-              <tr key={attempt.userId}>
-               {/* You might want to format this to display a username instead */}
+            {sortedList.map((attempt) => (
+              <tr key={attempt.userId} className='AdminQuiz'>
                 <td>{attempt.name}</td>
                 <td>{attempt.enrollment}</td>
                 <td>{attempt.correctAnswers}</td>
