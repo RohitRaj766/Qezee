@@ -23,6 +23,8 @@ import { verifyTokenHandelRefreshRequest } from "./actions/index";
 import OpenViewBoard from "./admin/adminScreens/eachquizleaderboard/ViewBoard";
 import OpenLeaderBoard from "./admin/adminScreens/eachquizleaderboard/LeaderBoard";
 import NoInternetModal from "./user/components/NoInternet";
+import Forgot from "./user/userScreens/forgot/Forgot";
+import ResetPassword from "./user/userScreens/forgot/ResetPassword";
 
 const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
@@ -51,6 +53,8 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/open-viewboard" element={<OpenViewBoard />} />
         <Route path="/open-leaderboard" element={<OpenLeaderBoard />} />
+        <Route path="/forgot-password" element={<Forgot />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="leaderboard" element={<Leaderboard />} />
