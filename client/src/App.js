@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import Signup from "./user/userScreens/signup/Signup";
 import Login from "./user/userScreens/login/Login";
@@ -23,13 +22,29 @@ import AdminLoginForm from "./admin/adminScreens/adminLogin/AdminLoginForm";
 import { verifyTokenHandelRefreshRequest } from "./actions/index";
 import OpenViewBoard from "./admin/adminScreens/eachquizleaderboard/ViewBoard";
 import OpenLeaderBoard from "./admin/adminScreens/eachquizleaderboard/LeaderBoard";
+import NoInternetModal from "./user/components/NoInternet";
 
 const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOffline(false);
+    const handleOffline = () => setIsOffline(true);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
   return (
     <>
       {isLoad && <Loader />}
+      {isOffline &&  <NoInternetModal isVisible={isOffline} onClose={() => {setIsOffline(false);  window.location.reload();}} />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
