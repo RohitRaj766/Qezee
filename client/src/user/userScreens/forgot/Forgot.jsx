@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestPasswordReset } from '../../../actions/index'; // Adjust the path as needed
+import { requestPasswordReset } from '../../../actions/index';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Forgot = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   
   const { loading: apiLoading, error } = useSelector((state) => state.auth);
@@ -13,23 +14,34 @@ const Forgot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage('');
-
     dispatch(requestPasswordReset(email));
   };
 
-  const handleResponse = () => {
-    if (apiLoading) {
-      return 'Sending...';
+  const notify = (message, isError = false) => {
+    if (isError) {
+      toast.error(message);
+    } else {
+      toast.success(message);
     }
-    if (error) {
-      return error;
-    }
-    return 'If this email is registered, a reset link will be sent shortly.';
   };
+
+  useEffect(() => {
+    if (error) {
+      notify(error, true);
+      setLoading(false);
+    }
+  }, [error]);
+
+  useEffect(() => {
+    if (!apiLoading && !error) {
+      notify('Reset link sent to your email!');
+      setLoading(false);
+    }
+  }, [apiLoading, error]);
 
   return (
     <div style={styles.container}>
+      <ToastContainer />
       <div style={styles.card}>
         <h2 style={styles.title}>Forgot Password</h2>
         <p style={styles.subtitle}>Enter your email to receive a reset link.</p>
@@ -47,10 +59,9 @@ const Forgot = () => {
             style={styles.button} 
             disabled={loading || apiLoading}
           >
-            {handleResponse()}
+            {loading || apiLoading ? 'Sending...' : 'Get Link'}
           </button>
         </form>
-        {message && <p style={styles.message}>{handleResponse()}</p>}
       </div>
     </div>
   );
@@ -89,10 +100,7 @@ const styles = {
     borderRadius: '4px',
     border: '1px solid #ccc',
     transition: 'border-color 0.3s',
-    outline:'none'
-  },
-  inputFocus: {
-    borderColor: '#007bff',
+    outline: 'none',
   },
   button: {
     padding: '10px',
@@ -102,13 +110,6 @@ const styles = {
     color: 'white',
     cursor: 'pointer',
     transition: 'background-color 0.3s',
-  },
-  buttonHover: {
-    backgroundColor: '#0056b3',
-  },
-  message: {
-    marginTop: '10px',
-    color: 'green',
   },
 };
 
