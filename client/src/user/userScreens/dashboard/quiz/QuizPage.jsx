@@ -34,6 +34,7 @@ const QuizPage = (props) => {
       return Object.fromEntries(shuffledEntries);
     };
 
+    
     useEffect(() => {
       if (quizQuestion && quizQuestion.questions) {
         const shuffled = shuffleArray(
@@ -44,6 +45,7 @@ const QuizPage = (props) => {
         );
         setShuffledQuestions(shuffled);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [quizQuestion]);
 
     const shuffleArray = (array) => {
@@ -73,6 +75,8 @@ const QuizPage = (props) => {
         wrong: wrong,
         notattempted: notattempted
       };
+
+      console.log("quizQuestionList dds :: ", quizQuestionList);
 
       const attemptData={
         quizId: quizQuestionList._id,

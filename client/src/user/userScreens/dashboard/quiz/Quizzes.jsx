@@ -33,9 +33,9 @@ const QuizList = () => {
     setFlag(false);
   };
 
-  const handleButtonClick = (title) => {
+  const handleButtonClick = (id) => {
     setFlag(true);
-    setSelectQuizTitle(title);
+    setSelectQuizTitle(id);
   };
 
   const handleConfirmTest = () => {
@@ -51,14 +51,15 @@ const QuizList = () => {
     return date;
   };
 
-  const attemptedQuizzes = userData?.totalquizzes.map(quiz => quiz.name) || [];
+  const attemptedQuizzes = userData?.totalquizzes.map(quiz => quiz.quizId) || [];
+
 
 const liveQuizzes = quizzes.filter(
-  (quiz) => quiz.quizStatus === "inactive" && !attemptedQuizzes.includes(quiz.title)
+  (quiz) => !attemptedQuizzes.includes(quiz._id)
 );
 
 const previousQuizzes = quizzes.filter(
-  (quiz) => quiz.quizStatus === "completed" || quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz.title)
+  (quiz) => quiz.quizStatus === "completed" || quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz._id)
 );
 
 const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
@@ -83,7 +84,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                     <th>Date</th>
                     <th>Start Time</th>
                     <th>Expiry Time</th>
-                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -112,7 +113,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                           })}
                         </td>
                         <td>
-                          <button onClick={() => handleButtonClick(quiz.title)}>
+                          <button onClick={() => handleButtonClick(quiz._id)}>
                             Start
                           </button>
                         </td>
@@ -144,7 +145,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                     <th>Date</th>
                     <th>Start Time</th>
                     <th>Expiry Time</th>
-                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -174,15 +175,9 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                           })}
                         </td>
                         <td>
-                          <span
-                            className={
-                              quiz.quizStatus === "completed"
-                                ? "status-completed"
-                                : ""
-                            }
-                          >
-                            {quiz.quizStatus}
-                          </span>
+                          <button  onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}>
+                            Rank
+                          </button>
                         </td>
                       </tr>
                     );
