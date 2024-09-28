@@ -1,5 +1,5 @@
 import './main.scss';
-import profilepic from '../../../assets/images/profilepic.svg';
+import avatar from '../../../assets/images/avatar.gif';
 import logout from '../../../assets/images/logout.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRequest } from '../../../../actions/index';
@@ -23,7 +23,7 @@ const DashboardHeader = () => {
             <div className='name'>{ user ? (user.LoggedInUser.firstname + " " + user.LoggedInUser.lastname ) : "Name" }</div>
             <div className='branch'>{ user ? user.LoggedInUser.branch : "Branch" }</div>
           </div>
-          <img className='profile' src={profilepic} alt='' />
+          <img className='profile' src={avatar} alt='' />
           <img className='logout' src={logout} alt='' onClick={handleLogout} />
         </div>
       </div>
