@@ -1,0 +1,32 @@
+@import "../../../../assets/Common";
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    gap: 2px;
+    height: 80px;
+    box-sizing: border-box;
+
+    .logo {
+
+      height: 100%;
+      width: 113px;
+    }
+    .logo img {
+      max-width: 100%;
+      // margin-top: 35px;
+      object-fit: cover;
+    }
+    .text {
+      font-family: $primary-font;
+      font-size: 40px;
+      color: $btn-color;
+      .Q {
+        font-weight: 400;
+        font-size: 50px;
+        line-height: 60px;
+        color: #3c5edf;
+      }
+    }
+  }

@@ -1,0 +1,68 @@
+.mocktest-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-left: 200px;
+    padding-top: 100px;
+  
+  
+  .rules-box {
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    height: 400px;
+    width: 700px;
+    background-color: #f9f9f9;
+    margin-left: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+
+    h2 {
+      margin-top: 0;
+      letter-spacing: 3px;
+      color: #3c5edf;
+    }
+  
+    ul {
+      padding-left: 20px;
+      margin-top: 40px;
+      letter-spacing: 3px;
+
+  
+      li {
+      letter-spacing: 3px;
+        line-height: 40px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      font-size: 17px;
+      color: rgba(232, 39, 39, 0.896);
+
+      }
+    }
+  }
+  
+  .checkbox-container {
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    color: rgb(22, 22, 22);
+    input{
+      margin-right: 20px;
+    }
+  }
+  
+  .start-button {
+    padding: 10px 20px;
+    background-color: #f5b400;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 3px;
+    font-size: 16px;
+    cursor: pointer;
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -2,12 +2,31 @@ $main-theme: #f5b400;
 $text-color-btn: #f4f4f4;
 $text-color_form:#8B8A8A;
 $btn-color: #f5b400;
+$btn-color-2:#3C5EDF;
 $heading-color: #1e1702;
-$navback-color: #e3e3e3;
+$navback-color: #f7f6f6;
 $pure-white:#FFFFFF;
 $shadow-color:#e0e0e0;
 $primary-font:("Itim",cursive);
-// *{
-//     padding: 0;
-//     margin: 0;
-// }
+
+@mixin input{
+    height: inherit;
+    width: inherit;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    letter-spacing: 2px;
+    background-color: #F7F6F6;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+}
+
+@mixin button{
+    border: none;
+    outline: none;
+    height: inherit;
+    width: inherit;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+}
+

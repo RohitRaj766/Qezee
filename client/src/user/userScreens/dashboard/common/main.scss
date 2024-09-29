@@ -1,0 +1,262 @@
+@import "../../../assets/Common.scss";
+
+* {
+    font-family: $primary-font;
+}
+
+// Sidebar
+$main-height: 100vh;
+$main-width: 230px;
+$selector-height: 50px;
+$selector-width: 229px;
+$selector-font-size: 12px;
+
+.sidebarmain {
+    height: $main-height;
+    width: $main-width;
+    background-color: $navback-color;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px calc(85px) 10px rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    padding: 0px 40px 0px 17px;
+    overflow-y: auto; 
+    z-index: 2;
+
+    .header {
+        display: flex;
+        margin-bottom: 40px;
+
+        .text {
+            font-family: $primary-font;
+            font-size: 40px;
+            font-weight: 500;
+            margin-top: 10px;
+            color: $btn-color;
+
+            .Q {
+                color: #3c5edf;
+            }
+        }
+    }
+
+    .selectors {
+        display: flex;
+        align-items: center;
+        color: $main-theme;
+        margin: 0 auto;
+        cursor: pointer;
+        height: $selector-height;
+        width: $selector-width;
+        padding: 0 6px;
+        box-sizing: border-box;
+
+        .image {
+            width: 38px;
+            height: 38px;
+        }
+
+        .text {
+            font-family: $primary-font;
+            font-size: 18px;
+            padding-left: 10px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        &:hover {
+            background-color: $main-theme;
+            border-radius: 6px;
+            color: $text-color-btn;
+        }
+
+        &.selected {
+            background-color: $main-theme;
+            border-radius: 6px;
+            color: $text-color-btn;
+        }
+    }
+
+    .spacing {
+        height: 30px; 
+        width: 100%; 
+    }
+}
+
+
+
+
+
+// Dashboard Header
+.headerContainer {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: $navback-color;
+    box-shadow: 0px 4px 6px 0px $shadow-color;
+    z-index: 1;
+    position: fixed;
+
+    .headerWrapper {
+        display: flex;
+        justify-content: flex-end;
+        width: 100vw;
+        background-color: $navback-color;
+  
+        .contents {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding-right: 30px;  
+            .userInfo {
+                display: flex;
+                align-items: center;
+                gap: 8px; 
+                height: 29px; 
+                border-radius: 4px;
+                background-color: $btn-color; 
+                color: $text-color-btn; 
+                font-family: $primary-font;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                padding: 0 12px; 
+
+                .name {
+                    flex-shrink: 1; 
+                    white-space: nowrap; 
+                    overflow: hidden; 
+                    text-overflow: ellipsis; 
+                    border-right: 1px solid $text-color-btn;
+                    letter-spacing: 1.5px;
+                    padding-right: 12px; 
+                }
+  
+                .branch {
+                    flex-shrink: 0; 
+                    padding-left: 8px; 
+                    letter-spacing: 1.5px;
+                }
+            }
+  
+            .profile {
+                height: 50px;
+                width: 50px;
+                margin-left: 7px;
+                border: 1px solid $btn-color;
+                border-radius: 50%;
+            }
+  
+            .logout {
+                height: 25px;
+                width: 25px;
+                cursor: pointer; 
+            }
+        }
+    }
+}
+  
+// Modal
+  
+    .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 90%;
+        max-width: 520px;
+        max-height: 80%;
+        overflow-y: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        .modal-heading {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            color: #3c5edf;
+        }
+        .modal-sub-heading{
+            font-size: 1rem;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+.button-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+        .close-button {
+                        background: none;
+                        border: none;
+                        font-size: 30px;
+                        margin-right: 0px;
+                        float: right;
+                        cursor: pointer;
+                    }
+    
+                    .yes-button{
+                        background-color: $btn-color ;
+                        border: none;
+                        color: #fff;
+                        font-size: 18px;
+                        border-radius: 4px;
+                        padding: 8px;
+                        width: 150px;
+                        height: 48px;
+                        letter-spacing: 3px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+                        margin-bottom: 1.5rem;
+
+            
+                    }
+                    .yes-result-button{
+                        background-color: $btn-color ;
+                        border: none;
+                        color: #fff;
+                        font-size: 18px;
+                        border-radius: 4px;
+                        padding: 8px;
+                        width: 150px;
+                        height: 48px;
+                        letter-spacing: 3px;
+                        margin-bottom: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+            
+                    }
+                    .cancel-button{
+                        background-color: $navback-color ;
+                        border: none;
+                        color:$btn-color;
+                        font-size: 18px;    
+                        border-radius: 4px;
+                        padding: 8px;
+                        width: 150px;
+                        height: 48px;
+                        letter-spacing: 3px;
+                        cursor: pointer;
+                        font-weight: 600;
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+            margin-bottom: 1.5rem;
+
+                    }
+    }
+}
+
+    

@@ -1,0 +1,38 @@
+.overviewMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px ;
+    padding-top: 150px;
+    z-index: -1;
+
+    .upperContainer{
+        height: 342px;
+        width: 950px;
+        display: flex;
+        flex-direction: column;
+
+        h1{
+            font-size: 27px ;
+            letter-spacing: 3px;
+        }
+
+        .upperWrapper{
+            display: flex;
+            gap: 60px;
+        }
+    }
+
+    .lowerContainer{
+        margin-top: 200px;
+
+        h1{
+            font-size: 27px ;
+            display: flex;
+            justify-content: center;
+            letter-spacing: 3px;
+        }
+
+    }
+}
