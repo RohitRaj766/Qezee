@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './LeaderBoard.scss';
 
 const OpenLeaderboard = () => {
   const location = useLocation();
-  const userAttemptedList = location.state?.userAttemptedList || []; // Access the passed state
-  console.log("userAttemptedList  ", userAttemptedList)
+  const userAttemptedList = location.state?.userAttemptedList || [];
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const filteredList = userAttemptedList.filter(attempt =>
+    attempt.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentItems = filteredList.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div>
+    <div className="table-container">
       <h1>Open Leaderboard</h1>
-      {userAttemptedList.length === 0 ? (
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <button onClick={() => setSearchTerm('')}>Clear</button>
+      </div>
+      {filteredList.length === 0 ? (
         <p>No attempts available.</p>
       ) : (
         <table>
-          <thead>
-            <tr>
+          <thead className='AdminTableHeader'>
+            <tr className='AdminTableRow'>
+              <th>Rank</th>
               <th>Name</th>
               <th>Enrollment</th>
               <th>Correct Answers</th>
@@ -24,9 +45,9 @@ const OpenLeaderboard = () => {
             </tr>
           </thead>
           <tbody>
-            {userAttemptedList.map((attempt) => (
-              <tr key={attempt.userId}>
-               {/* You might want to format this to display a username instead */}
+            {currentItems.map((attempt, index) => (
+              <tr key={attempt.userId} className='AdminQuiz'>
+                <td>{startIndex + index + 1}</td>
                 <td>{attempt.name}</td>
                 <td>{attempt.enrollment}</td>
                 <td>{attempt.correctAnswers}</td>
@@ -38,6 +59,27 @@ const OpenLeaderboard = () => {
           </tbody>
         </table>
       )}
+ <div className="pagination-controls">
+  <div style={{ display: 'flex', alignItems: 'center', }}>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage - 1)} 
+      disabled={currentPage === 1}
+    >
+      Previous
+    </button>
+    <p>
+      Page {currentPage} of {totalPages}
+    </p>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage + 1)} 
+      disabled={currentPage === totalPages}
+    >
+      Next
+    </button>
+  </div>
+</div>
     </div>
   );
 };

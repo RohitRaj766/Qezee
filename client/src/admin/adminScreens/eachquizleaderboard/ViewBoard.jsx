@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { ATTEMPTED_QUIZ_LIST_REQUEST } from '../../../actions/index'; // Adjust according to your structure
-import DatePicker from 'react-datepicker'; // Import date picker
-import 'react-datepicker/dist/react-datepicker.css'; // Import styles for date picker
+import { useNavigate } from 'react-router-dom'; 
+import { ATTEMPTED_QUIZ_LIST_REQUEST } from '../../../actions/index'; 
+import DatePicker from 'react-datepicker'; 
+import 'react-datepicker/dist/react-datepicker.css'; 
+import './Viewboard.scss';
 
 const ViewBoard = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const attemptedQuizzes = useSelector(state => state.auth.attemptedQuizzes);
   const loading = useSelector(state => state.auth.loading);
   const error = useSelector(state => state.auth.error);
@@ -16,22 +17,20 @@ const ViewBoard = () => {
   const [quizzesPerPage] = useState(5);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [titleFilter, setTitleFilter] = useState(''); // State for title filter
+  const [titleFilter, setTitleFilter] = useState('');
 
   useEffect(() => {
     dispatch({ type: ATTEMPTED_QUIZ_LIST_REQUEST });
   }, [dispatch]);
 
-  // Filter quizzes by date and title
   const filteredQuizzes = attemptedQuizzes.filter(quiz => {
     const quizDate = new Date(quiz.date);
     const titleMatch = quiz.title.toLowerCase().includes(titleFilter.toLowerCase());
-    return (!startDate || quizDate >= startDate) && 
-           (!endDate || quizDate <= endDate) && 
-           titleMatch; // Include title filtering
+    return (!startDate || quizDate >= startDate) &&
+           (!endDate || quizDate <= endDate) &&
+           titleMatch;
   });
 
-  // Pagination logic
   const indexOfLastQuiz = currentPage * quizzesPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizzesPerPage;
   const currentQuizzes = filteredQuizzes.slice(indexOfFirstQuiz, indexOfLastQuiz);
@@ -39,44 +38,50 @@ const ViewBoard = () => {
   const totalPages = Math.ceil(filteredQuizzes.length / quizzesPerPage);
 
   return (
-    <div>
-      <h1>Leaderboard</h1>
+    <div className="ViewBoardContainer">
+      <h1>Quiz Viewboard</h1>
       {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-
-      <div>
-        <label>Filter By Date</label><br />
-        <label>Start Date:</label>
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-        
-        <label>End Date:</label>
-        <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+      {error && <p className="no-quizzes-message">Error: {error}</p>}
+    
+      {/* Filter Section */}
+      <div className="filter-section">
+        <div className="date-picker">
+          <label className="date-heading">Filter By Date</label>
+          <div className="date-container">
+            <div>
+              <label>Start Date:</label>
+              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+            </div>
+            <div>
+              <label>End Date:</label>
+              <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+            </div>
+          </div>
+        </div>
+    
+        <div>
+          <label>Filter by Title:</label>
+          <input 
+            type="text" 
+            value={titleFilter} 
+            onChange={(e) => setTitleFilter(e.target.value)} 
+            placeholder="Enter quiz title"
+          />
+        </div>
       </div>
-
-      <div>
-        <label>Filter by Title:</label>
-        <input 
-          type="text" 
-          value={titleFilter} 
-          onChange={(e) => setTitleFilter(e.target.value)} 
-          placeholder="Enter quiz title"
-        />
-      </div>
-
+  
       <table>
-        <thead>
-          <tr>
+        <thead className="adminTableHeader">
+          <tr className="adminTableRow">
             <th>Title</th>
-            <th>Score</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {currentQuizzes.map((quiz) => (
-            <tr key={quiz.id}>
+            <tr key={quiz.id} className="adminQuiz">
               <td>{quiz.title}</td>
-              <td>{quiz.score}</td>
               <td>{new Date(quiz.date).toLocaleDateString()}</td>
               <td>
                 <button 
@@ -90,18 +95,29 @@ const ViewBoard = () => {
         </tbody>
       </table>
 
-      {/* Pagination Controls */}
-      <div>
-        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span> Page {currentPage} of {totalPages} </span>
-        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
-
-      {filteredQuizzes.length === 0 && <p>No quizzes found for the selected date range and title.</p>}
+<div className="pagination-controls">
+  <div style={{ display: 'flex', alignItems: 'center', }}>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage - 1)} 
+      disabled={currentPage === 1}
+    >
+      Previous
+    </button>
+    <p>
+      Page {currentPage} of {totalPages}
+    </p>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage + 1)} 
+      disabled={currentPage === totalPages}
+    >
+      Next
+    </button>
+  </div>
+</div>
+  
+      {filteredQuizzes.length === 0 && <p className="no-quizzes-message">No quizzes found for the selected date range and title.</p>}
     </div>
   );
 };
