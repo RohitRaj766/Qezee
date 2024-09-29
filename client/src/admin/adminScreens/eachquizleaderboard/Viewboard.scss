@@ -113,6 +113,7 @@ input[type="text"] {
   border-radius: 4px;
   margin-bottom: 10px;
   width: 80%; 
+  outline: none;
 }
 
 .date-picker {
@@ -134,41 +135,40 @@ input[type="text"] {
 }
 
 .pagination-controls {
+  width: 100%;
+  max-width: 1360px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+  margin: auto;
+  z-index: 1000;
+}
 
-  button {
-    padding: 5px 10px;
-    border: 1px solid ;
-    background-color: transparent;
-    color: #000;
-    cursor: pointer;
-    border-radius: 4px;
+.pagination-controls .button {
+  padding: 5px 10px;
+  border: 1px solid;
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  border-radius: 4px;
+}
 
-    &:disabled {
-      cursor: not-allowed;
-      color: #cccccc; 
-    }
-    
-    &:hover:not(:disabled) {
-      background-color: #e7f0ff; 
-    }
-  }
+.pagination-controls .button:disabled {
+  cursor: not-allowed;
+  color: #ffffff;
+  background-color: #bebebe;
+}
 
-  span {
-    font-size: 16px;
-    font-weight: bold;
-  }
+.pagination-controls p {
+  margin: 0;
+  text-align: center;
+  padding: 0 10px;
 }
 
 .no-quizzes-message {
   color: #dc3545; 
   font-size: 16px;
   margin-top: 20px;
-}
-
-body{
-  background-color: #f8f9fa; 
 }

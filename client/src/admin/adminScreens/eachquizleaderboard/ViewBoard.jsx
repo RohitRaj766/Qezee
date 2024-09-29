@@ -94,17 +94,28 @@ const ViewBoard = () => {
           ))}
         </tbody>
       </table>
-  
-      {/* Pagination Controls */}
-      <div className="pagination-controls">
-        <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span> Page {currentPage} of {totalPages} </span>
-        <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+
+<div className="pagination-controls">
+  <div style={{ display: 'flex', alignItems: 'center', }}>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage - 1)} 
+      disabled={currentPage === 1}
+    >
+      Previous
+    </button>
+    <p>
+      Page {currentPage} of {totalPages}
+    </p>
+    <button 
+      className="button"
+      onClick={() => setCurrentPage(currentPage + 1)} 
+      disabled={currentPage === totalPages}
+    >
+      Next
+    </button>
+  </div>
+</div>
   
       {filteredQuizzes.length === 0 && <p className="no-quizzes-message">No quizzes found for the selected date range and title.</p>}
     </div>
