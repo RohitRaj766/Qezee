@@ -1,37 +1,82 @@
 import React from 'react'
+import logout from '../../../../user/assets/images/logout.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutRequest } from '../../../../actions/index';
+import { useNavigate } from 'react-router-dom';
+import DatePicker from 'react-datepicker'; 
+import 'react-datepicker/dist/react-datepicker.css'; 
 import './CreateQuiz.scss'
 
 function CreateQuiz() {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const admin = useSelector((state)=>state.adminauth.admin)
+
+  const handleLogout = () => {
+    dispatch(logoutRequest());
+    navigate('/admin-login');
+  };
+
   return (
     <div>
-        <nav>
-            <h1 className='heading'>CREATE QUIZ</h1>
-            <a href="#">logout</a>
-        </nav>
 
-        <div className='quiz-details'>
-            <input type="text" placeholder='Quiz Title' />
-            <div className='quiz-time'>
-                <input type="text" placeholder='Start Time' />
-                <input type="text" placeholder='End Time' />
-            </div>
-            <div className='date-status'>
-                <input type="text" name="" id="" placeholder='Date' />
-                <input type="text" name="" id="" placeholder='Quiz Status' />
-            </div>
+    <div className='nav'>
+      <div className='nav-title'>
+        <h1>CREATE QUIZ</h1>
+      </div>
+      <img className='logout' src={logout} alt='' onClick={handleLogout} />
+    </div>
+
+    <div className="quiz-details">
+
+      <div className="title-status">
+        <input type="text" placeholder='Quiz Title' />
+        <button>Active </button>  {/* Add a toggle thing which shows active by default and when clicked changes to inactive */}
+      </div>
+      
+      <div className="time">
+        <div>
+          <label>Start Date:</label>
+          <DatePicker/>
+        </div>
+        <div>
+          <label>End Date:</label>
+          <DatePicker/>
         </div>
 
-        <div className='question-container'>
-            <input type="text" className='question' placeholder='Question'/>
-            <div className='answers'>
-                <input type="text" className='option1' placeholder='option 1'/>
-                <input type="text" className='option2' placeholder='option 2'/>
-                <input type="text" className='option3' placeholder='option 3'/>
-                <input type="text" className='option4' placeholder='option 4'/>
-            </div>
-            <button>Add Questions</button>
-            <button>Upload</button>
+      </div>
+
+    </div>
+
+    <div className="questions-container">
+
+      <input type="text" placeholder='Question'/>
+
+      <div className='options'>
+
+        <div className='options1'>
+          <input type="text" placeholder='option 1'/>
+          <input type="text" placeholder='option 3'/>
         </div>
+
+        <div className="options2">
+          <input type="text" placeholder='option 2'/>
+          <input type="text" placeholder='option 4'/>
+        </div>
+        
+      </div>
+    </div>
+
+    <div className="add-counter">
+      <p>Total Questions: 1</p>
+      <button>Add</button>
+    </div>
+
+    <div className='upload'>
+      <button>Upload</button>
+    </div>
+
     </div>
   )
 }

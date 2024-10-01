@@ -1,0 +1,50 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    
+    h1{
+        font-size: 22px;
+    }
+}
+
+.quiz-details{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #000;
+
+    .title-status{
+        display: flex;
+        justify-content: center;
+    }
+
+    .time{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.questions-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #000;;
+    margin-top: 30px;
+
+    .options
+    {
+        .options1{
+            display: flex;
+        }
+        .options2{
+            display: flex;
+        }
+    }
+}
+
+.add-counter{
+    display: flex;
+}
+
+.upload{
+    
+}
