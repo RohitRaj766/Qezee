@@ -14,7 +14,7 @@ function CreateQuiz() {
   
   // State to manage questions
   const [questions, setQuestions] = useState([
-    { question: '', options: ['', '', '', ''] }
+    { question: '', options: ['', '', '', ''], answer: null } // Added answer state
   ]);
 
   // State for start and end date-time
@@ -41,8 +41,14 @@ function CreateQuiz() {
     setQuestions(newQuestions);
   };
 
+  const handleAnswerChange = (qIndex, selectedOptionIndex) => {
+    const newQuestions = [...questions];
+    newQuestions[qIndex].answer = selectedOptionIndex; // Store the selected answer index
+    setQuestions(newQuestions);
+  };
+
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', options: ['', '', '', ''] }]);
+    setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
   };
 
   // Toggle function for active/inactive state
@@ -96,7 +102,7 @@ function CreateQuiz() {
           <div key={qIndex} className="question-container">
             <input
               type="text"
-              placeholder='Question'
+              placeholder={`Question ${qIndex + 1}`} // Updated placeholder to include question number
               className='question'
               value={q.question}
               onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
@@ -104,13 +110,20 @@ function CreateQuiz() {
 
             <div className='options'>
               {q.options.map((option, oIndex) => (
-                <input
-                  key={oIndex}
-                  type="text"
-                  placeholder={`Option ${oIndex + 1}`}
-                  value={option}
-                  onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
-                />
+                <div key={oIndex} className="option">
+                  <input
+                    type="radio"
+                    name={`question-${qIndex}`} // Group radio buttons by question index
+                    checked={q.answer === oIndex} // Check if this option is selected
+                    onChange={() => handleAnswerChange(qIndex, oIndex)} // Handle answer selection
+                  />
+                  <input
+                    type="text"
+                    placeholder={`Option ${oIndex + 1}`}
+                    value={option}
+                    onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
+                  />
+                </div>
               ))}
             </div>
           </div>

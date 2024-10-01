@@ -6,7 +6,6 @@
     h1 {
         font-size: 22px;
     }
-    
 }
 
 .quiz-details {
@@ -55,12 +54,23 @@
             flex-direction: column;
             margin-top: 10px;
 
-            input {
-                margin-bottom: 5px;
-                padding: 10px;
-                font-size: 1rem;
-                width: calc(80% - 20px);
-                border-radius: 0.25rem;
+            // Ensure options are displayed in a row
+            .option {
+                display: flex;
+                align-items: center; // Center align items vertically
+                margin-bottom: 5px; // Space between options
+
+                input[type="radio"] {
+                    margin-right: 10px; // Space between radio and option text
+                    width: auto; // Ensures radio button does not take extra space
+                }
+
+                input[type="text"] {
+                    flex: 1; // Allow text input to take remaining space
+                    padding: 10px;
+                    font-size: 1rem;
+                    border-radius: 0.25rem;
+                }
             }
         }
     }
@@ -69,15 +79,14 @@
 .add-counter {
     display: flex;
     margin-top: 20px;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
     gap: 50px;
     border-bottom: 1px solid #000;
 
-    p{
+    p {
         font-size: 25px;
     }
-
 }
 
 .upload {
