@@ -69,7 +69,7 @@ const AppContent = () => {
             <Route path="quizzes/quizpage" element={<QuizPage/>} />
           </Route>
         </Route>
-        <Route path="/not-found" element={<AdminDashboard/>} />
+        <Route path="/not-found" element={<Not404Page/>} />
         <Route path="*" element={<Navigate to="/not-found" />} />
         <Route path="/admin" element={<AdminLoginForm />} />
         <Route path="/admin/login" element={<AdminLoginForm />} />
