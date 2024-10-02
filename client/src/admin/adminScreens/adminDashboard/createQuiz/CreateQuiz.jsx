@@ -13,7 +13,7 @@ function CreateQuiz() {
   const admin = useSelector((state) => state.adminauth.admin);
   
   const [questions, setQuestions] = useState([
-    { question: '', options: ['', '', '', ''], answer: null } // Added answer state
+    { question: '', options: ['', '', '', ''], answer: null } 
   ]);
 
   const [startDateTime, setStartDateTime] = useState(null);
@@ -52,6 +52,20 @@ function CreateQuiz() {
   const handleStatusChange = (event) => {
     setIsActive(event.target.value === 'active'); 
   };
+
+//   const createQuizData = {
+//     title: quizTitle,
+//     startTime: startTime,
+//     expireTime: expireTime,
+//     date: date,
+//     quizStatus: quizStatus,
+//     questions: questions.map(question => ({
+//         question: question.question,
+//         options: question.options,
+//         correctAnswer: question.correctAnswer
+//     }))
+// };
+
 
   return (
     <div className='container'>
