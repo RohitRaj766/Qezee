@@ -13,9 +13,11 @@ const OpenLeaderboard = () => {
     attempt.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
+  const sortedList = filteredList.sort((a, b) => b.correctAnswers - a.correctAnswers);
+
+  const totalPages = Math.ceil(sortedList.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = filteredList.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = sortedList.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="table-container">
@@ -29,7 +31,7 @@ const OpenLeaderboard = () => {
         />
         <button onClick={() => setSearchTerm('')}>Clear</button>
       </div>
-      {filteredList.length === 0 ? (
+      {sortedList.length === 0 ? (
         <p>No attempts available.</p>
       ) : (
         <table>
@@ -59,27 +61,27 @@ const OpenLeaderboard = () => {
           </tbody>
         </table>
       )}
- <div className="pagination-controls">
-  <div style={{ display: 'flex', alignItems: 'center', }}>
-    <button 
-      className="button"
-      onClick={() => setCurrentPage(currentPage - 1)} 
-      disabled={currentPage === 1}
-    >
-      Previous
-    </button>
-    <p>
-      Page {currentPage} of {totalPages}
-    </p>
-    <button 
-      className="button"
-      onClick={() => setCurrentPage(currentPage + 1)} 
-      disabled={currentPage === totalPages}
-    >
-      Next
-    </button>
-  </div>
-</div>
+      <div className="pagination-controls">
+        <div style={{ display: 'flex', alignItems: 'center', }}>
+          <button 
+            className="button"
+            onClick={() => setCurrentPage(currentPage - 1)} 
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <p>
+            Page {currentPage} of {totalPages}
+          </p>
+          <button 
+            className="button"
+            onClick={() => setCurrentPage(currentPage + 1)} 
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
