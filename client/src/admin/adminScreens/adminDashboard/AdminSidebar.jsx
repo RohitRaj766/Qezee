@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AdminSidebar.scss';
-// import logoimage from '../../../assets/images/logo.svg';
-// import overviewimage from "../../../assets/images/overview.svg";
-// import mocktestimage from "../../../assets/images/mocktest.svg";
-// import quizzesimage from "../../../assets/images/quizzes.svg";
-// import leaderboardimage from "../../../assets/images/leaderboard.svg";
-// import editprofileimage from "../../../assets/images/editprofile.svg";
+import logoimage from '../../../user/assets/images/logo.svg';
+import createquizimage from "../../../user/assets/images/quizzes.svg";
+import leaderboardimage from "../../../user/assets/images//leaderboard.svg";
 
 const AdminSidebar = () => {
   const [selectedItem, setSelectedItem] = useState(0); 
@@ -16,17 +13,15 @@ const AdminSidebar = () => {
   };
 
   const selectorsData = [
-    // { image: overviewimage, text: 'OVERVIEW', path: '/dashboard/overview' },
-    // { image: mocktestimage, text: 'MOCK TEST', path: '/dashboard/mocktest' },
-    // { image: quizzesimage, text: 'QUIZZES', path: '/dashboard/quizzes' },
-    // { image: leaderboardimage, text: 'LEADER BOARD', path: '/dashboard/leaderboard' },
-    // { image: editprofileimage, text: 'EDIT PROFILE', path: '/dashboard/edit' },
+    { image: createquizimage, text: 'CREATE QUIZ', path: '/admin-dashboard/CreateQuiz' },
+    { image: leaderboardimage, text: 'HANDLE USER', path: '/admin-dashboard/AdminLeaderboard' },
+
   ];
 
   return (
     <div className="sidebarmain">
       <div className="header">
-        <div className="image"><img src alt="logo" /></div>
+        <div className="image"><img src={logoimage} alt="logo" /></div>
         <p className="text"><span className="Q">Q</span>ezee</p>
       </div>
       {selectorsData.map((item, index) => (
