@@ -8,25 +8,26 @@ $selector-font-size: 12px;
 .sidebarmain {
     height: $main-height;
     width: $main-width;
-    // background-color: $navback-color;
+
     display: flex;
     flex-direction: column;
-    box-shadow: 4px calc(85px) 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px calc(0px) 10px rgba(0, 0, 0, 0.1);
     position: fixed; 
     padding: 0px 40px 0px 17px;
     overflow-y: auto; 
     z-index: 2;
+    margin-top: -10px;
 
     .header {
         display: flex;
         margin-bottom: 40px;
 
         .text {
-            // font-family: $primary-font;
+     
             font-size: 40px;
             font-weight: 500;
             margin-top: 10px;
-            // color: $btn-color;
+      
 
             .Q {
                 color: #3c5edf;
@@ -37,7 +38,7 @@ $selector-font-size: 12px;
     .selectors {
         display: flex;
         align-items: center;
-        // color: $main-theme;
+
         margin: 0 auto;
         cursor: pointer;
         height: $selector-height;
@@ -51,7 +52,7 @@ $selector-font-size: 12px;
         }
 
         .text {
-            // font-family: $primary-font;
+         
             font-size: 18px;
             padding-left: 10px;
             letter-spacing: 2px;
@@ -59,15 +60,11 @@ $selector-font-size: 12px;
         }
 
         &:hover {
-            // background-color: $main-theme;
             border-radius: 6px;
-            // color: $text-color-btn;
         }
 
         &.selected {
-            // background-color: $main-theme;
             border-radius: 6px;
-            // color: $text-color-btn;
         }
     }
 
