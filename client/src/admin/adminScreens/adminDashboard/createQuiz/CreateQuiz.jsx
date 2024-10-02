@@ -51,9 +51,9 @@ function CreateQuiz() {
     setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
   };
 
-  // Toggle function for active/inactive state
-  const toggleActive = () => {
-    setIsActive(!isActive);
+  // Function to handle status change from dropdown
+  const handleStatusChange = (event) => {
+    setIsActive(event.target.value === 'active'); // Update isActive based on selected value
   };
 
   return (
@@ -91,9 +91,13 @@ function CreateQuiz() {
               timeFormat="HH:mm"
             />
           </div>
-          <button onClick={toggleActive} className='status'> 
-            {isActive ? 'Active' : 'Inactive'}
-          </button>
+          <div>
+            <label>Status:</label>
+            <select value={isActive ? 'active' : 'inactive'} onChange={handleStatusChange} className='status-dropdown'>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
         </div>
       </div>
 

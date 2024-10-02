@@ -27,7 +27,8 @@ import Forgot from "./user/userScreens/forgot/Forgot";
 import ResetPassword from "./user/userScreens/forgot/ResetPassword";
 import AdminDashboard from './admin/adminScreens/adminDashboard/AdminDashboard'
 import CreateQuiz from "./admin/adminScreens/adminDashboard/createQuiz/CreateQuiz";
-import AdminSidebar from "./admin/adminScreens/adminDashboard/AdminSidebar";
+import AdminSidebar from "./admin/adminScreens/adminDashboard/adminSidebar/AdminSidebar";
+import HandleUser from "./admin/adminScreens/adminDashboard/handleUser/HandleUser";
 
 const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
@@ -73,8 +74,9 @@ const AppContent = () => {
         <Route path="/admin" element={<AdminLoginForm />} />
         <Route path="/admin/login" element={<AdminLoginForm />} />
         <Route element={<AdminPrivateRoute />}>
-          <Route path="/admin-dashboard" element={<CreateQuiz />}>
-            <Route path="createQuiz" element={<CreateQuiz/>} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />}>
+            <Route path="create-quiz" element={<CreateQuiz/>} />
+            <Route path="handle-user" element={<HandleUser/>} />
           </Route>
         </Route>
       </Routes>
