@@ -19,7 +19,7 @@ function CreateQuiz() {
   const [quizTitle, setQuizTitle] = useState(''); 
   const [startDateTime, setStartDateTime] = useState(null);
   const [endDateTime, setEndDateTime] = useState(null);
-  const [isActive, setIsActive] = useState(true); 
+  const [quizStatus, setQuizStatus] = useState('active'); 
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogout = () => {
@@ -49,26 +49,8 @@ function CreateQuiz() {
     setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
   };
 
-  const handleStatusChange = (event) => {
-    setIsActive(event.target.value === 'active'); 
-  };
-
-  const createQuizData = {
-    title: quizTitle,
-    date: startDateTime,
-    startTime: startDateTime,
-    expireTime: endDateTime, 
-    quizStatus: isActive ? 'active' : 'inactive', 
-    questions: questions.map(question => ({
-        question: question.question,
-        options: question.options,
-        correctAnswer: question.answer 
-    }))
-  };
-
-  // Function to handle upload and validate times
   const handleUpload = () => {
-    // Validate times and ensure end time is at least 1 hour after start time
+ 
     if (!startDateTime || !endDateTime) {
       setErrorMessage('Both start and end times must be set.');
       return;
@@ -79,9 +61,22 @@ function CreateQuiz() {
       setErrorMessage('Start time must be at least 1 hour before end time.');
       return;
     }
+
+    const createQuizData = {
+      title: quizTitle,
+      date: startDateTime,
+      startTime: startDateTime,
+      expireTime: endDateTime,
+      quizStatus: quizStatus, 
+      questions: questions.map(question => ({
+          question: question.question,
+          options: question.options,
+          correctAnswer: question.answer 
+      }))
+    };
+
     console.log(createQuizData);
     setErrorMessage(''); 
-
   };
 
   return (
@@ -132,7 +127,7 @@ function CreateQuiz() {
           </div>
           <div>
             <label>Status:</label>
-            <select value={isActive ? 'active' : 'inactive'} onChange={handleStatusChange} className='status-dropdown'>
+            <select value={quizStatus} onChange={(e) => setQuizStatus(e.target.value)} className='status-dropdown'>
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
             </select>
@@ -179,9 +174,8 @@ function CreateQuiz() {
       </div>
 
       <div className='upload'>
-      {errorMessage && <p className="error-message">{errorMessage}</p>} 
+        {errorMessage && <p className="error-message">{errorMessage}</p>} 
         <button onClick={handleUpload}>Upload</button> 
-        
       </div>
     </div>
   );
