@@ -16,11 +16,11 @@ function CreateQuiz() {
     { question: '', options: ['', '', '', ''], answer: null } 
   ]);
 
+  const [quizTitle, setQuizTitle] = useState(''); 
   const [startDateTime, setStartDateTime] = useState(null);
   const [endDateTime, setEndDateTime] = useState(null);
-
-
   const [isActive, setIsActive] = useState(true); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogout = () => {
     dispatch(logoutRequest());
@@ -53,19 +53,36 @@ function CreateQuiz() {
     setIsActive(event.target.value === 'active'); 
   };
 
-//   const createQuizData = {
-//     title: quizTitle,
-//     startTime: startTime,
-//     expireTime: expireTime,
-//     date: date,
-//     quizStatus: quizStatus,
-//     questions: questions.map(question => ({
-//         question: question.question,
-//         options: question.options,
-//         correctAnswer: question.correctAnswer
-//     }))
-// };
+  const createQuizData = {
+    title: quizTitle,
+    date: startDateTime,
+    startTime: startDateTime,
+    expireTime: endDateTime, 
+    quizStatus: isActive ? 'active' : 'inactive', 
+    questions: questions.map(question => ({
+        question: question.question,
+        options: question.options,
+        correctAnswer: question.answer 
+    }))
+  };
 
+  // Function to handle upload and validate times
+  const handleUpload = () => {
+    // Validate times and ensure end time is at least 1 hour after start time
+    if (!startDateTime || !endDateTime) {
+      setErrorMessage('Both start and end times must be set.');
+      return;
+    }
+
+    const oneHourDifference = new Date(startDateTime.getTime() + 60 * 60 * 1000);
+    if (endDateTime < oneHourDifference || endDateTime <= startDateTime) {
+      setErrorMessage('Start time must be at least 1 hour before end time.');
+      return;
+    }
+    console.log(createQuizData);
+    setErrorMessage(''); 
+
+  };
 
   return (
     <div className='container'>
@@ -78,7 +95,13 @@ function CreateQuiz() {
 
       <div className="quiz-details">
         <div className="title-status">
-          <input type="text" placeholder='Quiz Title' className='quiz-title' />
+          <input 
+            type="text" 
+            placeholder='Quiz Title' 
+            className='quiz-title' 
+            value={quizTitle} 
+            onChange={(e) => setQuizTitle(e.target.value)} 
+          />
         </div>
 
         <div className="time">
@@ -86,7 +109,12 @@ function CreateQuiz() {
             <label>Start Date:</label>
             <DatePicker
               selected={startDateTime}
-              onChange={(date) => setStartDateTime(date)}
+              onChange={(date) => {
+                setStartDateTime(date);
+                if (date) {
+                  setEndDateTime(new Date(date.getTime() + 60 * 60 * 1000));
+                }
+              }}
               showTimeSelect
               dateFormat="Pp" 
               timeFormat="HH:mm"
@@ -151,7 +179,9 @@ function CreateQuiz() {
       </div>
 
       <div className='upload'>
-        <button>Upload</button>
+      {errorMessage && <p className="error-message">{errorMessage}</p>} 
+        <button onClick={handleUpload}>Upload</button> 
+        
       </div>
     </div>
   );

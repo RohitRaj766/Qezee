@@ -96,7 +96,15 @@
 .upload {
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    p{
+        text-align: center; 
+        color: red; 
+        margin: 0
+    }
 }
 
 button {
