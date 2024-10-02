@@ -57,7 +57,7 @@ function CreateQuiz() {
   };
 
   return (
-    <div>
+    <div className='create-quiz-main'>
       <div className='nav'>
         <div className='nav-title'>
           <h1>CREATE QUIZ</h1>

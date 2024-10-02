@@ -25,7 +25,7 @@ import OpenLeaderBoard from "./admin/adminScreens/eachquizleaderboard/LeaderBoar
 import NoInternetModal from "./user/components/NoInternet";
 import Forgot from "./user/userScreens/forgot/Forgot";
 import ResetPassword from "./user/userScreens/forgot/ResetPassword";
-import AdminDashboard from "./admin/adminScreens/adminDashboard/AdminDashboard";
+import AdminDashboard from './admin/adminScreens/adminDashboard/AdminDashboard'
 import CreateQuiz from "./admin/adminScreens/adminDashboard/createQuiz/CreateQuiz";
 import AdminSidebar from "./admin/adminScreens/adminDashboard/AdminSidebar";
 
@@ -68,7 +68,7 @@ const AppContent = () => {
             <Route path="quizzes/quizpage" element={<QuizPage/>} />
           </Route>
         </Route>
-        <Route path="/not-found" element={<AdminSidebar/>} />
+        <Route path="/not-found" element={<AdminDashboard/>} />
         <Route path="*" element={<Navigate to="/not-found" />} />
         <Route path="/admin" element={<AdminLoginForm />} />
         <Route path="/admin/login" element={<AdminLoginForm />} />

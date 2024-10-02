@@ -2,13 +2,14 @@ import React from 'react'
 import AdminSidebar from './AdminSidebar'
 import CreateQuiz from './createQuiz/CreateQuiz'
 
-function adminDashboard() {
+
+function AdminDashboard() {
   return (
-    <>
-      <AdminSidebar/>
-      <CreateQuiz/>
-    </>
+    <div>
+        <AdminSidebar/>
+        <CreateQuiz/>
+    </div>
   )
 }
 
-export default adminDashboard
+export default AdminDashboard

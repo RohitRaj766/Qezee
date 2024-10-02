@@ -5,7 +5,6 @@ import { adminLoginRequest } from '../../../actions/index';
 import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import AdminHeader from '../../components/adminHeader/AdminHeader';
 import Loader from '../../../user/components/loader/Loader';
 
 const AdminLoginForm = () => {
@@ -54,7 +53,6 @@ const AdminLoginForm = () => {
   return (
     <>
     {isLoading && <Loader/>}
-    {/* <AdminHeader/> */}
     <div className="AdminloginMain">
       <div className="AdminloginBoxContainer">
         <h1>Admin Panel</h1>
