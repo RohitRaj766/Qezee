@@ -58,19 +58,19 @@
             flex-direction: column;
             margin-top: 10px;
 
-            // Ensure options are displayed in a row
+   
             .option {
                 display: flex;
-                align-items: center; // Center align items vertically
-                margin-bottom: 5px; // Space between options
+                align-items: center; 
+                margin-bottom: 5px; 
 
                 input[type="radio"] {
-                    margin-right: 10px; // Space between radio and option text
-                    width: auto; // Ensures radio button does not take extra space
+                    margin-right: 10px; 
+                    width: auto; 
                 }
 
                 input[type="text"] {
-                    flex: 1; // Allow text input to take remaining space
+                    flex: 1; 
                     padding: 10px;
                     font-size: 1rem;
                     border-radius: 0.25rem;

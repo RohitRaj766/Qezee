@@ -12,17 +12,15 @@ function CreateQuiz() {
   const navigate = useNavigate();
   const admin = useSelector((state) => state.adminauth.admin);
   
-  // State to manage questions
   const [questions, setQuestions] = useState([
     { question: '', options: ['', '', '', ''], answer: null } // Added answer state
   ]);
 
-  // State for start and end date-time
   const [startDateTime, setStartDateTime] = useState(null);
   const [endDateTime, setEndDateTime] = useState(null);
 
-  // State for quiz status
-  const [isActive, setIsActive] = useState(true); // Default to Active
+
+  const [isActive, setIsActive] = useState(true); 
 
   const handleLogout = () => {
     dispatch(logoutRequest());
@@ -43,7 +41,7 @@ function CreateQuiz() {
 
   const handleAnswerChange = (qIndex, selectedOptionIndex) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex].answer = selectedOptionIndex; // Store the selected answer index
+    newQuestions[qIndex].answer = selectedOptionIndex; 
     setQuestions(newQuestions);
   };
 
@@ -51,9 +49,8 @@ function CreateQuiz() {
     setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
   };
 
-  // Function to handle status change from dropdown
   const handleStatusChange = (event) => {
-    setIsActive(event.target.value === 'active'); // Update isActive based on selected value
+    setIsActive(event.target.value === 'active'); 
   };
 
   return (
@@ -77,7 +74,7 @@ function CreateQuiz() {
               selected={startDateTime}
               onChange={(date) => setStartDateTime(date)}
               showTimeSelect
-              dateFormat="Pp" // Formats the date and time
+              dateFormat="Pp" 
               timeFormat="HH:mm"
             />
           </div>
@@ -87,7 +84,7 @@ function CreateQuiz() {
               selected={endDateTime}
               onChange={(date) => setEndDateTime(date)}
               showTimeSelect
-              dateFormat="Pp" // Formats the date and time
+              dateFormat="Pp" 
               timeFormat="HH:mm"
             />
           </div>
@@ -106,7 +103,7 @@ function CreateQuiz() {
           <div key={qIndex} className="question-container">
             <input
               type="text"
-              placeholder={`Question ${qIndex + 1}`} // Updated placeholder to include question number
+              placeholder={`Question ${qIndex + 1}`} 
               className='question'
               value={q.question}
               onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
@@ -117,9 +114,9 @@ function CreateQuiz() {
                 <div key={oIndex} className="option">
                   <input
                     type="radio"
-                    name={`question-${qIndex}`} // Group radio buttons by question index
-                    checked={q.answer === oIndex} // Check if this option is selected
-                    onChange={() => handleAnswerChange(qIndex, oIndex)} // Handle answer selection
+                    name={`question-${qIndex}`} 
+                    checked={q.answer === oIndex}
+                    onChange={() => handleAnswerChange(qIndex, oIndex)}
                   />
                   <input
                     type="text"
