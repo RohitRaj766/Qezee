@@ -122,7 +122,7 @@ const Leaderboard = () => {
                   <tr key={player.enrollment} className="player">
                     <td>{player.firstname + " " + player.lastname}</td>
                     <td>{player.totalCorrect} pts</td>
-                   <td className='curr-rank'>{LoggedInUser.enrollment}</td>
+                   <td className='curr-rank'>{player.enrollment}</td>
 
                     <td>{player.reputation}</td>
                   </tr>
