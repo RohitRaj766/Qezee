@@ -36,7 +36,7 @@ import {
   REQUEST_PASSWORD_RESET_FAILURE,
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILURE,
+  RESET_PASSWORD_FAILURE
 } from "../actions/index";
 
 const initialState = {
