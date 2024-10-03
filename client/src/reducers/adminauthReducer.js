@@ -3,7 +3,10 @@ import {
     ADMIN_LOGIN_FAILURE,
     ADMIN_LOGIN_REQUEST,
     ADMIN_LOGOUT_FAILURE,
-    ADMIN_LOGOUT_SUCCESS
+    ADMIN_LOGOUT_SUCCESS,
+    CREATE_QUIZ_REQUEST,
+    CREATE_QUIZ_SUCCESS,
+    CREATE_QUIZ_FAILURE
 } from "../actions/index";
 
 const initialState = {
@@ -11,6 +14,7 @@ const initialState = {
     error: null,
     isAuthenticated: false,
     isLoading: false,
+    message:null
 };
 
 const adminauthReducer = (state = initialState, action) => {
@@ -49,6 +53,27 @@ const adminauthReducer = (state = initialState, action) => {
           return {
             ...state
           };
+
+          case CREATE_QUIZ_REQUEST:
+            return {
+              ...state,
+              isLoading: true
+            };
+      
+          case CREATE_QUIZ_SUCCESS:
+            return {
+              ...state,
+              message: action.payload,
+              isLoading: false,
+              error: null
+            };
+      
+          case CREATE_QUIZ_FAILURE:
+            return {
+              ...state,
+              isLoading: false,
+              error: action.payload
+            };
       default:
         return state;
     }

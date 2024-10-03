@@ -13,6 +13,7 @@ import userAttemptSaga from './userAttemptSaga';
 import attemptedQuizList from './attemptedListSage';
 import authSaga from './forgotpasswordSaga';
 import LogoutAdminSaga from './adminLogoutSaga';
+import createQuizSaga from './createQuizSaga';
 export default function* rootSaga() {
   yield all([
     leaderboardSaga(),
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     userAttemptSaga(),
     attemptedQuizList(),
     authSaga(),
-    LogoutAdminSaga()
+    LogoutAdminSaga(),
+    createQuizSaga()
   ]);
 }

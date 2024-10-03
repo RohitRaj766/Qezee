@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axiosInstance from '../axiosConfig';
+import { getAdminToken } from '../utils';
 
 
 import {
@@ -8,19 +9,22 @@ import {
   CREATE_QUIZ_FAILURE,
 } from '../actions/index';
 
-function* adminLogin(action) {
+function* createQuiz(action) {
+  console.log("action.payload.quizData :: ", action.payload)
+  const token = getAdminToken();
   try {
-    const response = yield call(axiosInstance.post, '/admin/login', action.payload);
-    const token = response.data.authtoken;
-    console.log("adminloginsaga :: ",response.data)
+    const response = yield call(axiosInstance.post, '/admin/createQuizzes', action.payload, {
+      headers: { Authorization: `Bearer ${token}` }, 
+    });
+    console.log("createQuiz saga response :: ", response.data);
     yield put({ type: CREATE_QUIZ_SUCCESS, payload: response.data });
   } catch (error) {
-    yield put({ type: CREATE_QUIZ_FAILURE, payload: error.response.data.message});
-    console.log("error.response.data.error ",error.response.data.message);
+    yield put({ type: CREATE_QUIZ_FAILURE, payload: error.response.data.error });
+    console.log("Error creating quiz: ", error.response.data.error);
   }
 }
 
-export default function* adminLoginSaga() {
-    yield takeEvery(CREATE_QUIZ_REQUEST, adminLogin)
+export default function* createQuizSaga() {
+    yield takeEvery(CREATE_QUIZ_REQUEST, createQuiz)
 }
 

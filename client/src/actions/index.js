@@ -257,9 +257,9 @@ export const createQuizRequest = (quizDta) => ({
   payload: quizDta,
 });
 
-export const createQuizSuccess = (token) => ({
+export const createQuizSuccess = (message) => ({
   type: CREATE_QUIZ_SUCCESS,
-  payload: token,
+  payload: message,
 });
 
 export const createQuizFailure = (error) => ({

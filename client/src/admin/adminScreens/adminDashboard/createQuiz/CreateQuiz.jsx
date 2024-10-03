@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logout from '../../../../user/assets/images/logout.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { adminLogoutRequest } from '../../../../actions/index';
+import { createQuizRequest, adminLogoutRequest } from '../../../../actions/index';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css'; 
@@ -12,13 +12,11 @@ import './CreateQuiz.scss';
 function CreateQuiz() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const admin = useSelector((state) => state.adminauth.admin);
-
-  const arrOptions = ["a", "b", "c", "d"];
-
+  const error = useSelector((state) => state.adminauth.error);
+  const message = useSelector((state) => state.adminauth.message);
   
   const [questions, setQuestions] = useState([
-    { question: '', options: ['', '', '', ''], answer: null } 
+    { question: '', options: { a: '', b: '', c: '', d: '' }, answer: null }
   ]);
 
   const [quizTitle, setQuizTitle] = useState(''); 
@@ -28,10 +26,17 @@ function CreateQuiz() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [questionToDelete, setQuestionToDelete] = useState(null);
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }else if(message?.message){
+      toast.success(message?.message);
+    }
+  }, [error,message]);
+
   const handleLogout = () => {
     dispatch(adminLogoutRequest());
     navigate('/admin/login');
-    console.log("LOG OUT TRIGGERED : ");
   };
 
   const handleQuestionChange = (index, value) => {
@@ -40,20 +45,20 @@ function CreateQuiz() {
     setQuestions(newQuestions);
   };
 
-  const handleOptionChange = (qIndex, oIndex, value) => {
+  const handleOptionChange = (qIndex, optionKey, value) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex].options[oIndex] = value;
+    newQuestions[qIndex].options[optionKey] = value;
     setQuestions(newQuestions);
   };
 
-  const handleAnswerChange = (qIndex, selectedOptionIndex) => {
+  const handleAnswerChange = (qIndex, selectedOptionKey) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex].answer = selectedOptionIndex; 
+    newQuestions[qIndex].answer = selectedOptionKey; 
     setQuestions(newQuestions);
   };
 
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
+    setQuestions([...questions, { question: '', options: { a: '', b: '', c: '', d: '' }, answer: null }]);
     toast.success('New question added successfully!');
   };
 
@@ -89,8 +94,8 @@ function CreateQuiz() {
       return;
     }
 
-    if (questions.length < 0) {
-      toast.error('Provide at least 20 questions to upload the quiz.');
+    if (questions.length < 1) {
+      toast.error('Provide at least 1 question to upload the quiz.');
       return;
     }
 
@@ -104,9 +109,9 @@ function CreateQuiz() {
         toast.error(`Please select an answer for question ${i + 1}.`);
         return;
       }
-      for (let j = 0; j < question.options.length; j++) {
-        if (!question.options[j]) {
-          toast.error(`Option ${j + 1} for question ${i + 1} is required.`);
+      for (const key in question.options) {
+        if (!question.options[key]) {
+          toast.error(`Option ${key.toUpperCase()} for question ${i + 1} is required.`);
           return;
         }
       }
@@ -119,15 +124,13 @@ function CreateQuiz() {
       expireTime: endDateTime,
       quizStatus: quizStatus, 
       questions: questions.map(question => ({
-          question: question.question,
-          options: question.options,
-          correctAnswer: question.answer !== null ? arrOptions[question.answer] : null
+        question: question.question,
+        options: question.options,
+        correctAnswer: question.answer
       }))
     };
 
-    console.log(createQuizData);
-    dispatch()
-    toast.success('Quiz uploaded successfully!'); 
+    dispatch(createQuizRequest(createQuizData));
   };
 
   return (
@@ -198,26 +201,23 @@ function CreateQuiz() {
             />
 
             <div className='options'>
-              {q.options.map((option, oIndex) => {
-                const letter = String.fromCharCode(65 + oIndex); // Convert index to letter (A, B, C, D)
-                return (
-                  <div key={oIndex} className="option">
-                    <input
-                      type="radio"
-                      name={`question-${qIndex}`} 
-                      checked={q.answer === oIndex}
-                      onChange={() => handleAnswerChange(qIndex, oIndex)}
-                    />
-                    <label>{letter}.</label> {/* Label for the letter */}
-                    <input
-                      type="text"
-                      placeholder={`Option ${letter}`} // Update placeholder to show letter
-                      value={option}
-                      onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
-                    />
-                  </div>
-                );
-              })}
+              {Object.entries(q.options).map(([key, value]) => (
+                <div key={key} className="option">
+                  <input
+                    type="radio"
+                    name={`question-${qIndex}`} 
+                    checked={q.answer === key}
+                    onChange={() => handleAnswerChange(qIndex, key)}
+                  />
+                  <label>{key.toUpperCase()}.</label>
+                  <input
+                    type="text"
+                    placeholder={`Option ${key.toUpperCase()}`} 
+                    value={value}
+                    onChange={(e) => handleOptionChange(qIndex, key, e.target.value)}
+                  />
+                </div>
+              ))}
             </div>
 
             <button className="delete-button" onClick={() => openDeleteModal(qIndex)}>Delete</button>
@@ -234,10 +234,8 @@ function CreateQuiz() {
         <button onClick={handleUpload}>Upload</button> 
       </div>
 
-      {/* Toast Notifications */}
       <ToastContainer />
 
-      {/* Confirmation Modal */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
