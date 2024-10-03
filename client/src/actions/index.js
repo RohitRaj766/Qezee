@@ -57,6 +57,10 @@ export const RESET_PASSWORD = 'RESET_PASSWORD';
 export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
 export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
 
+export const CREATE_QUIZ_REQUEST = "CREATE_QUIZ_REQUEST";
+export const CREATE_QUIZ_SUCCESS = "CREATE_QUIZ_SUCCESS";
+export const CREATE_QUIZ_FAILURE = "CREATE_QUIZ_FAILURE";
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -242,4 +246,19 @@ export const requestPasswordReset = (email) => ({
 export const resetPassword = (token, email, newPassword) => ({
   type: RESET_PASSWORD,
   payload: { token, email, newPassword },
+});
+
+export const createQuizRequest = (quizDta) => ({
+  type: CREATE_QUIZ_REQUEST,
+  payload: quizDta,
+});
+
+export const createQuizSuccess = (token) => ({
+  type: CREATE_QUIZ_SUCCESS,
+  payload: token,
+});
+
+export const createQuizFailure = (error) => ({
+  type: CREATE_QUIZ_FAILURE,
+  payload: error,
 });

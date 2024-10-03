@@ -125,6 +125,7 @@ function CreateQuiz() {
     };
 
     console.log(createQuizData);
+    dispatch()
     toast.success('Quiz uploaded successfully!'); 
   };
 

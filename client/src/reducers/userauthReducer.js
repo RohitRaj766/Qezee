@@ -37,6 +37,9 @@ import {
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE,
+  CREATE_QUIZ_REQUEST,
+  CREATE_QUIZ_SUCCESS,
+  CREATE_QUIZ_FAILURE
 } from "../actions/index";
 
 const initialState = {
@@ -288,6 +291,27 @@ const userauthReducer = (state = initialState, action) => {
           return { ...state, loading: false, message: action.payload.message };
         case RESET_PASSWORD_FAILURE:
           return { ...state, loading: false, error: action.payload.error };  
+
+          case CREATE_QUIZ_REQUEST:
+            return {
+              ...state,
+              isLoading: true
+            };
+      
+          case CREATE_QUIZ_SUCCESS:
+            return {
+              ...state,
+              message: action.payload,
+              isLoading: false,
+              error: null
+            };
+      
+          case CREATE_QUIZ_FAILURE:
+            return {
+              ...state,
+              isLoading: false,
+              error: action.payload
+            };
     default:
       return state;
   }
