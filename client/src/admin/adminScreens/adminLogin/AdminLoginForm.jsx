@@ -65,7 +65,7 @@ const AdminLoginForm = () => {
               value={credentials.username}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
-              placeholder="User Id*"
+              placeholder="User Id"
               required
             />
             <div className="AdminpasswordField">
@@ -76,7 +76,7 @@ const AdminLoginForm = () => {
                 value={credentials.password}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Password*"
+                placeholder="Password"
                 required
               />
               <FontAwesomeIcon
