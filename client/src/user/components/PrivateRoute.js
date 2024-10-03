@@ -16,7 +16,7 @@ const PrivateRoute = () => {
 const AdminPrivateRoute = () => {
   const isAdminAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
 
-  console.log("Admin isAuthenticated:: ", isAdminAuthenticated);
+  console.log("Admin isAuthenticated from admin reducer:: ", isAdminAuthenticated);
 
   if (isAdminAuthenticated) {
     return <Outlet />; 

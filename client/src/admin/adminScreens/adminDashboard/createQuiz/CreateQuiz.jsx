@@ -1,30 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logout from '../../../../user/assets/images/logout.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutRequest } from '../../../../actions/index';
+import { createQuizRequest, adminLogoutRequest } from '../../../../actions/index';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './CreateQuiz.scss';
 
 function CreateQuiz() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const admin = useSelector((state) => state.adminauth.admin);
+  const error = useSelector((state) => state.adminauth.error);
+  const message = useSelector((state) => state.adminauth.message);
   
   const [questions, setQuestions] = useState([
-    { question: '', options: ['', '', '', ''], answer: null } 
+    { question: '', options: { a: '', b: '', c: '', d: '' }, answer: null }
   ]);
 
   const [quizTitle, setQuizTitle] = useState(''); 
   const [startDateTime, setStartDateTime] = useState(null);
   const [endDateTime, setEndDateTime] = useState(null);
-  const [quizStatus, setQuizStatus] = useState('active'); 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [quizStatus, setQuizStatus] = useState('inactive'); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [questionToDelete, setQuestionToDelete] = useState(null);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }else if(message?.message){
+      toast.success(message?.message);
+    }
+  }, [error,message]);
 
   const handleLogout = () => {
-    dispatch(logoutRequest());
-    navigate('/admin-login');
+    dispatch(adminLogoutRequest());
+    navigate('/admin/login');
   };
 
   const handleQuestionChange = (index, value) => {
@@ -33,33 +45,76 @@ function CreateQuiz() {
     setQuestions(newQuestions);
   };
 
-  const handleOptionChange = (qIndex, oIndex, value) => {
+  const handleOptionChange = (qIndex, optionKey, value) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex].options[oIndex] = value;
+    newQuestions[qIndex].options[optionKey] = value;
     setQuestions(newQuestions);
   };
 
-  const handleAnswerChange = (qIndex, selectedOptionIndex) => {
+  const handleAnswerChange = (qIndex, selectedOptionKey) => {
     const newQuestions = [...questions];
-    newQuestions[qIndex].answer = selectedOptionIndex; 
+    newQuestions[qIndex].answer = selectedOptionKey; 
     setQuestions(newQuestions);
   };
 
   const addQuestion = () => {
-    setQuestions([...questions, { question: '', options: ['', '', '', ''], answer: null }]);
+    setQuestions([...questions, { question: '', options: { a: '', b: '', c: '', d: '' }, answer: null }]);
+    toast.success('New question added successfully!');
+  };
+
+  const openDeleteModal = (index) => {
+    setQuestionToDelete(index);
+    setIsModalOpen(true);
+  };
+
+  const deleteQuestion = () => {
+    if (questionToDelete !== null) {
+      const newQuestions = questions.filter((_, qIndex) => qIndex !== questionToDelete);
+      setQuestions(newQuestions);
+      toast.success('Question deleted successfully!');
+      setQuestionToDelete(null);
+    }
+    setIsModalOpen(false);
   };
 
   const handleUpload = () => {
- 
+    if (!quizTitle) {
+      toast.error('Quiz title is required.');
+      return;
+    }
+
     if (!startDateTime || !endDateTime) {
-      setErrorMessage('Both start and end times must be set.');
+      toast.error('Both start and end times must be set.');
       return;
     }
 
     const oneHourDifference = new Date(startDateTime.getTime() + 60 * 60 * 1000);
     if (endDateTime < oneHourDifference || endDateTime <= startDateTime) {
-      setErrorMessage('Start time must be at least 1 hour before end time.');
+      toast.error('Start time must be at least 1 hour before end time.');
       return;
+    }
+
+    if (questions.length < 1) {
+      toast.error('Provide at least 1 question to upload the quiz.');
+      return;
+    }
+
+    for (let i = 0; i < questions.length; i++) {
+      const question = questions[i];
+      if (!question.question) {
+        toast.error(`Question ${i + 1} is required.`);
+        return;
+      }
+      if (question.answer === null) {
+        toast.error(`Please select an answer for question ${i + 1}.`);
+        return;
+      }
+      for (const key in question.options) {
+        if (!question.options[key]) {
+          toast.error(`Option ${key.toUpperCase()} for question ${i + 1} is required.`);
+          return;
+        }
+      }
     }
 
     const createQuizData = {
@@ -69,14 +124,13 @@ function CreateQuiz() {
       expireTime: endDateTime,
       quizStatus: quizStatus, 
       questions: questions.map(question => ({
-          question: question.question,
-          options: question.options,
-          correctAnswer: question.answer 
+        question: question.question,
+        options: question.options,
+        correctAnswer: question.answer
       }))
     };
 
-    console.log(createQuizData);
-    setErrorMessage(''); 
+    dispatch(createQuizRequest(createQuizData));
   };
 
   return (
@@ -147,23 +201,26 @@ function CreateQuiz() {
             />
 
             <div className='options'>
-              {q.options.map((option, oIndex) => (
-                <div key={oIndex} className="option">
+              {Object.entries(q.options).map(([key, value]) => (
+                <div key={key} className="option">
                   <input
                     type="radio"
                     name={`question-${qIndex}`} 
-                    checked={q.answer === oIndex}
-                    onChange={() => handleAnswerChange(qIndex, oIndex)}
+                    checked={q.answer === key}
+                    onChange={() => handleAnswerChange(qIndex, key)}
                   />
+                  <label>{key.toUpperCase()}.</label>
                   <input
                     type="text"
-                    placeholder={`Option ${oIndex + 1}`}
-                    value={option}
-                    onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
+                    placeholder={`Option ${key.toUpperCase()}`} 
+                    value={value}
+                    onChange={(e) => handleOptionChange(qIndex, key, e.target.value)}
                   />
                 </div>
               ))}
             </div>
+
+            <button className="delete-button" onClick={() => openDeleteModal(qIndex)}>Delete</button>
           </div>
         ))}
       </div>
@@ -174,9 +231,23 @@ function CreateQuiz() {
       </div>
 
       <div className='upload'>
-        {errorMessage && <p className="error-message">{errorMessage}</p>} 
         <button onClick={handleUpload}>Upload</button> 
       </div>
+
+      <ToastContainer />
+
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this question?</p>
+            <div className="modal-actions">
+              <button onClick={deleteQuestion}>Yes, Delete</button>
+              <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
