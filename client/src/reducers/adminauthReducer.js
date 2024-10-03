@@ -1,7 +1,9 @@
 import {
     ADMIN_LOGIN_SUCCESS,
     ADMIN_LOGIN_FAILURE,
-    ADMIN_LOGIN_REQUEST
+    ADMIN_LOGIN_REQUEST,
+    ADMIN_LOGOUT_FAILURE,
+    ADMIN_LOGOUT_SUCCESS
 } from "../actions/index";
 
 const initialState = {
@@ -36,8 +38,17 @@ const adminauthReducer = (state = initialState, action) => {
           isLoading: false,
           error: action.payload
         };
-
   
+        case ADMIN_LOGOUT_SUCCESS:
+          return {
+            ...state,
+            isAuthenticated: false
+          };
+    
+        case ADMIN_LOGOUT_FAILURE:
+          return {
+            ...state
+          };
       default:
         return state;
     }

@@ -61,6 +61,10 @@ export const CREATE_QUIZ_REQUEST = "CREATE_QUIZ_REQUEST";
 export const CREATE_QUIZ_SUCCESS = "CREATE_QUIZ_SUCCESS";
 export const CREATE_QUIZ_FAILURE = "CREATE_QUIZ_FAILURE";
 
+export const ADMIN_LOGOUT_REQUEST = "ADMIN_LOGOUT_REQUEST";
+export const ADMIN_LOGOUT_SUCCESS = "ADMIN_LOGOUT_SUCCESS";
+export const ADMIN_LOGOUT_FAILURE = "ADMIN_LOGOUT_FAILURE";
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -261,4 +265,15 @@ export const createQuizSuccess = (token) => ({
 export const createQuizFailure = (error) => ({
   type: CREATE_QUIZ_FAILURE,
   payload: error,
+});
+
+export const adminLogoutRequest = () => ({
+  type: ADMIN_LOGOUT_REQUEST,
+});
+
+export const adminLogoutSuccess = () => ({
+  type: ADMIN_LOGOUT_SUCCESS,
+});
+export const adminLogoutFailure = () => ({
+  type: ADMIN_LOGOUT_FAILURE,
 });

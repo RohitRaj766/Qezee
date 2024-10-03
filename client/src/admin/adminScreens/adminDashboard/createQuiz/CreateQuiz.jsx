@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logout from '../../../../user/assets/images/logout.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutRequest } from '../../../../actions/index';
+import { adminLogoutRequest } from '../../../../actions/index';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css'; 
@@ -29,8 +29,9 @@ function CreateQuiz() {
   const [questionToDelete, setQuestionToDelete] = useState(null);
 
   const handleLogout = () => {
-    dispatch(logoutRequest());
-    navigate('/admin-login');
+    dispatch(adminLogoutRequest());
+    navigate('/admin/login');
+    console.log("LOG OUT TRIGGERED : ");
   };
 
   const handleQuestionChange = (index, value) => {
