@@ -5,7 +5,7 @@ import { adminLoginRequest } from '../../../actions/index';
 import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import AdminHeader from '../../components/adminHeader/AdminHeader';
+import Loader from '../../../user/components/loader/Loader';
 
 const AdminLoginForm = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -13,10 +13,12 @@ const AdminLoginForm = () => {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.adminauth.error);
   const isAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
+  const isLoading = useSelector((state) => state.adminauth.isLoading);
   const navigate = useNavigate();
 
   console.log("Error ",error)
   console.log("Error auth",isAuthenticated)
+  console.log("loader",isLoading)
 
   const handleChange = (e) => {
     setCredentials({
@@ -50,7 +52,7 @@ const AdminLoginForm = () => {
 
   return (
     <>
-    {/* <AdminHeader/> */}
+    {isLoading && <Loader/>}
     <div className="AdminloginMain">
       <div className="AdminloginBoxContainer">
         <h1>Admin Panel</h1>
