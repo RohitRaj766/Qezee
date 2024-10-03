@@ -10,7 +10,6 @@ import {
 function* userAttempt(action) {
     try {
       const { quizId, userId, name, enrollment, correct, wrong, notattempted } = action.payload;
-      console.log("attemptData sdfadfadsf ", action.payload)
       if (!userId || !name) {
         throw new Error('User ID or name is missing');
       }
@@ -36,9 +35,7 @@ function* userAttempt(action) {
           }
         }
       );
-  
       yield put(userAttemptSuccess(response.data));
-      console.log("Result submission successful:", response.data);
     } catch (error) {
       yield put(userAttemptFailure(error.message));
       console.error("Result submission failed:", error.message);

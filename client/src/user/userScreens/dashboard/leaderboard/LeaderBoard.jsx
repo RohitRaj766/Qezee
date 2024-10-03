@@ -29,7 +29,6 @@ const Leaderboard = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.auth.leaderboardData);
   const LoggedInUser = useSelector((state)=> state.auth.user.LoggedInUser)
-  console.log("LoggedInUser :: ",LoggedInUser.totalquestions.correct)
 
   useEffect(() => {
     dispatch(fetchLeaderboardRequest());

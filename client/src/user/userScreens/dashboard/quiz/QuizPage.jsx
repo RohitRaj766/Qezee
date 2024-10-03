@@ -75,9 +75,7 @@ const QuizPage = (props) => {
         wrong: wrong,
         notattempted: notattempted
       };
-
-      console.log("quizQuestionList dds :: ", quizQuestionList);
-
+      
       const attemptData={
         quizId: quizQuestionList._id,
         userId: userData._id,

@@ -171,11 +171,6 @@ const Testpage = (props) => {
   
     setShuffledQuestions(shuffledQuestions);
   }, []);
-  
-
-  useEffect(() => {
-    console.log("Answers updated:", answers);
-  }, [answers]);
 
   const shuffleArray = (array) => {
     return array
@@ -195,9 +190,6 @@ const Testpage = (props) => {
   };
 
   const calculateScore = () => {
-    console.log("Shuffled Questions:", shuffledQuestions);
-
-    
     return shuffledQuestions.reduce((score, question, index) => {
       const userAnswer =parseInt(answers[index],10);
       if (userAnswer === question.correctAnswer) {
