@@ -1,7 +1,12 @@
 import axios from 'axios';
 
 // const baseURL = 'http://localhost:5000'; 
-const baseURL = 'https://qezee-server.onrender.com'; 
+
+// Development
+// const baseURL = 'https://qezee-server.onrender.com'; 
+// Production
+const baseURL = 'https://qezee-server-prod.onrender.com'; 
+
 const axiosInstance = axios.create({
   baseURL,
   headers: {
