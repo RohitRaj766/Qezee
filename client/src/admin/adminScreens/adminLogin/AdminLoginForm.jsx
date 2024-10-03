@@ -89,7 +89,7 @@ const AdminLoginForm = () => {
         </div>
         {error && <p className='errorMessage'>{error}</p>}
         <button onClick={handleSubmit} type="button">LOGIN</button>
-        <p>Forgot? Click here</p>
+        {/* <p>Forgot? Click here</p> */}
       </div>
     </div>
     </>
