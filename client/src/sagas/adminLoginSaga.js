@@ -15,8 +15,8 @@ function* adminLogin(action) {
     setAdminToken(token);
     yield put({ type: ADMIN_LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
-    yield put({ type: ADMIN_LOGIN_FAILURE, payload: error.response.data.message});
-    console.log("error.response.data.error ",error.response.data.message);
+    yield put({ type: ADMIN_LOGIN_FAILURE, payload: error.response.data.error || error.response.data.message});
+    console.log("error.response.data.error ",error.response.data);
   }
 }
 
