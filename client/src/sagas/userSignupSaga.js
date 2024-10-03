@@ -13,7 +13,6 @@ function* signupSaga(action) {
       const response = yield call(axiosInstance.post, '/user/registration', action.payload);
       yield put(signupSuccess( response.data.message));
     } catch (error) {
-      console.log("signup error saga :: ", error.response.data.error)
       yield put(signupFailure(error.response.data.error));
     }
   }

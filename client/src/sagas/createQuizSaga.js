@@ -18,7 +18,6 @@ function* createQuiz(action) {
     yield put({ type: CREATE_QUIZ_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: CREATE_QUIZ_FAILURE, payload: error.response.data.error || error.response.data.message});
-    console.log("Error creating quiz: ", error.response.data);
   }
 }
 
