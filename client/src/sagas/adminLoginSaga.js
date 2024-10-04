@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axiosInstance from '../axiosConfig';
-import {setToken} from '../utils'
+import {setAdminToken} from '../utils'
 
 import {
   ADMIN_LOGIN_REQUEST,
@@ -11,9 +11,8 @@ import {
 function* adminLogin(action) {
   try {
     const response = yield call(axiosInstance.post, '/admin/login', action.payload);
-    const token = response.data.authtoken;
-    console.log("adminloginsaga :: ",response.data)
-    setToken(token);
+    const token = response?.data?.authToken;
+    setAdminToken(token);
     yield put({ type: ADMIN_LOGIN_SUCCESS, payload: response.data });
   } catch (error) {
     yield put({ type: ADMIN_LOGIN_FAILURE, payload: error.response.data.message});

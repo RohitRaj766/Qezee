@@ -11,3 +11,15 @@ export const removeTokenFromCookies = () => {
 export const getToken = () => {
   return Cookies.get('token');
 };
+
+export const setAdminToken = (token) => {
+  Cookies.set('tokenAdmin', token, { expires: 2 / 24 });
+};
+
+export const getAdminToken = () => {
+  return Cookies.get('tokenAdmin');
+};
+
+export const removeAdminTokenFromCookies = () => {
+  Cookies.remove('tokenAdmin');
+};
