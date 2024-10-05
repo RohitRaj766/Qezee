@@ -62,11 +62,11 @@ const QuizList = () => {
 
 
 const liveQuizzes = quizzes.filter(
-  (quiz) => !attemptedQuizzes.includes(quiz._id)
+  (quiz) => !attemptedQuizzes.includes(quiz._id) && quiz.quizStatus !== "expired"
 );
 
 const previousQuizzes = quizzes.filter(
-  (quiz) => quiz.quizStatus === "completed" || quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz._id)
+  (quiz) => quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz._id)
 );
 
 const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
