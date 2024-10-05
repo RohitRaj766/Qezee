@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './OverviewCards.scss';
 import trophy from '../../../assets/images/trophy.svg';
-import badge from '../../../assets/images/badge.svg';
-import leftArrow from '../../../assets/images/leftArrow.svg';
-import rightArrow from '../../../assets/images/righArrow.svg';
+import badge1 from '../../../assets/images/badge1.svg';
+import badge2 from '../../../assets/images/badge2.svg';
+import badge3 from '../../../assets/images/badge3.svg';
+import badge4 from '../../../assets/images/badge4.svg';
+import badge5 from '../../../assets/images/badge5.svg';
+import { useSelector } from 'react-redux';
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const upcomingQuizzes = [
     { topic: "C programming", date: "24/8/24" },
@@ -18,82 +22,86 @@ const upcomingQuizzes = [
     { topic: "Artificial Intelligence", date: "21/12/24" }
 ];
 
-const badges = [
-    { badge: 1 }
+const badgeImages = [
+    null,
+    badge1,
+    badge2,
+    badge3,
+    badge4,
+    badge5
 ];
+
+const getBadges = (correctAnswers) => {
+    if (correctAnswers >= 200) return 5;
+    if (correctAnswers >= 100) return 4;
+    if (correctAnswers >= 60) return 3;
+    if (correctAnswers >= 30) return 2;
+    return 1;
+};
+
+const correctAnswersNeeded = [0, 15, 30, 60, 100, 200];
 
 const OverviewCards = () => {
     const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
-    const [currentBadgeIndex, setCurrentBadgeIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [badgeCount, setBadgeCount] = useState(0);
+    const [prevBadgeCount, setPrevBadgeCount] = useState(0);
+    const [celebrate, setCelebrate] = useState(false);
+    const [hasCelebrated, setHasCelebrated] = useState(false);
+    const user = useSelector(state => state.auth.user.LoggedInUser);
+    const totalQuestions = user?.totalquestions || { correct: 0 }; 
+
+    useEffect(() => {
+        const newBadgeCount = getBadges(totalQuestions.correct);
+        setPrevBadgeCount(badgeCount);
+        setBadgeCount(newBadgeCount);
+
+        if (newBadgeCount > prevBadgeCount && newBadgeCount > 0 && prevBadgeCount === 0 && !hasCelebrated) {
+            setCelebrate(true);
+            setHasCelebrated(true);
+        }
+    }, [totalQuestions.correct, hasCelebrated]);
 
     useEffect(() => {
         const quizInterval = setInterval(() => {
             if (!isPaused) {
                 setCurrentQuizIndex(prevIndex => (prevIndex + 1) % upcomingQuizzes.length);
             }
-        }, 2000); 
+        }, 2000);
 
-        const badgeInterval = setInterval(() => {
-            if (!isPaused) {
-                setCurrentBadgeIndex(prevIndex => (prevIndex + 1) % badges.length);
-            }
-        }, 2000); 
-        return () => {
-            clearInterval(quizInterval);
-            clearInterval(badgeInterval);
-        };
+        return () => clearInterval(quizInterval);
     }, [isPaused]);
 
-    const handleMouseEnter = () => {
+    const handleMouseEnter = () => setIsPaused(true);
+    const handleMouseLeave = () => setIsPaused(false);
+    const handleDotClickQuiz = (index) => {
+        setCurrentQuizIndex(index);
         setIsPaused(true);
     };
 
-    const handleMouseLeave = () => {
-        setIsPaused(false);
-    };
-
-    // const handleNextQuiz = () => {
-    //     setCurrentQuizIndex((prevIndex) => (prevIndex + 1) % upcomingQuizzes.length);
-    // };
-
-    // const handlePreviousQuiz = () => {
-    //     setCurrentQuizIndex((prevIndex) => (prevIndex - 1 + upcomingQuizzes.length) % upcomingQuizzes.length);
-    // };
-
-    // const handleNextBadge = () => {
-    //     setCurrentBadgeIndex((prevIndex) => (prevIndex + 1) % badges.length);
-    // };
-
-    // const handlePreviousBadge = () => {
-    //     setCurrentBadgeIndex((prevIndex) => (prevIndex - 1 + badges.length) % badges.length);
-    // };
-
-    const handleDotClickQuiz = (index) => {
-        setCurrentQuizIndex(index);
-        setIsPaused(true); // Optional: Pause auto-slide when dot is clicked
-    };
-
-    const handleDotClickBadge = (index) => {
-        setCurrentBadgeIndex(index);
-        setIsPaused(true); // Optional: Pause auto-slide when dot is clicked
-    };
-
     const currentQuiz = upcomingQuizzes[currentQuizIndex];
-    const currentBadgeCount = badges[currentBadgeIndex].badge;
+
+    const nextBadgeThreshold = badgeCount < 5 ? correctAnswersNeeded[badgeCount + 1] : null;
+    const answersNeeded = nextBadgeThreshold ? nextBadgeThreshold - totalQuestions.correct : null;
 
     return (
         <div className="cardmain" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-
+            {celebrate && (
+                <ConfettiExplosion
+                    duration={3000}
+                    particleCount={100}
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    onComplete={() => setCelebrate(false)}
+                />
+            )}
             <div className="upcomingWrapper">
                 <div className="upcoming">
-                    {/* <button className='but_on' onClick={handlePreviousQuiz}><img src={leftArrow} className='arrows' alt="Previous" /></button> */}
                     <img src={trophy} alt="Trophy" />
                     <div className="info1">
                         <h2>Upcoming Quiz</h2>
                         <p>Topic - {currentQuiz.topic}</p>
                     </div>
-                    {/* <button className='but_on' onClick={handleNextQuiz}><img src={rightArrow} className='arrows' alt="Next" /></button> */}
                 </div>
                 <div className="dotnav">
                     {upcomingQuizzes.map((_, index) => (
@@ -108,28 +116,32 @@ const OverviewCards = () => {
 
             <div className="badgeWrapper">
                 <div className="badge">
-                    {/* <button className='but_on' onClick={handlePreviousBadge}><img src={leftArrow} className='arrows' alt="Previous" /></button> */}
                     <div className="info2">
-                        <h2>Badge Collection</h2>
+                    <h2 style={{ marginTop: badgeCount ? "-15px" : "100" }}>Badge Collection</h2>
                         <div className="badgeContainer">
-                            {Array.from({ length: currentBadgeCount }).map((_, index) => (
-                                <img key={index} src={badge} alt="Badge" />
+                            {Array.from({ length: badgeCount }).map((_, index) => (
+                                <img key={index} src={badgeImages[index + 1]} alt={`Badge ${index + 1}`} />
                             ))}
                         </div>
+                        {badgeCount < 5 && (
+                            <p style={{padding:"0", marginBottom:'-15px',color:'green'}}>You need {answersNeeded} more correct answers for the next badge!</p>
+                        )}
+                        {badgeCount === 5 && (
+                          <p style={{ padding: "0", marginBottom: '-15px', color: 'green' }}>
+                              Congratulations! You've earned all your badges.
+                         </p>
+                         )}
                     </div>
-                    {/* <button className='but_on' onClick={handleNextBadge}><img src={rightArrow} className='arrows' alt="Next" /></button> */}
                 </div>
                 <div className="dotnav">
-                    {badges.map((_, index) => (
+                    {Array.from({ length: badgeCount }).map((_, index) => (
                         <span 
                             key={index} 
-                            className={`dot ${index === currentBadgeIndex ? 'active' : ''}`} 
-                            onClick={() => handleDotClickBadge(index)}
+                            className={`dot ${index === badgeCount - 1 ? 'active' : ''}`} 
                         ></span>
                     ))}
                 </div>
             </div>
-
         </div>
     );
 }

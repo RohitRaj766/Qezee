@@ -3,7 +3,6 @@ import axiosInstance from '../axiosConfig';
 import { getToken } from '../utils';
 import { FETCH_QUIZ_LIST_REQUEST, fetchQuizListSuccess, fetchQuizListFailure } from '../actions/index';
 
-// Worker Saga: Performs the async task
 function* quizList() {
   const token = getToken();
   if(token)
@@ -13,7 +12,6 @@ function* quizList() {
           headers: { Authorization: `Bearer ${token}` },
         });
         yield put(fetchQuizListSuccess(response.data));
-        // console.log("ya toh data hai",response.data);
       
     }catch(error){
       yield put(fetchQuizListFailure(error.message));
@@ -25,7 +23,6 @@ function* quizList() {
   }
 }
 
-// Watcher Saga: Watches for actions and starts the worker saga
 export default function* fetchQuizList() {
   yield takeEvery(FETCH_QUIZ_LIST_REQUEST, quizList);
 }

@@ -6,6 +6,9 @@ import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Loader from '../../../user/components/loader/Loader';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+import Header from '../../../user/components/header/Header';
 
 const AdminLoginForm = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -16,9 +19,18 @@ const AdminLoginForm = () => {
   const isLoading = useSelector((state) => state.adminauth.isLoading);
   const navigate = useNavigate();
 
-  console.log("Error ",error)
-  console.log("Error auth",isAuthenticated)
-  console.log("loader",isLoading)
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/admin-dashboard');
+    }
+  }, [isAuthenticated, navigate]);
+
+  // Show error message as a toast
+  useEffect(() => {
+    if (error) {
+      toast.error(error); // Show the error message
+    }
+  }, [error]);
 
   const handleChange = (e) => {
     setCredentials({
@@ -29,7 +41,6 @@ const AdminLoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("button clicked")
     dispatch(adminLoginRequest(credentials));
   };
 
@@ -40,58 +51,53 @@ const AdminLoginForm = () => {
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/admin-dashboard');
-    }
-  }, [isAuthenticated, navigate]);
-
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   return (
     <>
-    {isLoading && <Loader/>}
-    <div className="AdminloginMain">
-      <div className="AdminloginBoxContainer">
-        <h1>Admin Panel</h1>
-        <div className='AdminloginFormContainer'>
-          <form>
-            <input
-              className="AdminloginInputField"
-              type="text"
-              name="username"
-              value={credentials.username}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-              placeholder="User Id"
-              required
-            />
-            <div className="AdminpasswordField">
+      {isLoading && <Loader />}
+      <Header/>
+      <div className="AdminloginMain">
+        <div className="AdminloginBoxContainer">
+          <h1>Admin Panel</h1>
+          <div className='AdminloginFormContainer'>
+            <form>
               <input
                 className="AdminloginInputField"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                value={credentials.password}
+                type="text"
+                name="username"
+                value={credentials.username}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                placeholder="Password"
+                placeholder="User Id"
                 required
               />
-              <FontAwesomeIcon
-                icon={showPassword ? faEyeSlash : faEye}
-                onClick={toggleShowPassword}
-                className='Adminshowpassword'
-              />
-            </div>
-          </form>
+              <div className="AdminpasswordField">
+                <input
+                  className="AdminloginInputField"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Password"
+                  required
+                />
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  onClick={toggleShowPassword}
+                  className='Adminshowpassword'
+                />
+              </div>
+            </form>
+          </div>
+          <button onClick={handleSubmit} type="button">LOGIN</button>
+          {/* <p>Forgot? Click here</p> */}
         </div>
-        {error && <p className='errorMessage'>{error}</p>}
-        <button onClick={handleSubmit} type="button">LOGIN</button>
-        {/* <p>Forgot? Click here</p> */}
       </div>
-    </div>
+      <ToastContainer />
     </>
   );
 };

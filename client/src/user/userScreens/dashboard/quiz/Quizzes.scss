@@ -141,6 +141,11 @@
     }
   }
 }
+.handlecolrev{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: -4000px;
+}
 
 @media (max-width: 1350px) {
   .quizContainerMain {
