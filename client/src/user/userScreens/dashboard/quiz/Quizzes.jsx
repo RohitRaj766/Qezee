@@ -98,7 +98,7 @@ const QuizList = () => {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="handlecolrev">
                   {hasLiveQuizzes ? (
                     liveQuizzes.map((quiz, index) => {
                       const quizDateAdjusted = adjustTime(quiz.date);
@@ -165,7 +165,7 @@ const QuizList = () => {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="handlecolrev">
                   {hasPreviousQuizzes ? (
                     updatedPreviousQuizzes.map((quiz, index) => {
                       const quizDateAdjusted = adjustTime(quiz.date);

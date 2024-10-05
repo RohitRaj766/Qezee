@@ -95,6 +95,7 @@ const OpenLeaderboard = () => {
             </>
           ) : null}
           <thead className='AdminTableHeader'>
+            {hasRequiredParams && !userExist &&
             <tr className='AdminTableRow'>
               <th>Rank</th>
               <th>Name</th>
@@ -104,6 +105,7 @@ const OpenLeaderboard = () => {
               <th>Not Attempted</th>
               <th>Total Questions</th>
             </tr>
+            }
           </thead>
           <tbody>
             {currentItems.map((attempt, index) => (
