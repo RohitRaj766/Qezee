@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import Header from '../../../user/components/header/Header';
 import './LeaderBoard.scss';
 
 const OpenLeaderboard = () => {
@@ -46,16 +47,17 @@ const OpenLeaderboard = () => {
   const currentItems = filteredList.slice(startIndex, startIndex + itemsPerPage);
 
   return (
+    <>
+    <Header/>
     <div className="table-container">
-      <h1>Open Leaderboard</h1>
       <div className="search-container">
         <input
           type="text"
           placeholder="Search by name"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button onClick={() => setSearchTerm('')}>Clear</button>
+          />
+        <button style={{width:'110px', height:'35px'}} onClick={() => setSearchTerm('')}>Clear</button>
       </div>
       
       {hasRequiredParams && !userExist && <p style={{color:"red"}}>You have not attempted this quiz.</p>}
@@ -123,7 +125,7 @@ const OpenLeaderboard = () => {
             className="button"
             onClick={() => setCurrentPage(currentPage - 1)} 
             disabled={currentPage === 1}
-          >
+            >
             Previous
           </button>
           <p style={{
@@ -138,12 +140,13 @@ const OpenLeaderboard = () => {
             className="button"
             onClick={() => setCurrentPage(currentPage + 1)} 
             disabled={currentPage === totalPages}
-          >
+            >
             Next
           </button>
         </div>
       </div>
     </div>
+            </>
   );
 };
 
