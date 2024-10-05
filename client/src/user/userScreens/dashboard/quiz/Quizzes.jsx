@@ -7,6 +7,8 @@ import {
   } from "../../../../actions/index";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "../common/ModalConfirm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const QuizList = () => {
   const navigate = useNavigate();
@@ -18,7 +20,6 @@ const QuizList = () => {
   const [flag, setFlag] = useState(false);
   const [selectQuizTitle, setSelectQuizTitle] = useState("");
   const [isDataVisible, setIsDataVisible] = useState(false);
-
   useEffect(() => {
     dispatch(fetchQuizListRequest());
   }, [dispatch]);
@@ -34,8 +35,14 @@ const QuizList = () => {
   };
 
   const handleButtonClick = (id) => {
-    setFlag(true);
-    setSelectQuizTitle(id);
+    const currentDateTime = new Date();
+    const quizStartTime = adjustTime(quizzes.find(quiz => quiz._id === id).startTime);  
+    if (currentDateTime >= quizStartTime) {
+      setFlag(true);
+      setSelectQuizTitle(id);
+    } else {
+      toast.error('Quiz not started yet. Please see the date & start time');
+    }
   };
 
   const handleConfirmTest = () => {
@@ -44,7 +51,7 @@ const QuizList = () => {
     setFlag(false);
   };
 
-  const adjustTime = (dateString, offsetHours = -5, offsetMinutes = -30) => {
+  const adjustTime = (dateString, offsetHours = 0, offsetMinutes = 0) => {
     const date = new Date(dateString);
     date.setHours(date.getHours() + offsetHours);
     date.setMinutes(date.getMinutes() + offsetMinutes);
@@ -71,6 +78,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
 
   return (
     <div className="quizContainerMain">
+      <ToastContainer/>
       {!isLoading && isDataVisible && (
         <div className="quizWrapper">
           <div className="QuizContainer">

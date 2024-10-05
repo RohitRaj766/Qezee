@@ -94,8 +94,8 @@ function CreateQuiz() {
       return;
     }
 
-    if (questions.length < 1) {
-      toast.error('Provide at least 1 question to upload the quiz.');
+    if (questions.length < 20) {
+      toast.error('Provide at least 20 question to upload the quiz.');
       return;
     }
 
