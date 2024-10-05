@@ -134,9 +134,15 @@ const OpenLeaderboard = () => {
           >
             Previous
           </button>
-          <p>
-            Page {currentPage} of {totalPages}
-          </p>
+          <p style={{
+    width: '250px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+}}>
+  Page {currentPage} of {totalPages}
+</p>
+
           <button 
             className="button"
             onClick={() => setCurrentPage(currentPage + 1)} 
