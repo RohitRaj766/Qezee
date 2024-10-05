@@ -48,7 +48,8 @@ const OpenLeaderboard = () => {
 
   return (
     <>
-    <Header/>
+    {!hasRequiredParams && <Header/>}
+    
     <div className="table-container">
       <div className="search-container">
         <input
