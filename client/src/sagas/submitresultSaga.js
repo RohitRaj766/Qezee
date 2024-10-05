@@ -26,9 +26,7 @@ function* submitResult(action) {
         }
       }
     );
-
     yield put(submitResultSuccess(response.data));
-    console.log("Result submission successful:", response.data);
   } catch (error) {
     yield put(submitResultFailure(error.message));
     console.error("Result submission failed:", error.message);

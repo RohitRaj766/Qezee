@@ -72,8 +72,6 @@ const Edit = () => {
       return;
     }
 
-
-    console.log('Form submitted successfully', sanitizedUserData);
     setErrorValidator('');
   };
 

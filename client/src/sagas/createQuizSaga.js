@@ -10,17 +10,14 @@ import {
 } from '../actions/index';
 
 function* createQuiz(action) {
-  console.log("action.payload.quizData :: ", action.payload)
   const token = getAdminToken();
   try {
     const response = yield call(axiosInstance.post, '/admin/createQuizzes', action.payload, {
       headers: { Authorization: `Bearer ${token}` }, 
     });
-    console.log("createQuiz saga response :: ", response.data);
     yield put({ type: CREATE_QUIZ_SUCCESS, payload: response.data });
   } catch (error) {
-    yield put({ type: CREATE_QUIZ_FAILURE, payload: error.response.data.error });
-    console.log("Error creating quiz: ", error.response.data.error);
+    yield put({ type: CREATE_QUIZ_FAILURE, payload: error.response.data.error || error.response.data.message});
   }
 }
 

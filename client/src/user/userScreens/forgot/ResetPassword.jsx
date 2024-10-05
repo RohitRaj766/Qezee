@@ -15,10 +15,6 @@ const ResetPassword = () => {
   const { loading: apiLoading, message, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log("Extracted Token:", token);
-  }, [token]);
-
-  useEffect(() => {
     if (message) {
       setEmail('');
       setNewPassword('');

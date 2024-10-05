@@ -7,6 +7,8 @@ import {
   } from "../../../../actions/index";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "../common/ModalConfirm";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const QuizList = () => {
   const navigate = useNavigate();
@@ -18,7 +20,6 @@ const QuizList = () => {
   const [flag, setFlag] = useState(false);
   const [selectQuizTitle, setSelectQuizTitle] = useState("");
   const [isDataVisible, setIsDataVisible] = useState(false);
-
   useEffect(() => {
     dispatch(fetchQuizListRequest());
   }, [dispatch]);
@@ -34,8 +35,14 @@ const QuizList = () => {
   };
 
   const handleButtonClick = (id) => {
-    setFlag(true);
-    setSelectQuizTitle(id);
+    const currentDateTime = new Date();
+    const quizStartTime = adjustTime(quizzes.find(quiz => quiz._id === id).startTime);  
+    if (currentDateTime >= quizStartTime) {
+      setFlag(true);
+      setSelectQuizTitle(id);
+    } else {
+      toast.error('Quiz not started yet. Please see the date & start time');
+    }
   };
 
   const handleConfirmTest = () => {
@@ -44,7 +51,7 @@ const QuizList = () => {
     setFlag(false);
   };
 
-  const adjustTime = (dateString, offsetHours = -5, offsetMinutes = -30) => {
+  const adjustTime = (dateString, offsetHours = 0, offsetMinutes = 0) => {
     const date = new Date(dateString);
     date.setHours(date.getHours() + offsetHours);
     date.setMinutes(date.getMinutes() + offsetMinutes);
@@ -53,24 +60,28 @@ const QuizList = () => {
 
   const attemptedQuizzes = userData?.totalquizzes.map(quiz => quiz.quizId) || [];
 
+  const liveQuizzes = quizzes.filter(
+    (quiz) => !attemptedQuizzes.includes(quiz._id) && quiz.quizStatus !== "expired"
+  );
 
-const liveQuizzes = quizzes.filter(
-  (quiz) => !attemptedQuizzes.includes(quiz._id)
-);
+  const previousQuizzes = quizzes.filter(
+    (quiz) => quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz._id)
+  );
 
-const previousQuizzes = quizzes.filter(
-  (quiz) => quiz.quizStatus === "completed" || quiz.quizStatus === "expired" || attemptedQuizzes.includes(quiz._id)
-);
+  const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
+    if (attemptedQuizzes.includes(quiz.title)) {
+      return { ...quiz, quizStatus: "completed" };
+    }
+    return quiz;
+  });
 
-const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
-  if (attemptedQuizzes.includes(quiz.title)) {
-    return { ...quiz, quizStatus: "completed" };
-  }
-  return quiz;
-});
+
+  const hasLiveQuizzes = liveQuizzes.length > 0;
+  const hasPreviousQuizzes = updatedPreviousQuizzes.length > 0;
 
   return (
     <div className="quizContainerMain">
+      <ToastContainer />
       {!isLoading && isDataVisible && (
         <div className="quizWrapper">
           <div className="QuizContainer">
@@ -87,39 +98,45 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {liveQuizzes.map((quiz, index) => {
-                    const quizDateAdjusted = adjustTime(quiz.date);
-                    const startTimeAdjusted = adjustTime(quiz.startTime);
-                    const expireTimeAdjusted = adjustTime(quiz.expireTime);
-                    return (
-                      <tr key={index} className="quiz">
-                        <td>{quiz.title}</td>
-                        <td>{quizDateAdjusted.toLocaleDateString()}</td>
-                        <td>
-                          {startTimeAdjusted.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit",
-                            hour12: true
-                          })}
-                        </td>
-                        <td>
-                          {expireTimeAdjusted.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit",
-                            hour12: true
-                          })}
-                        </td>
-                        <td>
-                          <button onClick={() => handleButtonClick(quiz._id)}>
-                            Start
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                <tbody className="handlecolrev">
+                  {hasLiveQuizzes ? (
+                    liveQuizzes.map((quiz, index) => {
+                      const quizDateAdjusted = adjustTime(quiz.date);
+                      const startTimeAdjusted = adjustTime(quiz.startTime);
+                      const expireTimeAdjusted = adjustTime(quiz.expireTime);
+                      return (
+                        <tr key={index} className="quiz">
+                          <td>{quiz.title}</td>
+                          <td>{quizDateAdjusted.toLocaleDateString()}</td>
+                          <td>
+                            {startTimeAdjusted.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: true,
+                            })}
+                          </td>
+                          <td>
+                            {expireTimeAdjusted.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: true,
+                            })}
+                          </td>
+                          <td>
+                            <button onClick={() => handleButtonClick(quiz._id)}>
+                              Start
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr style={{height:"220px", display:'flex', justifyContent:"center", alignItems:"center"}}>
+                      <td colSpan="5" style={{color:"red", textAlign:'center', fontSize:'24px'}}>Opps, No live quizzes available</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
@@ -127,7 +144,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
               <ModalConfirm
                 onClose={handleCloseModal}
                 heading="Confirmation"
-                content="Are you sure, You want to start Quiz ?"
+                content="Are you sure you want to start the Quiz?"
                 handleConfirmTest={handleConfirmTest}
               />
             )}
@@ -148,46 +165,52 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {updatedPreviousQuizzes.map((quiz, index) => {
-                    const quizDateAdjusted = adjustTime(quiz.date);
-                    const startTimeAdjusted = adjustTime(quiz.startTime);
-                    const expireTimeAdjusted = adjustTime(quiz.expireTime);
+                <tbody className="handlecolrev">
+                  {hasPreviousQuizzes ? (
+                    updatedPreviousQuizzes.map((quiz, index) => {
+                      const quizDateAdjusted = adjustTime(quiz.date);
+                      const startTimeAdjusted = adjustTime(quiz.startTime);
+                      const expireTimeAdjusted = adjustTime(quiz.expireTime);
 
-                    return (
-                      <tr key={index} className="quiz">
-                        <td>{quiz.title}</td>
-                        <td>{quizDateAdjusted.toLocaleDateString()}</td>
-                        <td>
-                          {startTimeAdjusted.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit",
-                            hour12: true
-                          })}
-                        </td>
-                        <td>
-                          {expireTimeAdjusted.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                            second: "2-digit",
-                            hour12: true
-                          })}
-                        </td>
-                        <td>
-                          <button  onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}>
-                            Rank
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                      return (
+                        <tr key={index} className="quiz">
+                          <td>{quiz.title}</td>
+                          <td>{quizDateAdjusted.toLocaleDateString()}</td>
+                          <td>
+                            {startTimeAdjusted.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: true,
+                            })}
+                          </td>
+                          <td>
+                            {expireTimeAdjusted.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit",
+                              hour12: true,
+                            })}
+                          </td>
+                          <td>
+                            <button onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList, currentUserID: userData._id } })}>
+                              Rank
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })
+                  ) : (
+                    <tr style={{height:"220px", display:'flex', justifyContent:"center", alignItems:"center"}}>
+                    <td colSpan="5" style={{color:"red", textAlign:'center', fontSize:'24px'}}>Opps, No previous quizzes available.</td>
+                  </tr>
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-      )};
+      )}
     </div>
   );
 };
