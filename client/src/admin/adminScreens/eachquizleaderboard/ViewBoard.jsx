@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'; 
-import { ATTEMPTED_QUIZ_LIST_REQUEST } from '../../../actions/index'; 
+import { ATTEMPTED_QUIZ_LIST_REQUEST } from '../../../actions/index';
+import Header from '../../../user/components/header/Header'; 
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css'; 
 import './Viewboard.scss';
@@ -38,8 +39,10 @@ const ViewBoard = () => {
   const totalPages = Math.ceil(filteredQuizzes.length / quizzesPerPage);
 
   return (
-    <div className="ViewBoardContainer">
-      <h1>Quiz Viewboard</h1>
+    <>
+      <Header/>
+    <div className="ViewBoardContainer" style={{marginTop:'20px'}}>
+      {/* <h1>Quiz Viewboard</h1> */}
       {loading && <p>Loading...</p>}
       {error && <p className="no-quizzes-message">Error: {error}</p>}
     
@@ -66,7 +69,7 @@ const ViewBoard = () => {
             value={titleFilter} 
             onChange={(e) => setTitleFilter(e.target.value)} 
             placeholder="Enter quiz title"
-          />
+            />
         </div>
       </div>
   
@@ -86,7 +89,7 @@ const ViewBoard = () => {
               <td>
                 <button 
                   onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}
-                >
+                  >
                   Open Leaderboard
                 </button>
               </td>
@@ -101,7 +104,7 @@ const ViewBoard = () => {
       className="button"
       onClick={() => setCurrentPage(currentPage - 1)} 
       disabled={currentPage === 1}
-    >
+      >
       Previous
     </button>
     <p>
@@ -111,7 +114,7 @@ const ViewBoard = () => {
       className="button"
       onClick={() => setCurrentPage(currentPage + 1)} 
       disabled={currentPage === totalPages}
-    >
+      >
       Next
     </button>
   </div>
@@ -119,6 +122,7 @@ const ViewBoard = () => {
   
       {filteredQuizzes.length === 0 && <p className="no-quizzes-message">No quizzes found for the selected date range and title.</p>}
     </div>
+      </>
   );
 };
 
