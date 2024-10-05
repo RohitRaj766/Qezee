@@ -6,8 +6,9 @@ import './AdminLoginForm.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Loader from '../../../user/components/loader/Loader';
-import { ToastContainer, toast } from 'react-toastify'; // Import ToastContainer and toast
-import 'react-toastify/dist/ReactToastify.css'; // Import styles
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+import Header from '../../../user/components/header/Header';
 
 const AdminLoginForm = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -57,6 +58,7 @@ const AdminLoginForm = () => {
   return (
     <>
       {isLoading && <Loader />}
+      <Header/>
       <div className="AdminloginMain">
         <div className="AdminloginBoxContainer">
           <h1>Admin Panel</h1>
@@ -95,7 +97,7 @@ const AdminLoginForm = () => {
           {/* <p>Forgot? Click here</p> */}
         </div>
       </div>
-      <ToastContainer /> {/* Add ToastContainer here */}
+      <ToastContainer />
     </>
   );
 };
