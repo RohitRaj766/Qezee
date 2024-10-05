@@ -183,7 +183,7 @@ const updatedPreviousQuizzes = previousQuizzes.map((quiz) => {
                           })}
                         </td>
                         <td>
-                          <button  onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}>
+                          <button  onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList, currentUserID: userData._id  } })}>
                             Rank
                           </button>
                         </td>
