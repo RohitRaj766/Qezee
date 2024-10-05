@@ -14,17 +14,12 @@ const OpenLeaderboard = () => {
   const itemsPerPage = 10;
   const [userExist, setUserExist] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [userRank, setUserRank] = useState(null); 
-
-  const filteredList = userAttemptedList.filter(attempt =>
-    attempt.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [originalRank, setOriginalRank] = useState(null);
 
   const hasRequiredParams = location.state?.userAttemptedList && location.state?.currentUserID;
 
   useEffect(() => {
     const user = userAttemptedList.find(user => user.userId === userId);
-
     if (user) {
       setUserData(user);
       setUserExist(true);
@@ -34,18 +29,21 @@ const OpenLeaderboard = () => {
     }
   }, [userId, userAttemptedList]);
 
-  const sortedList = filteredList.sort((a, b) => b.correctAnswers - a.correctAnswers);
+  const sortedList = [...userAttemptedList].sort((a, b) => b.correctAnswers - a.correctAnswers);
+  const filteredList = sortedList.filter(attempt =>
+    attempt.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     if (userData) {
       const rankIndex = sortedList.findIndex(attempt => attempt.userId === userData.userId);
-      setUserRank(rankIndex + 1);
+      setOriginalRank(rankIndex + 1);
     }
   }, [userData, sortedList]);
 
-  const totalPages = Math.ceil(sortedList.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredList.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentItems = sortedList.slice(startIndex, startIndex + itemsPerPage);
+  const currentItems = filteredList.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="table-container">
@@ -60,16 +58,16 @@ const OpenLeaderboard = () => {
         <button onClick={() => setSearchTerm('')}>Clear</button>
       </div>
       
-     { hasRequiredParams && !userExist &&  <p style={{color:"red"}}>You have not attempted this quiz.</p>}
-     {!hasRequiredParams &&  <p style={{color:"red"}}>Please log in for a better personalized experience. Click on rank button form dashboard quizzes tab.</p>}
+      {hasRequiredParams && !userExist && <p style={{color:"red"}}>You have not attempted this quiz.</p>}
+      {!hasRequiredParams && <p style={{color:"red"}}>Please log in for a better personalized experience. Click on rank button from dashboard quizzes tab.</p>}
       
-      {sortedList.length === 0 ? (
+      {filteredList.length === 0 ? (
         <p>No attempts available.</p>
       ) : (
         <table>
           {userExist && userData ? (
-                <> 
-            <thead className='AdminTableHeader'>
+            <> 
+              <thead className='AdminTableHeader'>
                 <tr className='AdminTableRow'>
                   <th>Rank</th>
                   <th>Name</th>
@@ -82,7 +80,7 @@ const OpenLeaderboard = () => {
               </thead>
               <tbody>
                 <tr key={userData.userId} className='AdminQuiz' style={{backgroundColor:"rgb(34, 244, 209)"}}>
-                  <td>{userRank}</td>
+                  <td>{originalRank}</td>
                   <td>{userData.name}</td>
                   <td>{userData.enrollment}</td>
                   <td>{userData.correctAnswers}</td>
@@ -92,12 +90,8 @@ const OpenLeaderboard = () => {
                 </tr>
               </tbody>
             </>
-          ) : (
-                ""
-              )}
+          ) : null}
           <thead className='AdminTableHeader'>
-           {!userExist && !userData && 
-            <>
             <tr className='AdminTableRow'>
               <th>Rank</th>
               <th>Name</th>
@@ -107,13 +101,11 @@ const OpenLeaderboard = () => {
               <th>Not Attempted</th>
               <th>Total Questions</th>
             </tr>
-            </>
-            }
           </thead>
           <tbody>
             {currentItems.map((attempt, index) => (
               <tr key={attempt.userId} className='AdminQuiz'>
-                <td>{startIndex + index + 1}</td>
+                <td>{sortedList.findIndex(u => u.userId === attempt.userId) + 1}</td>
                 <td>{attempt.name}</td>
                 <td>{attempt.enrollment}</td>
                 <td>{attempt.correctAnswers}</td>
@@ -135,14 +127,13 @@ const OpenLeaderboard = () => {
             Previous
           </button>
           <p style={{
-    width: '250px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-}}>
-  Page {currentPage} of {totalPages}
-</p>
-
+            width: '250px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            Page {currentPage} of {totalPages}
+          </p>
           <button 
             className="button"
             onClick={() => setCurrentPage(currentPage + 1)} 
