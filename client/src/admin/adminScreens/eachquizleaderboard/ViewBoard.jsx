@@ -30,7 +30,7 @@ const ViewBoard = () => {
     return (!startDate || quizDate >= startDate) &&
            (!endDate || quizDate <= endDate) &&
            titleMatch;
-  });
+  }).reverse(); // Reverse the array after filtering
 
   const indexOfLastQuiz = currentPage * quizzesPerPage;
   const indexOfFirstQuiz = indexOfLastQuiz - quizzesPerPage;
@@ -41,94 +41,93 @@ const ViewBoard = () => {
   return (
     <>
       <Header/>
-    <div className="ViewBoardContainer" style={{marginTop:'20px'}}>
-      {/* <h1>Quiz Viewboard</h1> */}
-      {loading && <p>Loading...</p>}
-      {error && <p className="no-quizzes-message">Error: {error}</p>}
-    
-      {/* Filter Section */}
-      <div className="filter-section">
-        <div className="date-picker">
-          <label className="date-heading">Filter By Date</label>
-          <div className="date-container">
-            <div>
-              <label>Start Date:</label>
-              <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+      <div className="ViewBoardContainer" style={{marginTop:'20px'}}>
+        {loading && <p>Loading...</p>}
+        {error && <p className="no-quizzes-message">Error: {error}</p>}
+      
+        {/* Filter Section */}
+        <div className="filter-section">
+          <div className="date-picker">
+            <label className="date-heading">Filter By Date</label>
+            <div className="date-container">
+              <div>
+                <label>Start Date:</label>
+                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+              </div>
+              <div>
+                <label>End Date:</label>
+                <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+              </div>
             </div>
-            <div>
-              <label>End Date:</label>
-              <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-            </div>
+          </div>
+      
+          <div>
+            <label>Filter by Title:</label>
+            <input 
+              type="text" 
+              value={titleFilter} 
+              onChange={(e) => setTitleFilter(e.target.value)} 
+              placeholder="Enter quiz title"
+            />
           </div>
         </div>
     
-        <div>
-          <label>Filter by Title:</label>
-          <input 
-            type="text" 
-            value={titleFilter} 
-            onChange={(e) => setTitleFilter(e.target.value)} 
-            placeholder="Enter quiz title"
-            />
-        </div>
-      </div>
-  
-      <table>
-        <thead className="adminTableHeader">
-          <tr className="adminTableRow">
-            <th>Title</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentQuizzes.map((quiz) => (
-            <tr key={quiz.id} className="adminQuiz">
-              <td>{quiz.title}</td>
-              <td>{new Date(quiz.date).toLocaleDateString()}</td>
-              <td>
-                <button 
-                  onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}
-                  >
-                  Open Leaderboard
-                </button>
-              </td>
+        <table>
+          <thead className="adminTableHeader">
+            <tr className="adminTableRow">
+              <th>Title</th>
+              <th>Date</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentQuizzes.map((quiz) => (
+              <tr key={quiz.id} className="adminQuiz">
+                <td>{quiz.title}</td>
+                <td>{new Date(quiz.date).toLocaleDateString()}</td>
+                <td>
+                  <button 
+                    onClick={() => navigate('/open-leaderboard', { state: { userAttemptedList: quiz.userAttemptedList } })}
+                  >
+                    Open Leaderboard
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-<div className="pagination-controls">
-  <div style={{ display: 'flex', alignItems: 'center', }}>
-    <button 
-      className="button"
-      onClick={() => setCurrentPage(currentPage - 1)} 
-      disabled={currentPage === 1}
-      >
-      Previous
-    </button>
-    <p style={{
-    width: '250px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-}}>
-  Page {currentPage} of {totalPages}
-</p>
+        <div className="pagination-controls">
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <button 
+              className="button"
+              onClick={() => setCurrentPage(currentPage - 1)} 
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <p style={{
+              width: '250px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              Page {currentPage} of {totalPages}
+            </p>
 
-    <button 
-      className="button"
-      onClick={() => setCurrentPage(currentPage + 1)} 
-      disabled={currentPage === totalPages}
-      >
-      Next
-    </button>
-  </div>
-</div>
-  
-      {filteredQuizzes.length === 0 && <p className="no-quizzes-message">No quizzes found for the selected date range and title.</p>}
-    </div>
-      </>
+            <button 
+              className="button"
+              onClick={() => setCurrentPage(currentPage + 1)} 
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+        
+        {filteredQuizzes.length === 0 && <p className="no-quizzes-message">No quizzes found for the selected date range and title.</p>}
+      </div>
+    </>
   );
 };
 
