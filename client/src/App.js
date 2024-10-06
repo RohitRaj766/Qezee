@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -27,30 +27,42 @@ import Forgot from "./user/userScreens/forgot/Forgot";
 import ResetPassword from "./user/userScreens/forgot/ResetPassword";
 import AdminDashboard from './admin/adminScreens/adminDashboard/AdminDashboard'
 import CreateQuiz from "./admin/adminScreens/adminDashboard/createQuiz/CreateQuiz";
-import AdminSidebar from "./admin/adminScreens/adminDashboard/adminSidebar/AdminSidebar";
+// import AdminSidebar from "./admin/adminScreens/adminDashboard/adminSidebar/AdminSidebar";
 import HandleUser from "./admin/adminScreens/adminDashboard/handleUser/HandleUser";
 
 const AppContent = () => {
   const isLoad = useSelector((state) => state.auth.isLoading);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1260);
 
   useEffect(() => {
     const handleOnline = () => setIsOffline(false);
     const handleOffline = () => setIsOffline(true);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1260);
 
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  if (!isDesktop) {
+    return (
+      <div style={{ textAlign: 'center', padding: '20px', fontSize:'30px' }}>
+        <h1 style={{color:'red'}}>Please open this app on a desktop or laptop.</h1>
+      </div>
+    );
+  }
 
   return (
     <>
       {isLoad && <Loader />}
-      {isOffline &&  <NoInternetModal isVisible={isOffline} onClose={() => {setIsOffline(false);  window.location.reload();}} />}
+      {isOffline &&  <NoInternetModal isVisible={isOffline} onClose={() => {setIsOffline(false); window.location.reload();}} />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
