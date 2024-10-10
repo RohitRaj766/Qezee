@@ -14,7 +14,7 @@ const AdminSidebar = () => {
 
   const selectorsData = [
     { image: createquizimage, text: 'CREATE QUIZ', path: '/admin-dashboard/create-quiz' },
-    { image: handleuserimage, text: 'HANDLE USER', path: '/admin-dashboard/handle-user' },
+    // { image: handleuserimage, text: 'HANDLE USER', path: '/admin-dashboard/handle-user' },
 
   ];
 
