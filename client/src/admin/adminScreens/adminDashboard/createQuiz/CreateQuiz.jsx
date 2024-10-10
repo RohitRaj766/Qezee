@@ -182,7 +182,7 @@ function CreateQuiz() {
           <div>
             <label>Status:</label>
             <select value={quizStatus} onChange={(e) => setQuizStatus(e.target.value)} className='status-dropdown'>
-              <option value="active">Active</option>
+              {/* <option value="active">Active</option> */}
               <option value="inactive">Inactive</option>
             </select>
           </div>
