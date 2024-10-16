@@ -74,7 +74,7 @@ const OpenLeaderboard = () => {
                 <tr className='AdminTableRow'>
                   <th>Rank</th>
                   <th>Name</th>
-                  <th>Enrollment</th>
+                  <th>Enrollment test</th>
                   <th>Correct Answers</th>
                   <th>Wrong Answers</th>
                   <th>Not Attempted</th>
@@ -95,7 +95,7 @@ const OpenLeaderboard = () => {
             </>
           ) : null}
           <thead className='AdminTableHeader'>
-            {hasRequiredParams && !userExist &&
+            {!hasRequiredParams && !userExist &&
             <tr className='AdminTableRow'>
               <th>Rank</th>
               <th>Name</th>
