@@ -74,7 +74,7 @@ const OpenLeaderboard = () => {
                 <tr className='AdminTableRow'>
                   <th>Rank</th>
                   <th>Name</th>
-                  <th>Enrollment test</th>
+                  <th>Enrollment</th>
                   <th>Correct Answers</th>
                   <th>Wrong Answers</th>
                   <th>Not Attempted</th>
