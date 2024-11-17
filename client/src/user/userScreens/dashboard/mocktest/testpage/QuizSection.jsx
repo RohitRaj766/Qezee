@@ -15,7 +15,7 @@ const QuizSection = ({
   handleQuestionClick,
   handleSubmit
 }) => {
-    const [timeLeft, setTimeLeft] = useState(600);
+    const [timeLeft, setTimeLeft] = useState( 30 * (shuffledQuestions.length));
   const optionLabels = ["a", "b", "c", "d"];
 
   const handleNext = () => {
