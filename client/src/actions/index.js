@@ -65,6 +65,8 @@ export const ADMIN_LOGOUT_REQUEST = "ADMIN_LOGOUT_REQUEST";
 export const ADMIN_LOGOUT_SUCCESS = "ADMIN_LOGOUT_SUCCESS";
 export const ADMIN_LOGOUT_FAILURE = "ADMIN_LOGOUT_FAILURE";
 
+export const COMPLETED_QUIZES_SUCCESS = "COMPLETED_QUIZES_SUCCESS";
+
 export const loginRequest = (credentials) => ({
   type: LOGIN_REQUEST,
   payload: credentials,
@@ -277,3 +279,8 @@ export const adminLogoutSuccess = () => ({
 export const adminLogoutFailure = () => ({
   type: ADMIN_LOGOUT_FAILURE,
 });
+
+export const completedQuizesSuccess = (id) =>({
+  type: COMPLETED_QUIZES_SUCCESS,
+  payload: id
+})
