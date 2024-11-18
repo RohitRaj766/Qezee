@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Quizzes.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  completedQuizesSuccess,
   fetchQuizListRequest,
   fetchQuizRequest,
   } from "../../../../actions/index";
@@ -17,6 +18,7 @@ const QuizList = () => {
   const userData = useSelector((state) => state.auth.user.LoggedInUser);
   const isLoading = useSelector((state) => state.auth.isLoading);
   const error = useSelector((state) => state.auth.fetchDataError);
+  const completedQuizes = useSelector((state) => state.auth.completedQuizes);
   const [flag, setFlag] = useState(false);
   const [selectQuizTitle, setSelectQuizTitle] = useState("");
   const [isDataVisible, setIsDataVisible] = useState(false);
@@ -40,6 +42,7 @@ const QuizList = () => {
     if (currentDateTime >= quizStartTime) {
       setFlag(true);
       setSelectQuizTitle(id);
+      dispatch(completedQuizesSuccess(id))
     } else {
       toast.error('Quiz not started yet. Please see the date & start time');
     }
@@ -61,7 +64,7 @@ const QuizList = () => {
   const attemptedQuizzes = userData?.totalquizzes.map(quiz => quiz.quizId) || [];
 
   const liveQuizzes = quizzes.filter(
-    (quiz) => !attemptedQuizzes.includes(quiz._id) && quiz.quizStatus !== "expired"
+    (quiz) => !attemptedQuizzes.includes(quiz._id) && quiz.quizStatus !== "expired" && !completedQuizes.includes(quiz._id)
   );
 
   const previousQuizzes = quizzes.filter(

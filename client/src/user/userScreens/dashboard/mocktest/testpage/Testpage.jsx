@@ -154,7 +154,7 @@ const Testpage = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalvisible, setIsModalVisible] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(600);
+  const [timeLeft, setTimeLeft] = useState(30 * (shuffledQuestions.length));
 
   useEffect(() => {
     const shuffledQuestions = shuffleArray(

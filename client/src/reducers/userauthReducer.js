@@ -36,7 +36,8 @@ import {
   REQUEST_PASSWORD_RESET_FAILURE,
   RESET_PASSWORD,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FAILURE
+  RESET_PASSWORD_FAILURE,
+  COMPLETED_QUIZES_SUCCESS,
 } from "../actions/index";
 
 const initialState = {
@@ -55,7 +56,8 @@ const initialState = {
   resultSubmissionSuccess: false,
   resultSubmissionError: null,
   attemptedQuizzes:[],
-  message:null
+  message:null,
+  completedQuizes:[]
 };
 
 const userauthReducer = (state = initialState, action) => {
@@ -287,7 +289,9 @@ const userauthReducer = (state = initialState, action) => {
         case RESET_PASSWORD_SUCCESS:
           return { ...state, loading: false, message: action.payload.message };
         case RESET_PASSWORD_FAILURE:
-          return { ...state, loading: false, error: action.payload.error };  
+          return { ...state, loading: false, error: action.payload.error }; 
+        case COMPLETED_QUIZES_SUCCESS:
+          return{...state, loading:false,completedQuizes:action.payload}
     default:
       return state;
   }
