@@ -2,8 +2,9 @@ import axios from 'axios';
 
 // const baseURL = 'http://localhost:5000'; 
 
+const baseURL = 'https://qezee-server-re.onrender.com';
 // Development
-const baseURL = 'https://qezee-server.onrender.com'; 
+// const baseURL = 'https://qezee-server.onrender.com'; 
 // Production
 // const baseURL = 'https://qezee-server-prod.onrender.com'; 
 
