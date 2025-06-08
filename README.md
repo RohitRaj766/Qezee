@@ -56,7 +56,7 @@
 
   <h2>📦 Installation</h2>
   <p><strong>Clone the repository:</strong></p>
-  <pre><code>git clone https://github.com/RohitRaj766/qezee-server.git</code></pre>
+  <pre><code>git clone https://github.com/RohitRaj766/qezee.git</code></pre>
 
   <p><strong>Navigate to the project directory and install dependencies:</strong></p>
   <pre><code>cd client
