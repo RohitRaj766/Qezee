@@ -55,13 +55,5 @@ Navigate to the project directory and install dependencies:
 cd qezee-server
 npm install
 
-Create a .env file in the root directory and add your environment variables:
-
-MONGO_URI=your-mongodb-connection-string
-JWT_SECRET=your-jwt-secret
-EMAIL_USER=your-email@example.com
-EMAIL_PASS=your-email-password
-Run the development server:
-
 npm start
 
