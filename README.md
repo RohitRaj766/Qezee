@@ -1,4 +1,4 @@
-🌟 Qezee – Quiz Competition Platform
+🌟 Qezee – Quiz Competition Platform <br>
 Qezee is a dynamic and user-friendly platform for hosting and participating in quizzes. Designed with competitive learning in mind, Qezee allows both admins and participants to engage in a seamless quiz experience — from quiz creation to real-time participation and result tracking.
 
 🔗 Project Repositories
