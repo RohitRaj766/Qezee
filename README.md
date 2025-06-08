@@ -6,17 +6,17 @@ Server (Backend): https://github.com/RohitRaj766/qezee-server
 
 🧪 Test Credentials
 
-🔐 Admin Login
-Username: admin
+🔐 Admin Login <br>
+Username: admin <br>
 Password: secure
 
-👤 Client Login
-Email: rohitraj2k04@gmail.com
+👤 Client Login <br>
+Email: rohitraj2k04@gmail.com <br>
 Password: 123456RR
 
 Or, sign up with your own credentials directly through the platform!
 
-⚙️ Tech Stack
+⚙️ Tech Stack <br>
 Frontend: React, redux, saga
 
 Backend: Node.js, Express
