@@ -62,3 +62,8 @@
   <pre><code>cd qezee-server
 npm install
 npm start</code></pre>
+
+ <h2>🎥 Watch Video Preview</h2>
+  <a href="https://www.linkedin.com/posts/rohitraj2k04_techforstudents-readingmadeeasy-studentlife-activity-7260282608440250368-Fgej?utm_source=share&utm_medium=member_desktop&rcm=ACoAADWMvWwBv8o9k5kbp1ioEOdBQMTqeBnGh5c" target="_blank" rel="noopener noreferrer">
+    <img src="https://via.placeholder.com/800x450.png?text=Click+to+Watch+on+LinkedIn" alt="Watch Video Preview" width="600">
+  </a>
