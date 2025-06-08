@@ -36,11 +36,15 @@ Environment Configuration: dotenv
 
 ✅ Quiz participation (user)
 
-✅ Real-time leaderboard (coming soon / optional)
+✅ Real-time Leaderboard & Openboard
 
 ✅ Email verification & notifications
 
 ✅ Responsive UI/UX based on Figma design
+
+✅ No Internet 
+
+✅ Mock Tests
 
 📦 Installation
 Clone the repository:
