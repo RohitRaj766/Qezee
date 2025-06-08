@@ -4,22 +4,22 @@ Qezee is a dynamic and user-friendly platform for hosting and participating in q
 </p>
 
  
-🔗 Project Repositories
+<h2>🔗 Project Repositories</h2>
 Server (Backend): https://github.com/RohitRaj766/qezee-server
 
-🧪 Test Credentials
+<h2>🧪 Test Credentials</h2>
 
-🔐 Admin Login <br>
+<h2>🔐 Admin Login</h2> <br>
 Username: admin <br>
 Password: secure
 
-👤 Client Login <br>
+<h2>👤 Client Login</h2> <br>
 Email: rohitraj2k04@gmail.com <br>
 Password: 123456RR
 
 Or, sign up with your own credentials directly through the platform!
 
-⚙️ Tech Stack <br>
+<h2>⚙️ Tech Stack</h2> <br>
 Frontend: React, redux, saga<br>
 Backend: Node.js, Express<br>
 Database: MongoDB (with Mongoose)<br>
@@ -27,7 +27,7 @@ Authentication: JWT, bcryptjs<br>
 Email Service: Nodemailer<br>
 Environment Configuration: dotenv<br>
 
-🚀 Features<br>
+<h2>🚀 Features </h2><br>
 ✅ Secure user authentication (admin and users)<br>
 ✅ Quiz creation and management (admin)<br>
 ✅ Quiz participation (user)<br>
@@ -37,14 +37,14 @@ Environment Configuration: dotenv<br>
 ✅ No Internet <br>
 ✅ Mock Tests
 
-📦 Installation
+<h2>📦 Installation</h2>
 Clone the repository:
 git clone https://github.com/RohitRaj766/qezee-server.git
 
 Navigate to the project directory and install dependencies:
 
 cd qezee-server
-npm install
+<code>npm install</code>
 
 npm start
 
