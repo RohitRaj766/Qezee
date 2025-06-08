@@ -21,32 +21,20 @@ Or, sign up with your own credentials directly through the platform!
 
 ⚙️ Tech Stack <br>
 Frontend: React, redux, saga
-
 Backend: Node.js, Express
-
 Database: MongoDB (with Mongoose)
-
 Authentication: JWT, bcryptjs
-
 Email Service: Nodemailer
-
 Environment Configuration: dotenv
 
 🚀 Features
 ✅ Secure user authentication (admin and users)
-
 ✅ Quiz creation and management (admin)
-
 ✅ Quiz participation (user)
-
 ✅ Real-time Leaderboard & Openboard
-
 ✅ Email verification & notifications
-
 ✅ Responsive UI/UX based on Figma design
-
 ✅ No Internet 
-
 ✅ Mock Tests
 
 📦 Installation
