@@ -59,7 +59,7 @@
   <pre><code>git clone https://github.com/RohitRaj766/qezee-server.git</code></pre>
 
   <p><strong>Navigate to the project directory and install dependencies:</strong></p>
-  <pre><code>cd qezee-server
+  <pre><code>cd client
 npm install
 npm start</code></pre>
 
