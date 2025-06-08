@@ -1,50 +1,64 @@
-<h1>🌟 Qezee – Quiz Competition Platform </h1> <br>
-<p>
-Qezee is a dynamic and user-friendly platform for hosting and participating in quizzes. Designed with competitive learning in mind, Qezee allows both admins and participants to engage in a seamless quiz experience — from quiz creation to real-time participation and result tracking.
-</p>
 
- 
-<h2>🔗 Project Repositories</h2>
-Server (Backend): https://github.com/RohitRaj766/qezee-server
+  <h1>🌟 Qezee – Quiz Competition Platform</h1>
+  <p>
+    Qezee is a dynamic and user-friendly platform for hosting and participating in quizzes. 
+    Designed with competitive learning in mind, Qezee allows both admins and participants 
+    to engage in a seamless quiz experience — from quiz creation to real-time participation 
+    and result tracking.
+  </p>
 
-<h2>🧪 Test Credentials</h2>
+  <h2>🔗 Project Repositories</h2>
+  <p>
+    <strong>Server (Backend):</strong> 
+    <a href="https://github.com/RohitRaj766/qezee-server" target="_blank">
+      https://github.com/RohitRaj766/qezee-server
+    </a>
+  </p>
 
-<h2>🔐 Admin Login</h2> <br>
-Username: admin <br>
-Password: secure
+  <h2>🧪 Test Credentials</h2>
 
-<h2>👤 Client Login</h2> <br>
-Email: rohitraj2k04@gmail.com <br>
-Password: 123456RR
+  <h3>🔐 Admin Login</h3>
+  <p>
+    <strong>Username:</strong> admin <br>
+    <strong>Password:</strong> secure
+  </p>
 
-Or, sign up with your own credentials directly through the platform!
+  <h3>👤 Client Login</h3>
+  <p>
+    <strong>Email:</strong> rohitraj2k04@gmail.com <br>
+    <strong>Password:</strong> 123456RR
+  </p>
+  <p>
+    Or, sign up with your own credentials directly through the platform!
+  </p>
 
-<h2>⚙️ Tech Stack</h2> <br>
-Frontend: React, redux, saga<br>
-Backend: Node.js, Express<br>
-Database: MongoDB (with Mongoose)<br>
-Authentication: JWT, bcryptjs<br>
-Email Service: Nodemailer<br>
-Environment Configuration: dotenv<br>
+  <h2>⚙️ Tech Stack</h2>
+  <ul>
+    <li><strong>Frontend:</strong> React, Redux, Redux-Saga</li>
+    <li><strong>Backend:</strong> Node.js, Express</li>
+    <li><strong>Database:</strong> MongoDB (with Mongoose)</li>
+    <li><strong>Authentication:</strong> JWT, bcryptjs</li>
+    <li><strong>Email Service:</strong> Nodemailer</li>
+    <li><strong>Environment Configuration:</strong> dotenv</li>
+  </ul>
 
-<h2>🚀 Features </h2><br>
-✅ Secure user authentication (admin and users)<br>
-✅ Quiz creation and management (admin)<br>
-✅ Quiz participation (user)<br>
-✅ Real-time Leaderboard & Openboard<br>
-✅ Email verification & notifications<br>
-✅ Responsive UI/UX based on Figma design<br>
-✅ No Internet <br>
-✅ Mock Tests
+  <h2>🚀 Features</h2>
+  <ul>
+    <li>✅ Secure user authentication (admin and users)</li>
+    <li>✅ Quiz creation and management (admin)</li>
+    <li>✅ Quiz participation (user)</li>
+    <li>✅ Real-time Leaderboard & Openboard</li>
+    <li>✅ Email verification & notifications</li>
+    <li>✅ Responsive UI/UX based on Figma design</li>
+    <li>✅ Offline mode support (No Internet)</li>
+    <li>✅ Mock Tests</li>
+  </ul>
 
-<h2>📦 Installation</h2>
-Clone the repository:
-git clone https://github.com/RohitRaj766/qezee-server.git
+  <h2>📦 Installation</h2>
+  <p><strong>Clone the repository:</strong></p>
+  <pre><code>git clone https://github.com/RohitRaj766/qezee-server.git</code></pre>
 
-Navigate to the project directory and install dependencies:
-
-cd qezee-server
-<code>npm install</code>
-
-npm start
-
+  <p><strong>Navigate to the project directory and install dependencies:</strong></p>
+  <pre><code>cd qezee-server
+npm install
+npm start</code></pre>
